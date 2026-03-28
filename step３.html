@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: "UD Shin Go", sans-serif;
+            margin: 0; padding: 20px;
+            background: linear-gradient(180deg, #001f3f 0%, #005a96 100%); /* 夜空のグラデーション */
+            color: white;
+            text-align: center;
+        }
+        h2 { font-size: 28px; text-shadow: 0 0 10px #ffcc33; margin-bottom: 30px; }
+        .star-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .work-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+        .work-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffcc33;
+        }
+        .star-icon { font-size: 30px; margin-bottom: 10px; display: block; }
+        .work-title { font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #ffcc33; }
+        .work-desc { font-size: 14px; line-height: 1.5; opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <h2>✨ 星の作品集 ✨</h2>
+    <p>あかりが心を込めて作った、キラキラ輝く星（サイト）たちです。</p>
+
+    <div class="star-container">
+        <a href="https://akari-s-portfolio.chipderu315.workers.dev/" target="_blank" class="work-card">
+            <span class="star-icon">🌟</span>
+            <div class="work-title">Akari's Portfolio</div>
+            <div class="work-desc">愛犬と過ごす「わんわんパラダイス」</div>
+        </a>
+
+        <a href="https://splendid-biscotti-da01f4.netlify.app/" target="_blank" class="work-card">
+            <span class="star-icon">⭐</span>
+            <div class="work-title">公式Webサイト A</div>
+            <div class="work-desc">お仕事でご依頼を頂いた作品</div>
+        </a>
+
+        <a href="https://vermillion-blancmange-00dff8.netlify.app/" target="_blank" class="work-card">
+            <span class="star-icon">🌠</span>
+            <div class="work-title">公式Webサイト B</div>
+            <div class="work-desc">大好きなパンケーキのお店「南国カフェ」</div>
+        </a>
+
+        <a href="https://rabbit-tux-00928481.figma.site/" target="_blank" class="work-card">
+            <span class="star-icon">🎨</span>
+            <div class="work-title">Figma Design Space</div>
+            <div class="work-desc">デザインの構想を描いた、クリエイティブな場所。</div>
+        </a>
+
+        <a href="https://akari-s-portfolio.chipderu315.workers.dev/Photo%20Area" target="_blank" class="work-card">
+            <span class="star-icon">📸</span>
+            <div class="work-title">Photo Area</div>
+            <div class="work-desc">大切な思い出や景色を切り取ったフォトギャラリー。</div>
+        </a>
+    </div>
+
+    <p style="margin-top: 50px; font-size: 14px; opacity: 0.7;">
+        ※クリックすると、それぞれの星（サイト）へ飛びます。
+    </p>
+
+</body>
+</html>
