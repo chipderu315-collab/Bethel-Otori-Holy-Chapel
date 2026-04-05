@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ベテル鳳ホーリーチャペル</title>
     <style>
+        /* 全体のフォントをUDゴシック系に統一 */
+        body, h1, h2, h3, h4, p, div, span, .nav-item, .lyric-char, .intro, .description, .footer-quote, .closing-text, .promise {
+            font-family: "UD Shin Go", "UD新ゴ", "BIZ UDPGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif !important;
+        }
+
         body {
-            font-family: "UD Shin Go", "UD新ゴ", "Hiragino Sans", sans-serif;
             margin: 0; padding: 0; color: #333;
             background-color: #fdfaf5; 
             line-height: 1.6;
@@ -42,12 +46,21 @@
         #song-content { display: none; padding: 30px 20px; box-sizing: border-box; }
         .song-card { max-width: 850px; margin: 0 auto; }
 
+        /* 共通のボックススタイル */
         .lyrics-box {
-            background: #f4fff9; padding: 25px;
-            border-radius: 15px; border: 2px solid #2ecc71;
+            padding: 25px;
+            border-radius: 15px;
             margin-top: 15px;
+            margin-bottom: 30px;
             overflow-x: auto;
+            border: 2px solid;
         }
+
+        /* 曲ごとの個別カラー設定 */
+        .box-green { background: #f4fff9; border-color: #2ecc71; } /* 見えない星の行方 */
+        .box-pink { background: #fff0f5; border-color: #ffb6c1; }  /* 主はぶどうの木 */
+        .box-yellow { background: #ffffed; border-color: #f1d302; } /* からっぽのお墓 */
+
         .line-group {
             display: flex;
             flex-wrap: wrap;
@@ -92,6 +105,20 @@
         .message-step p { margin: 0; font-size: 15px; line-height: 1.7; }
         
         audio { width: 100%; margin-bottom: 15px; }
+
+        :root {
+            --text-color: #0b132b;
+            --accent-color: #f1d302; 
+            --sub-text: #0b132b; 
+        }
+        .container { max-width: 700px; margin: 0 auto; padding: 20px 0; }
+        .intro { font-size: 1.1rem; color: var(--sub-text); font-style: italic; text-align: center; }
+        .section { margin-bottom: 40px; }
+        h2.song-title { font-size: 1.4rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; }
+        h2.song-title::before { content: '✦'; margin-right: 10px; color: var(--accent-color); font-size: 0.8rem; }
+        footer { margin-top: 60px; text-align: center; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.05); }
+        .footer-quote { font-size: 1.2rem; color: #d35400; margin-bottom: 30px; display: block; line-height: 2; }
+        .promise { font-weight: bold; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -108,6 +135,7 @@
         <div class="nav-item" onclick="changePage(this, 'step 3.html')">ちしき</div>
         <div class="nav-item" onclick="changePage(this, 'step 4.html')">たいけん</div>
         <div class="nav-item" onclick="changePage(this, 'step 5.html')">けいやく</div>
+         <div class="nav-item" onclick="changePage(this, 'step6.html')">きろく</div>
     </nav>
 </header>
 
@@ -115,10 +143,82 @@
 
 <div id="song-content">
     <div class="song-card">
-        <h2 style="color:#005a96; text-align:center;">🎵 さんび「主はぶどうの木」</h2>
-        <audio controls><source src="image/budo.mp3" type="audio/mpeg"></audio>
+        
+        <!-- 1. 見えない星の行方（緑のボックス） -->
+        <div class="lyrics-box box-green">
+            <h2 style="color:#005a96; text-align:center;">🎵 オリジナルソング「幸せとは」</h2>
+            <audio controls><source src="image/見えない星の行方.mp3" type="audio/mpeg"></audio>
+            
+            <div class="container">
+                <header style="border:none; background:none; position:static; text-align:center;">
+                    <h1 style="font-size: 1.8rem; color:#333;">「どんなに暗い夜でも、空には必ず星が輝いていると知っていること」</h1>
+                      <h1 style="font-size: 1.8rem; color:#333;"></h1>見よ、わたしは世の終わりまで、いつもあなたがたと共にいる。イエス・キリスト（マタイによる福音書 28:20）
+                    <p class="intro">「幸せってなんだろう」<br>なんだかひとりぼっち。寂しいな。<br>そんなときに聴きたい歌をつくりました。</p>
+                </header>
 
-        <div class="lyrics-box">
+                <div class="line-group">
+                    <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">心の貧しい</div></div>
+                    <div class="word-unit"><div class="chord-name">G/B</div><div class="lyric-char">僕は 幸いだと</div></div>
+                    <div class="word-unit"><div class="chord-name">Am</div><div class="lyric-char">涙のあとの</div></div>
+                    <div class="word-unit"><div class="chord-name">Em</div><div class="lyric-char">慰めを知る</div></div>
+                    <div class="word-unit"><div class="chord-name">F</div><div class="lyric-char">自分より</div></div>
+                    <div class="word-unit"><div class="chord-name">C/E</div><div class="lyric-char">誰かの 幸せ祈る</div></div>
+                    <div class="word-unit"><div class="chord-name">Dm7</div><div class="lyric-char">それが僕に与え</div></div>
+                    <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">られた 奇跡</div></div>
+                    <div class="word-unit"><div class="chord-name">F</div><div class="lyric-char">見えなく</div></div>
+                    <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">ても</div></div>
+                    <div class="word-unit"><div class="chord-name">Am</div><div class="lyric-char">あなたは</div></div>
+                    <div class="word-unit"><div class="chord-name">Em</div><div class="lyric-char">そばにいるから</div></div>
+                    <div class="word-unit"><div class="chord-name">F</div><div class="lyric-char">星は</div></div>
+                    <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">そこに</div></div>
+                    <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">あるから</div></div>
+                </div>
+
+                <main>
+                    <div class="section">
+                        <h2 class="song-title">1. 完璧じゃなくて、いい</h2>
+                        <span class="bible-quote">「心の貧しい人は、幸いである」</span>
+                        <p class="description">
+                            それは、「自分は一人では何もできない」と弱さを認められる人は、神様の大きな愛に包まれるから。完璧を求めなくていい、弱いままで愛されている。そう気づくことが、幸せへの第一歩です。
+                        </p>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="song-title">2. その涙には、意味がある</h2>
+                        <span class="bible-quote">「悲しんでいる人は、幸いである」</span>
+                        <p class="description">
+                            悲しみを知る人は、それだけ優しく一生懸命に生きてきた証拠です。その涙は決して無駄にならず、いつか必ず温かな「慰め」に変わる。そう信じる心に、幸せは宿ります。
+                        </p>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="song-title">3. 「誰かのため」が、自分の光になる</h2>
+                        <p class="description">
+                            人からもらうもので満たすより、誰かのために小さな親切をしたり、誰かの幸せを一緒に喜んだりすること。そうして人を大切に想う時間が、結果として自分自身の心を一番明るく照らしてくれます。
+                        </p>
+                    </div>
+                </main>
+
+                <footer>
+                    <span class="footer-quote">
+                        イエスさまが教えてくれる幸せは、<br>
+                        <strong>「どんなに暗い夜でも、空には必ず星が輝いていると知っていること」</strong><br>
+                        に似ています。
+                    </span>
+                    <p class="closing-text">たとえ雲に隠れて星が見えない夜も、あなたは一人ではありません。</p>
+                    <div class="promise">
+                        」<b「見よ、わたしは世の終わりまで、いつもあなたがたと共にいる。r>
+                        <small></small>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <!-- 2. 主はぶどうの木（薄いピンク色のボックス） -->
+        <div class="lyrics-box box-pink">
+            <h2 style="color:#005a96; text-align:center;">🎵 さんび「主はぶどうの木」</h2>
+            <audio controls><source src="image/budo.mp3" type="audio/mpeg"></audio>
+
             <span class="section-label">【1番・2番】</span>
             <div class="line-group">
                 <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">主</div></div>
@@ -138,7 +238,6 @@
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">で</div></div>
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">す</div></div>
             </div>
-            
             <p style="font-size: 13px; color: #888; margin: 10px 0 5px;">(1回目)</p>
             <div class="line-group">
                 <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">い</div></div>
@@ -151,7 +250,6 @@
                 <div class="word-unit"><div class="chord-name">Bb</div><div class="lyric-char">に</div></div>
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
             </div>
-
             <p style="font-size: 13px; color: #888; margin: 10px 0 5px;">(2回目)</p>
             <div class="line-group">
                 <div class="word-unit"><div class="chord-name">Fm7</div><div class="lyric-char">豊</div></div>
@@ -163,7 +261,6 @@
                 <div class="word-unit"><div class="chord-name">Bb7</div><div class="lyric-char">ぶ</div></div>
                 <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">ー</div></div>
             </div>
-
             <span class="section-label" style="color:#d35400;">【サビ (Chorus)】</span>
             <div class="line-group">
                 <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">(ー)</div></div>
@@ -223,37 +320,35 @@
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">し</div></div>
                 <div class="word-unit"><div class="chord-name">Bb</div><div class="lyric-char">ー</div></div>
             </div>
+
+            <div class="message-section" style="border-left-color: #2ecc71; background: #fffbff; margin-top: 30px;">
+                <h3 style="color: #27ae60;">💌 ちょこっとメッセージ</h3>
+                <div class="bible-quote">「わたしはぶどうの木、あなたがたはその枝です。人がわたしにとどまり、わたしもその人の中にとどまっているなら、そういう人は多くの実を結びます。」（ヨハネの福音書 15章5節）</div>
+                <div class="message-step">
+                    <h4>1. 「頑張って実を作ろう」としなくていい</h4>
+                    <p>自分の力で「もっと優しくならなきゃ」と必死にならなくて大丈夫。枝の役割は、ただ「木にしっかりとつながっていること」。それだけです。</p>
+                </div>
+                <div class="message-step">
+                    <h4>2. 「自分ひとりで頑張りすぎている？」</h4>
+                    <p>イライラしたり、ゆるせない、愛せないのは、木（イエスキリスト様）から離れて一人で頑張りすぎているサインかもしれません。私たちは「枝」であることを思い出して。本体の木であるイエスキリスト様の教えから離れていたら、枝は栄養不足で枯れてしまいます。</p>
+                </div>
+                <div class="message-step">
+                    <h4>3. 自然と育っていく「心の実」</h4>
+                    <p>木につながっていれば、時が来れば自然と実は結ばれます。「守られているんだ」と感じる積み重ねが、愛や平和を育ててくれます。</p>
+                </div>
+                <div class="message-step">
+                    <h4>4.どんな実？それは９つの実✨</h4>
+                    <p>「御霊の実。それは、愛、喜び、平安、寛容、慈愛、善意、誠実、柔和、自制です。」（ガラテヤ5:22-23）この実を結ぶと、「自分」を通してよい影響が、周りに広がっていきます。</p>
+                </div>
+            </div>
         </div>
 
-        <div class="message-section" style="border-left-color: #2ecc71; background: #f9fffb;">
-            <h3 style="color: #27ae60;">💌 ちょこっとメッセージ</h3>
-            <div class="bible-quote">「わたしはぶどうの木、あなたがたはその枝です。人がわたしにとどまり、わたしもその人の中にとどまっているなら、そういう人は多くの実を結びます。」（ヨハネの福音書 15章5節）</div>
-            <div class="message-step">
-                <h4>1. 「頑張って実を作ろう」としなくていい</h4>
-                <p>自分の力で「もっと優しくならなきゃ」と必死にならなくて大丈夫。枝の役割は、ただ「木にしっかりとつながっていること」。それだけです。</p>
-            </div>
-            <div class="message-step">
-                <h4>2. 「自分ひとりで頑張りすぎている？」</h4>
-                <p>イライラしたり、ゆるせない、愛せないのは、木（イエスキリスト様）から離れて一人で頑張りすぎているサインかもしれません。私たちは「枝」であることを思い出して。本体の木であるイエスキリスト様の教えから離れていたら、枝は栄養不足で枯れてしまいます。</p>
-            </div>
-            <div class="message-step">
-                <h4>3. 自然と育っていく「心の実」</h4>
-                <p>木につながっていれば、時が来れば自然と実は結ばれます。「守られているんだ」と感じる積み重ねが、愛や平和を育ててくれます。</p>
-            </div>
-            <div class="message-step">
-                <h4>4.どんな実？それは９つの実✨</h4>
-                <p>「御霊の実。それは、愛、喜び、平安、寛容、慈愛、善意、誠実、柔和、自制です。」（ガラテヤ5:22-23）この実を結ぶと、「自分」を通してよい影響が、周りに広がっていきます。</p>
-            </div>
-        </div>
+        <!-- 3. からっぽのお墓でヤッホー！（パステルイエローのボックス） -->
+        <div class="lyrics-box box-yellow">
+            <h2 style="color:#005a96; text-align:center;">🎵 オリジナルソング「からっぽのお墓でヤッホー！」</h2>
+            <audio controls><source src="image/からっぽのお墓でヤッホー！.mp3" type="audio/mpeg"></audio>
 
-        <hr style="margin: 60px 0; border: 0; border-top: 2px dashed #eee;">
-
-        <h2 style="color:#005a96; text-align:center;">🎵 オリジナルソング「からっぽのお墓でヤッホー！」</h2>
-        <audio controls><source src="image/からっぽのお墓でヤッホー！.mp3" type="audio/mpeg"></audio>
-
-        <div class="lyrics-box" style="background: #f0f7ff; border-color: #005a96;">
             <div class="line-group">
-               
                 <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">大</div></div>
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">き</div></div>
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">な</div></div>
@@ -305,7 +400,6 @@
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">た</div></div>
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
             </div>
-
             <span class="section-label">【サビ】</span>
             <div class="line-group">
                 <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">ヤ</div></div>
@@ -354,49 +448,65 @@
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ル</div></div>
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ヤ</div></div>
                 <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
-                <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">イ</div></div>
-                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">エ</div></div>
-                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ス</div></div>
-                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">さ</div></div>
-                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ま</div></div>
+                <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">お</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">め</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">で</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">と</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">う</div></div>
                 <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">！</div></div>
-
-        </div>
-
-        <div class="message-section">
-            <h3>💌 ちょこっとメッセージ</h3>
-            <div class="message-step">
-                <h4>ちしきの２こ目へゴー！</h4>
-            
             </div>
+            <!-- ジャンプ用ボタン -->
+            <button onclick="jumpToEaster()" class="jump-button" style="border:none; cursor:pointer;">
+    🐣 イースターのおはなしを読む
+</button>
         </div>
-
     </div>
 </div>
 
-<script>
-    const frame = document.getElementById('main-frame');
-    const songArea = document.getElementById('song-content');
 
-    function changePage(element, fileName) {
-        songArea.style.display = 'none';
-        frame.style.display = 'block';
-        frame.src = fileName;
-        updateTabs(element);
+        <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
+<script>
+    function changePage(element, url) {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+        document.getElementById('main-frame').style.display = 'block';
+        document.getElementById('song-content').style.display = 'none';
+        document.getElementById('main-frame').src = url;
+        window.scrollTo(0,0);
     }
 
     function showSong(element) {
-        frame.style.display = 'none';
-        songArea.style.display = 'block';
-        updateTabs(element);
-    }
-
-    function updateTabs(element) {
-        document.querySelectorAll('.nav-item').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         element.classList.add('active');
-        const headerTop = document.querySelector('header').offsetTop;
-        window.scrollTo({ top: headerTop, behavior: 'smooth' });
+        document.getElementById('main-frame').style.display = 'none';
+        document.getElementById('song-content').style.display = 'block';
+        window.scrollTo(0,0);
     }
+    function jumpToEaster() {
+    const iframe = document.getElementById('main-frame');
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    // 1. まずナビゲーションの「ちしき（step 3）」をアクティブにする
+    navItems.forEach(item => {
+        if(item.innerText === 'ちしき') {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    // 2. さんび画面を隠して iframe を表示し、step 3 を読み込む
+    document.getElementById('song-content').style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.src = 'step 3.html#easter-top'; // URLにアンカーを付けて読み込む
+
+    // 3. すでに step 3 が開いている場合のために、中身に直接ジャンプ命令を送る
+    iframe.onload = function() {
+        iframe.contentWindow.location.hash = "#easter-top";
+    };
+    
+    window.scrollTo(0, 0);
+}
 </script>
 
 </body>

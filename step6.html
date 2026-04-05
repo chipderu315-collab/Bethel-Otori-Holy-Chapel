@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>イースター・キッズイベントレポート2026</title>
+    <style>
+        /* --- デザイン設定 --- */
+        :root {
+            --bg-color: #fdfcf5; /* 優しいクリーム色 */
+            --main-text: #5a5a5a;
+            --accent-pink: #ffb3b3;  /* パステルピンク */
+            --accent-blue: #a3d9f5;  /* パステルブルー */
+            --accent-yellow: #fff3a3; /* パステルイエロー */
+            --accent-green: #c1ffc1; /* パステルグリーン */
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: "Hiragino Maru Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--main-text);
+            line-height: 1.8;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 20px auto;
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        /* タイトル：リボン風 */
+        h1 {
+            text-align: center;
+            color: white;
+            background: var(--accent-pink);
+            padding: 20px;
+            border-radius: 50px;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(255,179,179,0.4);
+        }
+
+        h2 {
+            color: #d64545;
+            background: rgba(255,179,179,0.15);
+            padding: 12px 25px;
+            border-radius: 0 50px 50px 0;
+            border-left: 10px solid var(--accent-pink);
+            display: inline-block;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        h3 {
+            color: #e67e22;
+            background: var(--accent-yellow);
+            padding: 8px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 1.2em;
+        }
+
+        /* 写真：アルバム風 */
+        .photo-card {
+            background: white;
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .photo-card:hover { transform: rotate(1deg) scale(1.02); }
+        
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        /* 各セクションの装飾 */
+        .story-summary {
+            background: #fff5f8;
+            border: 2px solid #ffe0e9;
+            border-radius: 30px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .section-box {
+            background: #f0faff;
+            border: 2px solid #cceeff;
+            padding: 30px;
+            border-radius: 30px;
+            margin: 30px 0;
+        }
+
+        .qa-box {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 6px solid var(--accent-blue);
+        }
+
+        .reading-stars {
+            background: #fffdf0;
+            border: 3px dashed var(--accent-yellow);
+            padding: 30px;
+            border-radius: 30px;
+            margin: 40px 0;
+        }
+
+        .star-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .star-card {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .ayumu-talk {
+            background: #fffafa;
+            border: 3px dashed #ffcccc;
+            padding: 30px;
+            border-radius: 30px;
+            margin: 40px 0;
+        }
+
+        .final-msg {
+            background: var(--accent-pink);
+            color: white;
+            padding: 25px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: bold;
+            margin: 40px 0;
+            font-size: 1.1em;
+        }
+
+        .message-box {
+            background: #eef9ff;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            border: 1px solid #d0e8ff;
+        }
+
+        .footer-shout {
+            text-align: center;
+            font-size: 2em;
+            color: #ff6666;
+            background: var(--accent-green);
+            padding: 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 60px;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 600px) {
+            .container { padding: 30px 15px; }
+            h1 { font-size: 1.4em; }
+            .footer-shout { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>復活祭！イースター・キッズイベントレポート</h1>
+    <p style="text-align: right; font-weight: bold;">2026年4月5日</p>
+
+    <!-- おはなしセクション -->
+    <section>
+        <h2>✝️ イエスさまのおはなし</h2>
+
+        <!-- 50分のおはなしまとめ -->
+        <div class="story-summary">
+            <h3 style="background: #d81b60; color: white;">✨ 驚きの「50分間」！みんなで深めたイースター</h3>
+            <p>「イエスさまはなぜ亡くなったの？」「罪がないってどういうこと？」<br>
+            さらには<strong>「復活したあとのことももっと話して！」</strong>と、あゆむくんとだいごくんが身を乗り出してリクエストをくれました。</p>
+            <p>ふだんのお話しは10分ほどでまとめる私ですが、今回は子どもたちの熱心な質問に応えているうちに、気がつけば<strong>約50分もの濃密な時間</strong>になっていました！</p>
+            <div style="background: white; padding: 15px; border-radius: 15px; border-left: 5px solid #ffb2c1; margin-top: 15px;">
+                <p style="margin: 0; font-size: 0.95em;">時折、子どもたちから鋭いツッコミや楽しい「いじり」をもらいながらも（笑）、大人も子どもも合わせた約10名の参加者全員で、イエスさまのことを心ゆくまで、そして楽しく学ぶことができました🌸<br>
+                これほどまでに真剣に、かつ笑顔でメッセージを受け取ってくれたみんなの姿に、私自身が一番励まされた気がします。</p>
+            </div>
+        </div>
+
+        <!-- 罪についての解説 -->
+        <div class="section-box">
+            <h3 style="background: #d64545; color: white;">🕊️ イエスさまに「罪がない」ってどういうこと？</h3>
+            <div class="qa-box">
+                <strong>Q. なぜイエスさまだけが特別なの？</strong><br>
+                ふつうの人は「自分勝手したい」という弱さを持って生まれますが、イエスさまは神さまの力（聖霊）によって宿り、100%清らかな心で生まれました。そして30年間、一度も人を傷つけず、愛を完璧に実行し続けた「真っ白な心」の持ち主です。
+            </div>
+            <div class="qa-box">
+                <strong>Q. なぜ「罪がない」ことが大切なの？（贖いについて）</strong><br>
+                借金を返せるのが「借金のない人」だけであるように、みんなの弱さを代わりに背負えるのは、真っ白な心を持つイエスさまだけでした。だからこそ、私たちの罪を身代わりに受けて、すべてを「赦し」へと変えることができたのです。
+            </div>
+        </div>
+
+        <!-- 名ナレーターたち -->
+        <div class="reading-stars">
+            <h3 style="background: #f57f17; color: white;">🎙️ 子どもたちが主役！名ナレーターが大集合</h3>
+            <p style="text-align: center;">「ちしきの資料」として用意した紙芝居。今回は、3人の子どもたちに読み手をお願いしました。</p>
+            <div class="star-grid">
+                <div class="star-card" style="border-top: 5px solid #ff9999;">
+                    <strong style="color: #ff9999;">ひかりちゃん</strong><br>
+                    さすが！と声が出るような抑揚をつけた素晴らしい発声。その美声に、聞いているみんなも自然と物語の世界に引き込まれていきました。
+                </div>
+                <div class="star-card" style="border-top: 5px solid #89cff0;">
+                    <strong style="color: #89cff0;">だいごくん</strong><br>
+                    「ひょいっ」とアクセントをつけて楽しそうに読んでくれました。思わず「お兄さんになった時の読み方も楽しみやわ！」と言ってしまうほど上手でした。
+                </div>
+                <div class="star-card" style="border-top: 5px solid #c1ffc1;">
+                    <strong style="color: #4caf50;">あゆむくん</strong><br>
+                    いつも積極的に場を楽しくしてくれます。聞き取りやすい通る声で、将来立派なプレゼンができそうだなと、今から楽しみになるほどです！
+                </div>
+            </div>
+        </div>
+
+        <!-- あゆむくんとの対話 -->
+        <div class="ayumu-talk">
+            <h4 style="color: #ff6666; margin-top: 0;">❤️ 心に響いたあゆむくんとの対話</h4>
+            <p>あゆむくんが<strong>「他人のために十字架につけられて死んだんだと思う！」</strong>と、本質を突いた答えをくれました。</p>
+            <p style="color: #d64545; font-style: italic; border-left: 3px solid #ff9999; padding-left: 15px; margin: 15px 0;">
+                鋭い感性にびっくり！！👏「誰か（他人）のために自分を犠牲にする」という十字架の深い愛の本質を、自分の言葉でしっかりと捉えられたことに、驚きと感動を覚えました。
+            </p>
+            <div style="background: #fff0f0; padding: 15px; border-radius: 10px; border: 1px solid #ffecec;">
+                私はこう伝えました。<br>
+                <strong>「そうだね。そしてね、イエスさまは『あゆむくんのため』にも死なれたんだよ」</strong>
+            </div>
+            <p style="font-size: 0.9em; color: #666; margin-top: 15px;">イエスさまの十字架は、遠い昔の話ではなく、今ここにいる「あなた」を愛しているからこそのプレゼント。そのことがあゆむくんの心に届いた、大切な瞬間でした。</p>
+        </div>
+
+        <div class="final-msg">
+            イエスさまが復活したのは、悪いことをしたくなる心よりも、<br>
+            神さまの愛の力のほうがずっと強いことを証明するためです！
+        </div>
+
+        <div class="message-box">
+            <strong>みんなで宣言したこと：</strong><br>
+            「イエスさまは僕とみんなのために死んで、3日後に復活しました。それは、私たちが悪いことをしたくなる気持ちよりも、良いことをして幸せに生きるためです。イエスさまはいつも一緒です。ハレルヤ！」
+        </div>
+    </section>
+
+    <!-- お楽しみセクション -->
+    <section>
+        <h2>🍛🍩 おなかいっぱい！お楽しみタイム</h2>
+        <div class="photo-grid">
+            <div class="photo-card">
+                <img src="image/curry.jpg" alt="カレーとハンバーグ">
+                <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">みんな大好き！<br>カレー＆ハンバーグ、おやつのドーナツも！！</p>
+            </div>
+            <div class="photo-card">
+                <img src="image/treasure.jpg" alt="宝探し">
+                <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">のりちゃん企画！<br>大盛り上がりの宝探しゲームが出来ました。割と広い敷地内で、みんなが楽しく、どこかなどこかな、あった！って見つけられてすごく楽しい時間になりました！はじめてきてくれた、みゆちゃんも、子どもたちと一緒に参加してくれました。なんと、、最後はお宝を隠したのりちゃんがお宝を見てしまい、その目で場所がばれるという面白すぎるハプニングが！！そんなところもかわいらしくてすてきですね♪</p>
+            </div>
+            <div class="photo-card">
+                <img src="image/fishing.jpg" alt="魚釣りゲーム">
+                <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">お腹に景品が詰まった、とっても可愛くて素敵なゲームを考えてくれたのは<strong>あいこ先生</strong>！<br>
+                        当日は参加できなかったけれど、お家でお魚のお目目を描いたり準備をしてくれた<strong>めぐみちゃん</strong>、本当にありがとう！
+                    </p>
+                    
+                    <p style="font-size: 0.95em; line-height: 1.7; background: white; padding: 15px; border-radius: 10px; border: 1px dashed #a3d9f5;">
+                        大人も子どもも本気モードでバトル開始！そんな中、<strong>あつしくん</strong>がとっても素早く上手にお魚をヒットさせ、新たな特技を発見（！？）していました👏<br>
+                        一方の私は、とにかく不器用で大苦戦……。ちょっとだけ「ずる」を許してもらって、しっぽに引っ掛けてなんとか釣り上げました（あせあせ💦）。
+                    </p>
+                    
+                    <p style="font-size: 0.9em; color: #555; margin-top: 10px; text-align: right;">
+                        中にお菓子を詰めた30袋ものお魚を用意してくださったあいこ先生、最高の時間をありがとうございました！
+                    </p></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- みことばセクション -->
+    <section>
+        <h2>🎨 のりちゃんが描いてくれた「みことば」</h2>
+        <div class="photo-card" style="max-width: 600px; margin: 0 auto;">
+            <img src="image/bible-art.jpg" alt="みことばの絵">
+            <p style="text-align: center; font-size: 0.9em; margin-top: 10px;">イエスさまが教えてくれた大切なみことばを、のりちゃんが素敵な絵にしてくれました。</p>
+        </div>
+    </section>
+
+    <div class="footer-shout">
+        イエスさまはいつも一緒！ハレルヤ！！
+    </div>
+</div>
+
+<!-- お知らせコーナー -->
+<section class="report-section" style="margin-top: 60px;">
+    <h2 style="background: rgba(193, 255, 193, 0.3); border-left: 10px solid #4caf50; color: #2e7d32;">📢 おしらせコーナー</h2>
+
+    <!-- 毎週の案内カード -->
+    <div class="weekly-info" style="background: #f0fff0; border: 3px solid #c1ffc1; padding: 35px; border-radius: 35px; margin: 30px 0; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.03);">
+        <div style="position: absolute; top: -18px; left: 50%; transform: translateX(-50%); background: #4caf50; color: white; padding: 6px 25px; border-radius: 25px; font-weight: bold; font-size: 0.9em; box-shadow: 0 4px 8px rgba(76,175,80,0.3);">
+            EVERY WEEK
+        </div>
+        
+        <h3 style="color: #2e7d32; background: transparent; box-shadow: none; margin-top: 10px; font-size: 1.6em; text-align: center; display: block;">🌈 子ども会へ遊びにきませんか？</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; margin: 25px 0; background: white; padding: 25px; border-radius: 20px; border: 1px solid #e0e0e0;">
+            <div style="display: flex; align-items: flex-start; gap: 10px;">
+                <span style="font-size: 1.2em;">📍</span>
+                <div><strong>ばしょ：</strong> 救霊会館・大会堂横のお部屋</div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 10px;">
+                <span style="font-size: 1.2em;">⏰</span>
+                <div><strong>じかん：</strong> 毎週日曜日 11:00 〜 12:00 ごろ</div>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 10px;">
+                <span style="font-size: 1.2em;">📖</span>
+                <div><strong>ないよう：</strong> みんなで楽しく「さんび」をしたり、大迫力の「紙芝居」を読んだり、イエスさまの優しい「お話し」が聞けます✨</div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <p style="font-size: 1.2em; color: #d64545; font-weight: bold; margin-bottom: 10px;">
+                どなたでも大歓迎！！
+            </p>
+            <p style="margin: 0; line-height: 1.6; color: #555;">
+                お子様を連れて、ぜひぜひ遊びに来てください。<br>
+                新しいお友だちに会えるのを、みんなでワクワクしながら待ってます！✨
+            </p>
+        </div>
+    </div>
+
+    <!-- 季節のイベント予告（必要に応じて書き換えてください） -->
+    <div style="background: #fff9e6; border: 2px dashed #ffcc80; padding: 20px; border-radius: 20px; text-align: center; margin-top: 20px;">
+        <p style="margin: 0; color: #e67e22; font-weight: bold;">
+            🌟 次回の特別イベントもお楽しみに！詳細は決まり次第お知らせします 🌟
+        </p>
+    </div>
+</section>
+<!-- 更新頻度の案内（注釈） -->
+<div style="background: #fdfcf5; border: 1px solid #eee; padding: 15px; border-radius: 15px; margin: 20px 0; font-size: 0.85em; color: #888; text-align: center; border-left: 5px solid #ffb3b3;">
+    <p style="margin: 0;">
+        🌟 この活動記録は、<strong>第一日曜日の「あかり先生の時間」</strong>や<strong>特別イベント開催時</strong>の様子をピックアップしてお届けしています。
+    </p>
+</div>
+</div>
+</html>
