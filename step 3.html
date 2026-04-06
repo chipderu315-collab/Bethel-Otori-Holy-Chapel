@@ -156,6 +156,7 @@
       <!-- ジャンプ用ボタン -->
     <div style="text-align: center;">
         <a href="#easter-top" class="jump-button">🐣 イースターのおはなしを読む</a>
+        <a href="#NEWS-top" class="jump-button">🚀 　かみさまのおちからのおはなしを読む</a>
     </div>
     <h2>聖書から読み解く、世界と私たちの「はじまり」</h2>
 
@@ -310,9 +311,479 @@
         イエスさまのお名前によってお祈りします。<br><br>
         アーメン！</p>
     </div>
+    <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <div id="NEWS-top" class="NEWS-header">
+        <h2> 最高のしらせ & 洗礼の学び</h2>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <p class="footer-mark">Step 3 / Biblical Knowledge & Easter Message</p>
-</div>
 
+    <title>神様の力でつきすすめ！🚀</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 明るい祝福のカラーパレット */
+            --primary-light: #FFFDE7; /* 超薄い黄色（全体背景） */
+            --accent-gold: #FFC107; /* 祝福のゴールド */
+            --accent-blue: #03A9F4; /* 希望のライトブルー */
+            --accent-pink: #EC407A; /* 愛のピンク */
+            --spirit-color: #FF9800; /* 霊の洗礼オレンジ */
+            --water-color: #29B6F6; /* 水の洗礼水色 */
+            
+            --text-main: #37474F;
+            --text-dark: #263238;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--primary-light);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.9;
+            word-break: break-word;
+        }
+
+        /* ----------------------------------
+           前編：爆走人生 ヒーローセクション
+        ---------------------------------- */
+        .hero {
+            background: linear-gradient(135deg, #FFF9C4, #E1F5FE); /* 明るいパステルグラデ */
+            color: var(--text-dark);
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            margin: 0;
+            background: linear-gradient(to right, var(--accent-gold), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-top: 25px;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        /* 前編・後編共通 カードスタイル */
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border-top: 10px solid #ccc; /* 上部にアクセント */
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+            color: var(--white);
+            padding: 4px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 10px;
+            color: var(--text-dark);
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 15px;
+        }
+
+        h2::before {
+            content: "✨";
+            margin-right: 10px;
+        }
+
+        /* 聖句（引用）のデザイン */
+        blockquote {
+            background: #FFFDE7; /* 薄い黄色 */
+            border-radius: 15px;
+            margin: 30px 0;
+            padding: 25px 35px;
+            font-style: italic;
+            position: relative;
+            border-left: 5px solid var(--accent-gold);
+        }
+
+        blockquote::before {
+            content: "📖";
+            position: absolute;
+            left: -20px;
+            top: -20px;
+            font-size: 2rem;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .verse-ref {
+            display: block;
+            text-align: right;
+            font-size: 0.9rem;
+            color: #78909C;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* 比較表 */
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .comp-item {
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid;
+        }
+        .comp-self {
+            background: #FFEBEE; /* 薄い赤 */
+            border-color: #FFCDD2;
+            color: #C62828;
+        }
+        .comp-god {
+            background: #E3F2FD; /* 薄い青 */
+            border-color: #BBDEFB;
+            color: #1565C0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* 勝利の誓い（中継地点） */
+        .vow-box {
+            background: var(--white);
+            color: var(--text-main);
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            border: 6px dashed var(--accent-gold);
+            margin: 60px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .vow-box h3 {
+            color: var(--accent-gold);
+            font-size: 2.2rem;
+            margin: 0 0 30px;
+            font-weight: 900;
+        }
+        .vow-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        .vow-list li {
+            margin-bottom: 15px;
+            padding-left: 40px;
+            position: relative;
+        }
+        .vow-list li::before {
+            content: "☀️";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+        }
+
+        /* ----------------------------------
+           後編：洗礼セクションスタイル
+        ---------------------------------- */
+        .learning-header {
+            text-align: center;
+            margin: 80px 0 40px;
+        }
+        .learning-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            background: linear-gradient(to right, var(--spirit-color), var(--water-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 洗礼カードの個別スタイル */
+        .spirit-card { border-top-color: var(--spirit-color); }
+        .spirit-card h2 { color: var(--spirit-color); border-bottom-color: #FFF3E0; }
+        .water-card { border-top-color: var(--water-color); }
+        .water-card h2 { color: var(--water-color); border-bottom-color: #E1F5FE; }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .spirit-tag { background: var(--spirit-color); }
+        .water-tag { background: var(--water-color); }
+
+        .label {
+            font-weight: bold;
+            display: block;
+            color: #546E7A;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+        .highlight {
+            background: linear-gradient(transparent 60%, #FFF9C4 60%);
+            font-weight: bold;
+        }
+
+        /* まとめボックス */
+        .summary-box {
+            background: linear-gradient(135deg, #424242, #212121);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 25px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .summary-title {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+        .victory-text {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: #FF5252;
+            margin-top: 30px;
+            border: 2px solid #FF5252;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            color: #90A4AE;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5rem; }
+            .comparison-box { grid-template-columns: 1fr; }
+            .card { padding: 25px; }
+            .vow-box { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>かみさまのおちから🚀</h1>
+        <p>🌞 最高のしらせ：イエスさまは死に勝った！<br>
+        —— 聖霊様の風に押されて突き進む道 ——</p>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="card" style="border-top-color: var(--accent-blue);">
+            <span class="section-number">01</span>
+            <h2>悪いもの（悪しき者）は、もう負けている</h2>
+            <p>イエスさまが死の力に打ち勝ち、生き返られたことは、まぎれもない事実です。もし生き返らなければ、闇が勝って終わりでした。</p>
+            <p>でも、イエスさまは生き返られた！だから、悪いものはもう負けているのです。</p>
+            <blockquote>
+                「キリストは死を滅ぼし、命と朽ちない体とを明らかに示してくださいました。」
+                <span class="verse-ref">（テモテへの第二の手紙 1章10節）</span>
+            </blockquote>
+            <p>この「完全な勝利」のしらせは、遠い昔の話ではありません。今、泥沼の中にいるようなあなたの毎日を、根っこからひっくり返す力を持っています。</p>
+        </div>
+
+        <div class="card" style="border-top-color: var(--accent-pink);">
+            <span class="section-number">02</span>
+            <h2>なぜ、自分に愛想を尽かしてしまうのか？</h2>
+            <p>「優しくしたいのに怒ってしまう」「正しくありたいのに、つい横道に逸れてしまう」……。</p>
+            <p>それは、あなたが<span class="highlight">「自分だけの力」</span>で、重たい荷物を背負い、急な坂道を這い上がろうとしているからです。</p>
+            <blockquote>
+                「わたしは、良いことをしたいと願っているのに、それができない。したくない悪いことをしてしまうのです。」
+                <span class="verse-ref">（ローマの信徒への手紙 7章19節）</span>
+            </blockquote>
+            <p>自分の「根性」だけで自分を変えようとするのは、底なしの沼の中で、自分の足を自分で引っ張り上げようとするようなもの。足掻けば足掻くほど、よけいに深く沈んでしまいます。</p>
+        </div>
+
+        <div class="card" style="border-top-color: var(--spirit-color);">
+            <span class="section-number">03</span>
+            <h2>御霊（みたま）による力：心の入れ替え</h2>
+            <p>神さまは、あなたに「もっと根性を出せ！」とは言いません。<br>
+            <strong>「自分の力で進むのはもうおやめなさい。わたしの『天の風（みたま）』を受け取って、大空を飛ぶように進みなさい」</strong>と言っておられます。</p>
+            <p>自分の弱さを認めて、神さまにすべてをお預けするとき、生き返ったイエスさまの力そのものである「御霊（みたま）」が、あなたの内側に満たされます。</p>
+            <blockquote>
+                「わたしの恵みはあなたに十分である。わたしの力は、あなたの弱さの中でこそ、完全に発揮されるのです。」
+                <span class="verse-ref">（コリントの信徒への第二の手紙 12章9節）</span>
+            </blockquote>
+            <div class="comparison-box">
+                <div class="comp-item comp-self">
+                    <strong>自分の力</strong><br>すぐに疲れ果て、悪い心に負けてしまう。
+                </div>
+                <div class="comp-item comp-god">
+                    <strong>神様の力（御霊）</strong><br>死にすら勝った、限りない力。内側からあなたを突き動かす。
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="border-top-color: var(--water-color);">
+            <span class="section-number">04</span>
+            <h2>どうやったら、その力がもらえるの？</h2>
+            <p>特別な修行はいりません。神さまは、あなたにこの力を与えたくて、待ち構えておられます。</p>
+            <ul>
+                <li><strong>素直に認める：</strong> 「自分の力ではもう無理です。悪い心に勝てません」と、神さまに降参する。</li>
+                <li><strong>勝利を信じる：</strong> 「イエスさまが死に勝った力が、今の私を助けてくれる」と信じ抜く。</li>
+                <li><strong>「満たしてください」と願う：</strong> 「神さま、今、私をあなたの力（御霊）でいっぱいにしてください。私を導いてください」と祈る。</li>
+            </ul>
+            <blockquote>
+                「天の父は、求める者に御霊（みたま）を与えてくださらないはずがあるだろうか。」
+                <span class="verse-ref">（ルカによる福音書 11章13節）</span>
+            </blockquote>
+        </div>
+
+        <div class="card" style="border-top-color: var(--accent-gold);">
+            <span class="section-number">05</span>
+            <h2>「圧倒的な勝利者」として生きる</h2>
+            <p>神様の力があなたの心に火を灯すと、人生は「負け戦」から「勝ち戦」に変わります。</p>
+            <ul>
+                <li><strong>もう責められない：</strong> 神さまが味方なので、誰もあなたを「だめな人間だ」とは言えません。</li>
+                <li><strong>愛から離されない：</strong> どんな失敗をしても、神さまの愛があなたを見捨てることはありません。</li>
+            </ul>
+            <blockquote>
+                「わたしたちを愛してくださる方によって、わたしたちはこれらすべてのことにおいて、圧倒的な勝利者となるのです。」
+                <span class="verse-ref">（ローマの信徒への手紙 8章37節）</span>
+            </blockquote>
+        </div>
+
+        <div class="vow-box">
+            <div class="learning-header">
+            <h1>✨ 洗礼のステップを理解しよう</h1>
+            <p>勝利の人生を確かなものにするための、大切な二つの階段</p>
+        </div>
+
+        <div class="card spirit-card">
+            <span class="tag spirit-tag">内側の変化</span>
+            <h2>1. 霊の洗礼（御霊のバプテスマ）</h2>
+            <p><strong>【心の入れ替え・パワー注入】</strong></p>
+            
+            <blockquote>
+                「しかし、御霊があなたがたの上に臨むとき、あなたがたは力を受けます。」
+                <span class="verse-ref">（使徒言行録 1章8節）</span>
+            </blockquote>
+
+            <div class="method">
+                <span class="label">🔹 やり方</span>
+                <p>「宣言（信じて受け入れること）」でオッケー！</p>
+            </div>
+
+            <div class="content">
+                <span class="label">🔹 中身</span>
+                <p>神様に「降参します、満たしてください！」と願った瞬間に、内側のエンジンが<span class="highlight">「自力」から「神様の力」</span>に切り替わること。</p>
+            </div>
+
+            <div class="point">
+                <span class="label">💡 ポイント</span>
+                <p>目には見えないけど、内側から「喜び」や「力」が湧いてくる、実質の変化です。</p>
+            </div>
+        </div>
+
+        <div class="card water-card">
+            <span class="tag water-tag">外側の証明</span>
+            <h2>2. 水の洗礼（水のバプテスマ）</h2>
+            <p><strong>【公式な手続き・けじめの儀式】</strong></p>
+
+            <blockquote>
+                「あなたがたは洗礼において、キリストと共に葬られ、また、キリストを死者の中から復活させた神の力を信じて、キリストと共に復活させられたのです。」
+                <span class="verse-ref">（コロサイの信徒への手紙 2章12節）</span>
+            </blockquote>
+
+            <div class="method">
+                <span class="label">🔹 やり方</span>
+                <p>教会などで、みんなの前で水に浸かる（または注がれる）<strong>「儀式」</strong>を通してオッケー！水に浸かり、負け続けてきた古い自分にお別れ（葬式）をして、イエスさまと共に歩む約束（祝言）をする儀式です。</p>
+            </div>
+
+            <div class="content">
+                <span class="label">🔹 中身</span>
+                <p>「私はイエスさまのチームに入りました！」ということを、天と地と周りの人に<span class="highlight">はっきり示す公の宣言。</span></p>
+            </div>
+
+            <div class="point">
+                <span class="label">💡 ポイント</span>
+                <p>結婚式みたいなもんやね。愛し合ってる（霊の洗礼）だけでも夫婦やけど、式を挙げて届けを出すことで、周りからも<strong>「あ、この人は神様のものや」</strong>と認められる手続きや。</p>
+            </div>
+        </div>
+
+<!-- まとめボックス修正版 -->
+        <div class="summary-box" style="background: white; border: 5px solid #FFD54F; color: #37474F; box-shadow: 0 15px 35px rgba(255, 213, 79, 0.2); padding: 40px; border-radius: 30px; text-align: center;">
+            <div class="summary-title" style="color: #FFB300; font-size: 2.2rem; font-weight: 900; margin-bottom: 30px;">💡 まとめると</div>
+            
+            <div style="margin-bottom: 25px; line-height: 1.6;">
+                <p style="font-weight: 900; font-size: 1.4rem; margin: 0; display: inline-block;">
+                    🔥 <span style="color: #FF9800; letter-spacing: 0.05em;">霊の洗礼</span> 
+                </p>
+                <p style="font-size: 1.15rem; color: #616161; margin: 5px 0 0 0; font-weight: 700;">
+                    ＝ 内側の「革命」<br>（神様とのダイレクトな繋がり・命の入れ替え）
+                </p>
+            </div>
+
+            <div style="margin-bottom: 35px; line-height: 1.6;">
+                <p style="font-weight: 900; font-size: 1.4rem; margin: 0; display: inline-block;">
+                    🌊 <span style="color: #03A9F4; letter-spacing: 0.05em;">水の洗礼</span>
+                </p>
+                <p style="font-size: 1.15rem; color: #616161; margin: 5px 0 0 0; font-weight: 700;">
+                    ＝ 外側の「証明」<br>（チームへの公式な入団式・勝利のしるし）
+                </p>
+            </div>
+            
+            <div class="victory-text" style="color: white; background: linear-gradient(135deg, #EC407A, #F06292); border: none; font-size: 1.6rem; padding: 20px 30px; border-radius: 20px; line-height: 1.4; box-shadow: 0 8px 20px rgba(236, 64, 122, 0.3); font-weight: 900;">
+                この二つが合わさって、<br>「圧倒的な勝利者」としての<br>歩みが完成します！！
+            </div>
+        </div>
+
+        <!-- 最終メッセージ修正版 -->
+        <footer style="color: #455A64; background: transparent; padding: 100px 20px 60px; text-align: left;">
+            <div style="margin-bottom: 40px;">
+                <p style="font-size: 2rem; font-weight: 900; color: #FFB300; margin-bottom: 15px; display: flex; align-items: center;">
+                    <span style="margin-right: 10px;">🏁</span> 最後に
+                </p>
+                <p style="font-size: 1.5rem; font-weight: 800; color: #546E7A; line-height: 1.7; margin-bottom: 30px;">
+                    イエスさまは、すでに勝ちを決めてくださっています。<br>
+                    「自分じゃ無理だから、神さま、助けてください」と言えたその瞬間、あなたを縛っていた鎖は粉々に砕け、<span style="color: #03A9F4; background: linear-gradient(transparent 70%, #E1F5FE 70%);">自由で喜びに満ちた毎日</span>が始まります。
+                </p>
+                <p style="font-size: 1.8rem; font-weight: 900; color: white; background: #EC407A; display: inline-block; padding: 15px 40px; border-radius: 50px; box-shadow: 0 10px 25px rgba(236, 64, 122, 0.4); text-align: center; cursor: default;">
+                    さあ、古い自分を脱ぎ捨てて、<br>新しい人生へ踏み出しましょう！🚀
+                </p>
+            </div>
+        </footer>
+
+    </div>
 </body>
-</html>
+</html></html>
