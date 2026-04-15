@@ -8,10 +8,10 @@
             font-family: "UD Shin Go", "UD新ゴ", "UD Reimin", "UD黎ミン", sans-serif;
             line-height: 1.8;
             color: #333;
-            max-width: 800px;
+            max-width: 900px; /* 目次を並べるために少し広げたよ */
             margin: 0 auto;
             padding: 40px 20px;
-            background-color: #fff; /* 背景を白にして読みやすくするよ */
+            background-color: #fff;
         }
 
         /* タイトルのデザイン */
@@ -36,6 +36,44 @@
             color: #333;
         }
 
+        /* ★新設：目次コーナー（ドーンと配置） */
+        .mega-index {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .nav-box {
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            border: 4px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        /* ターゲット別カラー */
+        .box-elem { background: #fff9e6; border-color: #ffcc33; color: #d35400; }
+        .box-juni { background: #f4fff9; border-color: #2ecc71; color: #27ae60; }
+        .box-high { background: #f0f7ff; border-color: #005a96; color: #005a96; }
+        .box-prai { background: #fff5fd; border-color: #e91e63; color: #ad1457; }
+        .box-expe { background: #e0f7fa; border-color: #00bcd4; color: #006064; }
+        .box-reco { background: #efebe9; border-color: #8d6e63; color: #4e342e; }
+
+        .box-icon { font-size: 35px; margin-bottom: 10px; }
+        .box-title { font-size: 20px; font-weight: bold; margin-bottom: 8px; }
+        .box-text { font-size: 13px; line-height: 1.5; font-weight: bold; }
+
         /* 聖書メッセージのセクション */
         .message-section h3 {
             color: #e67e22;
@@ -49,7 +87,6 @@
             margin-top: 25px;
         }
 
-        /* 聖書の言葉（引用） */
         blockquote {
             background: #fff9f0;
             border-left: 5px solid #f39c12;
@@ -58,7 +95,6 @@
             font-style: italic;
         }
 
-        /* 最後のメッセージ */
         .footer-text {
             text-align: center;
             font-weight: bold;
@@ -68,15 +104,13 @@
             padding-top: 20px;
         }
 
-        strong {
-            color: #000;
-        }
+        strong { color: #000; }
     </style>
 </head>
 <body>
 
     <section id="welcome">
-        <h2>はじめてのかたへ</h2>
+        <h2>はじめてのかたへ（目次）</h2>
         
         <p>こんにちは！「ベテル鳳ホーリーチャペル」へようこそ。このページでは、教会やキリスト教のことを、だれでもわかるようにやさしくまとめています。</p>
 
@@ -84,7 +118,42 @@
             <h3>🍀 自己紹介</h3>
             <p>私は、大阪にある<strong>「救霊会館」</strong>という教会で教師をしている <strong>はやし あかり</strong> です。</p>
             <p>土曜日の夕方（夕礼拝）と、第一日曜日の朝（こども礼拝）を担当しています。教会は、子供からお年寄りまで、だれでも温かく迎え入れられる場所です。</p>
-            <p>悩み相談などあれば、お気軽に<strong>InstagramのDM</strong>を送ってくださいね♪ ぜひ会いに来てください！</p>
+            <p>ぜひ会いに来てください！</p>
+        </div>
+
+        <div class="mega-index">
+            <a href="step 3.html" class="nav-box box-elem">
+                <div class="box-icon">🌈</div>
+                <div class="box-title">小学生：わくわく</div>
+                <div class="box-text">毎週こうしん！イラストといっしょに楽しく学ぼう。</div>
+            </a>
+            <a href="step７.html" class="nav-box box-juni">
+                <div class="box-icon">💡</div>
+                <div class="box-title">中学生：なるほど</div>
+                <div class="box-text">むずかしい単語も、ここを読めばすぐわかるよ。</div>
+            </a>
+            <a href="step 5.html" class="nav-box box-high">
+                <div class="box-icon">📖</div>
+                <div class="box-title">高校生：ステップアップ</div>
+                <div class="box-text">原語から深く知る。教師を目指す君へのバイブル。</div>
+            </a>
+           <a href="index.html#praise" class="nav-box box-prai">
+    <div class="box-icon">🎵</div>
+    <div class="box-title">讃美：うたおう</div>
+    <div class="box-text">「ヤッホー！」と心から歌おう。歌詞やコード譜も。</div>
+</a>
+            </a>
+            </a>
+            <a href="step 4.html" class="nav-box box-expe">
+                <div class="box-icon">✨</div>
+                <div class="box-title">体験：みんなの声</div>
+                <div class="box-text">神様と出会ったストーリー。あなたの心にも届くはず。</div>
+            </a>
+            <a href="step6.html" class="nav-box box-reco">
+                <div class="box-icon">📝</div>
+                <div class="box-title">記録：こども会</div>
+                <div class="box-text">集会の様子やスタッフの振り返り。歩みの記録。</div>
+            </a>
         </div>
 
         <div class="message-section">
@@ -92,7 +161,7 @@
             
             <h4>1. イエスさまがしてくれたこと</h4>
             <p>人はだれでも、しっぱいしたり、心に暗い影（罪）を抱えたりすることがあります。そんな私たちの代わりに、すべての重荷を背負って十字架にかかってくださったのが、神様の子羊である<strong>イエス・キリスト</strong>です。</p>
-            <blockquote>「見よ、世の罪を取り除く神の小羊。」（ヨハネによる福音書 1:29）</blockquote>
+            blockquote>「見よ、世の罪を取り除く神の小羊。」（ヨハネによる福音書 1:29）</blockquote>
 
             <h4>2. 「信じる」だけで、罪はゆるされます</h4>
             <p>特別な努力はいりません。イエスさまが私の身代わりに死んでくださったことを<strong>心で信じて「私の罪はすべてゆるされている」と認めること</strong>。そして、その信仰を<strong>口で告白すること</strong>。それだけで、だれにでも天国への道が与えられます。これは神様からの一方的なプレゼントです。</p>
@@ -102,8 +171,206 @@
         </div>
 
         <p class="footer-text">
-            一見難しく思う聖書も、知ると視野が広がり、生きる喜びにつながります。<br>
-            きほん　に初めての人もわかるようにまとめているのでぜひご覧ください。
+           <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* あかりちゃんこだわりのモリサワUDフォント */
+        body {
+            font-family: "UD Shin Go", "UD新ゴ", "UD Reimin", "UD黎ミン", sans-serif;
+            line-height: 1.8;
+            color: #333;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 25px;
+            background-color: #ffffff;
+        }
+
+        /* タイトル：キリスト教のきほん４つ */
+        .main-title {
+            text-align: center;
+            color: #005a96;
+            font-size: 26px;
+            border-bottom: 3px double #005a96;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+        }
+
+        /* 4つのステップの共通デザイン */
+        .step-box {
+            margin-bottom: 35px;
+            padding: 25px;
+            border-radius: 15px;
+            background-color: #fcfdfe;
+            border: 1px solid #eef4f9;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-num {
+            background: #005a96;
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        h3 {
+            color: #005a96;
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .subtitle {
+            font-weight: bold;
+            color: #5d9cec;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        /* 聖書の言葉を囲むデザイン */
+        .bible-verse {
+            background-color: #fff9f0;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin-top: 20px;
+            font-style: italic;
+            color: #444;
+            font-size: 0.95em;
+        }
+
+        /* 大阪救霊会館の案内エリア */
+        .church-guide {
+            background-color: #fff5f5;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 60px;
+            border: 2px dashed #ffb3b3;
+        }
+
+        .church-guide h2 {
+            text-align: center;
+            color: #c62828;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .guide-details {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .guide-details li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .guide-details li::before {
+            content: "📍";
+            position: absolute;
+            left: 0;
+        }
+
+        .hp-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            background: #c62828;
+            color: white !important;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .hp-link:hover {
+            background: #b71c1c;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="main-title">📖 「キリスト教のきほん４つ」</h1>
+
+    <div class="step-box">
+        <div class="step-header">
+            <div class="step-num">1</div>
+            <h3>あなたは、そのままの姿で愛されています</h3>
+        </div>
+        <span class="subtitle">【神様の深い愛を知る】</span>
+        <p>世界を造った神様は、あなたのことを「かけがえのない宝物」として愛しています。でも、私たちは日々の生活の中で、つい自分勝手になったり、人を傷つけたりして、心に「重荷」を溜めてしまいます。神様はそんな私たちを助けるために、大切なひとり子であるイエス様をこの世界に送ってくださいました。</p>
+        <div class="bible-verse">
+            ★聖書の言葉<br>「神は、その独り子をお与えになったほどに、世を愛された。」（ヨハネによる福音書 3:16）
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-header">
+            <div class="step-num">2</div>
+            <h3>イエス様が、あなたの「重荷」を肩代わりしてくれました</h3>
+        </div>
+        <span class="subtitle">【イエス様の救いを信じる】</span>
+        <p>自分一人ではどうしても降ろせなかった「心の重荷」や「過去のあやまち」。イエス様はそれらをすべて引き受けて、十字架にかかってくださいました。あなたが「イエス様、助けてください」と心から信じるだけで、その重荷はすべて取り去られ、心は真っ白に洗われます。</p>
+        <div class="bible-verse">
+            ★聖書の言葉<br>「主イエスを信じなさい。そうすれば、あなたも家族も救われます。」（使徒言行録 16:31）
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-header">
+            <div class="step-num">3</div>
+            <h3>ひとりじゃない、心に「最高の味方」が届きます</h3>
+        </div>
+        <span class="subtitle">【信仰を告白し、聖霊様をいただく】</span>
+        <p>「イエス様を信じます」と決心して神様の家族になると、あなたの心に「聖霊様」というプレゼントが届きます。聖霊様は、24時間ずっとそばにいて励ましてくれる「心の中のガイドさん」です。これからの人生、あなたはもう二度と、たった一人で悩むことはありません。</p>
+        <div class="bible-verse">
+            ★聖書の言葉<br>「洗礼を受けなさい。そうすれば、賜物として聖霊を受けます。」（使徒言行録 2:38）
+        </div>
+    </div>
+
+    <div class="step-box">
+        <div class="step-header">
+            <div class="step-num">4</div>
+            <h3>あなたの笑顔が、周りを照らす光になります</h3>
+        </div>
+        <span class="subtitle">【教会でパワーをためて、幸せの源になる】</span>
+        <p>教会は、一緒に歌い、お話しし、心を休める「温かいホーム」です。神様の愛をたっぷり受け取ったら、今度はあなたが周りの人にその優しさを届けてあげてください。あなた自身が、世界を明るく照らす「幸せの源（もとい）」になっていくのです。</p>
+        <div class="bible-verse">
+            ★聖書の言葉<br>「あなたは、周りの人を幸せにする人（祝福の基）になりなさい。」（創世記 12:2）
+        </div>
+    </div>
+
+    <div class="church-guide">
+        <h2>⛪️ あなたの「心のホーム」へお越しください</h2>
+        <p>「一度、教会をのぞいてみたいな」と思われた方は、どうぞお気軽にお越しください。そのままのあなたで大丈夫です。温かな仲間が、あなたを待っています。</p>
+        <ul class="guide-details">
+            <li><strong>場所：大阪救霊会館</strong> (Osaka Evangelistic Tabernacle)</li>
+            <li>住所： 〒557-0002 大阪府大阪市西成区太子１丁目１－１４</li>
+            <li>アクセス： 地下鉄「動物園前駅」から歩いてすぐ</li>
+            <li>電話： 06-6632-5820</li>
+        </ul>
+        <a href="https://oet1.jimdofree.com//" target="_blank" class="hp-link">公式ホームページを見る</a>
+    </div>
+
+</body>
+</html>
         </p>
     </section>
 

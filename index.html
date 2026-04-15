@@ -57,9 +57,9 @@
         }
 
         /* 曲ごとの個別カラー設定 */
-        .box-green { background: #f4fff9; border-color: #2ecc71; } /* 見えない星の行方 */
-        .box-pink { background: #fff0f5; border-color: #ffb6c1; }  /* 主はぶどうの木 */
-        .box-yellow { background: #ffffed; border-color: #f1d302; } /* からっぽのお墓 */
+        .box-green { background: #f4fff9; border-color: #8ccea8; } /* 見えない星の行方 */
+        .box-pink { background: #fff0f5; border-color: #fce9ec; }  /* 主はぶどうの木 */
+        .box-yellow { background: #ffffed; border-color: #f0ecd6; } /* からっぽのお墓 */
 
         .line-group {
             display: flex;
@@ -130,19 +130,81 @@
 
 <header>
     <nav class="nav-container">
-        <div class="nav-item active" onclick="changePage(this, 'step 1.html')">はじめてのかたへ</div>
-        <div class="nav-item" onclick="showSong(this)">さんび</div>
-        <div class="nav-item" onclick="changePage(this, 'step 2.html')">きほん</div>
-        <div class="nav-item" onclick="changePage(this, 'step 3.html')">ちしき</div>
-        <div class="nav-item" onclick="changePage(this, 'step 4.html')">たいけん</div>
-        <div class="nav-item" onclick="changePage(this, 'step 5.html')">けいやく</div>
-         <div class="nav-item" onclick="changePage(this, 'step6.html')">きろく</div>
+        <div class="nav-item active" onclick="changePage(this, 'step 1.html')">目次</div>
+        <div class="nav-item" onclick="showSong(this)">讃美</div>
+        <div class="nav-item" onclick="changePage(this, 'step 2.html')">未就学児</div>
+        <div class="nav-item" onclick="changePage(this, 'step 3.html')">小学生</div>
+        <div class="nav-item" onclick="changePage(this, 'step７.html')">中学生</div>
+        <div class="nav-item" onclick="changePage(this, 'step 5.html')">高校生</div>
+         <div class="nav-item" onclick="changePage(this, 'step6.html')">記録</div>
+        <div class="nav-item" onclick="changePage(this, 'step 4.html')">体験談</div>
+
     </nav>
 </header>
 
 <iframe id="main-frame" src="step 1.html"></iframe>
 
 <div id="song-content">
+   <style>
+    /* 讃美セクション全体を中央に寄せて、幅を整える */
+    .praise-container {
+        max-width: 800px; /* 横幅を制限して読みやすく */
+        margin: 40px auto; /* 画面の真ん中に持ってくる */
+        padding: 20px;
+        text-align: center; /* 中身を全部センターに！ */
+    }
+
+    /* 「さんびってなあに？」の説明文 */
+    .praise-description {
+        text-align: left; /* 文章自体は左揃えが読みやすい */
+        display: inline-block; /* でも塊としては中央に置く */
+        background: #fff5fd;
+        padding: 30px;
+        border-radius: 20px;
+        border: 2px dashed #e91e63;
+        margin-bottom: 30px;
+        line-height: 2;
+    }
+
+    /* プレイヤーが入るカード */
+    .song-card {
+        background-color: #f4fff9;
+        border: 2px solid #2ecc71;
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 20px;
+    }
+
+    /* プレイヤーの横幅をカードに合わせる */
+    audio {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px 0;
+    }
+</style>
+
+<div class="praise-container" id="praise">
+    <h3 style="color: #ad1457; font-size: 24px; margin-bottom: 25px;">🎵 さんびってなあに？</h3>
+    
+    <div class="praise-description">
+        <p><strong>さんび（賛美）は、神さまと「心でおしゃべり」することです。</strong></p>
+        <p>うれしいとき、楽しいときは「神さま、ありがとう！」の気持ちをメロディにのせて。<br>
+        ちょっぴり悲しいとき、元気がないときは「神さま、助けてね」の気持ちを歌にこめて。</p>
+        <p>子供からお年寄りまで、みんなが神さまに愛されている大切な家族です。上手じゃなくても大丈夫。あなたの心が動いたとき、それが世界にひとつだけの最高のプレゼントになります。</p>
+    </div>
+
+    <div class="song-card">
+        <h3 style="color: #27ae60;">🎵 オリジナルソング「幸せとは」</h3>
+        <audio controls src="your-audio-file.mp3"></audio>
+        
+        <div style="font-size: 18px; font-weight: bold; color: #333; margin-top: 15px;">
+            「どんなに暗い夜でも、空には必ず星が輝いていると知っていること」
+        </div>
+    </div>
+</div>
+
+<section id="praise">
+    </section>
     <div class="song-card">
         
         <!-- 1. 見えない星の行方（緑のボックス） -->

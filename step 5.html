@@ -3,164 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ベテル鳳 神学教本 | 高校生・アカデミックコース</title>
     <style>
-        /* あかりちゃんお気に入りのモリサワUDフォント */
+        :root {
+            --academic-blue: #1e3a8a;
+            --main-gold: #c5a059;
+            --off-white: #f8fafc;
+            --dark-gray: #1e293b;
+        }
+
         body {
-            font-family: "UD Shin Go", "UD新ゴ", "UD Reimin", "UD黎ミン", sans-serif;
-            line-height: 1.8;
-            color: #333;
+            font-family: 'Hiragino Mincho ProN', serif;
+            background-color: var(--off-white);
+            color: var(--dark-gray);
+            line-height: 1.9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: var(--dark-gray);
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
-            background-color: #fff;
+        }
+
+        .academic-section {
+            background: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            margin-bottom: 50px;
+            border-left: 2px solid var(--academic-blue);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .badge-academic {
+            font-family: sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--academic-blue);
+            font-weight: bold;
+            border: 1px solid var(--academic-blue);
+            padding: 2px 8px;
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
         h2 {
-            text-align: center;
-            color: #2c3e50;
-            border-bottom: 3px solid #f39c12;
-            padding-bottom: 15px;
-            margin-bottom: 40px;
-            font-size: 26px;
+            font-size: 1.8rem;
+            color: var(--academic-blue);
+            margin-bottom: 25px;
         }
 
-        .intro-text {
-            background: #fdfaf0;
+        .etymology-box {
+            background: #f1f5f9;
             padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 40px;
-            border-left: 5px solid #f39c12;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.95rem;
         }
 
-        /* 契約の各セクション */
-        .contract-section {
-            margin-bottom: 40px;
-            position: relative;
-            padding-left: 30px;
-            border-left: 2px dashed #ccc;
-        }
+        .etymology-box b { color: var(--academic-blue); }
 
-        .contract-section::before {
-            content: "📜";
-            position: absolute;
-            left: -15px;
-            top: 0;
-            background: white;
-            font-size: 20px;
-        }
-
-        h3 {
-            color: #d35400;
-            margin-top: 0;
-            font-size: 22px;
-        }
-
-        h4 {
-            color: #2980b9;
-            margin-top: 20px;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        /* 強調ライン */
-        .highlight {
+        .bible-ref {
             font-weight: bold;
-            color: #c0392b;
+            border-bottom: 1px solid var(--main-gold);
+            padding-bottom: 2px;
         }
 
-        /* むすびのセクション */
-        .summary-box {
-            background-color: #e8f4f8;
-            padding: 30px;
-            border-radius: 20px;
-            margin-top: 60px;
+        /* 契約の展開セクション */
+        .covenant-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .covenant-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        /* プレミアム誘導 */
+        .premium-paywall {
+            background: var(--dark-gray);
+            color: #fff;
+            padding: 60px 40px;
             text-align: center;
-            border: 1px solid #b4d8e7;
+            border-radius: 8px;
+            border: 1px solid var(--main-gold);
         }
 
-        .summary-box h3 {
-            color: #2980b9;
-            border: none;
+        .square-link {
+            display: inline-block;
+            background: var(--main-gold);
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 50px;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-top: 30px;
+            transition: 0.3s;
         }
 
-        hr {
-            border: 0;
-            border-top: 1px solid #eee;
-            margin: 40px 0;
-        }
+        .square-link:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
 
-    <h2>イエスキリストを通して与えられる
-        神様と私たちの「大切な約束（契約）」まとめ</h2>
+<header>
+    <div style="color: var(--main-gold); font-weight: bold; letter-spacing: 0.2em; margin-bottom: 10px;">SEMINARY LEVEL STUDY</div>
+    <h1 style="margin: 0; font-size: 2.2rem;">ベテル鳳 神学教本</h1>
+    <p style="opacity: 0.8;">原語から読み解く「契約（Covenant）」の体系的考察</p>
+</header>
 
-    <div class="intro-text">
-        <p>聖書は、神様と人間との間で交わされた「契約書」のようなものです。<br>
-        「契約」をヘブライ語で<strong>「ベリート」</strong>と呼びます。神様との約束を大切にするかどうかで、私たちの生き方や、その先の未来が決まっていくのです。</p>
-    </div>
+<div class="container">
 
-    <div class="contract-section">
-        <h3>1. すべてが始まったときの約束（天地創造）</h3>
-        <p>神様がこの世界を造られたとき、すでに一つの約束がありました。この宇宙は、神様の愛（父・子・聖霊の交わり）によって、御子（イエス様）のために造られました。神様は、この世界にあるすべてのものを、ご自身の愛のルール（契約）で守っておられます。</p>
-    </div>
+    <section class="academic-section">
+        <span class="badge-academic">CORE CONCEPTS</span>
+        <h2>1. 契約（Berit）の本質的意味</h2>
+        <p>キリスト教の神を理解する鍵は「契約」にあります。現代の「契約」とは異なり、聖書的な契約には命のやり取りが含まれます。</p>
+        
+        <div class="etymology-box">
+            <b>【原語解説】ベリート（Berit）</b><br>
+            旧約の「契約」を指すヘブル語。語源は「切り裂く」。創世記15章で、神が切り裂かれた動物の間を通り抜けたのは、「もし契約を破れば、私がこのように裂かれる」という神の一方的なコミットメントを視覚化したものです。
+        </div>
+        <p>神は決して契約を破られない不変（Immutability）の性質を持っています。マラキ3:6にある通り、神の本質が変わらないからこそ、契約の民は滅ぼされないのです。</p>
+    </section>
 
-    <div class="contract-section">
-        <h3>2. 最初の人、アダムとの約束</h3>
-        <p>神様はアダムに「神様の国の祝福」を与える約束をしました。しかし、人がその約束を破ってしまったため、地上での幸せな関係は一度壊れてしまいました。それでも神様は私たちを見捨てず、<span class="highlight">「女の子孫（イエス様）」</span>を送り、世界を元に戻すことを予告されたのです。</p>
-    </div>
+    <section class="academic-section">
+        <span class="badge-academic">CHRISTOLOGY</span>
+        <h2>2. ロゴスの受肉と人性</h2>
+        <p>イエス・キリストは、全知・全能・遍在・不変という神の属性（Divine Attributes）を保持したまま、肉（Sarx）を纏われました。</p>
+        
+        <div class="etymology-box">
+            <b>【原語解説】ロゴス（Logos）とサリクス（Sarx）</b><br>
+            ヨハネ1:14「ことば（ロゴス）が人（サリクス）となった」。ロゴスは永遠不変の理法を、サリクスは弱く朽ちゆく肉体を指します。この相容れない二つの性質が一つの人格に結合した（位格的結合）ことこそ、キリスト教最大の神秘です。
+        </div>
+        <p>イエス様が空腹や渇き（人性）を感じられたのは、私たちの「完全な代表者」として罪を贖うために必要不可欠なプロセスでした。天に昇られた今も、私たちの弱さを理解し、とりなしておられます。</p>
+    </section>
 
-    <div class="contract-section">
-        <h3>3. ノアとの「虹」の約束</h3>
-        <p>大洪水のあと、神様は生き残ったノアや生き物たちと約束をしました。「もう二度と、洪水で世界を滅ぼすことはしない」という誓いです。今でも空に見える<span class="highlight">「虹」</span>は、その永遠の約束のしるしです。</p>
-    </div>
-
-    <div class="contract-section">
-        <h3>4. アブラハムとの「祝福」の約束</h3>
-        <p>神様はアブラハムを選び、「あなたを祝福の源（もと）にする」と約束しました。</p>
-        <ul>
-            <li>アブラハムの子孫（イスラエル）を通じて、世界中の人々が祝福されるようにすること。</li>
-            <li>この約束は、イエス様を信じるすべての人に引き継がれています。</li>
+    <section class="academic-section">
+        <span class="badge-academic">SOTERIOLOGY</span>
+        <h2>3. 義認：法廷的宣告としての救い</h2>
+        <p>救いとは、私たちが立派になることではなく、法的なステータスが「逆転」することを指します。</p>
+        
+        <div class="etymology-box">
+            <b>【原語解説】ディカイオー（Dikaioo）</b><br>
+            「義と認める」を意味するギリシャ語の動詞。これは「正しい状態に作り替える」のではなく、裁判官が「あなたは無罪である」と宣言することを意味します。
+        </div>
+        <ul class="covenant-list">
+            <li class="covenant-item">
+                <strong>新生（Regeneration）：</strong> 霊的な死から生への、存在論的な変化。
+            </li>
+            <li class="covenant-item">
+                <strong>義認（Justification）：</strong> 神の法廷における、法的な地位の確定。
+            </li>
+            <li class="covenant-item">
+                <strong>子、相続人（Adoption）：</strong> 神の家族への編入。もはや奴隷ではなく、アバ（パパ）と呼ぶ親密な関係（ローマ8:15）。
+            </li>
         </ul>
-        <p>私たちは、イエス様を信じることでアブラハムの家族の一員となり、神様の祝福を受け取ることができるのです。</p>
+    </section>
+
+    <div class="premium-paywall">
+        <div style="font-size: 2.5rem; margin-bottom: 20px;">📜</div>
+        <h3>【購読者限定】全12契約の完全解読ガイド</h3>
+        <p>アダム契約、ノア契約、アブラハム契約、ダビデ契約、そして新契約へ……。<br>
+        聖書全体を貫く「契約の連続性」を原語レクチャーと共に深く学びたい方はこちら。</p>
+        
+        <div style="font-size: 1.5rem; color: var(--main-gold); font-weight: bold; margin: 20px 0;">
+            プレミアムプラン：月額1,000円
+        </div>
+
+        <p style="font-size: 0.9rem; opacity: 0.7;">
+            ※Square決済を通じて、PayPay・クレジットカード等で安全に購読いただけます。<br>
+            ※神学校レベルの深い学びを、Webデザイナー星里による視覚的デザインと共に。
+        </p>
+
+        <a href="https://square.link/u/YOUR_LINK_ID" class="square-link">
+            Squareで購入・購読を開始する
+        </a>
     </div>
 
-    <div class="contract-section">
-        <h3>5. モーセと「十戒」の約束</h3>
-        <p>エジプトから救い出されたイスラエルの人々に、神様は「神様の民としての生き方（律法）」を教えました。これは「救われるための条件」ではなく、<span class="highlight">「救われた人たちが、神様の愛の中で幸せに暮らすためのルール」</span>です。律法の本当の意味は「神様を愛し、人を愛すること」にあります。</p>
-    </div>
+</div>
 
-    <div class="contract-section">
-        <h3>6. モアブでの「やり直しの約束」</h3>
-        <p>イスラエルの人々が失敗しそうになったとき、神様は「もし間違えてしまっても、心から悔い改めて戻ってくるなら、また祝福するよ」という優しい約束をしてくださいました。</p>
-    </div>
-
-    <div class="contract-section">
-        <h3>7. ダビデ王への「永遠」の約束</h3>
-        <p>神様はダビデ王に、「あなたの家系から出る王の国は、永遠に続く」と約束しました。この「永遠の王様」こそが、のちに誕生するイエス様のことだったのです。</p>
-    </div>
-
-    <div class="contract-section">
-        <h3>8. イエス様による「新しい約束（新約）」</h3>
-        <p>そして、神様がダビデの子孫として送ってくださったのが、救い主イエス・キリストです。イエス様はご自身の命（十字架の血）をかけて、私たちと「新しい約束」を結んでくださいました。</p>
-        <ul>
-            <li><strong>罪が許され、永遠の命が与えられること。</strong></li>
-            <li><strong>神様の民として新しく作り替えられること。</strong></li>
-        </ul>
-        <p>これが、今私たちが受け取っている最大のプレゼントです。</p>
-    </div>
-
-    <div class="summary-box">
-        <h3>むすび：神様は「約束を守る方」</h3>
-        <p>神様は、たとえ人間が約束を忘れたり不誠実だったりしても、一度交わした契約をずっと守り続けてくださるお方です。<br>
-        アブラハムへの約束から始まった聖書の長い歴史は、すべてイエス様へと繋がっています。この「神様の大きな計画（契約の物語）」を知ることで、私たちは迷うことなく、神様の愛の中に留まることができるのです。</p>
-    </div>
+<footer>
+    <p>&copy; 2026 ベテル鳳 キリスト教神学教本サイト</p>
+    <p>著者：星里（Akari）</p>
+</footer>
 
 </body>
 </html>
