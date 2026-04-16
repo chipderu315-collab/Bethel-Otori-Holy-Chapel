@@ -3,248 +3,713 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ベテル鳳 キリスト教神学教本サイト | 中学生向け</title>
-    <style>
-        :root {
-            --main-gold: #c5a059;
-            --deep-navy: #0a192f;
-            --accent-red: #ff0033;
-            --soft-white: #fdfdfd;
-            --text-dark: #333;
-        }
-
+    <title>Beteru Otori Holy Chapel | 歴史を知れば、愛が見える。</title>
+   <style>
+        /* --- デザイン設定 --- */
+        * { box-sizing: border-box; }
+        
         body {
-            font-family: 'Hiragino Mincho ProN', serif;
-            background-color: var(--soft-white);
-            color: var(--text-dark);
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
+            font-family: "UD新ゴ", "UD Shin Go", "Hiragino Sans", sans-serif;
+            background-color: #fffaf0;
+            color: #444;
         }
 
-        /* プレミアム・バナー */
-        .premium-banner {
-            background: var(--deep-navy);
-            color: var(--main-gold);
-            text-align: center;
-            padding: 10px 0;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            font-weight: bold;
+        /* 画像全般のレスポンシブ設定 */
+        img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            object-fit: cover;
         }
 
-        header {
-            text-align: center;
-            padding: 80px 20px;
-            border-bottom: 1px solid #eee;
-            background: #fff;
+        /* 全体を中央に寄せるコンテナ */
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 20px; 
         }
 
-        .site-title {
-            font-size: 2.2rem;
-            color: var(--deep-navy);
-            margin: 0;
-            letter-spacing: 4px;
+        /* 冒頭のバナー */
+        .main-banner { 
+            width: 100%; 
+            background-color: #fefae0; 
         }
 
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        /* 【白い箱】メインのエリアを一つにまとめる */
+        .card { 
+            background: #fff; 
+            margin-bottom: 50px; 
+            border-radius: 20px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
         }
 
-        .section-card {
-            background: white;
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 50px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--main-gold);
+        /* カード内のメイン画像 */
+        .card-main-visual img {
+            width: 100%;
+            max-height: 400px; /* PCで見映えが良い高さに制限 */
         }
 
-        .badge {
-            background: var(--main-gold);
-            color: white;
-            padding: 5px 15px;
+        /* テキストエリアの余白 */
+        .content-body { padding: 40px; }
+
+        h2, h3 { 
+            color: #d4a373; 
+            margin-top: 0; 
+            border-bottom: 2px solid #fefae0; 
+            padding-bottom: 10px; 
+        }
+
+        h4 { color: #8b5e3c; margin: 15px 0 10px 0; font-size: 1.1rem; }
+        
+        p { 
+            line-height: 1.8; 
+            margin-bottom: 1em; 
+            font-size: 1rem; 
+            text-align: justify; 
+        }
+
+        /* ストーリーのグリッド：スマホ対応のため最小幅を300pxに調整 */
+        .story-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 30px; 
+        }
+
+        .story-item { 
+            background: #fafafa; 
+            border: 1px solid #f0f0f0; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            transition: transform 0.3s ease; 
+        }
+
+        .story-item:hover { transform: translateY(-5px); }
+        .story-text { padding: 20px; }
+
+        /* 聖句（バイブルバース）の装飾 */
+        .bible-verse {
             font-size: 0.85rem;
-            border-radius: 50px;
-            font-weight: bold;
+            color: #666;
+            background: #f0f4f8;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
         }
 
-        h2 {
-            color: var(--deep-navy);
-            margin-top: 20px;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 15px;
-        }
+        footer { text-align: center; padding: 40px 0; color: #999; font-size: 0.8rem; }
 
-        /* スペック表・グリッド */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+        /* レスポンシブ調整（スマホ） */
+        @media (max-width: 768px) { 
+            .container { padding: 15px; } 
+            .content-body { padding: 25px; } 
+            .story-grid { grid-template-columns: 1fr; } 
         }
-
-        .grid-item {
-            background: #f9f6f0;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid var(--main-gold);
-        }
-
-        .bible-quote {
-            background: #fff9e6;
-            border-left: 5px solid var(--main-gold);
-            padding: 25px;
-            margin: 25px 0;
-            font-style: italic;
-            border-radius: 0 15px 15px 0;
-            font-size: 1.1rem;
-        }
-
-        /* Square 決済エリア */
-        .payment-box {
-            background: var(--deep-navy);
-            color: white;
-            border-radius: 20px;
-            padding: 60px 40px;
-            text-align: center;
-            margin-top: 80px;
-            border: 2px solid var(--main-gold);
-        }
-
-        .price {
-            font-size: 3rem;
-            color: var(--main-gold);
-            margin: 25px 0;
-            font-weight: bold;
-        }
-
-        .square-btn {
-            background: var(--main-gold);
-            color: white;
-            padding: 22px 70px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 60px;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .square-btn:hover {
-            transform: translateY(-5px);
-            background: #b38f4d;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-        }
-
-        footer {
-            text-align: center;
-            padding: 60px;
-            background: #111;
-            color: #888;
-            font-size: 0.85rem;
-        }
-
-        footer a { color: #888; text-decoration: none; margin: 0 10px; }
     </style>
 </head>
 <body>
 
-<div class="premium-banner">SEMINARY LEVEL CURRICULUM</div>
-
-<header>
-    <p style="color: var(--main-gold); font-weight: bold; letter-spacing: 2px;"></p>
-    <h1 class="site-title">ベテル鳳<br>キリスト教神学教本サイト</h1>
-    <p style="margin-top: 20px; color: #666;">Webデザイナー星里が贈る、視覚で理解する神学の核心</p>
-</header>
-
-<div class="container">
-
-    <div class="section-card">
-        <span class="badge">CHAPTER 1: THE NATURE OF GOD</span>
-        <h2>神様ってどんな「性質」？</h2>
-        <p>神様はただの「概念」じゃない。人格と完璧なスペックを持った、君のパパなんだ。</p>
-        <div class="grid">
-            <div class="grid-item">
-                <strong>遍在（どこにでもいる）</strong><br>
-                君が一人で泣いている時も、学校にいる時も、神様は「同時」にそこにいる。
+    <div class="main-banner">
+        <img src="image/in.jpg" alt="メインバナー">
+    </div>    
             </div>
-            <div class="grid-item">
-                <strong>不変（変わらない）</strong><br>
-                神様の愛は、君のテストの結果や気分で変わったりしない。絶対の安心感。
+            <div class="content-body">
+                <h2>聖書の世界へようこそ</h2>
+                <p>聖書は、数千年の時を超えて読み継がれてきた「愛と希望の物語」です。それは単なる歴史物語ではなく、今を生きる私たち一人ひとりへのメッセージが込められています。</p>
+                <p>聖書は大きく分けて「旧約聖書」と「新約聖書」の二部構成になっています。旧約聖書は救い主が来るための<strong>「約束と準備」</strong>、新約聖書はその約束が果たされた<strong>「成就と愛」</strong>を描いています。</p>
+                <p>壮大なパズルのピースを一つずつはめていくように、聖書全体の流れを知ることで、神様の深い愛がより鮮明に見えてくるはずです。あなたの人生を照らす光を、ここから見つけてみませんか？</p>
+                <p>ご質問や感想があれば、いつでもお気軽に<strong>インスタのDM</strong>までお寄せください。</p>
             </div>
-            <div class="grid-item">
-                <strong>永遠（時間の外）</strong><br>
-                始まりも終わりもない。君の将来の不安も、神様にとっては「解決済みの今」なんだ。
-            </div>
-        </div>
-        <div class="bible-quote">
-            「主であるわたしは変わることがない。」（マラキ 3:6）
-        </div>
+        </section>
+
+<section class="card old-testament">
+    <div class="image-box">
+        
     </div>
 
-    <div class="section-card">
-        <span class="badge">CHAPTER 2: INCARNATION</span>
-        <h2>神様が「人間」になった驚きの理由</h2>
-        <p>「神様が人になる（受肉）」とは、最強のヒーローがわざわざ弱点を持って現れるようなもの。</p>
-        <div class="grid">
-            <div class="grid-item" style="background: #fdf2f2; border-color: #e74c3c;">
-                <strong>君の痛みを知るため</strong><br>
-                空腹、疲れ、涙。神様は「人間」を100%経験したから、君の悩みを誰よりも理解できる。
-            </div>
-            <div class="grid-item" style="background: #fdf2f2; border-color: #e74c3c;">
-                <strong>身代わりになるため</strong><br>
-                死ぬことができない神様が、あえて「人間」として死ぬことで、君の罪を全部クリアにした。
-            </div>
-        </div>
-    </div>
+    <div class="content-body">
+        <h3>旧約聖書の物語：約束と準備（全12話）</h3>
+        <p>救い主がこの世に来るまでの長い「約束と準備」の期間を紐解きます。すべてのエピソードが、やがて来るイエス・キリストを指し示しています。</p>
 
-    <div class="section-card">
-        <span class="badge">CHAPTER 3: RE-BIRTH STATUS</span>
-        <h2>君の「身分証」は書き換えられた</h2>
-        <p>イエス様を信じると、君の中で起きる「3つの大逆転」を整理しよう。</p>
-        <div class="grid">
-            <div class="grid-item" style="text-align: center;"><strong>①新生（しんせい）</strong><br>霊的なリセット</div>
-            <div class="grid-item" style="text-align: center;"><strong>②義認（ぎにん）</strong><br>法的な無罪確定</div>
-            <div class="grid-item" style="text-align: center; border: 2px solid var(--main-gold);"><strong>③神の子</strong><br>王室の相続人へ</div>
-        </div>
-        <p style="text-align: center; margin-top: 20px; font-weight: bold;">君はもはや奴隷じゃない。宇宙の王様の「子」なんだ！</p>
-    </div>
+        <div class="story-grid">
+            
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE1.jpg" alt="1. 天地創造"></div>
+                <div class="story-text">
+                    <h4>1. 天地創造</h4>
+                    <p>すべては神様の愛から生まれ、人間は「極めて良かった」と言われるほど大切に造られました。</p>
+                    <div class="bible-verse">「神はお造りになったすべてのものをご覧になった。見よ、それは極めて良かった。」<span class="verse-ref">創世記 1:31</span></div>
+                </div>
+            </article>
 
-    <div class="payment-box">
-        <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
-        <h2 style="color: var(--main-gold); border: none;">核心セクション：全10章を解放</h2>
-        <p style="opacity: 0.9;">
-            神学校で188万円を投じて得た恵のすべてを、月額1,000円で公開。<br>
-            「神の子としての10大特典」「聖霊様のパワーの引き出し方」など、<br>
-            実生活を劇的に変える教本を、今すぐあなたの手元に。
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE2.jpg" alt="2. エデンの園と失楽園"></div>
+                <div class="story-text">
+                    <h4>2. エデンの園と失楽園</h4>
+                    <p>約束を破り、神様との距離が離れてしまいました。ここから救いの計画が始まります。</p>
+                    <div class="bible-verse">「主なる神は彼を呼んで言われた。『あなたは、どこにいるのか。』」<span class="verse-ref">創世記 3:9</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE3.jpg" alt="3. ノアの箱舟"></div>
+                <div class="story-text">
+                    <h4>3. ノアの箱舟</h4>
+                    <p>虹は、神様がもう二度と滅ぼさないという愛の約束の印です。</p>
+                    <div class="bible-verse">「わたしは雲の中に虹を置く。これは地との間の契約のしるしとなる。」<span class="verse-ref">創世記 9:13</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE4.jpg" alt="4. アブラハムの召命"></div>
+                <div class="story-text">
+                    <h4>4. アブラハムの召命</h4>
+                    <p>彼の子孫からイエス様が生まれるという、壮大な救いの計画のスタートです。</p>
+                    <div class="bible-verse">「地上の氏族はすべて、あなたによって祝福に入る。」<span class="verse-ref">創世記 12:3</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE5.jpg" alt="5. イサクの捧げもの"></div>
+                <div class="story-text">
+                    <h4>5. イサクの捧げもの</h4>
+                    <p>神様が用意された「身代わりの羊」は、後のイエス様の十字架の予告です。</p>
+                    <div class="bible-verse">「神が御自分でもささげ物の小羊を備えてくださるのだ。」<span class="verse-ref">創世記 22:8</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE6.jpg" alt="6. モーセと出エジプト"></div>
+                <div class="story-text">
+                    <h4>6. モーセと出エジプト</h4>
+                    <p>海を割る奇跡で、民を自由へと導き出しました。</p>
+                    <div class="bible-verse">「わたしの民イスラエルをエジプトから連れ出しなさい。」<span class="verse-ref">出エジプト記 3:10</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE7.jpg" alt="7. シナイ山での十戒"></div>
+                <div class="story-text">
+                    <h4>7. シナイ山での十戒</h4>
+                    <p>幸せに生きるためのルールですが、人間は自分の力だけでは守れない弱さを持っていました。</p>
+                    <div class="bible-verse">「心を尽くし、精神を尽くし、力を尽くして、あなたの神、主を愛しなさい。」<span class="verse-ref">申命記 6:5</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE8.jpg" alt="8. 少年ダビデと巨人ゴリアテ"></div>
+                <div class="story-text">
+                    <h4>8. 少年ダビデと巨人ゴリアテ</h4>
+                    <p>目に見える強さではなく、目に見えない「神様への信頼」が勝利を呼びます。</p>
+                    <div class="bible-verse">「戦いは主のものだ。」<span class="verse-ref">サムエル記上 17:47</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE9.jpg" alt="9. ソロモン王の知恵"></div>
+                <div class="story-text">
+                    <h4>9. ソロモン王の知恵</h4>
+                    <p>知恵は神様を敬うことから始まります。知恵によって国は黄金時代を迎えました。</p>
+                    <div class="bible-verse">「主を畏れることは知恵の初め。」<span class="verse-ref">箴言 1:7</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE10.jpg" alt="10. 預言者イザヤの告白"></div>
+                <div class="story-text">
+                    <h4>10. 預言者イザヤの告白</h4>
+                    <p>私たちの罪を背負って傷つく「救い主」が来ると具体的に預言されました。</p>
+                    <div class="bible-verse">「彼が受けた痛手によって、わたしたちは癒やされた。」<span class="verse-ref">イザヤ書 53:5</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE11.jpg" alt="11. 預言者ホセアの愛"></div>
+                <div class="story-text">
+                    <h4>11. 預言者ホセアの愛</h4>
+                    <p>裏切って去った妻を、代価を払って買い戻し、再び迎え入れたホセア。神様の「あきらめない愛」の象徴です。</p>
+                    <div class="bible-verse">「わたしは、あなたを永久に、わたしの妻とする。」<span class="verse-ref">ホセア書 2:21</span></div>
+                </div>
+            </article>
+
+            <article class="story-item">
+                <div class="image-box-s"><img src="image/HARE12.jpg" alt="12. 捕囚からの帰還と待ち望み"></div>
+                <div class="story-text">
+                    <h4>12. 捕囚からの帰還と待ち望み</h4>
+                    <p>試練を乗り越え帰還した人々。救い主誕生までの沈黙の時間を、静かに熱心に待ち続けました。</p>
+                    <div class="bible-verse">「勇気を出せ。働き続けよ。わたしがあなたたちと共にいる。」<span class="verse-ref">ハガイ書 2:4</span></div>
+                </div>
+            </article>
+
+        </div> </div> </section> </div>
+    </div>
+    </section>
+
+        <section class="card new-testament">
+            <div class="image-box">
+                
+            </div>
+            <div class="content-body">
+                <h3>新約聖書の物語：イエス様の物語（全9話）</h3>
+                <div class="story-grid">
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA1.jpg" alt="誕生"></div>
+                        <div class="story-text">
+                            <h4>1. イエス様のお誕生</h4>
+                            <p>神様が人間として来てくださった、最高のプレゼントです。</p>
+                            <div class="bible-verse">「今日、あなたがたのために救い主がお生まれになった。」<span class="verse-ref">ルカ 2:11</span></div>
+                        </div>
+                    </article>
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA2.jpg" alt="誘惑"></div>
+                        <div class="story-text">
+                            <h4>2. 洗礼と誘惑</h4>
+                            <p>御言葉の力で、すべての誘惑を退けました。</p>
+                            <div class="bible-verse">「人はパンだけで生きるものではない。」<span class="verse-ref">マタイ 4:4</span></div>
+                        </div>
+                    </article>
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA3.jpg" alt="弟子"></div>
+                        <div class="story-text">
+                            <h4>3. 弟子たちを招く</h4>
+                            <p>「ついてきなさい」という招きから、新しい歩みが始まりました。</p>
+                            <div class="bible-verse">「わたしについて来なさい。人間を捕る漁師にしよう。」<span class="verse-ref">マタイ 4:19</span></div>
+                        </div>
+                    </article>
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA4.jpg" alt="垂訓"></div>
+                        <div class="story-text">
+                            <h4>4. 山上の垂訓</h4>
+                            <p>天の国の幸いについて、愛の心で教えられました。</p>
+                            <div class="bible-verse">「心の貧しい人々は、幸いである。」<span class="verse-ref">マタイ 5:3</span></div>
+                        </div>
+                    </article>
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA6.jpg" alt="奇跡"></div>
+                        <div class="story-text">
+                            <h4>5. 病を癒やす・嵐を静める</h4>
+                            <p>自然も病も支配される神の権威を示されました。</p>
+                            <div class="bible-verse">「静まれ。黙れ。」<span class="verse-ref">マルコ 4:39</span></div>
+                        </div>
+                    </article>
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA7.jpg" alt="放蕩息子"></div>
+                        <div class="story-text">
+                            <h4>6. 放蕩息子のたとえ</h4>
+                            <p>神様はいつでもあなたの帰りを、走り寄って待っています。</p>
+                            <div class="bible-verse">「いなくなっていたのに見つかった。」<span class="verse-ref">ルカ 15:24</span></div>
+                        </div>
+                    </article>
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA8.jpg" alt="晩餐"></div>
+                        <div class="story-text">
+                            <h4>7. 最後の晩餐</h4>
+                            <p>パンと杯による、新しい愛の約束の夜です。</p>
+                            <div class="bible-verse">「これは、多くの人のために流される契約の血である。」<span class="verse-ref">マルコ 14:24</span></div>
+                        </div>
+                    </article>
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA9.jpg" alt="十字架"></div>
+                        <div class="story-text">
+                            <h4>8. 十字架の死</h4>
+                            <p>愛を完成させるための、究極の犠牲でした。</p>
+                            <div class="bible-verse">「完了した。」<span class="verse-ref">ヨハネ 19:30</span></div>
+                        </div>
+                    </article>
+                    <article class="story-item">
+                        <div class="image-box-s"><img src="image/RUYA10.jpg" alt="復活"></div>
+                        <div class="story-text">
+                            <h4>9. 復活と派遣</h4>
+                            <p>死に打ち勝ったイエス様は、今もあなたと共にいます。</p>
+                            <div class="bible-verse">「わたしは世の終わりまで、いつもあなたがたと共にいる。」<span class="verse-ref">マタイ 28:20</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+<section class="card test-section">
+    <div class="content-body">
+        <h2>聖書の物語＆みことば 100問実力テスト</h2>
+        <p style="font-size: 0.85rem; color: #8b5e3c; background: #fff; padding: 10px; border-radius: 10px; display: inline-block;">
+            💡 <strong>使い方</strong> 下線の部分にマウスを乗せる（スマホはタップする）と、隠れた答えが見えるよ！
         </p>
         
-        <div class="price">¥1,000<span> / 月</span></div>
+        <div class="test-grid">
+            <div class="test-category">旧約聖書：天地創造から救い主の待ち望みまで</div>
+            
+            <div class="test-item"><span class="test-number">1</span> 初めに、神が<span class="blank">天と地</span>を創造された。</div>
+            <div class="test-item"><span class="test-number">2</span> 神は「<span class="blank">光</span>あれ」と言われた。</div>
+            <div class="test-item"><span class="test-number">3</span> すべてを見て、神は「極めて<span class="blank">良かった</span>」と言われた。</div>
+            <div class="test-item"><span class="test-number">4</span> 人は神の<span class="blank">かたち</span>に形造られた。</div>
+            <div class="test-item"><span class="test-number">5</span> 最初の人間、アダムの妻の名は<span class="blank">エバ</span>。</div>
+            <div class="test-item"><span class="test-number">6</span> 蛇の誘惑で食べてしまったのは<span class="blank">善悪の知識</span>の木の実。</div>
+            <div class="test-item"><span class="test-number">7</span> 人間が神様との約束を破ることを<span class="blank">罪</span>という。</div>
+            <div class="test-item"><span class="test-number">8</span> 弟アベルを殺してしまった兄の名は<span class="blank">カイン</span>。</div>
+            <div class="test-item"><span class="test-number">9</span> 神様は正しい人<span class="blank">ノア</span>に大きな箱舟を造らせた。</div>
+            <div class="test-item"><span class="test-number">10</span> 洪水の後、二度と滅ぼさない約束の印は<span class="blank">虹</span>。</div>
+            <div class="test-item"><span class="test-number">11</span> 天まで届く塔を造ろうとした人間の高慢を<span class="blank">バベル</span>の塔という。</div>
+            <div class="test-item"><span class="test-number">12</span> 「あなたを大きな国民にする」と選ばれたのは<span class="blank">アブラハム</span>。</div>
+            <div class="test-item"><span class="test-number">13</span> アブラハムの妻の名は<span class="blank">サラ</span>。</div>
+            <div class="test-item"><span class="test-number">14</span> 100歳で生まれた約束の子の名は<span class="blank">イサク</span>。</div>
+            <div class="test-item"><span class="test-number">15</span> イサクの身代わりになったのは、角を藪に引っ掛けた一頭の<span class="blank">羊</span>。</div>
+            <div class="test-item"><span class="test-number">16</span> イサクの息子で、兄の権利を奪った弟の名は<span class="blank">ヤコブ</span>。</div>
+            <div class="test-item"><span class="test-number">17</span> ヤコブは神と戦い、新しく<span class="blank">イスラエル</span>という名を授かった。</div>
+            <div class="test-item"><span class="test-number">18</span> 兄弟に売られたがエジプトの宰相になったのは<span class="blank">ヨセフ</span>。</div>
+            <div class="test-item"><span class="test-number">19</span> モーセは神様に「<span class="blank">柴の燃える</span>」中から呼びかけられた。</div>
+            <div class="test-item"><span class="test-number">20</span> エジプト脱出の際、海が割れた場所を<span class="blank">紅海</span>という。</div>
+            <div class="test-item"><span class="test-number">21</span> 天から降ってきた不思議な食べ物は<span class="blank">マナ</span>。</div>
+            <div class="test-item"><span class="test-number">22</span> シナイ山で神様から授かったルールは<span class="blank">十戒</span>。</div>
+            <div class="test-item"><span class="test-number">23</span> 「あなたの神、主を愛せ。隣人を自分のように愛せ」という<span class="blank">最大</span>の戒め。</div>
+            <div class="test-item"><span class="test-number">24</span> 神様が民の中に住むための移動式の神殿を<span class="blank">幕屋</span>という。</div>
+            <div class="test-item"><span class="test-number">25</span> モーセの後継者としてカナンの地へ導いたのは<span class="blank">ヨシュア</span>。</div>
+            <div class="test-item"><span class="test-number">26</span> 祈りによって崩れた壁は<span class="blank">エリコ</span>の壁。</div>
+            <div class="test-item"><span class="test-number">27</span> イスラエルを導いた士師の一人で、怪力の持ち主は<span class="blank">サムソン</span>。</div>
+            <div class="test-item"><span class="test-number">28</span> 異邦人ながらダビデの先祖となった誠実な女性は<span class="blank">ルツ</span>。</div>
+            <div class="test-item"><span class="test-number">29</span> 幼い頃から神様の声を聞いた最後の士師は<span class="blank">サムエル</span>。</div>
+            <div class="test-item"><span class="test-number">30</span> イスラエル最初の王様は<span class="blank">サウル</span>。</div>
+            <div class="test-item"><span class="test-number">31</span> 羊飼いの少年から王になったのは<span class="blank">ダビデ</span>。</div>
+            <div class="test-item"><span class="test-number">32</span> ダビデが倒した巨人の名は<span class="blank">ゴリアテ</span>。</div>
+            <div class="test-item"><span class="test-number">33</span> ダビデが書いた有名な詩篇23篇。「主はわたしの<span class="blank">羊飼い</span>」。</div>
+            <div class="test-item"><span class="test-number">34</span> ダビデの息子で、エルサレム神殿を建てたのは<span class="blank">ソロモン</span>。</div>
+            <div class="test-item"><span class="test-number">35</span> ソロモンが神様から授かった最高の贈り物は<span class="blank">知恵</span>。</div>
+            <div class="test-item"><span class="test-number">36</span> ソロモンの後、国は北と<span class="blank">南</span>に分裂した。</div>
+            <div class="test-item"><span class="test-number">37</span> バアルの預言者と戦った情熱の預言者は<span class="blank">エリヤ</span>。</div>
+            <div class="test-item"><span class="test-number">38</span> 救い主が「処女」から生まれると預言したのは<span class="blank">イザヤ</span>。</div>
+            <div class="test-item"><span class="test-number">39</span> 「涙の預言者」と呼ばれ、国の滅亡を嘆いたのは<span class="blank">エレミヤ</span>。</div>
+            <div class="test-item"><span class="test-number">40</span> 枯れた骨が生き返る幻を見た預言者は<span class="blank">エゼキエル</span>。</div>
+            <div class="test-item"><span class="test-number">41</span> ライオンの穴に投げ込まれたが助かったのは<span class="blank">ダニエル</span>。</div>
+            <div class="test-item"><span class="test-number">42</span> 大きな魚のお腹の中で3日間過ごしたのは<span class="blank">ヨナ</span>。</div>
+            <div class="test-item"><span class="test-number">43</span> 裏切った妻を買い戻して愛した預言者は<span class="blank">ホセア</span>。</div>
+            <div class="test-item"><span class="test-number">44</span> イスラエルが滅び、人々が連れ去られたことを<span class="blank">バビロン捕囚</span>という。</div>
+            <div class="test-item"><span class="test-number">45</span> 捕囚から戻り、神殿を再建した中心人物は<span class="blank">ゼルバベル</span>。</div>
+            <div class="test-item"><span class="test-number">46</span> 城壁を再建するために立ち上がったのは<span class="blank">ネヘミヤ</span>。</div>
+            <div class="test-item"><span class="test-number">47</span> 王妃としてユダヤ人を滅亡から救ったのは<span class="blank">エステル</span>。</div>
+            <div class="test-item"><span class="test-number">48</span> 旧約聖書の最後の預言書は<span class="blank">マラキ</span>書。</div>
+            <div class="test-item"><span class="test-number">49</span> 救い主が生まれる町として預言されたのは<span class="blank">ベツレヘム</span>。</div>
+            <div class="test-item"><span class="test-number">50</span> 旧約と新約の間には、約<span class="blank">400</span>年の沈黙の時代がある。</div>
 
-        <a href="https://square.link/u/YOUR_LINK_ID" class="square-btn">
-            今すぐ購読を開始する
-        </a>
+            <div class="test-category">新約聖書：イエス様の生涯と愛の完成</div>
 
-        <div style="margin-top: 30px; opacity: 0.6; font-size: 0.8rem;">
-            PayPay / クレジットカード決済対応<br>
-            Squareの安全な決済システムを利用しています
+            <div class="test-item"><span class="test-number">51</span> イエス様の母の名は<span class="blank">マリア</span>。</div>
+            <div class="test-item"><span class="test-number">52</span> マリアに受胎告知をした御使いは<span class="blank">ガブリエル</span>。</div>
+            <div class="test-item"><span class="test-number">53</span> イエス様は「<span class="blank">飼い葉桶</span>」の中に寝かされた。</div>
+            <div class="test-item"><span class="test-number">54</span> 星に導かれてやってきたのは「東方の<span class="blank">博士</span>たち」。</div>
+            <div class="test-item"><span class="test-number">55</span> イエス様の道を準備し、洗礼を授けたのは<span class="blank">ヨハネ</span>。</div>
+            <div class="test-item"><span class="test-number">56</span> イエス様が誘惑を受けた時、武器にしたのは<span class="blank">御言葉</span>。</div>
+            <div class="test-item"><span class="test-number">57</span> 最初に呼ばれた弟子、ペトロの職業は<span class="blank">漁師</span>。</div>
+            <div class="test-item"><span class="test-number">58</span> イエス様が最初に行った奇跡は、カナの婚宴で水を<span class="blank">ぶどう酒</span>に変えたこと。</div>
+            <div class="test-item"><span class="test-number">59</span> 「心の貧しい者は幸いです。<span class="blank">天の御国</span>はその人たちのものだから」。</div>
+            <div class="test-item"><span class="test-number">60</span> 「あなたがたは世界の<span class="blank">光</span>です」。</div>
+            <div class="test-item"><span class="test-number">61</span> 敵を愛し、自分を迫害する者のために<span class="blank">祈り</span>なさい。</div>
+            <div class="test-item"><span class="test-number">62</span> イエス様が教えられた祈りは「<span class="blank">主の祈り</span>」。</div>
+            <div class="test-item"><span class="test-number">63</span> 何を食べるか、何を飲むかと思い<span class="blank">煩う</span>な。</div>
+            <div class="test-item"><span class="test-number">64</span> 嵐を静めた時、イエス様は「黙れ、<span class="blank">静まれ</span>」と言われた。</div>
+            <div class="test-item"><span class="test-number">65</span> 屋根を剥がして運ばれてきた「<span class="blank">中風</span>」の人を癒やされた。</div>
+            <div class="test-item"><span class="test-number">66</span> イエス様の衣の房に触れて癒やされたのは<span class="blank">長血</span>を患う女性。</div>
+            <div class="test-item"><span class="test-number">67</span> 「5つのパンと<span class="blank">2</span>匹の魚」で5000人を満腹にした。</div>
+            <div class="test-item"><span class="test-number">68</span> 湖の上を歩いてイエス様の方へ行こうとしたのは<span class="blank">ペトロ</span>。</div>
+            <div class="test-item"><span class="test-number">69</span> 「あなたは生ける神の御子、<span class="blank">キリスト</span>です」。</div>
+            <div class="test-item"><span class="test-number">70</span> 姿が白く光り輝いた出来事を<span class="blank">変貌</span>山での出来事という。</div>
+            <div class="test-item"><span class="test-number">71</span> 死んで4日経った<span class="blank">ラザロ</span>を生き返らせた。</div>
+            <div class="test-item"><span class="test-number">72</span> 木に登ってイエス様を見ようとした取税人は<span class="blank">ザアカイ</span>。</div>
+            <div class="test-item"><span class="test-number">73</span> 迷い出た<span class="blank">1</span>匹の羊を、羊飼いは一生懸命探す。</div>
+            <div class="test-item"><span class="test-number">74</span> 弟を抱きしめる「<span class="blank">放蕩息子</span>」のたとえ。</div>
+            <div class="test-item"><span class="test-number">75</span> イエス様がエルサレムに入城した際、乗っていたのは<span class="blank">ろば</span>の子。</div>
+            <div class="test-item"><span class="test-number">76</span> 弟子の<span class="blank">足</span>を洗うことで、仕え合う愛を示された。</div>
+            <div class="test-item"><span class="test-number">77</span> パンを「わたしのからだ」、杯を「わたしの<span class="blank">血</span>」とされた。</div>
+            <div class="test-item"><span class="test-number">78</span> ゲッセマネの園で、血の汗を流すほど切に<span class="blank">祈ら</span>れた。</div>
+            <div class="test-item"><span class="test-number">79</span> 銀30枚でイエス様を裏切ったのは<span class="blank">ユダ</span>。</div>
+            <div class="test-item"><span class="test-number">80</span> 鶏が鳴く前に「知らない」と3回言ったのは<span class="blank">ペトロ</span>。</div>
+            <div class="test-item"><span class="test-number">81</span> イエス様が背負わされたのは<span class="blank">十字架</span>。</div>
+            <div class="test-item"><span class="test-number">82</span> 処刑された場所の名は<span class="blank">ゴルゴダ</span>の丘。</div>
+            <div class="test-item"><span class="test-number">83</span> 「父よ、彼らをお許しください。自分が<span class="blank">何をしているか</span>分からないのです」。</div>
+            <div class="test-item"><span class="test-number">84</span> 十字架の上で、最後は「<span class="blank">完了した</span>」と言われた。</div>
+            <div class="test-item"><span class="test-number">85</span> 亡くなったのは金曜日、復活したのは<span class="blank">3</span>日目の日曜日。</div>
+            <div class="test-item"><span class="test-number">86</span> 復活を疑い、傷跡を見たいと言ったのは<span class="blank">トマス</span>。</div>
+            <div class="test-item"><span class="test-number">87</span> 「全世界に行って、すべての造られたものに<span class="blank">福音</span>を宣べ伝えなさい」。</div>
+            <div class="test-item"><span class="test-number">88</span> イエス様が天に昇られたことを<span class="blank">昇天</span>という。</div>
+            <div class="test-item"><span class="test-number">89</span> 助け主として弟子たちに降ったのは<span class="blank">聖霊</span>。</div>
+            <div class="test-item"><span class="test-number">90</span> 聖霊が降った日を<span class="blank">ペンテコステ</span>という。</div>
+            <div class="test-item"><span class="test-number">91</span> 最初の殉教者となったのは<span class="blank">ステパノ</span>。</div>
+            <div class="test-item"><span class="test-number">92</span> 迫害者が一転して伝道者となったのは<span class="blank">パウロ</span>。</div>
+            <div class="test-item"><span class="test-number">93</span> 「いつも喜んでいなさい。絶えず<span class="blank">祈り</span>なさい」。</div>
+            <div class="test-item"><span class="test-number">94</span> 信仰と希望と愛、その中で最も素晴らしいのは<span class="blank">愛</span>。</div>
+            <div class="test-item"><span class="test-number">95</span> パウロを助け、励ました「慰めの子」は<span class="blank">バルナバ</span>。</div>
+            <div class="test-item"><span class="test-number">96</span> 「神は愛です」と強調して手紙を書いたのは<span class="blank">ヨハネ</span>。</div>
+            <div class="test-item"><span class="test-number">97</span> 聖書の最後を締めくくる書物はヨハネの<span class="blank">黙示録</span>。</div>
+            <div class="test-item"><span class="test-number">98</span> 最後にイエス様は「見よ、わたしはすぐに<span class="blank">来る</span>」と言われた。</div>
+            <div class="test-item"><span class="test-number">99</span> 主イエスの<span class="blank">恵み</span>が、すべての者とともにあるように。</div>
+            <div class="test-item"><span class="test-number">100</span> アーメン、主イエスよ、<span class="blank">来てください</span>。</div>
         </div>
     </div>
+</section>
 
-</div>
+<style>
+    /* テストセクション専用のデザイン（あかりちゃんスタイル） */
+    .test-section { 
+        background-color: #fefae0; 
+        border: 2px solid #d4a373; 
+        margin-top: 50px;
+    }
+    .test-grid { 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 15px; 
+        margin-top: 30px;
+    }
+    .test-category { 
+        grid-column: 1 / -1; 
+        background: #d4a373; 
+        color: #fff; 
+        padding: 10px 20px; 
+        border-radius: 10px; 
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    .test-item { 
+        background: #fff; 
+        padding: 15px; 
+        border-radius: 12px; 
+        border: 1px solid #faedcd; 
+        font-size: 0.9rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        line-height: 1.6;
+    }
+    .test-number { 
+        font-weight: bold; 
+        color: #d4a373; 
+        margin-right: 8px;
+        font-size: 1rem;
+    }
+    .blank { 
+        display: inline-block; 
+        min-width: 60px; 
+        border-bottom: 2px solid #8b5e3c; 
+        text-align: center; 
+        color: transparent; /* 通常は隠す */
+        transition: all 0.3s; 
+        cursor: pointer;
+        padding: 0 5px;
+        margin: 0 2px;
+    }
+    .blank:hover { 
+        color: #e76f51; /* マウスを乗せると赤っぽく表示 */
+        border-bottom-color: #e76f51;
+    }
+    @media (max-width: 768px) {
+        .test-grid { grid-template-columns: 1fr; }
+    }
+</style>
+        <section class="card quiz-section">
+            <div class="content-body">
+                <h2>日曜学校用クイズ</h2>
+                <p>学びを振り返ってみましょう！全問正解を目指して挑戦してね。</p>
+                
+                <div id="quiz-container">
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">1</span>「天地創造」で、神様がすべてをお造りになった後の言葉は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">極めて良かった</button>
+                            <button class="quiz-btn" data-correct="false">普通であった</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">2</span>失楽園の後、神様が人間にかけた言葉は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="false">もう知らない</button>
+                            <button class="quiz-btn" data-correct="true">あなたは、どこにいるのか</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">3</span>ノアの箱舟の後に空に置かれた「約束の印」は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">虹</button>
+                            <button class="quiz-btn" data-correct="false">大きな雲</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">4</span>アブラハムに約束されたのは、彼が何の源になること？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="false">富の源</button>
+                            <button class="quiz-btn" data-correct="true">祝福の源</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">5</span>イサクの身代わりに神様が用意された動物は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">小羊</button>
+                            <button class="quiz-btn" data-correct="false">牛</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">6</span>モーセが民を率いて脱出した国は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="false">ローマ</button>
+                            <button class="quiz-btn" data-correct="true">エジプト</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">7</span>十戒で「心を尽くして愛しなさい」と言われているのは？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">あなたの神、主</button>
+                            <button class="quiz-btn" data-correct="false">自分自身</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">8</span>ダビデが倒した巨人の名前は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="false">サウル</button>
+                            <button class="quiz-btn" data-correct="true">ゴリアテ</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">9</span>知恵の基本（初め）とされることは？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">主を畏れること</button>
+                            <button class="quiz-btn" data-correct="false">知識を増やすこと</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">10</span>イザヤが預言した、救い主によって私たちが受ける恵みは？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">癒やされること</button>
+                            <button class="quiz-btn" data-correct="false">有名になること</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">11</span>インマヌエルという言葉の意味は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">神は我らと共に在る</button>
+                            <button class="quiz-btn" data-correct="false">神は我らの上に在る</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">12</span>イエス様がお生まれになった町はどこ？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="false">ナザレ</button>
+                            <button class="quiz-btn" data-correct="true">ベツレヘム</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">13</span>誘惑に勝利したイエス様の言葉「人は〇〇だけで生きるのではない」</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">パン</button>
+                            <button class="quiz-btn" data-correct="false">お金</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">14</span>弟子たちを招くとき、イエス様が言った言葉は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="false">準備しなさい</button>
+                            <button class="quiz-btn" data-correct="true">わたしについて来なさい</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">15</span>「心の貧しい人々」が受け取ると教えられたものは？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">天の国</button>
+                            <button class="quiz-btn" data-correct="false">この世の富</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">16</span>嵐を静めた時、イエス様が放った言葉は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">静まれ。黙れ。</button>
+                            <button class="quiz-btn" data-correct="false">風よ止まれ。</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">17</span>放蕩息子が帰ってきたとき、お父さんはどう迎えた？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">走り寄って抱きしめた</button>
+                            <button class="quiz-btn" data-correct="false">まずは反省させた</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">18</span>最後の晩餐で分け合ったのはパンと何？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="false">水</button>
+                            <button class="quiz-btn" data-correct="true">杯（ぶどう酒）</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">19</span>十字架の上でのイエス様の最後の一言は？</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="true">完了した</button>
+                            <button class="quiz-btn" data-correct="false">また会おう</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                    <div class="quiz-item">
+                        <div class="quiz-question"><span class="q-num">20</span>復活されたイエス様の約束「わたしは〇〇まで、いつもあなたがたと共にいる」</div>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" data-correct="false">あなたが大人になるまで</button>
+                            <button class="quiz-btn" data-correct="true">世の終わりまで</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<footer>
-    <p style="color: var(--main-gold); letter-spacing: 2px; font-weight: bold;">ベテル鳳 キリスト教神学教本サイト</p>
-    <p>&copy; 2026 Hoshisato All Rights Reserved.</p>
-    <p style="margin-top: 20px;">
-        <a href="#">特定商取引法に基づく表記</a> | 
-        <a href="#">お問い合わせ</a>
-    </p>
-</footer>
+        <section class="card profile-section">
+            <div class="content-body">
+                <div class="profile-item">
+                    <h4>コンテンツ制作・監修：ほしのさと</h4>
+                    <p>生駒聖書学院卒業の献身者であり、現在は教師として聖書の普及に努めています。確かな知識に基づき、聖書の歴史を分かりやすく紐解きます。</p>
+                </div>
+                <hr class="divider">
+                <div class="profile-item">
+                    <h4>デザイン・Web制作：林 あかり</h4>
+                    <p>桜総合学院にてWebデザインを専攻。UDフォントやパステルカラーを用いた中高生に届くデザインで視覚化を担当しています。</p>
+                </div>
+            </div>
+        </section>
 
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Beteru Otori Holy Chapel. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.quiz-btn').on('click', function() {
+                const parent = $(this).closest('.quiz-item');
+                parent.find('.quiz-btn').prop('disabled', true);
+                const isCorrect = $(this).data('correct');
+                const feedback = parent.find('.quiz-feedback');
+                
+                if (isCorrect) {
+                    $(this).addClass('correct');
+                    feedback.text('✨ 正解！おめでとうございます！').css('color', '#28a745');
+                } else {
+                    $(this).addClass('incorrect');
+                    feedback.text('❌ おしい！上の物語をもう一度読んでみてね。').css('color', '#dc3545');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
