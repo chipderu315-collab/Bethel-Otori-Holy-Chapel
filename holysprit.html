@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聖霊学 総合理解テスト 30</title>
+    <style>
+        :root {
+            --spirit-orange: #e67e22; /* 聖霊の炎 */
+            --spirit-white: #ffffff;
+            --spirit-soft-blue: #f0f4f8; /* 鳩、平和 */
+            --spirit-dark: #2c3e50;
+            --correct: #27ae60;
+            --wrong: #c0392b;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+            background: linear-gradient(180deg, #fffaf0 0%, #ffe4b5 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--spirit-white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-bottom: 10px solid var(--spirit-orange);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: #eee;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--spirit-orange);
+            width: 0%;
+            transition: 0.3s;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--spirit-dark);
+            font-weight: bold;
+        }
+
+        .options { display: flex; flex-direction: column; gap: 15px; }
+
+        .opt-btn {
+            padding: 18px;
+            border: 2px solid #f1f1f1;
+            background: #fdfdfd;
+            cursor: pointer;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            border-color: var(--spirit-orange);
+            background: #fff9f4;
+        }
+
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            display: none;
+            background: #f8f9fa;
+            border-left: 6px solid var(--spirit-orange);
+        }
+
+        .next-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 18px;
+            background: var(--spirit-orange);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: none;
+        }
+
+        #result-screen { display: none; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="quiz-ui">
+        <div class="header">
+            <h2 style="color: var(--spirit-orange); margin:0;">Pneumatology Test</h2>
+            <div id="q-counter" style="color: #999; font-size: 0.9rem;">1 / 30</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        
+        <div class="question-text" id="q-text">Loading...</div>
+        <div class="options" id="opt-container"></div>
+        <div id="feedback" class="feedback"></div>
+        <button class="next-btn" id="next-btn" onclick="nextQ()">次の問いへ進む</button>
+    </div>
+
+    <div id="result-screen">
+        <h1 style="color: var(--spirit-orange);">聖霊学 課程修了</h1>
+        <p>「助け主、すなわち、父がわたしの名によってお遣わしになる聖霊は、あなたがたにすべてのことを教え…」</p>
+        <div style="font-size: 5rem; margin: 30px 0;" id="score-display">0 / 30</div>
+        <button class="next-btn" style="display:inline-block; width: auto; padding: 15px 50px;" onclick="location.reload()">もう一度学ぶ</button>
+    </div>
+</div>
+
+<script>
+    const spiritData = [
+        {
+            q: "新約聖書において、聖霊を指すギリシャ語『パラクレートス』の一般的な訳語は何ですか？",
+            opts: [
+                { t: "助け主（弁護者・慰め主）", c: true, r: "ヨハネ14:16等。そばに呼ばれた者、助ける者を意味し、信徒と共に歩む聖霊の役割を示します。" },
+                { t: "支配者", c: false, r: "聖霊は主権を持ちますが、パラクレートスの直接の意味は助け主です。" },
+                { t: "預言者", c: false, r: "預言者に霊が注がれることはありますが、用語の意味とは異なります。" }
+            ]
+        },
+        {
+            q: "聖霊の神性を示す根拠として、使徒行伝5章で聖霊を欺くことは『誰を欺くことだ』と述べられていますか？",
+            opts: [
+                { t: "神", c: true, r: "ペテロはアナニアに対し、聖霊を欺いたことは人間ではなく神を欺いたのだと言明しました。" },
+                { t: "使徒", c: false, r: "人間としての使徒を欺く以上の、神性に対する冒涜として扱われました。" },
+                { t: "教会", c: false, r: "教会の頭はキリストですが、文脈上は『神を欺いた』と明記されています。" }
+            ]
+        },
+        {
+            q: "ガラテヤ人への手紙5章に記されている『御霊の実』は、全部で何種類挙げられていますか？",
+            opts: [
+                { t: "9種類", c: true, r: "愛、喜び、平安、寛容、親切、善意、誠実、柔和、自制の9つです。" },
+                { t: "7種類", c: false, r: "『7つの御霊』という表現は黙示録にありますが、御霊の実は9つです。" },
+                { t: "12種類", c: false, r: "12はイスラエルの部族数や使徒の数によく使われる数字です。" }
+            ]
+        }
+    ];
+
+    // 30問までのサンプル補充（運用時に具体的な問題に差し替えてください）
+    for(let i=3; i<30; i++) {
+        spiritData.push({
+            q: `聖霊学 問${i+1}: 聖霊の働きや賜物について。`,
+            opts: [
+                { t: "正しい神学的理解に基づく選択肢", c: true, r: "聖霊は、キリストを証しし、信徒を真理へと導く働きをされます。" },
+                { t: "誤った解釈の選択肢 A", c: false, r: "聖書全体の文脈から再確認が必要です。" },
+                { t: "誤った解釈の選択肢 B", c: false, r: "聖霊の人格性を否定するような考えは慎むべきです。" }
+            ]
+        });
+    }
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const data = spiritData[current];
+        document.getElementById('q-counter').innerText = `${current + 1} / 30`;
+        document.getElementById('progress-fill').style.width = ((current + 1) / 30 * 100) + '%';
+        document.getElementById('q-text').innerText = data.q;
+        const container = document.getElementById('opt-container');
+        container.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerText = o.t;
+            btn.onclick = () => select(i);
+            container.appendChild(btn);
+        });
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function select(idx) {
+        const data = spiritData[current];
+        const isCorrect = data.opts[idx].c;
+        if(isCorrect) score++;
+        const fb = document.getElementById('feedback');
+        fb.style.display = 'block';
+        fb.style.borderLeftColor = isCorrect ? 'var(--correct)' : 'var(--wrong)';
+        fb.innerHTML = `<strong>${isCorrect ? '【正解】' : '【解説】'}</strong><br>${data.opts[idx].r}`;
+        document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQ() {
+        current++;
+        if(current < spiritData.length) render();
+        else {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            document.getElementById('score-display').innerText = `${score} / 30`;
+        }
+    }
+
+    render();
+</script>
+</body>
+</html>

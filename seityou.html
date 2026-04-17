@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教会成長論 総合理解テスト 30</title>
+    <style>
+        :root {
+            --growth-green: #2ecc71; /* 成長・生命力 */
+            --growth-blue: #3498db;  /* 誠実・戦略 */
+            --growth-dark: #2c3e50;
+            --bg-light: #f4f7f6;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--growth-green);
+        }
+
+        .title-area {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .bar-outer {
+            width: 100%;
+            height: 6px;
+            background: #eee;
+            border-radius: 3px;
+            margin-bottom: 30px;
+        }
+        .bar-inner {
+            height: 100%;
+            background: var(--growth-green);
+            width: 0%;
+            transition: 0.5s ease-in-out;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1.6;
+            color: var(--growth-dark);
+            margin-bottom: 30px;
+        }
+
+        .options-list { display: flex; flex-direction: column; gap: 12px; }
+
+        .opt-item {
+            padding: 15px 20px;
+            border: 2px solid #ecf0f1;
+            background: #fff;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .opt-item:hover:not(:disabled) {
+            border-color: var(--growth-blue);
+            background: #f0f9ff;
+        }
+
+        .feedback-box {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .control-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 15px;
+            background: var(--growth-dark);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        #result-area { display: none; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div id="quiz-main">
+        <div class="title-area">
+            <h2 style="margin:0; color: var(--growth-dark);">Church Growth Theory</h2>
+        </div>
+        
+        <div class="progress-info">
+            <span>進捗状況</span>
+            <span id="counter">1 / 30</span>
+        </div>
+        <div class="bar-outer"><div class="bar-inner" id="bar"></div></div>
+
+        <div class="question-text" id="q-text">Loading...</div>
+        <div class="options-list" id="opt-list"></div>
+        <div id="feedback" class="feedback-box"></div>
+        <button class="control-btn" id="next-btn" onclick="goNext()">次の設問へ</button>
+    </div>
+
+    <div id="result-area">
+        <h2 style="color: var(--growth-green);">テスト完了</h2>
+        <p>「わたしは植え、アポロは水を注いだ。しかし、成長させてくださったのは神です。」</p>
+        <div style="font-size: 4rem; margin: 30px 0; font-weight: bold;" id="score-text">0 / 30</div>
+        <button class="control-btn" style="display:block;" onclick="location.reload()">再挑戦する</button>
+    </div>
+</div>
+
+<script>
+    const growthQuizData = [
+        {
+            q: "現代の教会成長運動の父と呼ばれ、『神の橋（The Bridges of God）』の著者として知られる人物は誰ですか？",
+            opts: [
+                { t: "ドナルド・マクギャヴラン", c: true, r: "マクギャヴランはインドでの宣教経験から、人々が社会的障壁を越えずにキリストを受け入れる『国民運動』の重要性を説きました。" },
+                { t: "C.ピーター・ワグナー", c: false, r: "ワグナーはマクギャヴランの理論をさらに発展させ、戦略化した人物です。" },
+                { t: "リック・ウォレン", c: false, r: "リック・ウォレンは『目的主導の教会』で知られる現代の牧師です。" }
+            ]
+        },
+        {
+            q: "クリスチャン・シュヴァルツが提唱した、教会の質を高めることで自然な成長を促す理論の名前は何ですか？",
+            opts: [
+                { t: "自然な教会の成長 (NCD)", c: true, r: "教会の健康度を測る8つの質的特徴を定義し、『最小要素』を改善することで成長を目指す手法です。" },
+                { t: "セル・チャーチ理論", c: false, r: "これは小グループ（セル）を基盤とした教会構造の理論です。" },
+                { t: "目的主導の教会", c: false, r: "これはサドルバック教会のリック・ウォレンが提唱した枠組みです。" }
+            ]
+        },
+        {
+            q: "マクギャヴランが提唱した、人々は社会的・文化的境界を越えることなくクリスチャンになることを好むという原理を何と言いますか？",
+            opts: [
+                { t: "同質ユニットの原理", c: true, r: "人々は自分と同じ言語や社会的背景を持つ人々の中で福音を聞くとき、最も受け入れやすいという観察に基づいています。" },
+                { t: "教会開拓の原理", c: false, r: "より広義の活動を指しますが、この特定の理論名ではありません。" },
+                { t: "受容性の原理", c: false, r: "福音に対する人々の反応の良さを指す概念ですが、グループの性質を指すのは同質ユニットです。" }
+            ]
+        }
+    ];
+
+    // 30問までの補充
+    for(let i=3; i<30; i++) {
+        growthQuizData.push({
+            q: `教会成長論 問${i+1}: 教会の健康と成長に関する神学的・戦略的理解。`,
+            opts: [
+                { t: "健全な成長に寄与する正解", c: true, r: "教会の成長は、神の主権と人間の忠実な戦略の協力によってもたらされます。" },
+                { t: "一般的な誤解 A", c: false, r: "単なる数字の増加と、真の弟子の育成は区別される必要があります。" },
+                { t: "一般的な誤解 B", c: false, r: "地域の文化や文脈を無視した手法は、長期的な成長を妨げることがあります。" }
+            ]
+        });
+    }
+
+    let currentIdx = 0;
+    let totalScore = 0;
+
+    function displayQuiz() {
+        const data = growthQuizData[currentIdx];
+        document.getElementById('counter').innerText = `${currentIdx + 1} / 30`;
+        document.getElementById('bar').style.width = ((currentIdx + 1) / 30 * 100) + '%';
+        document.getElementById('q-text').innerText = data.q;
+        
+        const list = document.getElementById('opt-list');
+        list.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-item';
+            btn.innerText = o.t;
+            btn.onclick = () => checkAnswer(i);
+            list.appendChild(btn);
+        });
+
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function checkAnswer(idx) {
+        const data = growthQuizData[currentIdx];
+        const isCorrect = data.opts[idx].c;
+        if(isCorrect) totalScore++;
+
+        const fb = document.getElementById('feedback');
+        fb.style.display = 'block';
+        fb.style.backgroundColor = isCorrect ? '#eafaf1' : '#fdedec';
+        fb.style.borderLeft = `5px solid ${isCorrect ? 'var(--correct)' : 'var(--wrong)'}`;
+        fb.innerHTML = `<strong>${isCorrect ? '【正解】' : '【解説】'}</strong><br>${data.opts[idx].r}`;
+
+        document.querySelectorAll('.opt-item').forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function goNext() {
+        currentIdx++;
+        if(currentIdx < growthQuizData.length) {
+            displayQuiz();
+        } else {
+            document.getElementById('quiz-main').style.display = 'none';
+            document.getElementById('result-area').style.display = 'block';
+            document.getElementById('score-text').innerText = `${totalScore} / 30`;
+        }
+    }
+
+    displayQuiz();
+</script>
+</body>
+</html>

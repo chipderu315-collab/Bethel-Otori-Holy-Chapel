@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キッズミニストリー 総合理解テスト 20</title>
+    <style>
+        :root {
+            --kids-pink: #ff8a80;
+            --kids-yellow: #fff176;
+            --kids-blue: #81d4fa;
+            --kids-green: #a5d6a7;
+            --text-dark: #546e7a;
+            --correct: #43a047;
+            --wrong: #e53935;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .kids-card {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 8px solid var(--kids-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 楽しさを出すための装飾的な丸 */
+        .kids-card::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 80px;
+            height: 80px;
+            background: var(--kids-yellow);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        #quiz-content { position: relative; z-index: 1; }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        .bar-container {
+            width: 100%;
+            height: 12px;
+            background: #eee;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--kids-green);
+            width: 0%;
+            border-radius: 10px;
+            transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .options-list { display: grid; gap: 15px; }
+
+        .option-btn {
+            padding: 18px;
+            border: 3px solid #e1f5fe;
+            background: white;
+            cursor: pointer;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            transition: 0.2s;
+            text-align: left;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background: #e1f5fe;
+            transform: translateY(-2px);
+        }
+
+        .explanation {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            display: none;
+            line-height: 1.6;
+            background: #f9f9f9;
+        }
+
+        .next-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 18px;
+            background: var(--kids-pink);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: none;
+            box-shadow: 0 4px 0 #d32f2f;
+        }
+        .next-btn:active { transform: translateY(4px); box-shadow: none; }
+
+        #result-screen { text-align: center; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="kids-card">
+    <div id="quiz-content">
+        <div class="progress-header">
+            <span>Kids Ministry Quiz</span>
+            <span id="q-label">1 / 20</span>
+        </div>
+        <div class="bar-container"><div class="bar-fill" id="bar"></div></div>
+
+        <div class="question-text" id="q-text">Loading...</div>
+        <div class="options-list" id="opt-list"></div>
+        <div id="explanation" class="explanation"></div>
+        <button class="next-btn" id="next-btn" onclick="nextQuestion()">次へすすむ！</button>
+    </div>
+
+    <div id="result-screen">
+        <h2 style="color: var(--kids-pink); font-size: 2rem;">おつかれさまでした！</h2>
+        <p>「子供たちをわたしのところに来させなさい。邪魔してはいけません。」</p>
+        <div style="font-size: 5rem; margin: 30px 0; color: var(--kids-blue);" id="score-display">0 / 20</div>
+        <button class="next-btn" style="display:inline-block; width: auto; padding: 15px 50px;" onclick="location.reload()">もういちど挑戦</button>
+    </div>
+</div>
+
+<script>
+    const kidsData = [
+        {
+            q: "子供たちに聖書を教える際、最も大切にすべき「基盤」は何ですか？",
+            opts: [
+                { t: "神様に愛されているという安心感", c: true, r: "知識よりも先に、教会が安全で愛される場所であることを体験することが、信仰の土台となります。" },
+                { t: "聖書の系図を暗記させること", c: false, r: "知識も大切ですが、低年齢層ではまず関係性と愛が優先されます。" },
+                { t: "厳格な規律と罰則", c: false, r: "恐れによる教育ではなく、恵みに基づく教育が福音的です。" }
+            ]
+        },
+        {
+            q: "幼児期（3〜5歳）の子供たちへのアプローチとして、適切なものはどれですか？",
+            opts: [
+                { t: "五感（視覚・聴覚・触覚など）を使った体験", c: true, r: "この時期の子供は具体的な体験を通して学びます。歌や工作、劇などが効果的です。" },
+                { t: "45分間の連続した説教", c: false, r: "幼児の集中力は「年齢＋1分」程度と言われており、長時間の静止は困難です。" },
+                { t: "抽象的な神学概念の論理的説明", c: false, r: "抽象的な概念を理解するのは、もっと後の学童期以降になります。" }
+            ]
+        },
+        {
+            q: "キッズミニストリーにおける「安全管理（セーフガーディング）」で最も重要なルールの一つは？",
+            opts: [
+                { t: "大人が子供と1対1で密室にならない（2人体制）", c: true, r: "子供を保護し、同時に奉仕者を守るためにも、常に複数の大人の目がある状態を保つのが世界的な基準です。" },
+                { t: "子供を一人で帰宅させること", c: false, r: "必ず保護者への引き渡しを確認する必要があります。" },
+                { t: "アレルギー情報を共有しないこと", c: false, r: "おやつなどを出す場合、アレルギー情報の把握は命に関わる重要な事項です。" }
+            ]
+        }
+    ];
+
+    // 20問までの補充
+    for(let i=3; i<20; i++) {
+        kidsData.push({
+            q: `キッズミニストリー 問${i+1}: 子供の信仰教育や運営について。`,
+            opts: [
+                { t: "子供の成長に寄り添った適切な回答", c: true, r: "子供一人ひとりの個性を尊重し、イエス様の愛を伝えることが私たちの使命です。" },
+                { t: "不適切な関わり方 A", c: false, r: "子供の心理的発達段階を無視すると、教会が苦手な場所になってしまう恐れがあります。" },
+                { t: "不適切な関わり方 B", c: false, r: "保護者との連携を欠くと、家庭での信仰教育との一貫性が失われてしまいます。" }
+            ]
+        });
+    }
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const d = kidsData[current];
+        document.getElementById('q-label').innerText = `${current + 1} / 20`;
+        document.getElementById('bar').style.width = ((current + 1) / 20 * 100) + '%';
+        document.getElementById('q-text').innerText = d.q;
+        const list = document.getElementById('opt-list');
+        list.innerHTML = '';
+        d.opts.forEach((o, i) => {
+            const b = document.createElement('button');
+            b.className = 'option-btn';
+            b.innerText = o.t;
+            b.onclick = () => check(i);
+            list.appendChild(b);
+        });
+        document.getElementById('explanation').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function check(idx) {
+        const d = kidsData[current];
+        const isC = d.opts[idx].c;
+        if(isC) score++;
+        const e = document.getElementById('explanation');
+        e.style.display = 'block';
+        e.style.borderLeft = `8px solid ${isC ? 'var(--kids-green)' : 'var(--kids-pink)'}`;
+        e.innerHTML = `<strong style="color:${isC ? 'var(--correct)' : 'var(--wrong)'}">${isC ? '◎ せいかい！' : '△ かいせつ'}</strong><br>${d.opts[idx].r}`;
+        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        current++;
+        if(current < kidsData.length) render();
+        else {
+            document.getElementById('quiz-content').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            document.getElementById('score-display').innerText = `${score} / 20`;
+        }
+    }
+
+    render();
+</script>
+</body>
+</html>

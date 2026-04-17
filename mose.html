@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モーセ五書 総合理解テスト 30</title>
+    <style>
+        :root {
+            --torah-brown: #5d4037;
+            --torah-parchment: #f4ece1;
+            --torah-ink: #2c3e50;
+            --correct: #388e3c;
+            --wrong: #d32f2f;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'MS Mincho', serif;
+            background-color: #d7ccc8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--torah-parchment);
+            padding: 40px;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid #bcaaa4;
+            position: relative;
+        }
+
+        /* 巻物のような装飾 */
+        .container::before, .container::after {
+            content: "";
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 15px;
+            background: var(--torah-brown);
+        }
+        .container::before { left: -15px; border-radius: 5px 0 0 5px; }
+        .container::after { right: -15px; border-radius: 0 5px 5px 0; }
+
+        .progress-text { text-align: right; color: var(--torah-brown); font-weight: bold; }
+        
+        .question-text {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin: 30px 0;
+            color: var(--torah-ink);
+            border-bottom: 1px double #bcaaa4;
+            padding-bottom: 20px;
+        }
+
+        .options { display: grid; gap: 12px; }
+
+        .opt-btn {
+            padding: 15px;
+            border: 1px solid #a1887f;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover:not(:disabled) { background: #fff; border-color: var(--torah-brown); }
+
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            display: none;
+            background: white;
+            border-left: 5px solid var(--torah-brown);
+        }
+
+        .next-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 15px;
+            background: var(--torah-brown);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: none;
+            font-size: 1.1rem;
+        }
+
+        #result { display: none; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="quiz-ui">
+        <div class="progress-text" id="progress">1 / 30</div>
+        <div class="question-text" id="q-text">Loading...</div>
+        <div class="options" id="opt-container"></div>
+        <div id="feedback" class="feedback"></div>
+        <button class="next-btn" id="next-btn" onclick="nextQuestion()">次の箇所へ進む</button>
+    </div>
+
+    <div id="result">
+        <h2 style="color: var(--torah-brown);">モーセ五書 課程修了</h2>
+        <div style="font-size: 3.5rem; margin: 30px 0;" id="score-display">0 / 30</div>
+        <p>「人はパンだけで生きるのではなく、主の口から出るすべての言葉によって生きる。」</p>
+        <button class="next-btn" style="display:inline-block;" onclick="location.reload()">最初から学ぶ</button>
+    </div>
+</div>
+
+<script>
+    const torahData = [
+        {
+            q: "創世記において、神が『光あれ』と言われたのは何日目ですか？",
+            opts: [
+                { t: "1日目", c: true, r: "創世記1:3。創造の最初の日に光が造られました。" },
+                { t: "3日目", c: false, r: "3日目は植物などが造られた日です。" },
+                { t: "4日目", c: false, r: "4日目は太陽・月・星などの天体が造られた日です。" }
+            ]
+        },
+        {
+            q: "出エジプト記において、モーセが神から十戒を授かった山の名前は？",
+            opts: [
+                { t: "シナイ山", c: true, r: "出エジプト記19章以降、イスラエルの民はこの山で神と契約を結びました。" },
+                { t: "ネボ山", c: false, r: "ネボ山はモーセが最後に約束の地を眺め、生涯を終えた場所です。" },
+                { t: "カルメル山", c: false, r: "カルメル山は預言者エリヤの対決で有名な山です。" }
+            ]
+        },
+        {
+            q: "レビ記の全体を貫く中心的なテーマは何ですか？",
+            opts: [
+                { t: "聖潔（きよさ）", c: true, r: "『わたしが聖なる者であるから、あなたがたも聖なる者となりなさい』が中心主題です。" },
+                { t: "軍事戦略", c: false, r: "民数記で人口調査が行われますが、レビ記は礼拝と生活の清さを扱います。" },
+                { t: "エジプトへの帰還", c: false, r: "イスラエルは一貫して約束の地を目指しており、帰還はテーマではありません。" }
+            ]
+        }
+        // 以下、30問目まで配列を追加
+    ];
+
+    // 30問までのダミーデータ補充
+    for(let i=3; i<30; i++) {
+        torahData.push({
+            q: `モーセ五書 問${i+1}: 聖書記述の理解を確認します。`,
+            opts: [
+                { t: "正解の選択肢", c: true, r: "この箇所は救済史において非常に重要な意味を持っています。" },
+                { t: "誤りの選択肢 A", c: false, r: "文脈を確認してみましょう。" },
+                { t: "誤りの選択肢 B", c: false, r: "他の書巻との混同に注意してください。" }
+            ]
+        });
+    }
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const data = torahData[current];
+        document.getElementById('progress').innerText = `${current + 1} / 30`;
+        document.getElementById('q-text').innerText = data.q;
+        const container = document.getElementById('opt-container');
+        container.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerText = o.t;
+            btn.onclick = () => select(i);
+            container.appendChild(btn);
+        });
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function select(idx) {
+        const data = torahData[current];
+        const isCorrect = data.opts[idx].c;
+        if(isCorrect) score++;
+        const fb = document.getElementById('feedback');
+        fb.style.display = 'block';
+        fb.style.borderLeftColor = isCorrect ? 'var(--correct)' : 'var(--wrong)';
+        fb.innerHTML = `<strong>${isCorrect ? '【正解】' : '【解説】'}</strong><br>${data.opts[idx].r}`;
+        document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        current++;
+        if(current < torahData.length) render();
+        else {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('score-display').innerText = `${score} / 30`;
+        }
+    }
+
+    render();
+</script>
+</body>
+</html>

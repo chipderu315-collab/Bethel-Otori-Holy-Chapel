@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>詩篇 総合理解テスト 50</title>
+    <style>
+        :root {
+            --psalm-blue: #2c3e50;
+            --psalm-accent: #d4af37; /* 金色：神の栄光 */
+            --psalm-sky: #e3f2fd;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'MS Mincho', serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .quiz-wrapper {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--psalm-accent);
+        }
+
+        /* 進捗バー */
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--psalm-accent);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .question-header {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .question-text {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+            color: var(--psalm-blue);
+        }
+
+        .option-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .option-grid { grid-template-columns: 1fr; }
+        }
+
+        .opt-btn {
+            padding: 20px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            background-color: var(--psalm-sky);
+            border-color: var(--psalm-blue);
+        }
+
+        .explanation {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 4px;
+            display: none;
+            animation: slideDown 0.4s ease-out;
+            line-height: 1.6;
+        }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } }
+
+        .btn-next {
+            margin-top: 30px;
+            width: 100%;
+            padding: 15px;
+            background: var(--psalm-blue);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+        }
+
+        #result-view { text-align: center; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-wrapper">
+    <div id="quiz-view">
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="question-header" id="q-meta">Book of Psalms</div>
+        <div class="question-text" id="q-text">Loading...</div>
+        <div class="option-grid" id="opt-container"></div>
+        <div id="explanation" class="explanation"></div>
+        <button class="btn-next" id="btn-next" onclick="handleNext()">次の詩篇へ</button>
+    </div>
+
+    <div id="result-view">
+        <h2 style="color: var(--psalm-accent);">全50編 完了</h2>
+        <p>「息のあるものはすべて、主をほめたたえよ。」</p>
+        <div style="font-size: 4rem; margin: 20px 0;" id="final-score">0 / 50</div>
+        <button class="btn-next" style="display: block;" onclick="location.reload()">もう一度味わう</button>
+    </div>
+</div>
+
+<script>
+    const psalmsQuiz = [
+        {
+            q: "詩篇は全部で何編の詩から構成されていますか？",
+            opts: [
+                { t: "150編", c: true, r: "正解です。イスラエルの祈祷書として、全150編が受け継がれてきました。" },
+                { t: "120編", c: false, r: "都上りの歌など一部の括りより、全体はもっと多いです。" },
+                { t: "66編", c: false, r: "それは聖書全体の巻数ですね。" },
+                { t: "100編", c: false, r: "感謝の詩100編は有名ですが、全体数は150です。" }
+            ]
+        },
+        {
+            q: "詩篇23篇の冒頭、神様は何に例えられていますか？",
+            opts: [
+                { t: "羊飼い", c: true, r: "「主は私の羊飼い」という告白は、世界中で最も愛されている言葉の一つです。" },
+                { t: "堅固なやぐら", c: false, r: "それは46編などのイメージです。" },
+                { t: "夜明けの光", c: false, r: "神は光ですが、23編では羊飼いとしての導きが歌われます。" },
+                { t: "高い山", c: false, r: "山は神の避け所の象徴ですが、ここでは動物との関係で描かれます。" }
+            ]
+        }
+        // 以下、50問目までデータを追加
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const data = psalmsQuiz[current];
+        const progress = ((current) / psalmsQuiz.length) * 100;
+        document.getElementById('progress-bar').style.width = progress + '%';
+        document.getElementById('q-meta').innerText = `Psalm Quest ${current + 1} / ${psalmsQuiz.length}`;
+        document.getElementById('q-text').innerText = data.q;
+        
+        const container = document.getElementById('opt-container');
+        container.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const b = document.createElement('button');
+            b.className = 'opt-btn';
+            b.innerText = o.t;
+            b.onclick = () => check(i);
+            container.appendChild(b);
+        });
+
+        document.getElementById('explanation').style.display = 'none';
+        document.getElementById('btn-next').style.display = 'none';
+    }
+
+    function check(idx) {
+        const data = psalmsQuiz[current];
+        const isCorrect = data.opts[idx].c;
+        if(isCorrect) score++;
+
+        const ex = document.getElementById('explanation');
+        ex.style.display = 'block';
+        ex.style.backgroundColor = isCorrect ? '#e8f5e9' : '#fdf2f2';
+        ex.style.borderLeft = `5px solid ${isCorrect ? '#27ae60' : '#e74c3c'}`;
+        ex.innerHTML = `<strong>${isCorrect ? '◎ 正解' : '× 解説'}</strong><br>${data.opts[idx].r}`;
+
+        document.querySelectorAll('.opt-btn').forEach(btn => btn.disabled = true);
+        document.getElementById('btn-next').style.display = 'block';
+    }
+
+    function handleNext() {
+        current++;
+        if(current < psalmsQuiz.length) {
+            render();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById('quiz-view').style.display = 'none';
+        document.getElementById('result-view').style.display = 'block';
+        document.getElementById('final-score').innerText = `${score} / ${psalmsQuiz.length}`;
+    }
+
+    render();
+</script>
+</body>
+</html>

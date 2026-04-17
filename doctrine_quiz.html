@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キリスト教根本教理テスト - 40問</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #8e44ad; /* 教理編は紫系に */
+            --success-color: #27ae60;
+            --error-color: #e74c3c;
+            --bg-color: #fdfdfd;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        /* 進行状況のドット表示 */
+        .progress-dots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #eee;
+            border: 1px solid #ddd;
+        }
+
+        .dot.current { border-color: var(--accent-color); background: #e8daef; }
+        .dot.correct { background: var(--success-color); border: none; }
+        .dot.wrong { background: var(--error-color); border: none; }
+
+        .quiz-info {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question-card {
+            min-height: 300px;
+        }
+
+        .question-text {
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+            font-weight: bold;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .option-button {
+            width: 100%;
+            padding: 15px;
+            text-align: left;
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .option-button:hover {
+            background-color: #f5f0f9;
+            border-color: var(--accent-color);
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .rationale { font-size: 0.95rem; margin-top: 10px; color: #444; }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .nav-btn {
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .nav-btn:disabled { background-color: #ccc; }
+
+        .result-screen { text-align: center; display: none; }
+        .score-display { font-size: 3.5rem; color: var(--accent-color); margin: 20px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>キリスト教根本教理テスト</h1>
+    
+    <div id="quiz-area">
+        <div class="progress-dots" id="progress-dots"></div>
+        <div class="quiz-info" id="quiz-info">Question 1 / 40</div>
+        
+        <div id="question-container">
+            </div>
+        
+        <div class="navigation">
+            <button class="nav-btn" id="prev-btn" disabled>前へ</button>
+            <button class="nav-btn" id="next-btn">次へ</button>
+        </div>
+    </div>
+
+    <div id="result-screen" class="result-screen">
+        <h2>修了おめでとうございます</h2>
+        <p>正解数：</p>
+        <div class="score-display" id="score-text">0 / 40</div>
+        <p id="evaluation-text"></p>
+        <button class="nav-btn" onclick="location.reload()">もう一度挑戦する</button>
+    </div>
+</div>
+
+<script>
+    const quizData = [
+        {
+            q: "三位一体において、父・子・聖霊の「本質」が同一であることを表すギリシア語は何ですか？",
+            options: [
+                { t: "ホモウシオス (homoousios)", c: true, r: "ニカイア信条で採用された「同一本質」を意味する言葉です。" },
+                { t: "ホモイウシオス (homoiousios)", c: false, r: "「類似した本質」を意味し、正統信仰からは退けられました。" },
+                { t: "ヒュポスタシス", c: false, r: "「位格」を指す言葉です。" },
+                { t: "プロソポン", c: false, r: "「役割」を意味し、様態論的誤解を招く可能性があります。" }
+            ]
+        },
+        {
+            q: "カルケドン信条における、キリストの神性と人性に関する正しい定義はどれですか？",
+            options: [
+                { t: "二つの性質は、混ざらず、変わらず、分かれず、離れない", c: true, r: "一人二性の「四つの副詞」による定義です。" },
+                { t: "人性が神性に完全に吸収された", c: false, r: "単性論の誤りです。" },
+                { t: "神性が肉体のみをとり、人間の魂はなかった", c: false, r: "アポリナリオス派の誤りです。" },
+                { t: "二つの位格が緩やかに結合している", c: false, r: "ネストリウス派に近い誤りです。" }
+            ]
+        },
+        {
+            q: "救済論における「全的腐敗」の正しい理解はどれですか？",
+            options: [
+                { t: "救いに関して自力では何もできない状態", c: true, r: "罪の影響が理知・意志・感情の全領域に及んでいることを指します。" },
+                { t: "人間が常に最大限の悪を行っている状態", c: false, r: "全的腐敗は「範囲」であり「程度」ではありません。" },
+                { t: "神の像が完全に消滅した状態", c: false, r: "神の像は毀損されましたが、形質としては残存しています。" },
+                { t: "教育で克服可能な欠陥", c: false, r: "霊的な再生が必要な根本的な死の状態です。" }
+            ]
+        }
+        // ... 残りの37問も同様の形式でここに追加できます
+    ];
+
+    let currentIdx = 0;
+    const userAnswers = new Array(quizData.length).fill(null);
+
+    function init() {
+        createDots();
+        render();
+    }
+
+    function createDots() {
+        const container = document.getElementById('progress-dots');
+        container.innerHTML = '';
+        for(let i=0; i<quizData.length; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.id = `dot-${i}`;
+            container.appendChild(dot);
+        }
+    }
+
+    function render() {
+        const qData = quizData[currentIdx];
+        document.getElementById('quiz-info').innerText = `第 ${currentIdx + 1} 問 / ${quizData.length}`;
+        
+        // ドットの状態更新
+        document.querySelectorAll('.dot').forEach((d, i) => {
+            d.classList.remove('current');
+            if(i === currentIdx) d.classList.add('current');
+        });
+
+        let html = `
+            <div class="question-card">
+                <div class="question-text">${qData.q}</div>
+                ${qData.options.map((opt, i) => `
+                    <button class="option-button" onclick="answer(${i})" id="opt-${i}">
+                        ${opt.t}
+                    </button>
+                `).join('')}
+                <div id="feedback" class="feedback"></div>
+            </div>
+        `;
+        document.getElementById('question-container').innerHTML = html;
+
+        if (userAnswers[currentIdx] !== null) showFeedback(userAnswers[currentIdx]);
+        
+        document.getElementById('prev-btn').disabled = currentIdx === 0;
+        document.getElementById('next-btn').innerText = currentIdx === quizData.length - 1 ? "最終結果" : "次へ";
+    }
+
+    window.answer = function(idx) {
+        if (userAnswers[currentIdx] !== null) return;
+        userAnswers[currentIdx] = idx;
+        const isCorrect = quizData[currentIdx].options[idx].c;
+        document.getElementById(`dot-${currentIdx}`).classList.add(isCorrect ? 'correct' : 'wrong');
+        showFeedback(idx);
+    };
+
+    function showFeedback(idx) {
+        const q = quizData[currentIdx];
+        const isCorrect = q.options[idx].c;
+        const fb = document.getElementById('feedback');
+        fb.style.display = 'block';
+        fb.style.backgroundColor = isCorrect ? '#eafaf1' : '#fdedec';
+        fb.innerHTML = `<strong>${isCorrect ? '正解' : '不正解'}</strong><div class="rationale">${q.options[idx].r}</div>`;
+        
+        const btns = document.querySelectorAll('.option-button');
+        q.options.forEach((o, i) => {
+            if(o.c) btns[i].style.borderColor = 'var(--success-color)';
+            if(i === idx && !o.c) btns[i].style.borderColor = 'var(--error-color)';
+        });
+    }
+
+    document.getElementById('next-btn').onclick = () => {
+        if (currentIdx < quizData.length - 1) {
+            currentIdx++;
+            render();
+        } else {
+            finish();
+        }
+    };
+
+    document.getElementById('prev-btn').onclick = () => {
+        if (currentIdx > 0) { currentIdx--; render(); }
+    };
+
+    function finish() {
+        const score = userAnswers.filter((a, i) => a !== null && quizData[i].options[a].c).length;
+        document.getElementById('quiz-area').style.display = 'none';
+        document.getElementById('result-screen').style.display = 'block';
+        document.getElementById('score-text').innerText = `${score} / ${quizData.length}`;
+        
+        let eval = "さらに学びを深めましょう。";
+        if(score === quizData.length) eval = "完璧です！教理の基礎が固まっています。";
+        else if(score > 30) eval = "素晴らしい理解度です。";
+        document.getElementById('evaluation-text').innerText = eval;
+    }
+
+    init();
+</script>
+</body>
+</html>

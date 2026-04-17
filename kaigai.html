@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海外宣教 総合理解テスト 20</title>
+    <style>
+        :root {
+            --mission-globe: #2980b9; /* 地球・海 */
+            --mission-sand: #f1c40f;  /* 収穫の畑 */
+            --mission-text: #2c3e50;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+            background: #ecf0f1;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mission-container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 10px solid var(--mission-globe);
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--mission-globe);
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--mission-sand);
+            width: 0%;
+            transition: 0.5s;
+        }
+
+        .q-title {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: var(--mission-text);
+        }
+
+        .opt-list { display: grid; gap: 12px; }
+
+        .btn-mission {
+            padding: 15px;
+            border: 2px solid #eee;
+            background: white;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 1rem;
+            text-align: left;
+            transition: 0.2s;
+        }
+
+        .btn-mission:hover:not(:disabled) {
+            background: #f7f9fa;
+            border-color: var(--mission-globe);
+        }
+
+        .exp-box {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            background: #f9f9f9;
+            border-left: 5px solid var(--mission-globe);
+        }
+
+        .action-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 15px;
+            background: var(--mission-globe);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            display: none;
+        }
+
+        #finish-screen { text-align: center; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="mission-container">
+    <div id="quiz-screen">
+        <div class="progress-meta">
+            <span>Global Missions Test</span>
+            <span id="q-count">1 / 20</span>
+        </div>
+        <div class="bar-bg"><div class="bar-fill" id="bar"></div></div>
+
+        <div class="q-title" id="q-txt">Loading...</div>
+        <div class="opt-list" id="opt-list"></div>
+        <div id="exp" class="exp-box"></div>
+        <button class="action-btn" id="next-btn" onclick="goNext()">次の宣教地へ</button>
+    </div>
+
+    <div id="finish-screen">
+        <h2 style="color: var(--mission-globe);">「地の果てまで、わたしの証人となる」</h2>
+        <div style="font-size: 4rem; margin: 30px 0;" id="final-score">0 / 20</div>
+        <button class="action-btn" style="display:block;" onclick="location.reload()">もう一度派遣される</button>
+    </div>
+</div>
+
+<script>
+    const missionData = [
+        {
+            q: "現代宣教の父と呼ばれ、インド宣教に生涯を捧げた『地の果てまで福音を』の著者は誰ですか？",
+            opts: [
+                { t: "ウィリアム・ケアリー", c: true, r: "「神に大きなことを期待せよ。神のために大きなことを試みよ」という言葉で有名です。" },
+                { t: "ハドソン・テーラー", c: false, r: "テーラーは中国内地伝道会（CIM）の創設者です。" },
+                { t: "デビッド・リビングストン", c: false, r: "リビングストンはアフリカ探検と宣教で知られています。" }
+            ]
+        },
+        {
+            q: "宣教地において、現地の文化や習慣を尊重し、福音の本質を損なわずに伝える手法を何と呼びますか？",
+            opts: [
+                { t: "文脈化（コンテクスチュアライゼーション）", c: true, r: "福音を現地の文化的な文脈に「翻訳」して伝える不可欠なプロセスです。" },
+                { t: "西洋化", c: false, r: "西洋の文化を押し付けることは、しばしば宣教の妨げとなります。" },
+                { t: "同化", c: false, r: "キリスト者が文化に完全に飲み込まれるのではなく、文化の中で福音を花開かせることです。" }
+            ]
+        },
+        {
+            q: "北緯10度から40度の間に位置し、福音未到達の人々が集中している地域を何と呼びますか？",
+            opts: [
+                { t: "10/40ウィンドウ", c: true, r: "世界の未到達部族の大部分がこの地域に集中しており、現代宣教の重点地域です。" },
+                { t: "ゴールデン・トライアングル", c: false, r: "これは東南アジアの特定の地域を指す名称です。" },
+                { t: "バック・トゥ・エルサレム", c: false, r: "中国からエルサレムへ向かう宣教運動の名称です。" }
+            ]
+        }
+    ];
+
+    // 20問までのサンプル補充
+    for(let i=3; i<20; i++) {
+        missionData.push({
+            q: `海外宣教 問${i+1}: 宣教戦略、異文化理解、または宣教師のケアについて。`,
+            opts: [
+                { t: "宣教の実践において適切な選択肢", c: true, r: "宣教は、祈り、送り出す教会、そして現場の宣教師のチームワークによって成り立ちます。" },
+                { t: "誤ったアプローチ A", c: false, r: "現地の自立を妨げるような方法は、長期的な実を結びにくいです。" },
+                { t: "誤ったアプローチ B", c: false, r: "異文化への理解不足は、不要な摩擦を生む原因となります。" }
+            ]
+        });
+    }
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const d = missionData[current];
+        document.getElementById('q-count').innerText = `${current + 1} / 20`;
+        document.getElementById('bar').style.width = ((current + 1) / 20 * 100) + '%';
+        document.getElementById('q-txt').innerText = d.q;
+        const list = document.getElementById('opt-list');
+        list.innerHTML = '';
+        d.opts.forEach((o, i) => {
+            const b = document.createElement('button');
+            b.className = 'btn-mission';
+            b.innerText = o.t;
+            b.onclick = () => check(i);
+            list.appendChild(b);
+        });
+        document.getElementById('exp').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function check(idx) {
+        const d = missionData[current];
+        const isC = d.opts[idx].c;
+        if(isC) score++;
+        const e = document.getElementById('exp');
+        e.style.display = 'block';
+        e.style.borderLeftColor = isC ? 'var(--correct)' : 'var(--wrong)';
+        e.innerHTML = `<strong>${isC ? '【正解】' : '【解説】'}</strong><br>${d.opts[idx].r}`;
+        document.querySelectorAll('.btn-mission').forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function goNext() {
+        current++;
+        if(current < missionData.length) render();
+        else {
+            document.getElementById('quiz-screen').style.display = 'none';
+            document.getElementById('finish-screen').style.display = 'block';
+            document.getElementById('final-score').innerText = `${score} / 20`;
+        }
+    }
+
+    render();
+</script>
+</body>
+</html>

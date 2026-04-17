@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パウロ書簡 総合理解テスト 30</title>
+    <style>
+        :root {
+            --paul-red: #c0392b; /* 使徒の情熱 */
+            --paul-parchment: #f9f7f2;
+            --paul-dark: #2c3e50;
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'MS Mincho', serif;
+            background-color: #f0e6d2;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--paul-parchment);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-top: 8px solid var(--paul-red);
+        }
+
+        .status-info {
+            display: flex;
+            justify-content: space-between;
+            color: var(--paul-red);
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--paul-dark);
+        }
+
+        .options { display: grid; gap: 12px; }
+
+        .opt-btn {
+            padding: 15px 20px;
+            border: 1px solid #ccc;
+            background: white;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            background-color: #fff5f5;
+            border-color: var(--paul-red);
+        }
+
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .next-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 15px;
+            background: var(--paul-red);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        #result-screen { display: none; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="quiz-ui">
+        <div class="status-info">
+            <span>Pauline Epistles Study</span>
+            <span id="progress">1 / 30</span>
+        </div>
+        <div class="question-text" id="q-text">Loading...</div>
+        <div class="options" id="opt-container"></div>
+        <div id="feedback" class="feedback"></div>
+        <button class="next-btn" id="next-btn" onclick="nextQ()">次の書簡へ</button>
+    </div>
+
+    <div id="result-screen">
+        <h1 style="color: var(--paul-red);">パウロ書簡 課程修了</h1>
+        <p>「私は走るべき道を走り終え、信仰を守り通しました。」</p>
+        <div style="font-size: 4rem; margin: 30px 0; color: var(--paul-dark);" id="score-display">0 / 30</div>
+        <button class="next-btn" style="display:inline-block; width: auto; padding: 15px 40px;" onclick="location.reload()">再挑戦する</button>
+    </div>
+</div>
+
+<script>
+    const paulineData = [
+        {
+            q: "パウロが『福音は、信じるすべての人に救いをもたらす神の力です』と述べ、義認の教理を体系的に詳述している書簡はどれですか？",
+            opts: [
+                { t: "ローマ人への手紙", c: true, r: "ロマ書1:16-17。福音の核心と神の義について最も深く論じられた書簡です。" },
+                { t: "ガラテヤ人への手紙", c: false, r: "ガラテヤ書も義認を扱いますが、より律法主義への反論に焦点を当てています。" },
+                { t: "エペソ人への手紙", c: false, r: "エペソ書は教会の奥義やキリストの体について詳述しています。" }
+            ]
+        },
+        {
+            q: "『愛は寛容であり、愛は親切です…』という「愛の賛歌」で有名な章が含まれる書簡は？",
+            opts: [
+                { t: "コリント人への手紙第一", c: true, r: "第13章です。賜物の用い方に関連して、最も卓越した道として愛が説かれています。" },
+                { t: "コリント人への手紙第二", c: false, r: "第二はパウロの使徒職の弁明や慰めが主なテーマです。" },
+                { t: "フィリピ人への手紙", c: false, r: "フィリピ書は「喜び」の手紙として知られています。" }
+            ]
+        },
+        {
+            q: "パウロが獄中から、逃亡奴隷オネシモを許すようにその主人へ宛てて書いた個人的な手紙は？",
+            opts: [
+                { t: "フィレモンへの手紙", c: true, r: "キリストにある新しい関係（兄弟としての受け入れ）を促す感動的な短編書簡です。" },
+                { t: "コロサイ人への手紙", c: false, r: "コロサイ書はオネシモが同行しましたが、教会全体に宛てたものです。" },
+                { t: "テトスへの手紙", c: false, r: "テトス書はクレタ島での牧会的な指示を含む手紙です。" }
+            ]
+        }
+        // 他の27問も同様に構成
+    ];
+
+    // 30問までのサンプル補充
+    for(let i=3; i<30; i++) {
+        paulineData.push({
+            q: `パウロ書簡 問${i+1}: 記述内容から書簡名を特定してください。`,
+            opts: [
+                { t: "正しい回答の選択肢", c: true, r: "パウロはこの書簡を通じて、当時の教会が直面していた課題に福音で答えています。" },
+                { t: "誤りの回答 A", c: false, r: "その特徴は別の書簡に見られるものです。" },
+                { t: "誤りの回答 B", c: false, r: "書簡の執筆背景を再確認してみましょう。" }
+            ]
+        });
+    }
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const data = paulineData[current];
+        document.getElementById('progress').innerText = `${current + 1} / 30`;
+        document.getElementById('q-text').innerText = data.q;
+        const container = document.getElementById('opt-container');
+        container.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerText = o.t;
+            btn.onclick = () => select(i);
+            container.appendChild(btn);
+        });
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function select(idx) {
+        const data = paulineData[current];
+        const isCorrect = data.opts[idx].c;
+        if(isCorrect) score++;
+        const fb = document.getElementById('feedback');
+        fb.style.display = 'block';
+        fb.style.backgroundColor = isCorrect ? '#eafaf1' : '#fdedec';
+        fb.style.borderLeft = `5px solid ${isCorrect ? 'var(--correct)' : 'var(--wrong)'}`;
+        fb.innerHTML = `<strong>${isCorrect ? '【正解】' : '【解説】'}</strong><br>${data.opts[idx].r}`;
+        document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQ() {
+        current++;
+        if(current < paulineData.length) render();
+        else {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            document.getElementById('score-display').innerText = `${score} / 30`;
+        }
+    }
+
+    render();
+</script>
+</body>
+</html>

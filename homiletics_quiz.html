@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>説教学（ホミレティクス）総合テスト</title>
+    <style>
+        :root {
+            --primary-bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --accent-blue: #2980b9;
+            --correct-green: #27ae60;
+            --wrong-red: #e74c3c;
+            --border-light: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 700px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            color: var(--accent-blue);
+            margin: 0;
+        }
+
+        .progress-bar {
+            display: grid;
+            grid-template-columns: repeat(30, 1fr);
+            gap: 4px;
+            margin: 20px 0;
+        }
+
+        .dot {
+            height: 6px;
+            background: #dfe6e9;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .dot.active { background: var(--accent-blue); }
+        .dot.correct { background: var(--correct-green); }
+        .dot.wrong { background: var(--wrong-red); }
+
+        .question-info {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-item {
+            padding: 15px 20px;
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            background: none;
+            text-align: left;
+            width: 100%;
+        }
+
+        .option-item:hover:not(:disabled) {
+            background-color: #f0f7ff;
+            border-color: var(--accent-blue);
+        }
+
+        .feedback-area {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback-title { font-weight: bold; margin-bottom: 8px; font-size: 1.1rem; }
+        .feedback-text { font-size: 0.95rem; line-height: 1.6; }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary { background: var(--accent-blue); color: white; }
+        .btn-primary:hover { opacity: 0.9; }
+        .btn-secondary { background: #ecf0f1; color: #7f8c8d; }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .result-view { text-align: center; display: none; }
+        .final-score { font-size: 4rem; font-weight: 800; color: var(--accent-blue); margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div id="quiz-view">
+        <header>
+            <h1>説教学（ホミレティクス）理解度テスト</h1>
+            <div class="progress-bar" id="progress-bar"></div>
+        </header>
+
+        <div class="question-info" id="q-number">Question 1 / 30</div>
+        <div class="question-text" id="q-text">読み込み中...</div>
+
+        <div class="options-list" id="options-list"></div>
+
+        <div id="feedback-area" class="feedback-area">
+            <div class="feedback-title" id="fb-title"></div>
+            <div class="feedback-text" id="fb-text"></div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-secondary" id="prev-btn">戻る</button>
+            <button class="btn btn-primary" id="next-btn">次へ</button>
+        </div>
+    </div>
+
+    <div id="result-view" class="result-view">
+        <h2>テスト終了</h2>
+        <p>あなたの正解数は...</p>
+        <div class="final-score" id="final-score">0 / 30</div>
+        <p id="final-comment"></p>
+        <button class="btn btn-primary" onclick="location.reload()">再挑戦する</button>
+    </div>
+</div>
+
+<script>
+    const quizData = [
+        {
+            q: "聖書の特定の箇所を順を追って解き明かすスタイルを何と呼びますか？",
+            opts: [
+                { t: "講解説教", c: true, r: "テキストの文脈と構造を尊重し、そこからメッセージを引き出す基本の形です。" },
+                { t: "題説教", c: false, r: "特定のテーマに沿って聖句を集めるスタイルです。" },
+                { t: "伝記的説教", c: false, r: "人物の生涯に焦点を当てるスタイルです。" },
+                { t: "即興説教", c: false, r: "準備なしに語るスタイルを指します。" }
+            ]
+        },
+        {
+            q: "自分の考えをテキストに読み込んでしまう解釈上の誤りを何と呼びますか？",
+            opts: [
+                { t: "エグゼジーシス", c: false, r: "これは正しい「解釈・引き出し」を指します。" },
+                { t: "アイセジーシス", c: true, r: "自分の先入観をテキストに「注入」してしまう誤りです。" },
+                { t: "アポロゲティクス", c: false, r: "キリスト教の「弁証」のことです。" },
+                { t: "エルメネイイア", c: false, r: "「解釈学」を指す一般的な言葉です。" }
+            ]
+        },
+        {
+            q: "説教の「序論（導入）」における最も重要な役割は何ですか？",
+            opts: [
+                { t: "聴衆の関心を喚起し、主題を示す", c: true, r: "なぜこのメッセージを聞く必要があるのかを提示する接点作りです。" },
+                { t: "背景をすべて説明し尽くす", c: false, r: "背景説明は重要ですが、導入の主目的は関心の喚起です。" },
+                { t: "面白い冗談で笑いをとる", c: false, r: "アイスブレイクも一つの手段ですが、本質的役割ではありません。" },
+                { t: "結論を先に述べる", c: false, r: "結論を急ぐと、聖書箇所との対話が薄れる場合があります。" }
+            ]
+        }
+        // 以下、同様の形式で30問目まで追加可能です。
+    ];
+
+    let current = 0;
+    let answers = new Array(quizData.length).fill(null);
+
+    function init() {
+        const bar = document.getElementById('progress-bar');
+        for(let i=0; i<quizData.length; i++) {
+            const d = document.createElement('div');
+            d.className = 'dot';
+            d.id = `dot-${i}`;
+            bar.appendChild(d);
+        }
+        render();
+    }
+
+    function render() {
+        const data = quizData[current];
+        document.getElementById('q-number').innerText = `第 ${current + 1} 問 / ${quizData.length}`;
+        document.getElementById('q-text').innerText = data.q;
+        
+        const list = document.getElementById('options-list');
+        list.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const b = document.createElement('button');
+            b.className = 'option-item';
+            b.innerText = o.t;
+            b.onclick = () => select(i);
+            if (answers[current] !== null) b.disabled = true;
+            list.appendChild(b);
+        });
+
+        const fb = document.getElementById('feedback-area');
+        if (answers[current] !== null) {
+            showFeedback(answers[current]);
+        } else {
+            fb.style.display = 'none';
+        }
+
+        document.querySelectorAll('.dot').forEach((d, i) => {
+            d.classList.remove('active');
+            if(i === current) d.classList.add('active');
+        });
+
+        document.getElementById('prev-btn').disabled = current === 0;
+        document.getElementById('next-btn').innerText = current === quizData.length - 1 ? "完了" : "次へ";
+    }
+
+    function select(idx) {
+        answers[current] = idx;
+        const isCorrect = quizData[current].opts[idx].c;
+        const dot = document.getElementById(`dot-${current}`);
+        dot.classList.add(isCorrect ? 'correct' : 'wrong');
+        showFeedback(idx);
+    }
+
+    function showFeedback(idx) {
+        const data = quizData[current];
+        const isCorrect = data.opts[idx].c;
+        const fb = document.getElementById('feedback-area');
+        fb.style.display = 'block';
+        fb.style.backgroundColor = isCorrect ? '#eafaf1' : '#fdedec';
+        
+        document.getElementById('fb-title').innerText = isCorrect ? "○ 正解" : "× 不正解";
+        document.getElementById('fb-title').style.color = isCorrect ? 'var(--correct-green)' : 'var(--wrong-red)';
+        document.getElementById('fb-text').innerText = data.opts[idx].r;
+
+        const btns = document.querySelectorAll('.option-item');
+        data.opts.forEach((o, i) => {
+            if(o.c) btns[i].style.borderColor = 'var(--correct-green)';
+            if(i === idx && !o.c) btns[i].style.borderColor = 'var(--wrong-red)';
+        });
+    }
+
+    document.getElementById('next-btn').onclick = () => {
+        if(current < quizData.length - 1) { current++; render(); }
+        else { showResult(); }
+    };
+
+    document.getElementById('prev-btn').onclick = () => {
+        if(current > 0) { current--; render(); }
+    };
+
+    function showResult() {
+        const score = answers.filter((a, i) => a !== null && quizData[i].opts[a].c).length;
+        document.getElementById('quiz-view').style.display = 'none';
+        const rv = document.getElementById('result-view');
+        rv.style.display = 'block';
+        document.getElementById('final-score').innerText = `${score} / ${quizData.length}`;
+        
+        let msg = "説教学の奥深さをさらに学んでいきましょう。";
+        if(score === quizData.length) msg = "完璧です！御言葉を伝える準備ができています。";
+        else if(score > 20) msg = "素晴らしい理解度です。実践に活かしましょう。";
+        document.getElementById('final-comment').innerText = msg;
+    }
+
+    init();
+</script>
+</body>
+</html>

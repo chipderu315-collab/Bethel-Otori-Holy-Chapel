@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨハネの黙示録 総合理解テスト 30</title>
+    <style>
+        :root {
+            --rev-purple: #4a148c; /* 王権と神秘 */
+            --rev-gold: #ffd700;   /* 新しいエルサレム */
+            --rev-white: #ffffff;
+            --rev-bg: #1a1a2e;     /* 宇宙的・夜空の背景 */
+            --correct: #00e676;
+            --wrong: #ff1744;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'MS Mincho', serif;
+            background-color: var(--rev-bg);
+            background-image: radial-gradient(circle, #2e1a47 0%, #1a1a2e 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            color: #eee;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(74, 20, 140, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .header-title {
+            text-align: center;
+            color: var(--rev-gold);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            margin-bottom: 30px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            margin-bottom: 25px;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--rev-gold);
+            width: 0%;
+            transition: 0.4s;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            color: #fff;
+        }
+
+        .options { display: grid; gap: 15px; }
+
+        .opt-btn {
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: #ddd;
+            cursor: pointer;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1.05rem;
+            transition: 0.3s;
+        }
+
+        .opt-btn:hover:not(:disabled) {
+            background: rgba(74, 20, 140, 0.4);
+            border-color: var(--rev-gold);
+            color: #fff;
+        }
+
+        .explanation {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--rev-gold);
+            line-height: 1.6;
+        }
+
+        .next-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 18px;
+            background: var(--rev-purple);
+            color: white;
+            border: 1px solid var(--rev-gold);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: none;
+        }
+
+        #result-screen { text-align: center; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="quiz-ui">
+        <h2 class="header-title">The Revelation</h2>
+        <div class="progress-container"><div class="progress-bar" id="progress-bar"></div></div>
+        <div style="text-align: right; font-size: 0.8rem; margin-bottom: 10px;" id="counter">1 / 30</div>
+        
+        <div class="question-text" id="q-text">Loading...</div>
+        <div class="options" id="opt-container"></div>
+        <div id="explanation" class="explanation"></div>
+        <button class="next-btn" id="next-btn" onclick="nextQ()">次の封印を解く</button>
+    </div>
+
+    <div id="result-screen">
+        <h1 style="color: var(--rev-gold);">ハレルヤ、全き勝利</h1>
+        <p>「神は彼らの目から涙をことごとくぬぐい取ってくださる。」</p>
+        <div style="font-size: 5rem; margin: 40px 0;" id="score-display">0 / 30</div>
+        <button class="next-btn" style="display:inline-block; width: auto; padding: 15px 50px;" onclick="location.reload()">再び証しを読む</button>
+    </div>
+</div>
+
+<script>
+    const revData = [
+        {
+            q: "ヨハネが啓示を受けた際、流刑にされていた島の名前は何ですか？",
+            opts: [
+                { t: "パトモス島", c: true, r: "黙示録1:9。イエスの言葉と証しのゆえに、エーゲ海のこの島に流されていました。" },
+                { t: "クレタ島", c: false, r: "クレタ島はテトスが働いた場所です。" },
+                { t: "キプロス島", c: false, r: "キプロスはバルナバの故郷ですが、黙示録の舞台ではありません。" }
+            ]
+        },
+        {
+            q: "アジアにある『七つの教会』のうち、最初にメッセージが送られた教会はどこですか？",
+            opts: [
+                { t: "エペソ教会", c: true, r: "黙示録2:1。『初めの愛』から離れてしまったことを指摘された教会です。" },
+                { t: "スミルナ教会", c: false, r: "スミルナは二番目にメッセージを送られた教会です。" },
+                { t: "ラオデキヤ教会", c: false, r: "ラオデキヤは最後に登場する、ぬるい状態を指摘された教会です。" }
+            ]
+        },
+        {
+            q: "新しいエルサレムの都には、いくつの門がありますか？",
+            opts: [
+                { t: "12の門", c: true, r: "黙示録21:12。イスラエルの12部族の名が刻まれた、真珠でできた12の門があります。" },
+                { t: "7つの門", c: false, r: "7は象徴的な数字ですが、都の門の数は12です。" },
+                { t: "1つだけの門", c: false, r: "キリストは門ですが、都の描写としては12の門が記されています。" }
+            ]
+        }
+    ];
+
+    // 30問までのダミー補充
+    for(let i=3; i<30; i++) {
+        revData.push({
+            q: `黙示録 問${i+1}: 終末の預言と希望についての理解を確認します。`,
+            opts: [
+                { t: "聖書に基づいた正しい選択肢", c: true, r: "この箇所は、苦難の中にある教会への励ましと、神の絶対的な主権を示しています。" },
+                { t: "誤った解釈の選択肢 A", c: false, r: "前後の文脈を再確認してみましょう。" },
+                { t: "誤った解釈の選択肢 B", c: false, r: "黙示録特有の象徴表現を整理する必要があります。" }
+            ]
+        });
+    }
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const data = revData[current];
+        document.getElementById('counter').innerText = `${current + 1} / 30`;
+        document.getElementById('progress-bar').style.width = ((current + 1) / 30 * 100) + '%';
+        document.getElementById('q-text').innerText = data.q;
+        const container = document.getElementById('opt-container');
+        container.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerText = o.t;
+            btn.onclick = () => select(i);
+            container.appendChild(btn);
+        });
+        document.getElementById('explanation').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function select(idx) {
+        const data = revData[current];
+        const isCorrect = data.opts[idx].c;
+        if(isCorrect) score++;
+        const ex = document.getElementById('explanation');
+        ex.style.display = 'block';
+        ex.style.color = isCorrect ? 'var(--correct)' : 'var(--wrong)';
+        ex.innerHTML = `<strong>${isCorrect ? '【正解】' : '【解説】'}</strong><br><span style="color:#eee">${data.opts[idx].r}</span>`;
+        document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQ() {
+        current++;
+        if(current < revData.length) render();
+        else {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('result-screen').style.display = 'block';
+            document.getElementById('score-display').innerText = `${score} / 30`;
+        }
+    }
+
+    render();
+</script>
+</body>
+</html>

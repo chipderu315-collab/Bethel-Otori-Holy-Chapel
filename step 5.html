@@ -3,275 +3,1070 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ベテル鳳 神学教本 | 高校生・アカデミックコース</title>
     <style>
-        :root {
-            --academic-blue: #1e3a8a;
-            --main-gold: #c5a059;
-            --off-white: #f8fafc;
-            --dark-gray: #1e293b;
-        }
+    .welcome-message {
+        background: linear-gradient(135deg, #fff9f0 0%, #ffffff 100%);
+        padding: 50px 30px;
+        border-radius: 30px;
+        border: 2px solid #faedcd;
+        text-align: center;
+        margin: 40px auto;
+        max-width: 800px;
+        line-height: 2;
+    }
+    .welcome-accent {
+        color: #d4a373;
+        font-weight: bold;
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 20px;
+    }
+    .welcome-text {
+        font-size: 1.05rem;
+        color: #555;
+        text-align: left;
+        display: inline-block;
+    }
+    .highlight-gold {
+        background: linear-gradient(transparent 60%, #fff4cc 0%);
+        font-weight: bold;
+    }
+    .cta-badge {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 10px 25px;
+        background: #8b5e3c;
+        color: white;
+        border-radius: 50px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+</style>
 
+<div class="welcome-message">
+    <span class="welcome-accent">✨ 特別な「選び」の中にいる、あなたへ</span>
+    
+    <div class="welcome-text">
+        周りを見渡すと、まだイエス様のことを知らない人がたくさんいます。<br>
+        「宗教なんて自分には関係ない」と思っている人がほとんどかもしれません。<br><br>
+
+        でも、そんな中で<span class="highlight-gold">神様の不思議な選び</span>によって、今これを読んでいるあなたは、一足先にイエス様の愛を知り、救われました。生きている今の喜びを、もう知っているはずです。<br><br>
+
+        この<span class="highlight-gold">最高に贅沢な神様からのプレゼント</span>を、自分だけで独り占めにするなんてもったいない！<br>
+        「まだ知らないあの人に、私が教えてあげるんだ」「私が祈ってあげるんだ」。<br>
+        そんな純粋な愛を形にするために、この場所はあります。<br><br>
+
+        周りの人にとって、あなたは今日から「先生」であり、愛の「模範」になります。<br>
+        それは決して重たいプレッシャーではありません。<br>
+        <span style="font-size: 1.3rem; color: #d4a373; font-weight: bold;">「自分が誰かの光になれる」</span>。これほど最高に楽しくて、生きがいを感じる特権が他にあるでしょうか？<br><br>
+
+        さあ、教師にふさわしい知恵と力を身につけて、大胆に一歩を踏み出しましょう。<br>
+        あなたの言葉が、誰かの永遠を変える鍵になります！
+    </div>
+
+    <div class="cta-badge">
+        MISSION：教師育成コースをスタート！ 🚀
+    </div>
+</div>
+<style>
+    /* 20項目セクション全体のスタイル */
+    .curriculum-section {
+        padding: 60px 20px;
+        background-color: #ffffff;
+        text-align: center;
+    }
+    .curriculum-intro {
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+        color: #666;
+    }
+    .curriculum-intro strong {
+        color: #d4a373;
+    }
+
+    /* 20個のボタンを並べるグリッド */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    /* 各項目のボタンデザイン */
+    .curriculum-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 10px;
+        background: #fff;
+        border: 2px solid #fefae0;
+        border-radius: 15px;
+        text-decoration: none;
+        color: #8b5e3c;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .curriculum-item:hover {
+        background: #fffdf0;
+        border-color: #d4a373;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(212, 163, 115, 0.1);
+    }
+
+    .item-number {
+        font-size: 0.75rem;
+        background: #faedcd;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+    }
+
+    /* 特別な案内（牧師・教師向け） */
+    .professional-notice {
+        margin-top: 50px;
+        padding: 25px;
+        background: #f0f7ff; /* 爽やかなパステルブルー */
+        border-radius: 20px;
+        display: inline-block;
+        max-width: 800px;
+        border: 1px solid #deecff;
+    }
+</style>
+
+<section class="curriculum-section">
+    <div class="curriculum-intro">
+        <p>
+            ここからは、教師としての土台を作る<strong>「20のトレーニングメニュー」</strong>です。<br>
+            一つひとつの扉を開くたび、あなたの内側に確かな真理の光が蓄えられていきます。
+        </p>
+    </div>
+
+    <div class="grid-container">
+        <a href="dendo.html" class="curriculum-item">
+            <span class="item-number">Topic 01</span>
+            <span>伝道ハンドブック</span>
+        </a>
+        <a href="homiletics_quiz.html" class="curriculum-item">
+            <span class="item-number">Topic 02</span>
+            <span>説教学</span>
+        </a>
+        <a href="hope.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>希望</span>
+        </a>
+         <a href="doctrine_quiz.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>根本教理</span>
+        </a>
+         <a href="rekisi.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>キリスト教歴</span>
+        </a>
+         <a href="sosikisingaku.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>組織神学</span>
+        </a>
+         <a href="gengo.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>原語学</span>
+        </a>
+         <a href="catechism.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>カテキズム</span>
+        </a>
+         <a href="psalm.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>詩篇</span>
+        </a>
+         <a href="mose.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>モーセ５書　</span>
+        </a>
+         <a href="pauro.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>パウロ書簡　</span>
+        </a>
+         <a href="holyspirit.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>聖霊学　</span>
+        </a>
+         <a href="mokusiroku.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>黙示録</span>
+        </a>
+         <a href="seityou.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>教会成長論</span>
+        </a>
+         <a href="paster.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>牧師論　</span>
+        </a>
+         <a href="kaigai.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>海外宣教　</span>
+        </a>
+         <a href="kids.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>キッズミニストリー</span>
+        </a>
+         <a href="ansyou.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>暗唱成句</span>
+        </a>
+         <a href="akasi.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>救いの証し</span>
+        </a>
+         <a href="syoumei.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>あなたに与えられた御言葉</span>
+        </a>
+        
+
+        <div style="grid-column: 1 / -1; padding: 20px; color: #ccc;">...and more (Total 20 Topics)</div>
+    </div>
+
+    <div class="professional-notice">
+        <strong style="color: #4a6670; display: block; margin-bottom: 10px;">✨ すでに教師・牧師として歩まれている皆様へ</strong>
+        <p style="font-size: 0.9rem; margin: 0;">
+            日々の尊いご奉仕をありがとうございます。<br>
+            現職の皆様も、ぜひ「復習」としてこれらのテストをご活用ください。<br>
+            テスト形式でご自身の理解を再確認することで、より確かな、より正確な知識を身につける機会となれば幸いです。
+        </p>
+    </div>
+</section>
+    <style>
+    /* 20項目セクション全体のスタイル */
+    .curriculum-section {
+        padding: 60px 20px;
+        background-color: #ffffff;
+        text-align: center;
+    }
+    .curriculum-intro {
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+        color: #666;
+    }
+    .curriculum-intro strong {
+        color: #d4a373;
+    }
+
+    /* 20個のボタンを並べるグリッド */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    /* 各項目のボタンデザイン */
+    .curriculum-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 10px;
+        background: #fff;
+        border: 2px solid #fefae0;
+        border-radius: 15px;
+        text-decoration: none;
+        color: #8b5e3c;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .curriculum-item:hover {
+        background: #fffdf0;
+        border-color: #d4a373;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(212, 163, 115, 0.1);
+    }
+
+    .item-number {
+        font-size: 0.75rem;
+        background: #faedcd;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+    }
+
+    /* 特別な案内（牧師・教師向け） */
+    .professional-notice {
+        margin-top: 50px;
+        padding: 25px;
+        background: #f0f7ff; /* 爽やかなパステルブルー */
+        border-radius: 20px;
+        display: inline-block;
+        max-width: 800px;
+        border: 1px solid #deecff;
+    }
+</style>
+
+<section class="curriculum-section">
+    <div class="curriculum-intro">
+        <p>
+            ここからは、教師としての土台を作る<strong>「20のトレーニングメニュー」</strong>です。<br>
+            一つひとつの扉を開くたび、あなたの内側に確かな真理の光が蓄えられていきます。
+        </p>
+    </div>
+
+    <div class="grid-container">
+        <a href="test01.html" class="curriculum-item">
+            <span class="item-number">Topic 01</span>
+            <span>伝道ハンドブック</span>
+        </a>
+        <a href="test02.html" class="curriculum-item">
+            <span class="item-number">Topic 02</span>
+            <span>救済の教理</span>
+        </a>
+        <a href="test03.html" class="curriculum-item">
+            <span class="item-number">Topic 03</span>
+            <span>聖書背景の基礎</span>
+        </a>
+        <div style="grid-column: 1 / -1; padding: 20px; color: #ccc;">...and more (Total 20 Topics)</div>
+    </div>
+
+    <div class="professional-notice">
+        <strong style="color: #4a6670; display: block; margin-bottom: 10px;">✨ すでに教師・牧師として歩まれている皆様へ</strong>
+        <p style="font-size: 0.9rem; margin: 0;">
+            日々の尊いご奉仕をありがとうございます。<br>
+            現職の皆様も、ぜひ「復習」としてこれらのテストをご活用ください。<br>
+            テスト形式でご自身の理解を再確認することで、より確かな、より正確な知識を身につける機会となれば幸いです。
+        </p>
+    </div>
+</section>
+    <style>
+        /* あかりちゃんお気に入りのモリサワUDフォント */
         body {
-            font-family: 'Hiragino Mincho ProN', serif;
-            background-color: var(--off-white);
-            color: var(--dark-gray);
-            line-height: 1.9;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background: var(--dark-gray);
-            color: #fff;
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .container {
+            font-family: "UD Shin Go", "UD新ゴ", "UD Reimin", "UD黎ミン", sans-serif;
+            line-height: 1.8;
+            color: #333;
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
-        }
-
-        .academic-section {
-            background: #fff;
-            padding: 40px;
-            border-radius: 4px;
-            margin-bottom: 50px;
-            border-left: 2px solid var(--academic-blue);
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-        }
-
-        .badge-academic {
-            font-family: sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            color: var(--academic-blue);
-            font-weight: bold;
-            border: 1px solid var(--academic-blue);
-            padding: 2px 8px;
-            margin-bottom: 20px;
-            display: inline-block;
+            background-color: #fff;
         }
 
         h2 {
-            font-size: 1.8rem;
-            color: var(--academic-blue);
-            margin-bottom: 25px;
-        }
-
-        .etymology-box {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 0.95rem;
-        }
-
-        .etymology-box b { color: var(--academic-blue); }
-
-        .bible-ref {
-            font-weight: bold;
-            border-bottom: 1px solid var(--main-gold);
-            padding-bottom: 2px;
-        }
-
-        /* 契約の展開セクション */
-        .covenant-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .covenant-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px dashed #cbd5e1;
-        }
-
-        /* プレミアム誘導 */
-        .premium-paywall {
-            background: var(--dark-gray);
-            color: #fff;
-            padding: 60px 40px;
             text-align: center;
-            border-radius: 8px;
-            border: 1px solid var(--main-gold);
+            color: #2c3e50;
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            font-size: 26px;
         }
 
-        .square-link {
-            display: inline-block;
-            background: var(--main-gold);
-            color: #fff;
-            text-decoration: none;
-            padding: 20px 50px;
+        .intro-text {
+            background: #fdfaf0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 5px solid #f39c12;
+        }
+
+        .contract-section {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px dashed #ccc;
+        }
+
+        .contract-section::before {
+            content: "📜";
+            position: absolute;
+            left: -15px;
+            top: 0;
+            background: white;
+            font-size: 20px;
+        }
+
+        h3 {
+            color: #d35400;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
             font-weight: bold;
-            border-radius: 4px;
-            margin-top: 30px;
-            transition: 0.3s;
+            color: #c0392b;
         }
 
-        .square-link:hover { opacity: 0.8; }
+        .summary-box {
+            background-color: #e8f4f8;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            text-align: center;
+            border: 1px solid #b4d8e7;
+        }
+
+        /* クイズセクションの追加スタイル */
+        .quiz-header {
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            margin-top: 80px;
+        }
+
+        .quiz-card {
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+        }
+
+        .question-item {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .question-text {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: #d35400;
+            margin-bottom: 15px;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.2s;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background-color: #fdfaf0;
+            border-color: #f39c12;
+        }
+
+        .option-btn.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .option-btn.incorrect {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            background: #e8f4f8;
+            color: #2980b9;
+        }
+
+        #result-display {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #f39c12;
+            color: white;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .check-score-btn {
+            display: block;
+            width: 250px;
+            margin: 40px auto;
+            padding: 15px;
+            background: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        /* --- 追加：教育サイト用スタイル --- */
+/* Vision / 聖句 */
+.vision-section { background: linear-gradient(to bottom, #ffffff, #fffaf0); }
+.highlight-text { color: #d4a373; font-weight: bold; border-bottom: 2px solid #fefae0; }
+.scripture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+.scripture-card { background: #fff; padding: 20px; border-radius: 12px; border: 1px dashed #d4a373; }
+.scripture-tag { font-size: 0.75rem; background: #d4a373; color: white; padding: 2px 10px; border-radius: 20px; margin-bottom: 10px; display: inline-block; }
+
+/* Journey / ロードマップ */
+.roadmap-container { position: relative; max-width: 800px; margin: 30px auto; padding-left: 40px; }
+.roadmap-container::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; border-left: 2px dashed #d4a373; }
+.roadmap-step { position: relative; margin-bottom: 40px; }
+.step-number { position: absolute; left: -40px; top: 0; width: 32px; height: 32px; background: #d4a373; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; z-index: 1; }
+.step-content { background: #fffaf0; padding: 20px; border-radius: 15px; border: 1px solid #fefae0; transition: transform 0.3s ease; }
+.step-content:hover { transform: translateX(10px); background: #fefae0; }
+
+/* Deep Study / 神学 */
+.deep-study-container { border-top: 6px solid #4a6670; }
+.testament-title { display: flex; align-items: center; gap: 15px; color: #8b5e3c; font-size: 1.4rem; margin: 30px 0 20px; }
+.testament-title::after { content: ''; flex-grow: 1; height: 1px; background: linear-gradient(to right, #d4a373, transparent); }
+.deep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.deep-article { background: #fcfcfc; border: 1px solid #eee; border-top: 4px solid #4a6670; padding: 20px; border-radius: 8px; transition: 0.3s; }
+.deep-article:hover { background: #f8f9fa; border-top-color: #d4a373; }
+.original-word { display: inline-block; background: #f0f4f8; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem; color: #4a6670; margin-bottom: 10px; }
+
+/* Action / ボタン・テスト */
+.action-area { text-align: center; border: 2px dashed #fefae0; padding: 40px; border-radius: 20px; margin-top: 40px; }
+.btn-download { display: inline-flex; align-items: center; gap: 10px; background: #d4a373; color: #fff; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; margin: 10px; }
+.btn-download:hover { background: #8b5e3c; transform: translateY(-2px); }
+.test-section { margin-top: 40px; text-align: left; background: #fdf5e6; padding: 25px; border-radius: 15px; }
+.test-badge { background: #4a6670; color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; display: inline-block; }
     </style>
 </head>
 <body>
+    <main class="container">
 
-<header>
-    <div style="color: var(--main-gold); font-weight: bold; letter-spacing: 0.2em; margin-bottom: 10px;">SEMINARY LEVEL STUDY</div>
-    <h1 style="margin: 0; font-size: 2.2rem;">ベテル鳳 神学教本</h1>
-    <p style="opacity: 0.8;">原語から読み解く「契約（Covenant）」の体系的考察</p>
-</header>
-
-<div class="container">
-
-    <section class="academic-section">
-        <span class="badge-academic">CORE CONCEPTS</span>
-        <h2>1. 契約（Berit）の本質的意味</h2>
-        <p>キリスト教の神を理解する鍵は「契約」にあります。現代の「契約」とは異なり、聖書的な契約には命のやり取りが含まれます。</p>
-        
-        <div class="etymology-box">
-            <b>【原語解説】ベリート（Berit）</b><br>
-            旧約の「契約」を指すヘブル語。語源は「切り裂く」。創世記15章で、神が切り裂かれた動物の間を通り抜けたのは、「もし契約を破れば、私がこのように裂かれる」という神の一方的なコミットメントを視覚化したものです。
+    <section class="card vision-section">
+        <div class="content-body">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <span style="color: #d4a373; font-weight: bold;">【Vision】なぜ私たちが「伝える」のか</span>
+                <h2 style="border:none; font-size: 1.6rem; color: #8b5e3c;">〜あなたの言葉が、誰かの希望の光になる〜</h2>
+            </div>
+            <p>（略：メッセージ本文）</p>
+            <div class="scripture-grid">
+                </div>
         </div>
-        <p>神は決して契約を破られない不変（Immutability）の性質を持っています。マラキ3:6にある通り、神の本質が変わらないからこそ、契約の民は滅ぼされないのです。</p>
     </section>
 
-    <section class="academic-section">
-        <span class="badge-academic">CHRISTOLOGY</span>
-        <h2>2. ロゴスの受肉と人性</h2>
-        <p>イエス・キリストは、全知・全能・遍在・不変という神の属性（Divine Attributes）を保持したまま、肉（Sarx）を纏われました。</p>
-        
-        <div class="etymology-box">
-            <b>【原語解説】ロゴス（Logos）とサリクス（Sarx）</b><br>
-            ヨハネ1:14「ことば（ロゴス）が人（サリクス）となった」。ロゴスは永遠不変の理法を、サリクスは弱く朽ちゆく肉体を指します。この相容れない二つの性質が一つの人格に結合した（位格的結合）ことこそ、キリスト教最大の神秘です。
+    <section class="card">
+        <div class="content-body">
+            <h3>挫折しない「学びのロードマップ」</h3>
+            <div class="roadmap-container">
+                </div>
         </div>
-        <p>イエス様が空腹や渇き（人性）を感じられたのは、私たちの「完全な代表者」として罪を贖うために必要不可欠なプロセスでした。天に昇られた今も、私たちの弱さを理解し、とりなしておられます。</p>
     </section>
 
-    <section class="academic-section">
-        <span class="badge-academic">SOTERIOLOGY</span>
-        <h2>3. 義認：法廷的宣告としての救い</h2>
-        <p>救いとは、私たちが立派になることではなく、法的なステータスが「逆転」することを指します。</p>
+    <section class="card deep-study-container">
+        </section>
+
+    <section class="action-area">
+        </section>
+        <section class="container">
+    <div class="card journey-section">
+        <div class="content-body">
+            <section class="container">
+    <div class="card vision-section">
+        <div class="content-body">
+            
+            <div class="vision-header">
+                <span class="vision-sub-title">【Vision】なぜ私たちが「伝える」のか</span>
+                <h2 class="vision-main-copy">〜あなたの言葉が、誰かの希望の光になる〜</h2>
+            </div>
+
+            <div class="vision-message">
+                <p>
+                    聖書を伝えるということは、単に歴史や知識を教えることではありません。それは、数千年の時を超えて流れる「神様の愛」を、今を生きる一人ひとりの心に届けることです。<br>
+                    私たちは、聖書の真理を正しく、かつ魅力的に伝える<span class="highlight-text">「伝えるプロフェッショナル」</span>を目指しています。子どもの心に希望の種をまく喜び、そして献身者として歩む道がいかに豊かで光に満ちているか。その感動を、次世代へとつないでいくことが私たちの使命です。
+                </p>
+                <p style="text-align: center; font-weight: bold; color: #d4a373; margin-top: 20px;">
+                    壮大なパズルのピースをはめていくように、聖書全体の流れを知ることで、<br>
+                    神様の深い愛がより鮮明に見えてくるはずです。
+                </p>
+            
+            </div>
+            <div class="scripture-card" style="border-style: solid; border-color: #8b5e3c;">
+                 <span class="scripture-tag" style="background-color: #8b5e3c;">宣教の源</span>
+                 <p class="scripture-text">「聖霊があなたがたの上に臨まれるとき、あなたがたは力を受けます。……そして、地の果てまで、わたしの証人となります。」</p>
+                  <span class="scripture-ref">使徒の働き 1:8</span>
+             </div>
+
+            <h3 style="text-align: center; border-bottom: none;">■ 私たちの歩みを支える5つの聖句</h3>
+            
+            <div class="scripture-grid">
+                <div class="scripture-card">
+                    <span class="scripture-tag">光として輝く</span>
+                    <p class="scripture-text">「あなたがたの光を人々の前に輝かしなさい。人々があなたがたの良きしわざを見て、天におられるあなたがたの父をあがめるようになるためである。」</p>
+                    <span class="scripture-ref">マタイ 5:16</span>
+                </div>
+
+                <div class="scripture-card">
+                    <span class="scripture-tag">種まきの約束</span>
+                    <p class="scripture-text">「涙と共に種をまく者は、喜びの声と共に刈り入れる。」</p>
+                    <span class="scripture-ref">詩篇 126:5</span>
+                </div>
+
+                <div class="scripture-card">
+                    <span class="scripture-tag">伝える者の使命</span>
+                    <p class="scripture-text">「宣べ伝える人がなくて、どうして聞くことができるでしょうか。」</p>
+                    <span class="scripture-ref">ローマ 10:14</span>
+                </div>
+
+                <div class="scripture-card">
+                    <span class="scripture-tag">賜物を分かち合う</span>
+                    <p class="scripture-text">「神のさまざまな恵みの良い管理者として、その賜物を用いて互いに仕え合いなさい。」</p>
+                    <span class="scripture-ref">第一ペテロ 4:10</span>
+                </div>
+
+                <div class="scripture-card">
+                    <span class="scripture-tag">永遠の土台</span>
+                    <p class="scripture-text">「草は枯れ、花は散る。しかし、私たちの神の言葉はとこしえに立つ。」</p>
+                    <span class="scripture-ref">イザヤ 40:8</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+            
+         <style>
+    /* --- ロードマップ全体のデザイン修正 --- */
+    .journey-header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+    .journey-title {
+        display: block;
+        font-size: 1.6rem;
+        color: #8b5e3c;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .roadmap-container {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* 縦のライン */
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        left: 40px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(to bottom, #faedcd, #deecff, #ffe5ec);
+        border-radius: 10px;
+    }
+
+    .roadmap-step {
+        position: relative;
+        margin-bottom: 60px;
+        padding-left: 60px;
+    }
+
+    .step-number {
+        position: absolute;
+        left: 20px;
+        top: 0;
+        width: 44px;
+        height: 44px;
+        background: white;
+        border: 3px solid;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        z-index: 2;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Stepごとのメインカラー設定 */
+    .roadmap-step:nth-child(1) .step-number { border-color: #d4a373; color: #d4a373; }
+    .roadmap-step:nth-child(2) .step-number { border-color: #a2d2ff; color: #a2d2ff; }
+    .roadmap-step:nth-child(3) .step-number { border-color: #ffafcc; color: #ffafcc; }
+
+    .step-content {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        border: 1px solid #f0f0f0;
+    }
+
+    .step-tag {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    /* ステップ内コンテンツの装飾 */
+    .inner-guide {
+        margin-top: 20px;
+        padding: 20px;
+        border-radius: 15px;
+    }
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+    .info-item {
+        background: white;
+        padding: 15px;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .step-verse {
+        margin-top: 20px;
+        padding-top: 15px;
+        border-top: 1px dashed #ddd;
+        font-style: italic;
+        font-size: 0.9rem;
+        color: #777;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+        .roadmap-container::before { left: 25px; }
+        .roadmap-step { padding-left: 45px; }
+        .step-number { left: 5px; width: 36px; height: 36px; font-size: 1rem; }
+    }
+</style>
+
+<div class="roadmap-wrapper">
+    <div class="journey-header">
+        <span class="journey-title">【Journey】挫折しない「学びのロードマップ」</span>
+        <p>「難しそう」という不安を消し、「これなら自分も成長できる！」と思える３つのステップをご紹介します。</p>
+    </div>
+
+    <div class="roadmap-container">
         
-        <div class="etymology-box">
-            <b>【原語解説】ディカイオー（Dikaioo）</b><br>
-            「義と認める」を意味するギリシャ語の動詞。これは「正しい状態に作り替える」のではなく、裁判官が「あなたは無罪である」と宣言することを意味します。
-        </div>
-        <ul class="covenant-list">
-            <li class="covenant-item">
-                <strong>新生（Regeneration）：</strong> 霊的な死から生への、存在論的な変化。
-            </li>
-            <li class="covenant-item">
-                <strong>義認（Justification）：</strong> 神の法廷における、法的な地位の確定。
-            </li>
-            <li class="covenant-item">
-                <strong>子、相続人（Adoption）：</strong> 神の家族への編入。もはや奴隷ではなく、アバ（パパ）と呼ぶ親密な関係（ローマ8:15）。
-            </li>
-        </ul>
-    </section>
-       <p style="margin-top: 20px; color: #666;">Webデザイナー星里が贈る、視覚で理解する神学の核心</p>
-</header>
+        <div class="roadmap-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <span class="step-tag" style="background:#d4a373;">Step 1：心の土壌を耕す</span>
+                <h4 class="step-title" style="margin:0 0 10px 0;">自分自身の成長・黙想</h4>
+                <p class="step-description">学びの土台は、まず自分の内側を整えることから始まります。技術を詰め込む前に、まずは静かに自分の心と向き合います。</p>
+                
+                <div class="inner-guide" style="background: #fffaf0;">
+                    <strong style="color: #8b5e3c; font-size: 0.9rem;">✨ 静まって祈るための手引き</strong>
+                    <div class="info-grid">
+                        <div class="info-item"><strong>心がざわつく時</strong>ありのままの感情を伝え、平安を求めてみましょう。</div>
+                        <div class="info-item"><strong>言葉が出ない時</strong>聖句を唱えるだけで、それは深い祈りになります。</div>
+                    </div>
+                </div>
 
-<div class="container">
-
-    <div class="section-card">
-        <span class="badge">CHAPTER 1: THE NATURE OF GOD</span>
-        <h2>神様ってどんな「性質」？</h2>
-        <p>神様はただの「概念」じゃない。人格と完璧なスペックを持った、君のパパなんだ。</p>
-        <div class="grid">
-            <div class="grid-item">
-                <strong>遍在（どこにでもいる）</strong><br>
-                君が一人で泣いている時も、学校にいる時も、神様は「同時」にそこにいる。
-            </div>
-            <div class="grid-item">
-                <strong>不変（変わらない）</strong><br>
-                神様の愛は、君のテストの結果や気分で変わったりしない。絶対の安心感。
-            </div>
-            <div class="grid-item">
-                <strong>永遠（時間の外）</strong><br>
-                始まりも終わりもない。君の将来の不安も、神様にとっては「解決済みの今」なんだ。
+                <div class="step-verse">
+                    「何よりも用心して、あなたの心を守れ。いのちの泉はこれからわき出るからである。」<br>
+                    <small>（箴言 4:23）</small>
+                </div>
             </div>
         </div>
-        <div class="bible-quote">
-            「主であるわたしは変わることがない。」（マラキ 3:6）
-        </div>
-    </div>
 
-    <div class="section-card">
-        <span class="badge">CHAPTER 2: INCARNATION</span>
-        <h2>神様が「人間」になった驚きの理由</h2>
-        <p>「神様が人になる（受肉）」とは、最強のヒーローがわざわざ弱点を持って現れるようなもの。</p>
-        <div class="grid">
-            <div class="grid-item" style="background: #fdf2f2; border-color: #e74c3c;">
-                <strong>君の痛みを知るため</strong><br>
-                空腹、疲れ、涙。神様は「人間」を100%経験したから、君の悩みを誰よりも理解できる。
+        <div class="roadmap-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <span class="step-tag" style="background:#a2d2ff;">Step 2：真理を紐解く</span>
+                <h4 class="step-title" style="margin:0 0 10px 0;">聖書の背景・神学の基礎</h4>
+                <p class="step-description">土壌が整ったら、次は正しい知識という光を取り入れます。理論はあなたを自由に、より深く生きるための鍵となります。</p>
+                
+                <div class="info-grid">
+                    <div class="info-item" style="background:#f0f7ff;"><strong>🌍 歴史的背景</strong>当時の文化という「靴」を履いて歩いてみます。</div>
+                    <div class="info-item" style="background:#f0f7ff;"><strong>🧩 文脈を読む</strong>パズルの全体像（前後関係）を大切にします。</div>
+                    <div class="info-item" style="background:#f0f7ff;"><strong>✝️ イエス様中心</strong>すべての物語から愛のゴールを探します。</div>
+                </div>
+
+                <div class="step-verse">
+                    「あなたは真理を知り、真理はあなたを自由にします。」<br>
+                    <small>（ヨハネ 8:32）</small>
+                </div>
             </div>
-            <div class="grid-item" style="background: #fdf2f2; border-color: #e74c3c;">
-                <strong>身代わりになるため</strong><br>
-                死ぬことができない神様が、あえて「人間」として死ぬことで、君の罪を全部クリアにした。
+        </div>
+
+        <div class="roadmap-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <span class="step-tag" style="background:#ffafcc;">Step 3：愛を形にする</span>
+                <h4 class="step-title" style="margin:0 0 10px 0;">伝え方の技術・カウンセリング</h4>
+                <p class="step-description">蓄えた学びを、次は誰かのための「温もり」に変えていきます。具体的な伝え方を学び、愛を実践へと繋げます。</p>
+                
+                <div class="inner-guide" style="background: #fff5f7;">
+                    <div class="info-grid">
+                        <div class="info-item"><strong>👂 聴くことは愛</strong>評価せずに受け止める。それが癒やしの第一歩です。</div>
+                        <div class="info-item"><strong>🌿 愛の翻訳</strong>難しい言葉を、心に届く日常の言葉へ変換します。</div>
+                    </div>
+                </div>
+
+                <div class="step-verse">
+                    「ことばや口先だけで愛するのではなく、行いと真実をもって愛そうではありませんか。」<br>
+                    <small>（ヨハネの手紙 第一 3:18）</small>
+                </div>
             </div>
         </div>
-    </div>
+        <style>
+    /* Step 4 専用の追加デザイン */
+    .step-final-card {
+        background: linear-gradient(to bottom right, #ffffff, #fffdf0);
+        border: 2px solid #ffd700 !important;
+        position: relative;
+    }
+    .dispatch-message {
+        background: rgba(255, 255, 255, 0.6);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #ffd700;
+        font-size: 0.95rem;
+        color: #555;
+    }
+    .form-box {
+        background: #fdf5e6;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        margin-top: 20px;
+        border: 1px dashed #d4a373;
+    }
+    .form-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: #d4a373;
+        font-weight: bold;
+        text-decoration: none;
+    }
+</style>
 
-    <div class="section-card">
-        <span class="badge">CHAPTER 3: RE-BIRTH STATUS</span>
-        <h2>君の「身分証」は書き換えられた</h2>
-        <p>イエス様を信じると、君の中で起きる「3つの大逆転」を整理しよう。</p>
-        <div class="grid">
-            <div class="grid-item" style="text-align: center;"><strong>①新生（しんせい）</strong><br>霊的なリセット</div>
-            <div class="grid-item" style="text-align: center;"><strong>②義認（ぎにん）</strong><br>法的な無罪確定</div>
-            <div class="grid-item" style="text-align: center; border: 2px solid var(--main-gold);"><strong>③神の子</strong><br>王室の相続人へ</div>
+<div class="roadmap-step">
+    <div class="step-number" style="border-color: #ffd700; color: #b8860b; background: #fff;">4</div>
+    <div class="step-content step-final-card">
+        <span class="step-tag" style="background:#ffd700; color: #8b5e3c;">Step 4：教師認定と派遣</span>
+        <h4 class="step-title" style="margin:0 0 10px 0;">新しい「証人」としての門出</h4>
+        
+        <div class="dispatch-message">
+            小学生から中学生コース、そして高校生コースまで熱心に取り組まれたあなたは、もう一人前のクリスチャンです。<br><br>
+            イエス様のお弟子さんのようにイエス様をお手伝いできる準備は出来ました。聖霊様の力を頂いて、大胆に福音を宣べ伝えてきてください！
         </div>
-        <p style="text-align: center; margin-top: 20px; font-weight: bold;">君はもはや奴隷じゃない。宇宙の王様の「子」なんだ！</p>
-    </div>
 
-    <div class="payment-box">
-        <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
-        <h2 style="color: var(--main-gold); border: none;">核心セクション：全10章を解放</h2>
-        <p style="opacity: 0.9;">
-            神学校で188万円を投じて得た恵のすべてを、月額1,000円で公開。<br>
-            「神の子としての10大特典」「聖霊様のパワーの引き出し方」など、<br>
-            実生活を劇的に変える教本を、今すぐあなたの手元に。
+        <p style="font-size: 0.85rem; padding: 0 10px;">
+            救いの証しの作成と100問テストの合格をもって、教師認定書を交付いたします。<br>
+            <small style="color:#999;">※本認定書は救霊会館およびベテル鳳ホーリーチャペル内のみ有効です。</small>
         </p>
-        
-        <div class="price">¥1,000<span> / 月</span></div>
 
-        <a href="https://square.link/u/YOUR_LINK_ID" class="square-btn">
-            今すぐ購読を開始する
-        </a>
-
-        <div style="margin-top: 30px; opacity: 0.6; font-size: 0.8rem;">
-            PayPay / クレジットカード決済対応<br>
-            Squareの安全な決済システムを利用しています
+      <div class="form-box">
+            <strong>📮 合格証明書の郵送をご希望の方へ</strong><br>
+            ご住所、お名前、お電話番号を、別ページの「お問い合わせフォーム」よりお送りください。
+            <br>
+            <a href="contact.html" class="form-link" style="text-decoration: underline;">
+                ＞ お問い合わせページへ移動する
+            </a>
         </div>
-
-
-    <div class="premium-paywall">
-        <div style="font-size: 2.5rem; margin-bottom: 20px;">📜</div>
-        <h3>【購読者限定】全12契約の完全解読ガイド</h3>
-        <p>アダム契約、ノア契約、アブラハム契約、ダビデ契約、そして新契約へ……。<br>
-        聖書全体を貫く「契約の連続性」を原語レクチャーと共に深く学びたい方はこちら。</p>
-        
-        <div style="font-size: 1.5rem; color: var(--main-gold); font-weight: bold; margin: 20px 0;">
-            プレミアムプラン：月額1,000円
+        <div class="step-verse">
+            「聖霊があなたがたの上に臨まれるとき、あなたがたは力を受けます。……そして、地の果てまで、わたしの証人となります。」<br>
+            <small>（使徒 1:8）</small>
         </div>
-
-        <p style="font-size: 0.9rem; opacity: 0.7;">
-            ※Square決済を通じて、PayPay・クレジットカード等で安全に購読いただけます。<br>
-            ※神学校レベルの深い学びを、Webデザイナー星里による視覚的デザインと共に。
-        </p>
-
-        <a href="https://square.link/u/YOUR_LINK_ID" class="square-link">
-            Squareで購入・購読を開始する
-        </a>
     </div>
-
+</div>
+    </div>
+</div>
+           
+           
 </div>
 
-<footer>
-    <p>&copy; 2026 ベテル鳳 キリスト教神学教本サイト</p>
-    <p>著者：星里（Akari）</p>
-</footer>
+</main>
 
+    <h2>イエスキリストを通して与えられる<br>神様と私たちの「大切な約束（契約）」まとめ</h2>
+
+    <div class="intro-text">
+        <p>聖書は、神様と人間との間で交わされた「契約書」のようなものです。<br>
+        「契約」をヘブライ語で<strong>「ベリート」</strong>と呼びます。神様との約束を大切にするかどうかで、私たちの生き方や、その先の未来が決まっていくのです。</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>1. すべてが始まったときの約束（天地創造）</h3>
+        <p>神様がこの世界を造られたとき、すでに一つの約束がありました。この宇宙は、神様の愛（父・子・聖霊の交わり）によって、御子（イエス様）のために造られました。神様は、この世界にあるすべてのものを、ご自身の愛のルール（契約）で守っておられます。</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>2. 最初の人、アダムとの約束</h3>
+        <p>神様はアダムに「神様の国の祝福」を与える約束をしました。しかし、人がその約束を破ってしまったため、地上での幸せな関係は一度壊れてしまいました。それでも神様は私たちを見捨てず、<span class="highlight">「女の子孫（イエス様）」</span>を送り、世界を元に戻すことを予告されたのです。</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>3. ノアとの「虹」の約束</h3>
+        <p>大洪水のあと、神様は生き残ったノアや生き物たちと約束をしました。「もう二度と、洪水で世界を滅ぼすことはしない」という誓いです。今でも空に見える<span class="highlight">「虹」</span>は、その永遠の約束のしるしです。</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>4. アブラハムとの「祝福」の約束</h3>
+        <p>神様はアブラハムを選び、「あなたを祝福の源（もと）にする」と約束しました。</p>
+        <ul>
+            <li>アブラハムの子孫（イスラエル）を通じて、世界中の人々が祝福されるようにすること。</li>
+            <li>この約束は、イエス様を信じるすべての人に引き継がれています。</li>
+        </ul>
+        <p>私たちは、イエス様を信じることでアブラハムの家族の一員となり、神様の祝福を受け取ることができるのです。</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>5. モーセと「十戒」の約束</h3>
+        <p>エジプトから救い出されたイスラエルの人々に、神様は「神様の民としての生き方（律法）」を教えました。これは「救われるための条件」ではなく、<span class="highlight">「救われた人たちが、神様の愛の中で幸せに暮らすためのルール」</span>です。律法の本当の意味は「神様を愛し、人を愛すること」にあります。</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>6. モアブでの「やり直しの約束」</h3>
+        <p>イスラエルの人々が失敗しそうになったとき、神様は「もし間違えてしまっても、心から悔い改めて戻ってくるなら、また祝福するよ」という優しい約束をしてくださいました。</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>7. ダビデ王への「永遠」の約束</h3>
+        <p>神様はダビデ王に、「あなたの家系から出る王の国は、永遠に続く」と約束しました。この「永遠の王様」こそが、のちに誕生するイエス様のことだったのです。</p>
+    </div>
+
+    <div class="contract-section">
+        <h3>8. イエス様による「新しい約束（新約）」</h3>
+        <p>そして、神様がダビデの子孫として送ってくださったのが、救い主イエス・キリストです。イエス様はご自身の命（十字架の血）をかけて、私たちと「新しい約束」を結んでくださいました。</p>
+        <ul>
+            <li><strong>罪が許され、永遠の命が与えられること。</strong></li>
+            <li><strong>神様の民として新しく作り替えられること。</strong></li>
+        </ul>
+        <p>これが、今私たちが受け取っている最大のプレゼントです。</p>
+    </div>
+
+    <div class="summary-box">
+        <h3>むすび：神様は「約束を守る方」</h3>
+        <p>神様は、たとえ人間が約束を忘れたり不誠実だったりしても、一度交わした契約をずっと守り続けてくださるお方です。<br>
+        アブラハムへの約束から始まった聖書の長い歴史は、すべてイエス様へと繋がっています。</p>
+    </div>
+
+    <div class="quiz-header">
+        <h3>📖 理解度チェッククイズ</h3>
+        <p>学んだ内容を復習してみましょう！</p>
+    </div>
+
+    <div class="quiz-card" id="quiz-area">
+        </div>
+
+    <button class="check-score-btn" onclick="calculateScore()">すべての結果を表示する</button>
+
+    <div id="result-display">
+        <h3>🎉 テスト終了！</h3>
+        <p style="font-size: 24px;">あなたのスコア: <span id="final-score">0</span> / 10</p>
+        <p id="result-comment"></p>
+        <button onclick="location.reload()" style="background: white; color: #f39c12; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">もう一度挑戦する</button>
+    </div>
+
+    <script>
+        const quizData = [
+            { q: "「契約」をヘブライ語で何と呼びますか？", a: ["シャローム", "ベリート", "ハレルヤ", "アーメン"], correct: 1, exp: "解説：ベリートは神様との揺るぎない約束を指す言葉です。" },
+            { q: "アダムが約束を破った後、神様が送ると予告した救い主の呼び名は？", a: ["女の子孫", "砂の王", "風の預言者", "海の民"], correct: 0, exp: "解説：聖書では「女の子孫」がサタンに勝利することが予告されています。" },
+            { q: "ノアとの契約で、二度と洪水で滅ぼさないしるしとして示されたのは？", a: ["金の杖", "虹", "雲の柱", "火の馬車"], correct: 1, exp: "解説：虹は神様の平和の約束の視覚的なしるしです。" },
+            { q: "アブラハムに与えられた「祝福」は、誰にまで及ぶものですか？", a: ["彼一人だけ", "彼の家族だけ", "イエス様を信じるすべての人", "特定の国の人だけ"], correct: 2, exp: "解説：アブラハムの信仰を継ぐすべての人が祝福の家族となります。" },
+            { q: "モーセの律法の本当の意味は何ですか？", a: ["神様と人を愛すること", "他人を裁くこと", "お金を貯めること", "有名な王になること"], correct: 0, exp: "解説：律法の核心は「愛」であるとイエス様も教えられました。" },
+            { q: "失敗した民に「悔い改めるなら祝福する」と約束した場所は？", a: ["エジプト", "モアブ", "バビロン", "ローマ"], correct: 1, exp: "解説：モアブでのやり直しの契約は神様の深い慈愛を示しています。" },
+            { q: "ダビデ王に約束された「永遠の王様」とはどなたのこと？", a: ["ソロモン", "サウル", "イエス・キリスト", "ヨシュア"], correct: 2, exp: "解説：ダビデの家系から出る真の王こそがイエス様です。" },
+            { q: "イエス様が十字架の血で結んだのは、何という約束ですか？", a: ["古い約束", "秘密の約束", "新しい約束（新約）", "一時的な約束"], correct: 2, exp: "解説：これが新約聖書の中心となる「新しい契約」です。" },
+            { q: "神様が契約を守り続ける理由は、神様がどのようなお方だから？", a: ["厳しい方だから", "約束を守る（誠実な）方だから", "人間が怖いから", "忙しいから"], correct: 1, exp: "解説：人間の不誠実に関わらず、神様ご自身が誠実だから守られます。" },
+            { q: "聖書のすべての歴史は、最終的に誰に繋がっていますか？", a: ["偉大な哲学者", "自分自身の力", "イエス様", "歴史学者"], correct: 2, exp: "解説：旧約から新約まで、すべてはイエス様を指し示しています。" }
+        ];
+
+        const quizArea = document.getElementById('quiz-area');
+        let answeredTotal = 0;
+        let score = 0;
+
+        function initQuiz() {
+            quizData.forEach((item, index) => {
+                const qItem = document.createElement('div');
+                qItem.className = 'question-item';
+                
+                const qText = document.createElement('div');
+                qText.className = 'question-text';
+                qText.innerText = `問${index + 1}. ${item.q}`;
+                qItem.appendChild(qText);
+
+                item.a.forEach((option, optIndex) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'option-btn';
+                    btn.innerText = option;
+                    btn.onclick = () => selectOption(btn, index, optIndex);
+                    qItem.appendChild(btn);
+                });
+
+                const feedback = document.createElement('div');
+                feedback.id = `fb-${index}`;
+                feedback.className = 'feedback';
+                feedback.innerText = item.exp;
+                qItem.appendChild(feedback);
+
+                quizArea.appendChild(qItem);
+            });
+        }
+
+        function selectOption(selectedBtn, qIdx, optIdx) {
+            const parent = selectedBtn.parentElement;
+            const buttons = parent.querySelectorAll('.option-btn');
+            const feedback = document.getElementById(`fb-${qIdx}`);
+            
+            if (parent.dataset.answered === "true") return;
+            parent.dataset.answered = "true";
+            answeredTotal++;
+
+            if (optIdx === quizData[qIdx].correct) {
+                selectedBtn.classList.add('correct');
+                score++;
+            } else {
+                selectedBtn.classList.add('incorrect');
+                buttons[quizData[qIdx].correct].classList.add('correct');
+            }
+
+            buttons.forEach(b => b.disabled = true);
+            feedback.style.display = 'block';
+        }
+
+        function calculateScore() {
+            if (answeredTotal < 10) {
+                alert("まだ回答していない問題があります！");
+                return;
+            }
+            document.getElementById('result-display').style.display = 'block';
+            document.getElementById('final-score').innerText = score;
+            
+            let comment = "";
+            if (score === 10) comment = "完璧です！神様の約束の物語をマスターしましたね。";
+            else if (score >= 7) comment = "素晴らしい！大切なポイントをしっかり理解できています。";
+            else comment = "もう一度解説を読んで、復習してみましょう。";
+            
+            document.getElementById('result-comment').innerText = comment;
+            window.scrollTo({ top: document.getElementById('result-display').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        initQuiz();
+    </script>
 </body>
 </html>

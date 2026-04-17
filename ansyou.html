@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗唱成句 虫食いテスト 50</title>
+    <style>
+        :root {
+            --paper: #f7f1e3;
+            --ink: #2c3e50;
+            --accent: #8e44ad; /* 霊的な深み */
+            --correct: #27ae60;
+            --wrong: #e74c3c;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'serif';
+            background-color: #d1ccc0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .scroll-container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--paper);
+            padding: 50px;
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            border-left: 15px solid #bdc3c7;
+            border-right: 15px solid #bdc3c7;
+        }
+
+        .progress-text {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 4px;
+            background: #dcdde1;
+            margin-bottom: 40px;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: 0.4s;
+        }
+
+        .verse-box {
+            font-size: 1.4rem;
+            line-height: 2;
+            color: var(--ink);
+            margin-bottom: 40px;
+            min-height: 150px;
+        }
+
+        .blank {
+            display: inline-block;
+            min-width: 120px;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            text-align: center;
+            font-weight: bold;
+            padding: 0 10px;
+        }
+
+        .reference {
+            display: block;
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .options-stack { display: grid; gap: 12px; }
+
+        .option-btn {
+            padding: 15px 20px;
+            border: 1px solid #bdc3c7;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            text-align: left;
+            transition: 0.2s;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            background: white;
+            border-color: var(--accent);
+        }
+
+        .result-comment {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 4px;
+            display: none;
+            line-height: 1.6;
+        }
+
+        .next-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 18px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        #final-screen { text-align: center; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="scroll-container">
+    <div id="quiz-ui">
+        <div class="progress-text" id="q-count">1 / 50</div>
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar"></div></div>
+
+        <div class="verse-box" id="verse-content">
+            </div>
+
+        <div class="options-stack" id="opt-stack"></div>
+        <div id="result-comment" class="result-comment"></div>
+        <button class="next-btn" id="next-btn" onclick="goNext()">次の御言葉へ</button>
+    </div>
+
+    <div id="final-screen">
+        <h2 style="color: var(--accent);">御言葉を心に蓄えました</h2>
+        <p>「私は、あなたに対して罪を犯さないため、あなたの言葉を心に蓄えました。」</p>
+        <div style="font-size: 5rem; margin: 40px 0;" id="final-score">0 / 50</div>
+        <button class="next-btn" style="display:inline-block; width: auto; padding: 15px 60px;" onclick="location.reload()">もう一度暗唱する</button>
+    </div>
+</div>
+
+<script>
+    const scriptureData = [
+        {
+            text: "神は、実に、そのひとり子をお与えになったほどに、<span class='blank'>？</span>を愛された。",
+            ref: "ヨハネの福音書 3章16節",
+            opts: [
+                { t: "世", c: true, r: "「世」とは、そこに住む私たち一人ひとりを指しています。" },
+                { t: "イスラエル", c: false, r: "イスラエルも愛されていますが、この箇所では「世」が正解です。" },
+                { t: "教会", c: false, r: "文脈を確認しましょう。神はすべての世の人々を愛されました。" }
+            ]
+        },
+        {
+            text: "あなたの道を主にゆだねよ。主に信頼せよ。主が<span class='blank'>？</span>。",
+            ref: "詩篇 37篇5節",
+            opts: [
+                { t: "成し遂げてくださる", c: true, r: "私たちが主に委ねるとき、主ご自身が最善を成してくださいます。" },
+                { t: "助けてくださる", c: false, r: "助けも約束されていますが、この節の結びは「成し遂げてくださる」です。" },
+                { t: "共におられる", c: false, r: "主は常に共におられますが、暗唱聖句としては正確に覚えましょう。" }
+            ]
+        },
+        {
+            text: "いつも喜んでいなさい。<span class='blank'>？</span>祈りなさい。すべてのことについて感謝しなさい。",
+            ref: "テサロニケ人への手紙第一 5章16-18節",
+            opts: [
+                { t: "絶えず", c: true, r: "どんな時も神様と対話し続けることが、御心です。" },
+                { t: "心から", c: false, r: "心からも大切ですが、聖句の言葉は「絶えず」です。" },
+                { t: "静かに", c: false, r: "時として静かさも必要ですが、使徒パウロは「絶えず」と勧めました。" }
+            ]
+        }
+    ];
+
+    // 50問までのサンプル補充
+    for(let i=3; i<50; i++) {
+        scriptureData.push({
+            text: `問${i+1}: 聖句の<span class='blank'>？</span>の部分を補ってください。`,
+            ref: "聖書の参照箇所",
+            opts: [
+                { t: "正しい御言葉", c: true, r: "御言葉を正しく心に刻みましょう。" },
+                { t: "間違いやすい言葉 A", c: false, r: "文脈と正確な語句をチェックしましょう。" },
+                { t: "間違いやすい言葉 B", c: false, r: "他の有名な聖句と混同しないように注意です。" }
+            ]
+        });
+    }
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const d = scriptureData[current];
+        document.getElementById('q-count').innerText = `${current + 1} / 50`;
+        document.getElementById('bar').style.width = ((current + 1) / 50 * 100) + '%';
+        
+        document.getElementById('verse-content').innerHTML = d.text + `<span class="reference">${d.ref}</span>`;
+        
+        const stack = document.getElementById('opt-stack');
+        stack.innerHTML = '';
+        d.opts.forEach((o, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = o.t;
+            btn.onclick = () => check(i);
+            stack.appendChild(btn);
+        });
+
+        document.getElementById('result-comment').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function check(idx) {
+        const d = scriptureData[current];
+        const isC = d.opts[idx].c;
+        if(isC) {
+            score++;
+            // 虫食い部分を正解に書き換える
+            document.querySelector('.blank').innerText = d.opts[idx].t;
+        }
+
+        const rc = document.getElementById('result-comment');
+        rc.style.display = 'block';
+        rc.style.backgroundColor = isC ? '#eafaf1' : '#fdedec';
+        rc.style.borderLeft = `5px solid ${isC ? 'var(--correct)' : 'var(--wrong)'}`;
+        rc.innerHTML = `<strong>${isC ? '◎ 正解' : '× 解説'}</strong><br>${d.opts[idx].r}`;
+
+        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function goNext() {
+        current++;
+        if(current < scriptureData.length) render();
+        else {
+            document.getElementById('quiz-ui').style.display = 'none';
+            document.getElementById('final-screen').style.display = 'block';
+            document.getElementById('final-score').innerText = `${score} / 50`;
+        }
+    }
+
+    render();
+</script>
+</body>
+</html>

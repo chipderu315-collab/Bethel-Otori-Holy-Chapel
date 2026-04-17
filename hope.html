@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>希望を語るための備え - 第1ペトロ3:15</title>
+    <style>
+        :root {
+            --bg-color: #f0f4f8;
+            --accent-gold: #d4af37;
+            --soft-blue: #34495e;
+            --white: #ffffff;
+            --success: #27ae60;
+            --error: #e74c3c;
+        }
+
+        body {
+            font-family: 'Georgia', serif, 'Hiragino Mincho ProN', 'MS Mincho';
+            background-color: var(--bg-color);
+            color: var(--soft-blue);
+            line-height: 1.8;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .card {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border-top: 8px solid var(--accent-gold);
+        }
+
+        .scripture-box {
+            background: #fffdf5;
+            border: 1px solid #f3e5ab;
+            padding: 20px;
+            margin-bottom: 30px;
+            font-style: italic;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: var(--soft-blue);
+        }
+
+        .question-area { margin-bottom: 30px; }
+
+        .btn-option {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 12px;
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .btn-option:hover:not(:disabled) {
+            background-color: #fcfcfc;
+            border-color: var(--accent-gold);
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .nav-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-next {
+            padding: 12px 40px;
+            background: var(--soft-blue);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .result { text-align: center; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="scripture-box">
+        「心の中でキリストを主とし、聖くしなさい。あなたがたのうちにある希望について説明を求める人には、いつでも弁明できる用意をしていなさい。しかし、穏やかに、畏れをもって、清い良心を保ちながら、弁明しなさい。」（第1ペトロ 3:15-16a）
+    </div>
+
+    <div id="quiz-container">
+        <h1 id="q-title">Question 1</h1>
+        <div class="question-area" id="q-text"></div>
+        <div id="options-area"></div>
+        <div id="feedback" class="feedback"></div>
+        
+        <div class="nav-controls">
+            <button id="next-btn" class="btn-next" style="display: none;">次へ進む</button>
+        </div>
+    </div>
+
+    <div id="result-area" class="result">
+        <h2>備えが整いました</h2>
+        <p>私たちは知識だけでなく、愛をもって希望を語るよう招かれています。</p>
+        <button class="btn-next" onclick="location.reload()">もう一度学ぶ</button>
+    </div>
+</div>
+
+<script>
+    const quizData = [
+        {
+            q: "希望を語る際、聖書が命じている「心構え」の組み合わせはどれですか？",
+            opts: [
+                { t: "穏やかな態度と畏れ（敬意）", c: true, r: "相手を論破しようとするのではなく、神への敬意と人への優しさを持って語ることが不可欠です。" },
+                { t: "自信に満ちた強い断言", c: false, r: "自信は大切ですが、聖書は「穏やかさ」を強調しています。" },
+                { t: "沈黙による無言の証し", c: false, r: "この箇所では、言葉による「弁明」の用意を求めています。" }
+            ]
+        },
+        {
+            q: "「弁明（アポロギア）」という言葉の、ここでの正しい理解は何ですか？",
+            opts: [
+                { t: "自分の信仰の根拠を論理的に説明すること", c: true, r: "なぜ自分がその希望を持っているのかという理由を、誠実に解き明かすことを指します。" },
+                { t: "過去の過ちを謝罪すること", c: false, r: "一般的な「弁明」とは異なり、ここでは信仰の擁護・証言の意味です。" },
+                { t: "相手の議論を論破して黙らせること", c: false, r: "目的は勝利ではなく、真理への招待です。" }
+            ]
+        },
+        {
+            q: "言葉による準備の前に、まずどこでキリストを主としなさいと記されていますか？",
+            opts: [
+                { t: "自分の心の中", c: true, r: "言葉よりも先に、自分自身の心が主によって聖められ、整えられていることが証しの土台となります。" },
+                { t: "教会の公式な場", c: false, r: "証しは場所を問わず、まず内面から始まります。" },
+                { t: "学問的な議論の場", c: false, r: "知識だけでなく、心の中心にキリストがいることが求められています。" }
+            ]
+        }
+    ];
+
+    let current = 0;
+
+    function loadQuiz() {
+        const data = quizData[current];
+        document.getElementById('q-title').innerText = `問い ${current + 1} / 3`;
+        document.getElementById('q-text').innerText = data.q;
+        
+        const optArea = document.getElementById('options-area');
+        optArea.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const btn = document.createElement('button');
+            btn.className = 'btn-option';
+            btn.innerText = o.t;
+            btn.onclick = () => checkAnswer(i);
+            optArea.appendChild(btn);
+        });
+        
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function checkAnswer(idx) {
+        const data = quizData[current];
+        const isCorrect = data.opts[idx].c;
+        const fb = document.getElementById('feedback');
+        
+        fb.style.display = 'block';
+        fb.style.backgroundColor = isCorrect ? '#e8f5e9' : '#fff0f0';
+        fb.innerHTML = `<strong>${isCorrect ? '【正解】' : '【学びのポイント】'}</strong><br>${data.opts[idx].r}`;
+        
+        const btns = document.querySelectorAll('.btn-option');
+        btns.forEach(b => b.disabled = true);
+        
+        document.getElementById('next-btn').style.display = 'inline-block';
+        document.getElementById('next-btn').innerText = current === quizData.length - 1 ? "結果を見る" : "次へ進む";
+    }
+
+    document.getElementById('next-btn').onclick = () => {
+        if(current < quizData.length - 1) {
+            current++;
+            loadQuiz();
+        } else {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('result-area').style.display = 'block';
+        }
+    };
+
+    loadQuiz();
+</script>
+</body>
+</html>

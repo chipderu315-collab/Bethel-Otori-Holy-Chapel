@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キリスト教暦（教会暦）総合テスト</title>
+    <style>
+        :root {
+            --liturgical-purple: #6c5ce7;
+            --liturgical-green: #27ae60;
+            --liturgical-red: #d63031;
+            --liturgical-gold: #f1c40f;
+            --bg-color: #f8f9fa;
+            --text-color: #2d3436;
+        }
+
+        body {
+            font-family: 'Hiragino Mincho ProN', 'Sawarabi Mincho', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .quiz-card {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 10px solid var(--liturgical-purple);
+            transition: border-color 0.5s;
+        }
+
+        .header { text-align: center; margin-bottom: 30px; }
+        .progress { font-size: 0.9rem; color: #95a5a6; margin-bottom: 10px; }
+        
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .option-list { display: flex; flex-direction: column; gap: 15px; }
+
+        .option-item {
+            padding: 15px 20px;
+            border: 1px solid #dfe6e9;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+            background: white;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+
+        .option-item:hover:not(:disabled) {
+            background-color: #f1f2f6;
+            border-color: var(--liturgical-purple);
+        }
+
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            display: none;
+            animation: fadeIn 0.4s;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .btn-next {
+            margin-top: 30px;
+            width: 100%;
+            padding: 15px;
+            background: var(--text-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+        }
+
+        .result-screen { text-align: center; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-card" id="quiz-card">
+    <div id="quiz-view">
+        <div class="header">
+            <div class="progress" id="progress-text">Question 1 / 30</div>
+            <div id="q-category" style="font-size: 0.8rem; color: var(--liturgical-purple);">教会暦の基礎</div>
+        </div>
+        <div class="question-text" id="question-text">読み込み中...</div>
+        <div class="option-list" id="option-list"></div>
+        <div id="feedback" class="feedback"></div>
+        <button class="btn-next" id="next-btn" onclick="nextQuestion()">次へ進む</button>
+    </div>
+
+    <div id="result-view" class="result-screen">
+        <h2>テスト修了</h2>
+        <p>キリストの歩みを辿る一年のリズムが、<br>あなたの力となりますように。</p>
+        <div style="font-size: 3rem; font-weight: bold; margin: 20px 0;" id="final-score">0 / 30</div>
+        <button class="btn-next" style="display: block;" onclick="location.reload()">もう一度挑戦</button>
+    </div>
+</div>
+
+<script>
+    const quizData = [
+        {
+            q: "キリスト教の教会暦において、一年の始まりとされる時期はいつですか？",
+            cat: "始まりの季節",
+            color: "#6c5ce7", // 紫
+            opts: [
+                { t: "待降節（アドベント）", c: true, r: "救い主の到来を待ち望むアドベントから、教会の新しい一年が始まります。" },
+                { t: "降誕節（クリスマス）", c: false, r: "クリスマスは大きな祝祭ですが、暦はその準備期間から始まります。" },
+                { t: "復活節（イースター）", c: false, r: "イースターは暦のクライマックスですが、始まりではありません。" }
+            ]
+        },
+        {
+            q: "「聖金曜日（グッド・フライデー）」は何を記念する日ですか？",
+            cat: "受難と贖い",
+            color: "#d63031", // 赤
+            opts: [
+                { t: "イエスが十字架につけられたこと", c: true, r: "キリストの犠牲による救いの業を黙想し、記念する日です。" },
+                { t: "最後の晩餐", c: false, r: "それは聖木曜日の出来事です。" },
+                { t: "聖霊が弟子たちに降ったこと", c: false, r: "それはペンテコステの出来事です。" }
+            ]
+        }
+        // 以下、30問目までデータを追加可能です
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function render() {
+        const data = quizData[current];
+        document.getElementById('quiz-card').style.borderColor = data.color;
+        document.getElementById('q-category').innerText = data.cat;
+        document.getElementById('q-category').style.color = data.color;
+        document.getElementById('progress-text').innerText = `第 ${current + 1} 問 / ${quizData.length}`;
+        document.getElementById('question-text').innerText = data.q;
+        
+        const list = document.getElementById('option-list');
+        list.innerHTML = '';
+        data.opts.forEach((o, i) => {
+            const b = document.createElement('button');
+            b.className = 'option-item';
+            b.innerText = o.t;
+            b.onclick = () => select(i);
+            list.appendChild(b);
+        });
+
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function select(idx) {
+        const data = quizData[current];
+        const isCorrect = data.opts[idx].c;
+        if(isCorrect) score++;
+
+        const fb = document.getElementById('feedback');
+        fb.style.display = 'block';
+        fb.style.backgroundColor = isCorrect ? '#e8f5e9' : '#fff0f0';
+        fb.innerHTML = `<strong>${isCorrect ? '◎ 正解' : '× 解説'}</strong><br>${data.opts[idx].r}`;
+
+        const btns = document.querySelectorAll('.option-item');
+        btns.forEach(b => b.disabled = true);
+        document.getElementById('next-btn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        current++;
+        if(current < quizData.length) {
+            render();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById('quiz-view').style.display = 'none';
+        document.getElementById('result-view').style.display = 'block';
+        document.getElementById('final-score').innerText = `${score} / ${quizData.length}`;
+    }
+
+    render();
+</script>
+</body>
+</html>
