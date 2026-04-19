@@ -1,0 +1,3304 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <div class="container-wide">
+    <section class="section-padding">
+        <div class="message-card" style="border: 3px solid #f3e5ab;">
+            <span class="icon-float">✨</span>
+            <h1 class="english-text" style="font-size: clamp(2rem, 5vw, 4rem);">Welcome to Hoshinosato</h1>
+            <h2 class="main-message">「ほしのさと」<br>オンライン・ワークシップへようこそ</h2>
+            
+           <div class="intro-body-senior" style="margin-top: 40px;">
+    <p>「教会に行きたいけれど、今は難しい」</p>
+    <p>「礼拝ってどうやって進めたらいいの？」</p>
+    <p>「キリスト教の歌を歌ってみたい、お話を聞いてみたい」</p>
+    <p>そんな願いを持つすべての方のために、<br>土曜賛美集会のエッセンスをぎゅっと詰め込んだ<br>
+    <span class="prayer-highlight-large">「礼拝サポートサイト」</span>を開設しました！</p>
+</div>
+
+<div class="prayer-container">
+    <div class="prayer-scroll" style="border-color: var(--soft-blue); padding: 40px 20px;">
+        <h3 class="prayer-title-senior">このサイトに込めた想い</h3>
+        <div class="body-text-senior">
+            <p>土曜日の賛美集会を担当する中で、「スマホをスクロールするだけで、誰でも迷わず礼拝を捧げられるマニュアルがあればいいな」と考えたのがきっかけです。</p>
+            <p>このプログラムは、<span class="gold-bold">「1ヶ月で必要な霊的栄養をすべてバランスよく摂取する」</span>ことをイメージして作られています。</p>
+            <p>第1週から第5週まで、毎週異なるテーマで、あなたの心に神様の恵みを届けます。</p>
+        </div>
+    </div>
+</div>
+
+<div class="notice-box-senior">
+    <p class="notice-title-senior">⚠️ ご利用にあたってのお願い</p>
+    <p>当サイト内のテキスト、構成、画像等の<br><strong>無断転載・無断転用は固く禁止</strong>しております。</p>
+    <p>本プログラムを「お家礼拝」などで使用される場合は、事前に以下の窓口までご連絡をお願いいたします。</p>
+    
+    <div class="contact-card-senior">
+        <p class="church-name-senior">ベテル鳳ホーリーチャペル お問い合わせ窓口</p>
+        <a href="mailto:your-email@example.com" class="email-link-senior">📧 お問い合わせメールを送る</a>
+    </div>
+</div>
+
+
+</div>
+        <div class="index-section">
+            <h2 class="index-title">📖 5週間プログラム目次</h2>
+            <p style="margin-bottom: 30px; color: #666;">見たい週を押すと、その週の礼拝ページに移動します。</p>
+            
+            <div class="program-table-wrapper">
+                <table class="program-table">
+                    <thead>
+                        <tr>
+                            <th>週</th>
+                            <th>テーマ</th>
+                            <th>内容のイメージ</th>
+                        </tr>
+                    </thead>
+                  <tbody id="week-nav">
+    <tr onclick="location.href='#week1'" data-week="week1">
+        <td><strong>第1週</strong></td>
+        <td class="theme-cell">あなたはそのままで最高</td>
+        <td>You are precious just the way you are</td>
+    </tr>
+    <tr onclick="location.href='#week2'" data-week="week2">
+        <td><strong>第2週</strong></td>
+        <td class="theme-cell">心のお洗濯</td>
+        <td>Heart Refresh</td>
+    </tr>
+    <tr onclick="location.href='#week3'" data-week="week3">
+        <td><strong>第3週</strong></td>
+        <td class="theme-cell">新しく生まれ変わる</td>
+        <td>New Life Connection</td>
+    </tr>
+    <tr onclick="location.href='#week4'" data-week="week4">
+        <td><strong>第4週</strong></td>
+        <td class="theme-cell">感謝と献身</td>
+        <td>恵みを数え、喜びを分かち合う週</td>
+    </tr>
+    <tr onclick="location.href='#week5'" data-week="week5">
+        <td><strong>第5週</strong></td>
+        <td class="theme-cell">希望の派遣</td>
+        <td>新しい1ヶ月へ向けて力を受ける週</td>
+    </tr>
+</tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="final-refrain" style="margin-top: 80px;">
+            <p>あなたの場所が、神様との出会い溢れる「聖なる場所」となりますように。</p>
+            <p class="gold-highlight" style="font-size: 1.8rem !important;">ぜひ、日々の歩みにお役立てください！</p>
+        </div>
+    </section>
+</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You are precious - Special Message</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+JP:wght@700;900&family=Shippori+Mincho:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        
+        /* 現在地の行を強調するスタイル */
+#week-nav tr.active {
+    background-color: rgba(255, 230, 0, 0.15); /* 優しい黄色 */
+    border-left: 4px solid #f1c40f; /* アクセントの左線 */
+    transition: all 0.3s ease;
+}
+
+#week-nav tr {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#week-nav tr:hover {
+    background-color: #f9f9f9;
+}
+        /* トップに戻るボタンのスタイル */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: white;
+    border: 2px solid #f3e5ab;
+    border-radius: 50%;
+    color: #d4af37;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0; /* 最初は隠しておく */
+    visibility: hidden;
+    transform: translateY(20px);
+}
+
+/* 表示された時の状態 */
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+    background: #fffdf0;
+}
+
+.btn-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.btn-text {
+    font-size: 0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+/* ふわふわ浮くアニメーション */
+@keyframes floatUp {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+.back-to-top.show {
+    animation: floatUp 3s ease-in-out infinite;
+}
+        /* お願い・コンタクトボックス */
+.notice-box {
+    margin: 60px auto;
+    padding: 40px;
+    background: #fffafa;
+    border: 2px dashed #ffb6c1;
+    border-radius: 30px;
+    max-width: 900px;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.notice-title {
+    font-weight: 900;
+    color: #d32f2f;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.contact-card {
+    margin-top: 25px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.church-name { font-weight: bold; color: #444; margin-bottom: 10px; }
+.email-link { color: #0077b6; text-decoration: none; font-weight: bold; }
+
+/* プログラム目次テーブル */
+.index-section { margin-top: 100px; }
+.index-title { font-size: 2rem; color: #b8860b; margin-bottom: 40px; }
+
+.program-table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    padding: 20px;
+}
+
+.program-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.program-table th {
+    background: #f8f9fa;
+    padding: 20px;
+    text-align: left;
+    color: #b8860b;
+    border-bottom: 2px solid #f3e5ab;
+}
+
+.program-table td {
+    padding: 25px 20px;
+    border-bottom: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.program-table tr:hover td {
+    background: #fffdf0;
+    cursor: pointer;
+}
+
+.theme-cell {
+    font-weight: 900;
+    color: #1a1a1a;
+    font-size: 1.1rem;
+}
+html {
+    scroll-behavior: smooth;
+}
+        :root {
+            --heavenly-bg: linear-gradient(135deg, #ffffff 0%, #fff0f5 40%, #e0f7fa 100%);
+            --gold-grad: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #8a6d3b 100%);
+            --text-color: #333333;
+            --soft-blue: #add8e6;
+            --soft-pink: #ffb6c1;
+            /* PCでの最大横幅を広く設定 */
+            --max-content-width: 1400px; 
+            --big-text: clamp(1.4rem, 2.5vw, 2.2rem); 
+            --heading-text: clamp(1.8rem, 4vw, 3.5rem);
+        }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+            background: var(--heavenly-bg); background-attachment: fixed;
+            color: var(--text-color);
+        }
+
+        /* 共通：コンテンツを包む箱（PCで横に広がるように） */
+        .container-wide {
+            width: 95%;
+            max-width: var(--max-content-width);
+            margin: 0 auto;
+        }
+
+        /* --- ヒーローセクション --- */
+        .hero-container {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            padding: 40px 20px; text-align: center; position: relative; overflow: hidden;
+        }
+
+        .divine-light {
+            position: absolute; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 182, 193, 0.2), rgba(173, 216, 230, 0.2), transparent 40%);
+            animation: rotate 30s linear infinite; z-index: 0;
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .hero-content {
+            position: relative; z-index: 1;
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px);
+            padding: 80px 40px; border-radius: 50px; border: 2px solid white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            width: 100%; max-width: 1100px; /* ここを広げました */
+        }
+
+        .cross-icon { font-size: 4rem; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+        .english-text { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.1; margin: 0; background: var(--gold-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .main-message { font-size: var(--heading-text); font-weight: 900; color: #1a1a1a; margin-top: 20px; letter-spacing: 0.1em; }
+
+        .info-group { border-top: 1px solid rgba(212, 175, 55, 0.3); padding-top: 40px; margin-top: 40px; }
+        .event-title { font-size: 1.8rem; font-weight: 700; color: #b8860b; margin: 10px 0; }
+        .event-time { font-family: 'Montserrat', sans-serif; font-size: 2.8rem; font-weight: 700; color: #444; margin: 10px 0; }
+        .location-name { font-size: 1.6rem; background: rgba(173, 216, 230, 0.3); display: inline-block; padding: 10px 30px; border-radius: 50px; margin-top: 15px; font-weight: 700; }
+
+        /* --- メッセージカード・唱和セクション --- */
+        .section-padding { padding: 100px 0; text-align: center; }
+
+        .message-card {
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px);
+            border-radius: 60px; padding: 80px 40px; border: 2px solid white;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.03);
+            margin-bottom: 80px;
+        }
+
+        .greeting-text { font-size: var(--big-text); font-weight: 700; line-height: 2.2; color: #333; margin-bottom: 40px; }
+        .readable-line { display: block; }
+        .prayer-highlight { color: #b8860b; background: linear-gradient(transparent 70%, #fff9c4 0%); padding: 0 10px; font-weight: 900; display: inline-block; }
+
+        .prayer-container { margin: 80px 0; }
+        .prayer-scroll {
+            background: #fff; border: 3px solid var(--soft-blue); border-radius: 60px;
+            padding: 80px 40px; box-shadow: 0 20px 60px rgba(173, 216, 230, 0.2);
+        }
+        .prayer-title { font-size: var(--heading-text); color: #b8860b; margin-bottom: 60px; font-weight: 900; text-decoration: underline; text-decoration-color: var(--soft-pink); }
+        .prayer-text p { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 2; color: #1a1a1a; margin: 20px 0; }
+        .prayer-divider { width: 100px; height: 3px; background: var(--soft-blue); margin: 50px auto; opacity: 0.3; }
+        .amen-text { font-size: clamp(3rem, 6vw, 5rem); color: var(--soft-pink); font-weight: 900; margin-top: 60px; letter-spacing: 0.3em; }
+
+        .icon-float { font-size: 4rem; display: block; animation: floatAnim 3s infinite; }
+        @keyframes floatAnim { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        .music-icons { font-size: 4rem; margin-top: 30px; animation: musicFloat 2s infinite alternate; }
+        @keyframes musicFloat { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+
+        @media (max-width: 600px) {
+            .hero-content, .message-card, .prayer-scroll { padding: 40px 20px; border-radius: 30px; }
+            .event-time { font-size: 2rem; }
+        }
+        /* 追加・修正のスタイル */
+.hymn-unit { 
+    margin: 40px 0; 
+    text-align: center; /* 中央揃え */
+}
+
+.hymn-label { 
+    font-size: 1.3rem; 
+    color: #b8860b; 
+    margin-bottom: 20px; 
+    font-weight: 700; 
+    opacity: 0.8;
+}
+
+.hymn-lyrics-center { 
+    /* 文字サイズをさらに大きく調整 */
+    font-size: clamp(1.8rem, 4vw, 3.2rem); 
+    font-weight: 900; 
+    line-height: 1.6; 
+    color: #1a1a1a; 
+    text-align: center;
+}
+
+.hymn-lyrics-center p {
+    margin: 15px 0; /* 行間をゆったりと */
+}
+
+.chord-inline { 
+    color: #d4af37; 
+    font-family: 'Montserrat', sans-serif; 
+    /* コード記号も歌詞に合わせて大きく */
+    font-size: clamp(1.2rem, 2.5vw, 2rem); 
+    margin-right: 8px; 
+    vertical-align: top; 
+    display: inline-block;
+    font-weight: 700;
+}
+
+.hymn-source-small { 
+    font-size: 1rem; 
+    color: #999; 
+    margin-top: 20px; 
+    text-align: center;
+}
+
+/* 最後のフレーズもさらに大きく */
+.final-refrain p { 
+    font-size: clamp(2rem, 5vw, 3.5rem); 
+    font-weight: 900; 
+    margin: 20px 0; 
+}
+/* この歌のポイント❣️のスタイル */
+.hymn-point-box {
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(255, 182, 193, 0.15); /* 優しいピンク色 */
+    border-radius: 20px;
+    border: 1px dashed var(--soft-pink);
+    max-width: 80%;
+    position: relative;
+    animation: fadeIn 2s ease-in;
+}
+
+.point-icon {
+    font-size: 1.5rem;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0 10px;
+}
+
+.point-eng {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #444;
+    margin: 5px 0;
+    font-style: italic;
+}
+
+.point-jp {
+    font-size: clamp(1rem, 2.2vw, 1.6rem);
+    font-weight: 900;
+    color: #b8860b;
+    margin: 5px 0;
+}
+.hymn-lyrics-center p {
+    margin: 10px 0; /* 行間を少し詰め、まとまりを持たせました */
+}
+
+.hymn-point-box {
+    margin: 40px auto;
+    padding: 25px;
+    background: rgba(255, 182, 193, 0.12);
+    border-radius: 30px;
+    border: 2px dashed #ffb6c1; /* ピンクの点線を少し強調 */
+    max-width: 85%;
+}
+
+.point-jp {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem); /* 日本語をより力強く */
+    color: #b8860b;
+    /* おはなし導入（サイズUP版）のスタイル */
+.intro-talk-box {
+    margin-bottom: 120px;
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 60px;
+    border: 3px solid var(--soft-blue);
+    text-align: center;
+}
+
+.intro-label {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: #b8860b;
+    margin-bottom: 50px;
+    letter-spacing: 0.2em;
+    text-decoration: underline;
+    text-decoration-color: var(--soft-pink);
+}
+
+.intro-body-large p {
+    /* 賛美の歌詞と同じサイズ設定に統一にゃ！ */
+    font-size: clamp(1.8rem, 4vw, 3.2rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.6 !important;
+    margin: 20px 0 !important;
+    color: #1a1a1a;
+    word-break: keep-all;
+}
+
+.intro-divider-small {
+    width: 80px;
+    height: 4px;
+    background: var(--soft-blue);
+    margin: 40px auto;
+    border-radius: 2px;
+    opacity: 0.3;
+}
+
+.heart-present {
+    color: var(--soft-pink);
+    text-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+}
+
+.strong-amulet {
+    background: linear-gradient(transparent 70%, #fff9c4 0%);
+    padding: 0 10px;
+}
+
+.intro-divider-main {
+    font-size: 3rem;
+    margin-top: 50px;
+    animation: bounce 2s infinite;
+}
+}
+/* おはなし導入ボックスのスタイル */
+.intro-talk-box {
+    margin-bottom: 80px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 40px;
+    border: 2px solid var(--soft-blue);
+}
+
+.intro-label {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #b8860b;
+    margin-bottom: 30px;
+    letter-spacing: 0.2em;
+}
+
+.intro-body p {
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem) !important;
+    line-height: 2 !important;
+    margin: 15px 0 !important;
+    color: #444;
+}
+
+.heart-present {
+    color: var(--soft-pink);
+    font-weight: 900;
+    text-shadow: 0 0 5px rgba(255, 182, 193, 0.5);
+}
+
+.strong-amulet {
+    background: linear-gradient(transparent 60%, #e0f7fa 0%);
+    font-weight: 900;
+    padding: 0 5px;
+}
+
+.intro-divider {
+    font-size: 2rem;
+    margin-top: 30px;
+    animation: bounce 2s infinite;
+}
+/* おはなし導入（サイズUP版）のスタイル */
+.intro-talk-box {
+    margin-bottom: 120px;
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 60px;
+    border: 3px solid var(--soft-blue);
+    text-align: center;
+}
+
+.intro-label {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: #b8860b;
+    margin-bottom: 50px;
+    letter-spacing: 0.2em;
+    text-decoration: underline;
+    text-decoration-color: var(--soft-pink);
+}
+
+.intro-body-large p {
+    /* 賛美の歌詞と同じサイズ設定に統一にゃ！ */
+    font-size: clamp(1.8rem, 4vw, 3.2rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.6 !important;
+    margin: 20px 0 !important;
+    color: #1a1a1a;
+    word-break: keep-all;
+}
+
+.intro-divider-small {
+    width: 80px;
+    height: 4px;
+    background: var(--soft-blue);
+    margin: 40px auto;
+    border-radius: 2px;
+    opacity: 0.3;
+}
+
+.heart-present {
+    color: var(--soft-pink);
+    text-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+}
+
+.strong-amulet {
+    background: linear-gradient(transparent 70%, #fff9c4 0%);
+    padding: 0 10px;
+}
+
+.intro-divider-main {
+    font-size: 3rem;
+    margin-top: 50px;
+    animation: bounce 2s infinite;
+}
+/* メッセージ本文（歌詞と同じサイズ）のスタイル */
+.greeting-text-large p {
+    font-size: clamp(1.8rem, 4vw, 3.2rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.6 !important;
+    margin: 25px 0 !important;
+    color: #1a1a1a;
+    word-break: keep-all; /* 単語の途中で改行しない */
+    text-align: center;
+}
+
+.message-chapter-title {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    color: #b8860b;
+    margin-bottom: 40px;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+/* 蛍光ペン風の強調を太い文字に合わせる */
+.prayer-highlight {
+    background: linear-gradient(transparent 60%, #fff9c4 0%);
+    padding: 0 15px;
+    display: inline-block;
+}
+
+.chapter-unit {
+    margin-bottom: 150px; /* 文字が大きくなったので余白もたっぷりと */
+}
+/* アーメンをふつうのサイズにする設定 */
+.amen-text-standard {
+    color: #2e8b57;
+    font-size: 1.5rem; /* 本文より少しだけ大きく、でも「ふつう」の範囲に */
+    font-weight: bold;
+    margin-top: 30px;
+    letter-spacing: 0.2em;
+    text-align: center;
+}
+/* エンディングセクションの共通設定 */
+.ending-section {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.standing-call {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #444;
+    font-style: italic;
+    margin-bottom: 60px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    display: inline-block;
+}
+
+/* 三一頌のデザイン */
+.doxology {
+    border: 2px solid #f3e5ab;
+    background: #fffdfa !important;
+    margin-bottom: 80px;
+}
+
+.doxology-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #b8860b;
+    margin-bottom: 30px;
+}
+
+.hymn-lyrics-standard p {
+    font-size: 1.3rem; /* 三一頌は少しだけ凛と */
+    font-weight: 700;
+    margin: 15px 0;
+    color: #1a1a1a;
+}
+
+.doxology-amen {
+    margin-top: 25px !important;
+    opacity: 0.8;
+}
+
+.hymn-note {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 20px;
+}
+
+/* 祝祷（民数記）のデザイン */
+.benediction-final {
+    border-color: #90ee90 !important;
+    background: #fafffa !important;
+}
+
+.prayer-title-green {
+    color: #2e8b57;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+}
+
+.blessing-words p {
+    font-size: 1.2rem;
+    line-height: 2;
+    margin: 20px 0;
+    color: #333;
+}
+
+.final-amen {
+    font-size: 1.5rem;
+    color: #2e8b57;
+    font-weight: bold;
+    margin-top: 40px;
+    letter-spacing: 0.3em;
+}
+
+/* 最後の最後 */
+.final-peace-refrain {
+    margin: 120px 0 60px;
+    text-align: center;
+}
+
+.final-peace-refrain p {
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.gold-text {
+    font-size: 1.8rem !important;
+    font-weight: 900;
+    background: var(--gold-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.site-footer {
+    padding: 40px 0;
+    opacity: 0.5;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+/* 特大サイズ統一設定 */
+.grand-text p {
+    font-size: clamp(1.8rem, 4vw, 3.2rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.6 !important;
+    margin: 25px 0 !important;
+    color: #1a1a1a;
+    text-align: center;
+    word-break: keep-all;
+}
+
+.standing-call-large p {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.8;
+    color: #444;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.doxology-label-large, .prayer-title-green-large {
+    font-size: clamp(1.4rem, 2.8vw, 2rem);
+    font-weight: 900;
+    margin-bottom: 50px;
+    letter-spacing: 0.1em;
+}
+
+.grand-amen {
+    font-size: clamp(2.5rem, 6vw, 4rem) !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.2em;
+}
+
+.benediction-source-large {
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 40px;
+}
+
+.hymn-note-large {
+    font-size: 1.2rem;
+    color: #888;
+    margin-top: 40px;
+    font-weight: bold;
+}
+/* 無断転載禁止（特大サイズ）のスタイル */
+.copyright-notice-large {
+    margin: 100px auto 50px;
+    padding: 60px 20px;
+    width: 90%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.7); /* 少し白を濃くして読みやすく */
+    border: 3px double #ffb6c1; /* 優しいピンクの二重線で囲む */
+    border-radius: 40px;
+    text-align: center;
+}
+
+.notice-red {
+    color: #cc0000;
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem); /* 本文より少しだけ控えめ、でもハッキリ */
+    font-weight: 900;
+    margin: 20px 0;
+    letter-spacing: 0.1em;
+}
+
+.notice-body p {
+    /* ここを歌詞やおはなしと同じサイズに統一にゃ！ */
+    font-size: clamp(1.4rem, 3vw, 2rem) !important; 
+    line-height: 1.8 !important;
+    color: #333;
+    font-weight: 700;
+    margin: 10px 0 !important;
+    word-break: keep-all;
+}
+
+/* フッター（コピーライト）も少し大きくして読みやすく */
+.site-footer {
+    padding-bottom: 60px;
+    font-size: 1.2rem;
+    color: #888;
+    text-align: center;
+}
+/* 聖句（みことば）ボックスのスタイル */
+.bible-verse-box {
+    margin-top: 40px;
+    padding: 30px;
+    background: rgba(212, 175, 55, 0.05); /* ほんのりゴールド背景 */
+    border-left: 5px solid #d4af37; /* 左側に金のライン */
+    border-right: 5px solid #d4af37; /* 右側にも金のライン */
+    border-radius: 20px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.verse-text {
+    font-size: clamp(1.4rem, 3vw, 2.2rem) !important; /* 本文より少しだけ控えめ、でも十分大きい */
+    line-height: 1.7 !important;
+    color: #444 !important;
+    font-weight: 700 !important;
+    margin-bottom: 15px !important;
+}
+
+.verse-ref {
+    font-size: 1.2rem;
+    color: #b8860b;
+    font-weight: bold;
+    text-align: right;
+    font-family: 'Montserrat', sans-serif;
+}
+/* シニア向け特大フォント設定 */
+.intro-body-senior p {
+    font-size: clamp(1.4rem, 3vw, 2rem) !important;
+    line-height: 1.8 !important;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.prayer-highlight-large {
+    background: linear-gradient(transparent 60%, #fff9c4 0%);
+    padding: 0 10px;
+    font-weight: 900;
+    color: #b8860b;
+}
+
+.prayer-title-senior {
+    font-size: 2rem;
+    color: #b8860b;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+.body-text-senior p {
+    font-size: 1.3rem !important;
+    line-height: 2 !important;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* お願いボックス */
+.notice-box-senior {
+    margin: 60px auto;
+    padding: 40px 20px;
+    background: #fffafa;
+    border: 3px solid #ffb6c1;
+    border-radius: 30px;
+}
+
+.notice-title-senior {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #d32f2f;
+    margin-bottom: 20px;
+}
+
+/* 目次テーブルのシニア対応 */
+.index-title-senior {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #b8860b;
+}
+
+.index-sub-senior {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.program-table-senior {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px; /* 行の間に隙間を作って押しやすく */
+}
+
+.program-table-senior th {
+    font-size: 1.2rem;
+    padding: 15px;
+    color: #b8860b;
+}
+
+.program-table-senior td {
+    background: white;
+    padding: 30px 20px;
+    border: 1px solid #f3e5ab;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.program-table-senior tr td:first-child { border-radius: 20px 0 0 20px; }
+.program-table-senior tr td:last-child { border-radius: 0 20px 20px 0; }
+
+.week-badge {
+    background: #f3e5ab;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.theme-cell-senior {
+    font-size: 1.5rem;
+    text-align: left !important;
+    line-height: 1.4;
+}
+
+.image-text-senior {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: normal;
+}
+/* 週ごとのセクションの基本設定 */
+.week-section {
+    position: relative;
+    overflow: hidden; /* 数字がはみ出さないようにガード */
+    padding-bottom: 100px; /* 次の週との間隔 */
+}
+
+/* 背景数字の共通デザイン */
+.week-section::before {
+    position: absolute;
+    top: 10%;      /* 数字の位置（お好みで調整してください） */
+    right: 5%;     /* 右側に寄せて配置 */
+    font-size: 30rem; /* ドーンと大きく！ */
+    font-weight: 900;
+    color: rgba(241, 196, 15, 0.08); /* サイトのテーマカラー（黄色系）を極薄で */
+    z-index: -1;   /* 文字の後ろに配置 */
+    font-family: 'Arial Black', sans-serif;
+    pointer-events: none;
+}
+
+/* 各IDごとに数字を指定 */
+#week1::before { content: "1"; }
+#week2::before { content: "2"; }
+#week3::before { content: "3"; }
+#week4::before { content: "4"; }
+#week5::before { content: "5"; }
+/* 祈りのカードをさらに特別にする設定 */
+.main-confession {
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(255, 192, 203, 0.3); /* ピンクの柔らかい影 */
+    position: relative;
+    overflow: hidden;
+}
+
+/* 聖歌の引用部分を目立たせる */
+.hymn-quote {
+    text-align: center;
+    font-size: 1.1em;
+    color: #8a6d5d;
+    font-weight: bold;
+    margin: 25px 0;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+/* アーメンの文字をやさしく */
+.amen-text {
+    text-align: right;
+    font-weight: bold;
+    color: #d88;
+    margin-top: 20px;
+}
+
+/* モバイルでの読みやすさを徹底 */
+@media (max-width: 600px) {
+    .prayer-text p {
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+    }
+}
+/* 聖句部分を「きよい水」をイメージした優しい青系に */
+.verse-highlight {
+    background-color: #f0f8ff; /* アリスブルー（澄んだ水のような色） */
+    border-left: 5px solid #add8e6;
+    padding: 18px;
+    margin: 25px 0;
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: #445566;
+    border-radius: 0 15px 15px 0;
+}
+
+/
+}
+    </style>
+
+</head>
+
+<section id="week1" class="week-section">
+    <div class="intro-talk-box">
+        <div class="intro-label">【 第1週：あなたはそのままで最高 】</div>
+        </div>
+</section>
+<body>
+
+    <section class="hero-container">
+        <div class="divine-light"></div>
+        <div class="hero-content">
+            <div class="cross-icon">†</div>
+            <h1 class="english-text">You are precious<br>just the way you are</h1>
+            <p class="main-message">あなたはそのままで最高</p>
+            <div class="info-group">
+                <p class="event-title">第1週目 土曜日賛美集会</p>
+                <p class="event-time">17:00 〜 18:00</p>
+                <p class="location-name">📍 大阪救霊会館 大礼拝堂</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-wide">
+        <section class="section-padding">
+            <div class="message-card">
+                <span class="icon-float">✨</span>
+                <div class="greeting-text">
+                    <span class="readable-line">こんばんは！時間になりましたので、</span>
+                    <span class="readable-line">土曜日賛美集会をはじめます！</span>
+                </div>
+                <div class="greeting-text">
+                    <span class="readable-line">イエス・キリストが教えられた</span>
+                    <span class="prayer-highlight">「主の祈り」</span>を、
+                    <span class="readable-line">心を合わせて唱和していきましょう。</span>
+                </div>
+                <span class="icon-float" style="animation-delay: 1s;">📖</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll">
+                    <h3 class="prayer-title">主の祈り</h3>
+                    <div class="prayer-text">
+                        <p>天にまします我らの父よ、願わくは御名（みな）をあがめさせたまえ。</p>
+                        <p>御国（みくに）を来たらせたまえ。</p>
+                        <p>みこころの天に成る如く、地にも成らせたまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我らの日用の糧を、今日（きょう）も与えたまえ。</p>
+                        <p>我らに罪を犯す者を、我らが赦す如く、我らの罪をも赦したまえ。</p>
+                        <p>我らを試みにあわせず、悪より救い出したまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>国と力と栄えとは、限りなく汝（なんじ）のものなればなり。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <div class="greeting-text">
+                    <span class="readable-line">次に、私たちの信じる大切な教えをまとめた</span>
+                    <span class="prayer-highlight">「使徒信条」</span>を、
+                    <span class="readable-line">唱和していきましょう。</span>
+                </div>
+                <span class="icon-float">🕊️</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll" style="border-color: var(--soft-pink);">
+                    <h3 class="prayer-title" style="text-decoration-color: var(--soft-blue);">使徒信条</h3>
+                    <div class="prayer-text">
+                        <p>我は天地の造り主、全能の父なる神を信ず。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我はその独り子、我らの主、イエス・キリストを信ず。</p>
+                        <p>主は聖霊によりて宿り、処女（おとめ）マリヤより生まれ、</p>
+                        <p>ポンテオ・ピラトのもとに苦しみを受け、十字架につけられ、死にて葬られ、</p>
+                        <p>陰府（よみ）にくだり、三日目に死人のうちよりよみがえり、</p>
+                        <p>天に昇り、全能の父なる神の右に座したまえり。</p>
+                        <p>かしこより来たりて、生ける者と死ねる者とを裁きたまん。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我は聖霊を信ず。聖なる公同の教会、聖徒の交わり、罪の赦し、</p>
+                        <p>身体（からだ）のよみがえり、永遠（とこしえ）の命を信ず。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="border: 3px solid #fff9c4;">
+                <div class="greeting-text">
+                    <span class="readable-line">ありがとうございます。それでは神様に届くよう、</span>
+                    <span class="readable-line">心を込めて <span class="prayer-highlight">賛美をささげましょう！</span></span>
+                </div>
+                <div class="music-icons">🎵 🎹 🎸 🎶</div>
+            </div>
+        </section>
+        <div class="prayer-container">
+               <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+             <h3 class="prayer-title">賛美</h3>
+    
+             <div class="hymn-unit">
+             <div class="hymn-label">† How Great Thou Art</div>
+             <div class="hymn-lyrics-center">
+                  <p><span class="chord-inline">A</span>輝く日を<span class="chord-inline">D</span>仰ぐとき</p>
+              <p><span class="chord-inline">A</span>わが主の<span class="chord-inline">E7</span>御業の<span class="chord-inline">A</span>大いさを</p>
+               </div>
+              </div>
+              <div class="hymn-point-box">
+            <span class="point-icon">❣️</span>
+            <p class="point-eng">"God, His Son not sparing; Sent Him to die"</p>
+            <p class="point-jp">神は独り子を惜しまず、死ぬために送られた</p>
+        </div>
+
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+               <div class="hymn-label">† 主イエスの十字架の血で</div> <div class="hymn-source-small">Miktam Red 174</div>
+               <div class="hymn-lyrics-center">
+              <p><span class="chord-inline">F</span>主イエスの<span class="chord-inline">Bb</span>十字架の<span class="chord-inline">F</span>血で</p>
+              <p><span class="chord-inline">Dm</span>私は<span class="chord-inline">Gm</span>赦さ<span class="chord-inline">C7</span>れ</p>
+              <p><span class="chord-inline">F</span>御神と<span class="chord-inline">Bb</span>和解を<span class="chord-inline">F</span>して</p>
+              <p><span class="chord-inline">Dm</span>平安を<span class="chord-inline">C7</span>得まし<span class="chord-inline">F</span>た</p>
+              <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+              <p><span class="chord-inline">F</span>だか<span class="chord-inline">F7</span>ら今<span class="chord-inline">Bb</span>すべての</p>
+              <p><span class="chord-inline">G7</span>悩みを<span class="chord-inline">C7</span>委ねよう</p>
+              <p><span class="chord-inline">F</span>主は<span class="chord-inline">F7</span>心に<span class="chord-inline">Bb</span>平和を</p>
+              <p><span class="chord-inline">F</span>満たして<span class="chord-inline">C7</span>下さ<span class="chord-inline">F</span>る</p>
+            </div>
+            
+              </div>
+            </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="text-align: left; padding: 100px 60px;">
+                <span class="icon-float" style="text-align: center;">✉️</span>
+                 <div class="intro-talk-box">
+    <div class="intro-label">【 みことばの時間（おはなし） 】</div>
+    <div class="intro-body-large">
+       <p>さて、皆さん。歌ってスッキリした後は、</p>
+        <p>いよいよ今日一番のお楽しみ、</p>
+        <p>神様からのプレゼントを受け取る時間です。</p>
+        
+        <div class="intro-divider-small"></div>
+
+        <p>せっかくここまで来たんですから、</p>
+        <p>今のあなたにぴったりの</p>
+        <p><span class="heart-present">『解決のヒント』</span>を、</p>
+        <p>ひとつも残さず受け取って帰ってくださいね。</p>
+
+        <div class="intro-divider-small"></div>
+
+        <p>みことばは、あなたの毎日をパッと明るくしてくれる、</p>
+        <p><span class="strong-amulet">最強のお守り</span>です。</p>
+
+        <p>今日は神様からどんな『成長のヒント』が届くのでしょうか……。</p>
+        <p>さあ、ワクワクした気持ちを大切に、</p>
+        <p>真っ直ぐな心でお聴きしましょう！</p>
+    </div>
+    <div class="intro-divider-main">✨ 🎁 ✨</div>
+</div>
+    
+   
+               <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第一章<br>神様があなたを認めてくださる理由</h2>
+        <div class="greeting-text-large">
+            <p>自分の力や努力で罪をなくすことは不可能ですが、</p>
+            <p>神様はあなたが何か立派なことをする前に、</p>
+            <p><span class="prayer-highlight">あなたを正しいものとして受け入れる</span></p>
+            <p>と決めてくださいました。</p>
+        </div>
+           <div class="bible-verse-box">
+            <p class="verse-text">「あなたがたは、恵みのゆえに、信仰によって救われたのです。それは、自分自身から出たことではなく、神からの賜物です。」</p>
+            <p class="verse-ref">エペソ人への手紙 2:8</p>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第二章<br>イエス・キリストがしてくださったこと</h2>
+        <div class="greeting-text-large">
+            <p>イエス様は、本来なら私たちが受けるべき罪の罰を、</p>
+            <p>すべて身代わりに引き受けてくださいました。</p>
+            <p><span class="prayer-highlight">この事実を本当だと受け入れること</span>で、</p>
+            <p>私たちの罪はすべて許されます。</p>
+        </div>
+         <div class="bible-verse-box">
+            <p class="verse-text">「キリストは自ら十字架の上で、私たちの罪をその身に負われました。それは、私たちが罪に死に、義に生きるためです。」</p>
+            <p class="verse-ref">ペテロの手紙 第一 2:24</p>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第三章<br>信じたあとの変化</h2>
+        <div class="greeting-text-large">
+            <p>神様に愛され、許されたことを知ると、</p>
+            <p><span class="prayer-highlight">自分を助けてくれた神様に応えたい</span></p>
+            <p>という素直な気持ちが生まれます。</p>
+            <p>あなたは自分も周りも大切にできる <br>人へと成長していきます。</p>
+        </div>
+         <div class="bible-verse-box">
+            <p class="verse-text">「だれでもキリストのうちにあるなら、その人は新しく造られた者です。古いものは過ぎ去り、見よ、すべてが新しくなりました。」</p>
+            <p class="verse-ref">コリント人への手紙 第二 5:17</p>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第四章<br>何度でもやり直せる約束</h2>
+        <div class="greeting-text-large">
+            <p>もし間違ったことをしてしまっても、神様はあなたを見捨てません。</p>
+            <p><span class="prayer-highlight">神様の愛には終わりがない</span>ので、</p>
+            <p>いつでもやり直すことができます。</p>
+        </div>
+         <div class="bible-verse-box">
+            <p class="verse-text">「たとい山々が移り、丘が動いても、わたしの慈しみはあなたから離れず、わたしの平和の契約は動くことがない。」</p>
+            <p class="verse-ref">イザヤ書 54:10</p>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第五章<br>神様への信仰の告白</h2>
+        <div class="prayer-scroll" style="padding: 80px 30px; margin-top: 40px; border-width: 4px; border-color: var(--gold-grad);">
+            <div class="greeting-text-large" style="color: #1a1a1a;">
+                <p>「愛する天のお父様。</p>
+<p>私は、自分の弱さや、心の中の小さないじわるを、</p>
+<p>見て見ぬふりをして過ごしていました。</p>
+
+<div class="intro-divider-small"></div>
+
+<p>自分勝手な思いで、周りの人を傷つけてしまったことを、</p>
+<p>正直にごめんなさい。すべてをあなたにお話しします。</p>
+
+<div class="intro-divider-small"></div>
+
+<p>どうか私の心をきれいに洗い流し、</p>
+<p>今日から<span class="heart-present">『誰かを助ける側の人』</span>として歩ませてください。</p>
+
+<p>イエス様、私の人生のハンドルを、正しい道へと導いてください。</p>
+<p>私たちの主、イエス・キリストのお名前を通してお祈りします。アーメン。」</p>
+            </div>
+        </div>
+        <div class="bible-verse-box">
+            <p class="verse-text">「人は心に信じて義と認められ、口で告白して救われるのです。」</p>
+            <p class="verse-ref">ローマ人への手紙 10:10</p>
+        </div>
+    </div>
+</div>
+            </div>
+
+           <div class="prayer-container">
+    <div class="prayer-scroll" style="border-color: #90ee90; background: linear-gradient(to bottom, #ffffff, #f1fff1); text-align: center;">
+        <span class="icon-float">🕊️</span>
+        <h3 class="prayer-title" style="color: #2e8b57; text-decoration-color: #90ee90; margin-bottom: 50px;">祝福の祈り</h3>
+        
+        <div class="greeting-text-large" style="color: #1a1a1a;">
+            <p>主があなたを祝福し、</p>
+            <p>あなたを守られますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに照らし、</p>
+            <p>あなたを恵まれますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに向け、</p>
+            <p>あなたに平安を与えられますように。</p>
+                 <div class="amen-text-standard">「アロンの祝祷」民数記 6:24-26</div>
+        </div>
+</div>
+
+    
+   <section class="ending-section">
+    <div class="standing-call-large">
+        <p>「それでは、ご起立いただける方はご起立ください。」</p>
+        <p>最後に『父・御子・御霊の』を歌い、</p>
+        <p>祝祷をもって終わります。</p>
+    </div>
+
+    <div class="prayer-scroll doxology" style="padding: 80px 20px;">
+        <div class="doxology-label-large">祝祷の賛美：『父・御子・御霊の（三一頌（さんいちしょう））』</div>
+        <div class="grand-text">
+            <p>父・御子・御霊の</p>
+            <p>おおみかみに</p>
+            <p>ときわに絶えず</p>
+            <p>みさかえあれ</p>
+            <p class="grand-amen" style="color: #b8860b;">アーメン</p>
+        </div>
+        <div class="hymn-note-large">（一同、静かに、しかし力強く歌い上げます）</div>
+    </div>
+
+   
+   <div class="copyright-notice-large">
+        <p class="notice-red">【無断転載禁止】</p>
+        <div class="notice-body">
+            <p>本サイト内のテキスト・画像の</p>
+            <p>無断転載・複製・引用を固く禁じます。</p>
+            <p>万が一無断利用を発見した場合は、</p>
+            <p>当方規定の利用料金を請求いたします。</p>
+        </div>
+        <p class="notice-red">【無断転載禁止】</p>
+    </div>
+    
+    <section id="week2" class="week-section">
+    <div class="intro-talk-box">
+        <div class="intro-label">【 第2週：心のお洗濯 】</div>
+        </div>
+</section>
+        <body>
+
+    <section class="hero-container">
+        <div class="divine-light"></div>
+        <div class="hero-content">
+            <div class="cross-icon">†</div>
+          <div class="week-header">
+    <h1 class="english-text">Heart<br>Refresh</h1>
+    <p class="main-message">心のお洗濯</p>
+    <div class="info-group">
+        <p class="sub-message">～すべてをご存じの神様の前で、正直になれる場所～</p>
+    </div>
+</div>
+                <p class="event-title">第2週目 土曜日賛美集会</p>
+                <p class="event-time">17:00 〜 18:00</p>
+                <p class="location-name">📍 大阪救霊会館 大礼拝堂</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-wide">
+        <section class="section-padding">
+            <div class="message-card">
+                <span class="icon-float">✨</span>
+                <div class="greeting-text">
+                    <span class="readable-line">こんばんは！時間になりましたので、</span>
+                    <span class="readable-line">土曜日賛美集会をはじめます！</span>
+                </div>
+                <div class="greeting-text">
+                    <span class="readable-line">イエス・キリストが教えられた</span>
+                    <span class="prayer-highlight">「主の祈り」</span>を、
+                    <span class="readable-line">心を合わせて唱和していきましょう。</span>
+                </div>
+                <span class="icon-float" style="animation-delay: 1s;">📖</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll">
+                    <h3 class="prayer-title">主の祈り</h3>
+                    <div class="prayer-text">
+                        <p>天にまします我らの父よ、願わくは御名（みな）をあがめさせたまえ。</p>
+                        <p>御国（みくに）を来たらせたまえ。</p>
+                        <p>みこころの天に成る如く、地にも成らせたまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我らの日用の糧を、今日（きょう）も与えたまえ。</p>
+                        <p>我らに罪を犯す者を、我らが赦す如く、我らの罪をも赦したまえ。</p>
+                        <p>我らを試みにあわせず、悪より救い出したまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>国と力と栄えとは、限りなく汝（なんじ）のものなればなり。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <div class="greeting-text">
+                    <span class="readable-line">次に、私たちの信じる大切な教えをまとめた</span>
+                    <span class="prayer-highlight">「使徒信条」</span>を、
+                    <span class="readable-line">唱和していきましょう。</span>
+                </div>
+                <span class="icon-float">🕊️</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll" style="border-color: var(--soft-pink);">
+                    <h3 class="prayer-title" style="text-decoration-color: var(--soft-blue);">使徒信条</h3>
+                    <div class="prayer-text">
+                        <p>我は天地の造り主、全能の父なる神を信ず。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我はその独り子、我らの主、イエス・キリストを信ず。</p>
+                        <p>主は聖霊によりて宿り、処女（おとめ）マリヤより生まれ、</p>
+                        <p>ポンテオ・ピラトのもとに苦しみを受け、十字架につけられ、死にて葬られ、</p>
+                        <p>陰府（よみ）にくだり、三日目に死人のうちよりよみがえり、</p>
+                        <p>天に昇り、全能の父なる神の右に座したまえり。</p>
+                        <p>かしこより来たりて、生ける者と死ねる者とを裁きたまん。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我は聖霊を信ず。聖なる公同の教会、聖徒の交わり、罪の赦し、</p>
+                        <p>身体（からだ）のよみがえり、永遠（とこしえ）の命を信ず。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="border: 3px solid #fff9c4;">
+                <div class="greeting-text">
+                    <span class="readable-line">ありがとうございます。それでは神様に届くよう、</span>
+                    <span class="readable-line">心を込めて <span class="prayer-highlight">賛美をささげましょう！</span></span>
+                </div>
+                <div class="music-icons">🎵 🎹 🎸 🎶</div>
+            </div>
+        </section>
+        <div class="prayer-container">
+               <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+             <h3 class="prayer-title">賛美</h3>
+    
+             <div class="hymn-unit">
+             <div class="hymn-label">† How Great Thou Art</div>
+             <div class="hymn-lyrics-center">
+                  <p><span class="chord-inline">A</span>輝く日を<span class="chord-inline">D</span>仰ぐとき</p>
+              <p><span class="chord-inline">A</span>わが主の<span class="chord-inline">E7</span>御業の<span class="chord-inline">A</span>大いさを</p>
+               </div>
+              </div>
+              <div class="hymn-point-box">
+            <span class="point-icon">❣️</span>
+            <p class="point-eng">"God, His Son not sparing; Sent Him to die"</p>
+            <p class="point-jp">神は独り子を惜しまず、死ぬために送られた</p>
+        </div>
+
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+               <div class="hymn-label">† 主イエスの十字架の血で</div> <div class="hymn-source-small">Miktam Red 174</div>
+               <div class="hymn-lyrics-center">
+              <p><span class="chord-inline">F</span>主イエスの<span class="chord-inline">Bb</span>十字架の<span class="chord-inline">F</span>血で</p>
+              <p><span class="chord-inline">Dm</span>私は<span class="chord-inline">Gm</span>赦さ<span class="chord-inline">C7</span>れ</p>
+              <p><span class="chord-inline">F</span>御神と<span class="chord-inline">Bb</span>和解を<span class="chord-inline">F</span>して</p>
+              <p><span class="chord-inline">Dm</span>平安を<span class="chord-inline">C7</span>得まし<span class="chord-inline">F</span>た</p>
+              <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+              <p><span class="chord-inline">F</span>だか<span class="chord-inline">F7</span>ら今<span class="chord-inline">Bb</span>すべての</p>
+              <p><span class="chord-inline">G7</span>悩みを<span class="chord-inline">C7</span>委ねよう</p>
+              <p><span class="chord-inline">F</span>主は<span class="chord-inline">F7</span>心に<span class="chord-inline">Bb</span>平和を</p>
+              <p><span class="chord-inline">F</span>満たして<span class="chord-inline">C7</span>下さ<span class="chord-inline">F</span>る</p>
+            </div>
+            
+              </div>
+            </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="text-align: left; padding: 100px 60px;">
+                <span class="icon-float" style="text-align: center;">✉️</span>
+                 <div class="intro-talk-box">
+    <div class="intro-label">【 みことばの時間（おはなし） 】</div>
+    <div class="intro-body-large">
+        <p>さて、皆さん。歌をささげて心がスッキリした後は、</p>
+        <p>いよいよ今日一番のお楽しみ、</p>
+        <p>神様からのお話の時間です。</p>
+        
+        <div class="intro-divider-small"></div>
+
+        <p>せっかくこうして集まったのですから、</p>
+        <p>神様が用意してくださった</p>
+        <p><span class="heart-present">『心のプレゼント』</span>を、</p>
+        <p>ひとつも残さず受け取って帰ってくださいね。</p>
+
+        <div class="intro-divider-small"></div>
+
+        <p>神様のことばは、あなたの毎日を優しく守ってくれる、</p>
+        <p>世界にひとつだけの<span class="strong-amulet">最強のお守り</span>です。</p>
+
+        <p>今日は、私たちの心にどんな光を <br>届けてくださるのでしょうか。</p>
+        <p>さあ、ワクワクする気持ちを大切に、</p>
+        <p>真っ直ぐな心でお聴きしましょう！</p>
+    </div>
+    <div class="intro-divider-main">✨ 🎁 ✨</div>
+</div>
+    
+   
+               <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第一章<br>ハンドルを「愛」の方向へ切り直す</h2>
+<div class="greeting-text-large">
+    <p>「悔い改め」とは、決して難しいことではありません。</p>
+    <p>自分勝手な方へ向いていた <br>心のハンドルを、神様の方へ、</p>
+    <p>つまり<span class="prayer-highlight">「思いやりの方向」へグイッと切り直す</span></p>
+    <p>ことなのです。</p>
+</div>
+
+<div class="bible-verse-box">
+    <p class="verse-text">「互いに親切にし、慈しみの心で接し、神がキリストによってあなたがたを赦してくださったように、赦し合いなさい。」</p>
+    <p class="verse-ref">エフェソの信徒への手紙 4:32</p>
+</div>
+
+<div class="greeting-text-large" style="margin-top: 20px;">
+    <p>まずは、自分のことだけでなく「あの子は今、どんな気持ちかな？」と、</p>
+    <p>周りの人に心を向けること <br>
+        から始めてみましょう。</p>
+</div>
+        </div>
+    </div>
+
+          
+         <div class="message-card" style="text-align: center; padding: 100px 40px;">
+         
+  
+    <h2 class="message-chapter-title">第二章<br>神様の教えを「心の栄養」にする</h2>
+        <div class="greeting-text-large">
+            <p>向き直った後は、神様が教えてくださる</p>
+            <p>「愛のレッスン」をしっかり聞きましょう。</p>
+            <p>ただ聞くだけでなく、ほんの少しずつ、</p>
+            <p><span class="prayer-highlight">生活の中で試してみること</span>が成長のコツです。</p>
+        </div>
+         <div class="bible-verse-box">
+            <p class="verse-text">「御言葉を行う人になりなさい。自分を欺いて、ただ聞くだけの者になってはいけません。」</p>
+            <p class="verse-ref">ヤコブの手紙 1:22</p>
+        </div>
+        <div class="greeting-text-large" style="margin-top: 20px;">
+            <p>優しい言葉をかける、誰かのために祈る。</p>
+            <p>そんな小さな「愛の実践」が、あなたをどんどん素敵な</p>
+            <p>神様の子どもへと成長させてくれますよ。</p>
+        </div>
+        </div>
+    </div>
+
+   <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+     <h2 class="message-chapter-title">第三章<br>新しい自分に生まれ変わる「約束のしるし」</h2>
+<div class="greeting-text-large">
+    <p>「洗礼」とは、古い自分にさよならをして、</p>
+    <p>神様の家族として新しく生まれ変わる、人生最高の瞬間です。</p>
+    <p>それは、神様があなたを<span class="prayer-highlight">「一生、何があっても守り抜く」</span>と約束し、</p>
+    <p>あなたに消えない聖なる印をつけてくださることなのです。</p>
+</div>
+
+<div class="bible-verse-box">
+    <p class="verse-text">「悔い改めなさい。そして、それぞれ罪を赦していただくために、イエス・キリストの名によって洗礼を受けなさい。そうすれば、賜物として聖霊を受けます。」</p>
+    <p class="verse-ref">使徒言行録 2:38</p>
+</div>
+
+<div class="greeting-text-large" style="margin-top: 20px;">
+    <p>洗礼を受けると、あなたの心には<span class="strong-amulet">「聖霊」という最強のサポーター</span>が住んでくれます。</p>
+    <p>もう一人で悩み、一人で頑張る必要はありません。</p>
+    <p>神様の無限の愛という、温かい光に包まれて生きる特権を、</p>
+    <p>あなたも今すぐ受け取りましょう！</p>
+</div>
+    </div>
+
+    <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+       <h2 class="message-chapter-title">第四章<br>新しい道を歩き出そう</h2>
+<div class="greeting-text-large">
+    <p>最後は、実際に一歩を踏み出すこと。</p>
+    <p>神様は、あなたが<span class="prayer-highlight">「新しい人」として輝き出す</span>のを</p>
+    <p>今か今かと待っています。</p>
+</div>
+
+<div class="bible-verse-box">
+    <p class="verse-text">「悔い改めにふさわしい実を結びなさい。」</p>
+    <p class="verse-ref">マタイによる福音書 3:8</p>
+</div>
+
+<div class="greeting-text-large" style="margin-top: 20px;">
+    <p>「自分一人で頑張る道」から、</p>
+    <p><b>「イエス様（ロード＝道）と一緒に歩く道」</b>へ。</p>
+    <p>その道を選んだ瞬間から、あなたの人生には神様の祝福という光が差し込みます。</p>
+    <p>さあ、安心してその一歩を踏み出しませんか？</p>
+</div>
+    </div>
+ <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+       <h2 class="message-chapter-title">第五章<br>新しい人生を始める「お祈り」</h2>
+<div class="prayer-scroll" style="padding: 60px 30px; margin-top: 40px; border-width: 4px; border-color: var(--gold-grad);">
+    <div class="greeting-text-large" style="color: #1a1a1a;">
+        <p>「愛する天のお父様、私のすべてをご存じの神様。</p>
+        <p>私は今まで、自分勝手な思いで歩んできたことを認め、</p>
+        <p>今、心からあなたの方へと向き直ります。</p>
+
+        <div class="intro-divider-small" style="background: rgba(0,0,0,0.1);"></div>
+
+        <p>イエス様が私の身代わりに十字架にかかり、</p>
+        <p>三日目によみがえられたことを心から信じます。</p>
+        <p>今、イエス様を私の『人生の道（ロード）』として、</p>
+        <p>そして私の救い主として、心にお迎えいたします。</p>
+
+        <div class="intro-divider-small" style="background: rgba(0,0,0,0.1);"></div>
+
+        <p>どうか私の心に聖霊を注ぎ、新しく作り変えてください。</p>
+        <p>今日から、あなたと共に、光の道を歩ませてください。</p>
+        <p>私たちの主、イエス・キリストのお名前でお祈りします。アーメン。」</p>
+    </div>
+</div>
+        </div>
+        <div class="bible-verse-box">
+         <p class="verse-text">「主は人の歩みを確かなものにし、その道を喜んでくださる。たといその人が倒れても、まっさかさまに倒れることはない。主がその手をつかんでおられるからだ。」</p>
+<p class="verse-ref">詩篇 37:23-24</p>
+        </div>
+        
+    </div>
+    <div class="greeting-text-large" style="margin-top: 40px; text-align: center;">
+    <p>お祈りを捧げた皆さんの心は、今、神様の光で満たされています。</p>
+    <p>この喜びを、最高の賛美で神様に届けましょう。</p>
+    <div class="intro-divider-small"></div>
+    <p style="font-weight: bold; color: var(--gold-grad); font-size: 1.2em;">🎶 賛美：主の栄光宮に</p>
+    <p>「主の栄光、宮に。主の栄光、うちに！」</p>
+</div>          
+</div>
+ <div class="prayer-container">
+          <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+    <h3 class="prayer-title" style="text-align: center;">賛美</h3>
+
+             <div class="hymn-unit">
+           
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+               <div class="hymn-label">† 主の栄光 宮に</div> <div class="hymn-source-small">Miktam Red 75
+               <div class="hymn-lyrics-center">
+              <p><span class="chord-inline">F</span>主の栄光 <span class="chord-inline">Bb</span>宮に <span class="chord-inline">F</span>主の平和 うちに</p>
+<p><span class="chord-inline">Dm</span>主の喜び <span class="chord-inline">Gm</span>満ちあふ<span class="chord-inline">C7</span>れる</p>
+<p><span class="chord-inline">F</span>イエスの御名により <span class="chord-inline">Bb</span>罪きよめ<span class="chord-inline">F</span>られ</p>
+<p><span class="chord-inline">Dm</span>今聖霊が <span class="chord-inline">C7</span>心に住まわ<span class="chord-inline">F</span>れる</p>
+
+<div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+
+<p><span class="chord-inline">F</span>だか<span class="chord-inline">F7</span>ら今 <span class="chord-inline">Bb</span>すべての</p>
+<p><span class="chord-inline">G7</span>悩みを <span class="chord-inline">C7</span>委ねよう</p>
+<p><span class="chord-inline">F</span>主は<span class="chord-inline">F7</span>心に <span class="chord-inline">Bb</span>平和を</p>
+<p><span class="chord-inline">F</span>満たして <span class="chord-inline">C7</span>下さ <span class="chord-inline">F</span>る</p>
+
+
+            </div>
+            
+              </div>
+            </div>
+            <div class="announcement-box" style="padding: 40px; border: 2px solid var(--gold-grad); border-radius: 15px; background-color: #fffaf0; margin-top: 50px;">
+    <h2 style="text-align: center; color: #8b4513;">✨ 新しい一歩を踏み出すあなたへ</h2>
+    
+    <div class="greeting-text-large" style="text-align: center;">
+        <p>今日のみことばを聞いて、あるいは賛美を歌う中で、</p>
+        <p>「イエス様と一緒に歩みたい」「洗礼を受けてみたい」</p>
+        <p>と心が動かされた方は、ぜひその気持ちを大切にしてください。</p>
+        
+        <div class="intro-divider-small"></div>
+        
+        <p>洗礼は、神様の大きな家族への正式な「入会式」であり、</p>
+        <p>あなたが神様の愛に永遠に包まれる約束のしるしです。</p>
+        
+        <p>「まだ迷っているけれど、話だけ聞いてみたい」</p>
+        <p>「自分なんかが受けていいのかな？」</p>
+        <p>そんな小さな疑問や不安も、お気軽にご相談くださいね。</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="mailto:your-email@example.com?subject=洗礼についての相談（星里宛）" 
+           style="display: inline-block; padding: 15px 30px; background-color: var(--gold-grad); color: rgb(49, 48, 48); text-decoration: none; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            📧 洗礼について　ほしのさと　に相談してみる
+        </a>
+        <p style="font-size: 0.9em; color: #666; margin-top: 10px;">※お名前はニックネームでも大丈夫ですよ！</p>
+    </div>
+</div>
+            </div>
+
+           <div class="prayer-container">
+    <div class="prayer-scroll" style="border-color: #90ee90; background: linear-gradient(to bottom, #ffffff, #f1fff1); text-align: center;">
+        <span class="icon-float">🕊️</span>
+        <h3 class="prayer-title" style="color: #2e8b57; text-decoration-color: #90ee90; margin-bottom: 50px;">祝福の祈り</h3>
+        
+        <div class="greeting-text-large" style="color: #1a1a1a;">
+            <p>主があなたを祝福し、</p>
+            <p>あなたを守られますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに照らし、</p>
+            <p>あなたを恵まれますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに向け、</p>
+            <p>あなたに平安を与えられますように。</p>
+                 <div class="amen-text-standard">「アロンの祝祷」民数記 6:24-26</div>
+        </div>
+</div>
+
+    
+   <section class="ending-section">
+    <div class="standing-call-large">
+        <p>「それでは、ご起立いただける方はご起立ください。」</p>
+        <p>最後に『父・御子・御霊の』を歌い、</p>
+        <p>祝祷をもって終わります。</p>
+    </div>
+
+    <div class="prayer-scroll doxology" style="padding: 80px 20px;">
+        <div class="doxology-label-large">祝祷の賛美：『父・御子・御霊の（三一頌（さんいちしょう））』</div>
+        <div class="grand-text">
+            <p>父・御子・御霊の</p>
+            <p>おおみかみに</p>
+            <p>ときわに絶えず</p>
+            <p>みさかえあれ</p>
+            <p class="grand-amen" style="color: #b8860b;">アーメン</p>
+        </div>
+        <div class="hymn-note-large">（一同、静かに、しかし力強く歌い上げます）</div>
+    </div>
+
+   
+   <div class="copyright-notice-large">
+        <p class="notice-red">【無断転載禁止】</p>
+        <div class="notice-body">
+            <p>本サイト内のテキスト・画像の</p>
+            <p>無断転載・複製・引用を固く禁じます。</p>
+            <p>万が一無断利用を発見した場合は、</p>
+            <p>当方規定の利用料金を請求いたします。</p>
+        </div>
+        <p class="notice-red">【無断転載禁止】</p>
+    </div>
+<div id="week2" class="intro-talk-box">
+        <body>
+
+    <section class="hero-container">
+        <div class="divine-light"></div>
+        <div class="hero-content">
+            <div class="cross-icon">†</div>
+          <div class="week-header">
+    <h1 class="english-text">Heart<br>Refresh</h1>
+    <p class="main-message">心のお洗濯</p>
+    <div class="info-group">
+        <p class="sub-message">～すべてをご存じの神様の前で、正直になれる場所～</p>
+    </div>
+</div>
+                <p class="event-title">第2週目 土曜日賛美集会</p>
+                <p class="event-time">17:00 〜 18:00</p>
+                <p class="location-name">📍 大阪救霊会館 大礼拝堂</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-wide">
+        <section class="section-padding">
+            <div class="message-card">
+                <span class="icon-float">✨</span>
+                <div class="greeting-text">
+                    <span class="readable-line">こんばんは！時間になりましたので、</span>
+                    <span class="readable-line">土曜日賛美集会をはじめます！</span>
+                </div>
+                <div class="greeting-text">
+                    <span class="readable-line">イエス・キリストが教えられた</span>
+                    <span class="prayer-highlight">「主の祈り」</span>を、
+                    <span class="readable-line">心を合わせて唱和していきましょう。</span>
+                </div>
+                <span class="icon-float" style="animation-delay: 1s;">📖</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll">
+                    <h3 class="prayer-title">主の祈り</h3>
+                    <div class="prayer-text">
+                        <p>天にまします我らの父よ、願わくは御名（みな）をあがめさせたまえ。</p>
+                        <p>御国（みくに）を来たらせたまえ。</p>
+                        <p>みこころの天に成る如く、地にも成らせたまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我らの日用の糧を、今日（きょう）も与えたまえ。</p>
+                        <p>我らに罪を犯す者を、我らが赦す如く、我らの罪をも赦したまえ。</p>
+                        <p>我らを試みにあわせず、悪より救い出したまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>国と力と栄えとは、限りなく汝（なんじ）のものなればなり。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <div class="greeting-text">
+                    <span class="readable-line">次に、私たちの信じる大切な教えをまとめた</span>
+                    <span class="prayer-highlight">「使徒信条」</span>を、
+                    <span class="readable-line">唱和していきましょう。</span>
+                </div>
+                <span class="icon-float">🕊️</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll" style="border-color: var(--soft-pink);">
+                    <h3 class="prayer-title" style="text-decoration-color: var(--soft-blue);">使徒信条</h3>
+                    <div class="prayer-text">
+                        <p>我は天地の造り主、全能の父なる神を信ず。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我はその独り子、我らの主、イエス・キリストを信ず。</p>
+                        <p>主は聖霊によりて宿り、処女（おとめ）マリヤより生まれ、</p>
+                        <p>ポンテオ・ピラトのもとに苦しみを受け、十字架につけられ、死にて葬られ、</p>
+                        <p>陰府（よみ）にくだり、三日目に死人のうちよりよみがえり、</p>
+                        <p>天に昇り、全能の父なる神の右に座したまえり。</p>
+                        <p>かしこより来たりて、生ける者と死ねる者とを裁きたまん。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我は聖霊を信ず。聖なる公同の教会、聖徒の交わり、罪の赦し、</p>
+                        <p>身体（からだ）のよみがえり、永遠（とこしえ）の命を信ず。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="border: 3px solid #fff9c4;">
+                <div class="greeting-text">
+                    <span class="readable-line">ありがとうございます。それでは神様に届くよう、</span>
+                    <span class="readable-line">心を込めて <span class="prayer-highlight">賛美をささげましょう！</span></span>
+                </div>
+                <div class="music-icons">🎵 🎹 🎸 🎶</div>
+            </div>
+        </section>
+        <div class="prayer-container">
+               <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+             <h3 class="prayer-title">賛美</h3>
+    
+             <div class="hymn-unit">
+             <div class="hymn-label">† How Great Thou Art</div>
+             <div class="hymn-lyrics-center">
+                  <p><span class="chord-inline">A</span>輝く日を<span class="chord-inline">D</span>仰ぐとき</p>
+              <p><span class="chord-inline">A</span>わが主の<span class="chord-inline">E7</span>御業の<span class="chord-inline">A</span>大いさを</p>
+               </div>
+              </div>
+              <div class="hymn-point-box">
+            <span class="point-icon">❣️</span>
+            <p class="point-eng">"God, His Son not sparing; Sent Him to die"</p>
+            <p class="point-jp">神は独り子を惜しまず、死ぬために送られた</p>
+        </div>
+
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+               <div class="hymn-label">† 主イエスの十字架の血で</div> <div class="hymn-source-small">Miktam Red 174</div>
+               <div class="hymn-lyrics-center">
+              <p><span class="chord-inline">F</span>主イエスの<span class="chord-inline">Bb</span>十字架の<span class="chord-inline">F</span>血で</p>
+              <p><span class="chord-inline">Dm</span>私は<span class="chord-inline">Gm</span>赦さ<span class="chord-inline">C7</span>れ</p>
+              <p><span class="chord-inline">F</span>御神と<span class="chord-inline">Bb</span>和解を<span class="chord-inline">F</span>して</p>
+              <p><span class="chord-inline">Dm</span>平安を<span class="chord-inline">C7</span>得まし<span class="chord-inline">F</span>た</p>
+              <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+              <p><span class="chord-inline">F</span>だか<span class="chord-inline">F7</span>ら今<span class="chord-inline">Bb</span>すべての</p>
+              <p><span class="chord-inline">G7</span>悩みを<span class="chord-inline">C7</span>委ねよう</p>
+              <p><span class="chord-inline">F</span>主は<span class="chord-inline">F7</span>心に<span class="chord-inline">Bb</span>平和を</p>
+              <p><span class="chord-inline">F</span>満たして<span class="chord-inline">C7</span>下さ<span class="chord-inline">F</span>る</p>
+            </div>
+            
+              </div>
+            </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="text-align: left; padding: 100px 60px;">
+                <span class="icon-float" style="text-align: center;">✉️</span>
+                 <div class="intro-talk-box">
+    <div class="intro-label">【 みことばの時間（おはなし） 】</div>
+    <div class="intro-body-large">
+        <p>さて、皆さん。歌をささげて心がスッキリした後は、</p>
+        <p>いよいよ今日一番のお楽しみ、</p>
+        <p>神様からのお話の時間です。</p>
+        
+        <div class="intro-divider-small"></div>
+
+        <p>せっかくこうして集まったのですから、</p>
+        <p>神様が用意してくださった</p>
+        <p><span class="heart-present">『心のプレゼント』</span>を、</p>
+        <p>ひとつも残さず受け取って帰ってくださいね。</p>
+
+        <div class="intro-divider-small"></div>
+
+        <p>神様のことばは、あなたの毎日を優しく守ってくれる、</p>
+        <p>世界にひとつだけの<span class="strong-amulet">最強のお守り</span>です。</p>
+
+        <p>今日は、私たちの心にどんな光を届けてくださるのでしょうか。</p>
+        <p>さあ、ワクワクする気持ちを大切に、</p>
+        <p>真っ直ぐな心でお聴きしましょう！</p>
+    </div>
+    <div class="intro-divider-main">✨ 🎁 ✨</div>
+</div>
+    
+   
+               <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第一章<br>ハンドルを「愛」の方向へ切り直す</h2>
+<div class="greeting-text-large">
+    <p>「悔い改め」とは、決して難しいことではありません。</p>
+    <p>自分勝手な方へ向いていた心のハンドルを、神様の方へ、</p>
+    <p>つまり<span class="prayer-highlight">「思いやりの方向」へグイッと切り直す</span></p>
+    <p>ことなのです。</p>
+</div>
+
+<div class="bible-verse-box">
+    <p class="verse-text">「互いに親切にし、慈しみの心で接し、神がキリストによってあなたがたを赦してくださったように、赦し合いなさい。」</p>
+    <p class="verse-ref">エフェソの信徒への手紙 4:32</p>
+</div>
+
+<div class="greeting-text-large" style="margin-top: 20px;">
+    <p>まずは、自分のことだけでなく「あの子は今、どんな気持ちかな？」と、</p>
+    <p>周りの人に心を向けることから始めてみましょう。</p>
+</div>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+    <h2 class="message-chapter-title">第二章<br>神様の教えを「心の栄養」にする</h2>
+        <div class="greeting-text-large">
+            <p>向き直った後は、神様が教えてくださる</p>
+            <p>「愛のレッスン」をしっかり聞きましょう。</p>
+            <p>ただ聞くだけでなく、ほんの少しずつ、</p>
+            <p><span class="prayer-highlight">生活の中で試してみること</span>が成長のコツです。</p>
+        </div>
+         <div class="bible-verse-box">
+            <p class="verse-text">「御言葉を行う人になりなさい。自分を欺いて、ただ聞くだけの者になってはいけません。」</p>
+            <p class="verse-ref">ヤコブの手紙 1:22</p>
+        </div>
+        <div class="greeting-text-large" style="margin-top: 20px;">
+            <p>優しい言葉をかける、誰かのために祈る。</p>
+            <p>そんな小さな「愛の実践」が、あなたをどんどん素敵な</p>
+            <p>神様の子どもへと成長させてくれますよ。</p>
+        </div>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+     <h2 class="message-chapter-title">第三章<br>新しい自分に生まれ変わる「約束のしるし」</h2>
+<div class="greeting-text-large">
+    <p>「洗礼」とは、古い自分にさよならをして、</p>
+    <p>神様の家族として新しく生まれ変わる、人生最高の瞬間です。</p>
+    <p>それは、神様があなたを<span class="prayer-highlight">「一生、何があっても守り抜く」</span>と約束し、</p>
+    <p>あなたに消えない聖なる印をつけてくださることなのです。</p>
+</div>
+
+<div class="bible-verse-box">
+    <p class="verse-text">「悔い改めなさい。そして、それぞれ罪を赦していただくために、イエス・キリストの名によって洗礼を受けなさい。そうすれば、賜物として聖霊を受けます。」</p>
+    <p class="verse-ref">使徒言行録 2:38</p>
+</div>
+
+<div class="greeting-text-large" style="margin-top: 20px;">
+    <p>洗礼を受けると、あなたの心には<span class="strong-amulet">「聖霊」という最強のサポーター</span>が住んでくれます。</p>
+    <p>もう一人で悩み、一人で頑張る必要はありません。</p>
+    <p>神様の無限の愛という、温かい光に包まれて生きる特権を、</p>
+    <p>あなたも今すぐ受け取りましょう！</p>
+</div>
+    </div>
+
+    <div class="chapter-unit">
+       <h2 class="message-chapter-title">第四章<br>新しい道を歩き出そう</h2>
+<div class="greeting-text-large">
+    <p>最後は、実際に一歩を踏み出すこと。</p>
+    <p>神様は、あなたが<span class="prayer-highlight">「新しい人」として輝き出す</span>のを</p>
+    <p>今か今かと待っています。</p>
+</div>
+
+<div class="bible-verse-box">
+    <p class="verse-text">「悔い改めにふさわしい実を結びなさい。」</p>
+    <p class="verse-ref">マタイによる福音書 3:8</p>
+</div>
+
+<div class="greeting-text-large" style="margin-top: 20px;">
+    <p>「自分一人で頑張る道」から、</p>
+    <p><b>「イエス様（ロード＝道）と一緒に歩く道」</b>へ。</p>
+    <p>その道を選んだ瞬間から、あなたの人生には神様の祝福という光が差し込みます。</p>
+    <p>さあ、安心してその一歩を踏み出しませんか？</p>
+</div>
+    </div>
+
+    <div class="chapter-unit">
+       <h2 class="message-chapter-title">第五章<br>新しい人生を始める「お祈り」</h2>
+<div class="prayer-scroll" style="padding: 60px 30px; margin-top: 40px; border-width: 4px; border-color: var(--gold-grad);">
+    <div class="greeting-text-large" style="color: #1a1a1a;">
+        <p>「愛する天のお父様、私のすべてをご存じの神様。</p>
+        <p>私は今まで、自分勝手な思いで歩んできたことを認め、</p>
+        <p>今、心からあなたの方へと向き直ります。</p>
+
+        <div class="intro-divider-small" style="background: rgba(0,0,0,0.1);"></div>
+
+        <p>イエス様が私の身代わりに十字架にかかり、</p>
+        <p>三日目によみがえられたことを心から信じます。</p>
+        <p>今、イエス様を私の『人生の道（ロード）』として、</p>
+        <p>そして私の救い主として、心にお迎えいたします。</p>
+
+        <div class="intro-divider-small" style="background: rgba(0,0,0,0.1);"></div>
+
+        <p>どうか私の心に聖霊を注ぎ、新しく作り変えてください。</p>
+        <p>今日から、あなたと共に、光の道を歩ませてください。</p>
+        <p>私たちの主、イエス・キリストのお名前でお祈りします。アーメン。」</p>
+    </div>
+</div>
+        </div>
+        <div class="bible-verse-box">
+         <p class="verse-text">「主は人の歩みを確かなものにし、その道を喜んでくださる。たといその人が倒れても、まっさかさまに倒れることはない。主がその手をつかんでおられるからだ。」</p>
+<p class="verse-ref">詩篇 37:23-24</p>
+        </div>
+        
+    </div>
+    <div class="greeting-text-large" style="margin-top: 40px; text-align: center;">
+    <p>お祈りを捧げた皆さんの心は、今、神様の光で満たされています。</p>
+    <p>この喜びを、最高の賛美で神様に届けましょう。</p>
+    <div class="intro-divider-small"></div>
+    <p style="font-weight: bold; color: var(--gold-grad); font-size: 1.2em;">🎶 賛美：主の栄光宮に</p>
+    <p>「主の栄光、宮に。主の栄光、うちに！」</p>
+</div>          
+</div>
+ <div class="prayer-container">
+          <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+    <h3 class="prayer-title" style="text-align: center;">賛美</h3>
+
+             <div class="hymn-unit">
+           
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+               <div class="hymn-label">† 主の栄光 宮に</div> <div class="hymn-source-small">Miktam Red 75
+               <div class="hymn-lyrics-center">
+              <p><span class="chord-inline">F</span>主の栄光 <span class="chord-inline">Bb</span>宮に <span class="chord-inline">F</span>主の平和 うちに</p>
+<p><span class="chord-inline">Dm</span>主の喜び <span class="chord-inline">Gm</span>満ちあふ<span class="chord-inline">C7</span>れる</p>
+<p><span class="chord-inline">F</span>イエスの御名により <span class="chord-inline">Bb</span>罪きよめ<span class="chord-inline">F</span>られ</p>
+<p><span class="chord-inline">Dm</span>今聖霊が <span class="chord-inline">C7</span>心に住まわ<span class="chord-inline">F</span>れる</p>
+
+<div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+
+<p><span class="chord-inline">F</span>だか<span class="chord-inline">F7</span>ら今 <span class="chord-inline">Bb</span>すべての</p>
+<p><span class="chord-inline">G7</span>悩みを <span class="chord-inline">C7</span>委ねよう</p>
+<p><span class="chord-inline">F</span>主は<span class="chord-inline">F7</span>心に <span class="chord-inline">Bb</span>平和を</p>
+<p><span class="chord-inline">F</span>満たして <span class="chord-inline">C7</span>下さ <span class="chord-inline">F</span>る</p>
+
+
+            </div>
+            
+              </div>
+            </div>
+            <div class="announcement-box" style="padding: 40px; border: 2px solid var(--gold-grad); border-radius: 15px; background-color: #fffaf0; margin-top: 50px;">
+    <h2 style="text-align: center; color: #8b4513;">✨ 新しい一歩を踏み出すあなたへ</h2>
+    
+    <div class="greeting-text-large" style="text-align: center;">
+        <p>今日のみことばを聞いて、あるいは賛美を歌う中で、</p>
+        <p>「イエス様と一緒に歩みたい」「洗礼を受けてみたい」</p>
+        <p>と心が動かされた方は、ぜひその気持ちを大切にしてください。</p>
+        
+        <div class="intro-divider-small"></div>
+        
+        <p>洗礼は、神様の大きな家族への正式な「入会式」であり、</p>
+        <p>あなたが神様の愛に永遠に包まれる約束のしるしです。</p>
+        
+        <p>「まだ迷っているけれど、話だけ聞いてみたい」</p>
+        <p>「自分なんかが受けていいのかな？」</p>
+        <p>そんな小さな疑問や不安も、お気軽にご相談くださいね。</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="mailto:your-email@example.com?subject=洗礼についての相談（星里宛）" 
+           style="display: inline-block; padding: 15px 30px; background-color: var(--gold-grad); color: rgb(49, 48, 48); text-decoration: none; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            📧 洗礼について　ほしのさと　に相談してみる
+        </a>
+        <p style="font-size: 0.9em; color: #666; margin-top: 10px;">※お名前はニックネームでも大丈夫ですよ！</p>
+    </div>
+</div>
+            </div>
+
+           <div class="prayer-container">
+    <div class="prayer-scroll" style="border-color: #90ee90; background: linear-gradient(to bottom, #ffffff, #f1fff1); text-align: center;">
+        <span class="icon-float">🕊️</span>
+        <h3 class="prayer-title" style="color: #2e8b57; text-decoration-color: #90ee90; margin-bottom: 50px;">祝福の祈り</h3>
+        
+        <div class="greeting-text-large" style="color: #1a1a1a;">
+            <p>主があなたを祝福し、</p>
+            <p>あなたを守られますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに照らし、</p>
+            <p>あなたを恵まれますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに向け、</p>
+            <p>あなたに平安を与えられますように。</p>
+                 <div class="amen-text-standard">「アロンの祝祷」民数記 6:24-26</div>
+        </div>
+</div>
+
+    
+   <section class="ending-section">
+    <div class="standing-call-large">
+        <p>「それでは、ご起立いただける方はご起立ください。」</p>
+        <p>最後に『父・御子・御霊の』を歌い、</p>
+        <p>祝祷をもって終わります。</p>
+    </div>
+
+    <div class="prayer-scroll doxology" style="padding: 80px 20px;">
+        <div class="doxology-label-large">祝祷の賛美：『父・御子・御霊の（三一頌（さんいちしょう））』</div>
+        <div class="grand-text">
+            <p>父・御子・御霊の</p>
+            <p>おおみかみに</p>
+            <p>ときわに絶えず</p>
+            <p>みさかえあれ</p>
+            <p class="grand-amen" style="color: #b8860b;">アーメン</p>
+        </div>
+        <div class="hymn-note-large">（一同、静かに、しかし力強く歌い上げます）</div>
+    </div>
+
+   
+   <div class="copyright-notice-large">
+        <p class="notice-red">【無断転載禁止】</p>
+        <div class="notice-body">
+            <p>本サイト内のテキスト・画像の</p>
+            <p>無断転載・複製・引用を固く禁じます。</p>
+            <p>万が一無断利用を発見した場合は、</p>
+            <p>当方規定の利用料金を請求いたします。</p>
+        </div>
+        <p class="notice-red">【無断転載禁止】</p>
+    </div>
+
+
+
+
+
+
+
+    <section id="week3" class="week-section">
+    <div class="intro-talk-box">
+        <div class="intro-label">【 第3週：新しく生まれ変わる 】</div>
+        </div>
+</section>
+        <body>
+
+    <section class="hero-container">
+        <div class="divine-light"></div>
+        <div class="hero-content">
+            <div class="cross-icon">†</div>
+          <div class="week-header">
+   <div class="week-header">
+    <h1 class="english-text">New Life <br>Connection</h1>
+    <p class="main-message">新しく生まれ変わる</p>
+    <div class="info-group">
+        <p class="sub-message">～イエス様とつながって歩む、新しい毎日のスタート～</p>
+    </div>
+</div>
+  
+</div>
+                <p class="event-title">第3週目 土曜日賛美集会</p>
+                <p class="event-time">17:00 〜 18:00</p>
+                <p class="location-name">📍 大阪救霊会館 大礼拝堂</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-wide">
+        <section class="section-padding">
+            <div class="message-card">
+                <span class="icon-float">✨</span>
+                <div class="greeting-text">
+                    <span class="readable-line">こんばんは！時間になりましたので、</span>
+                    <span class="readable-line">土曜日賛美集会をはじめます！</span>
+                </div>
+                <div class="greeting-text">
+                    <span class="readable-line">イエス・キリストが教えられた</span>
+                    <span class="prayer-highlight">「主の祈り」</span>を、
+                    <span class="readable-line">心を合わせて唱和していきましょう。</span>
+                </div>
+                <span class="icon-float" style="animation-delay: 1s;">📖</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll">
+                    <h3 class="prayer-title">主の祈り</h3>
+                    <div class="prayer-text">
+                        <p>天にまします我らの父よ、願わくは御名（みな）をあがめさせたまえ。</p>
+                        <p>御国（みくに）を来たらせたまえ。</p>
+                        <p>みこころの天に成る如く、地にも成らせたまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我らの日用の糧を、今日（きょう）も与えたまえ。</p>
+                        <p>我らに罪を犯す者を、我らが赦す如く、我らの罪をも赦したまえ。</p>
+                        <p>我らを試みにあわせず、悪より救い出したまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>国と力と栄えとは、限りなく汝（なんじ）のものなればなり。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <div class="greeting-text">
+                    <span class="readable-line">次に、私たちの信じる大切な教えをまとめた</span>
+                    <span class="prayer-highlight">「使徒信条」</span>を、
+                    <span class="readable-line">唱和していきましょう。</span>
+                </div>
+                <span class="icon-float">🕊️</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll" style="border-color: var(--soft-pink);">
+                    <h3 class="prayer-title" style="text-decoration-color: var(--soft-blue);">使徒信条</h3>
+                    <div class="prayer-text">
+                        <p>我は天地の造り主、全能の父なる神を信ず。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我はその独り子、我らの主、イエス・キリストを信ず。</p>
+                        <p>主は聖霊によりて宿り、処女（おとめ）マリヤより生まれ、</p>
+                        <p>ポンテオ・ピラトのもとに苦しみを受け、十字架につけられ、死にて葬られ、</p>
+                        <p>陰府（よみ）にくだり、三日目に死人のうちよりよみがえり、</p>
+                        <p>天に昇り、全能の父なる神の右に座したまえり。</p>
+                        <p>かしこより来たりて、生ける者と死ねる者とを裁きたまん。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我は聖霊を信ず。聖なる公同の教会、聖徒の交わり、罪の赦し、</p>
+                        <p>身体（からだ）のよみがえり、永遠（とこしえ）の命を信ず。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="border: 3px solid #fff9c4;">
+                <div class="greeting-text">
+                    <span class="readable-line">ありがとうございます。それでは神様に届くよう、</span>
+                    <span class="readable-line">心を込めて <span class="prayer-highlight">賛美をささげましょう！</span></span>
+                </div>
+                <div class="music-icons">🎵 🎹 🎸 🎶</div>
+            </div>
+        </section>
+        <div class="prayer-container">
+               <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+             <h3 class="prayer-title">賛美</h3>
+    
+            <div class="hymn-unit">
+    <div class="hymn-label">† 主の前にひざまずき</div>
+    <div class="hymn-lyrics-center">
+        <p><span class="chord-inline">D</span>主の<span class="chord-inline">F#m</span>前に<span class="chord-inline">G</span>ひざまずき</p>
+        <p><span class="chord-inline">D</span>こころ<span class="chord-inline">A</span>から<span class="chord-inline">G</span>さんび<span class="chord-inline">A</span>ささ<span class="chord-inline">F#m</span>げる<span class="chord-inline">Bm</span></p>
+        <p><span class="chord-inline">Em</span>あなたは<span class="chord-inline">A</span>とこしえ<span class="chord-inline">D</span>に <span class="chord-inline">A</span>わたしの<span class="chord-inline">D</span>かみ</p>
+        <br>
+        <p><span class="chord-inline">D</span>主の<span class="chord-inline">F#m</span>あいに<span class="chord-inline">G</span>みたされ</p>
+        <p><span class="chord-inline">D</span>こころ<span class="chord-inline">A</span>から<span class="chord-inline">G</span>かんしゃ<span class="chord-inline">A</span>ささ<span class="chord-inline">F#m</span>げる<span class="chord-inline">Bm</span></p>
+        <p><span class="chord-inline">Em</span>あなたは<span class="chord-inline">A</span>とこしえ<span class="chord-inline">D</span>に <span class="chord-inline">A</span>わたしの<span class="chord-inline">D</span>かみ</p>
+        <br>
+        <p><span class="chord-inline">D</span>主の<span class="chord-inline">F#m</span>御手に<span class="chord-inline">G</span>ささえられ</p>
+        <p><span class="chord-inline">D</span>この<span class="chord-inline">A</span>みちを<span class="chord-inline">G</span>あゆみ<span class="chord-inline">A</span>つづ<span class="chord-inline">F#m</span>ける<span class="chord-inline">Bm</span></p>
+        <p><span class="chord-inline">Em</span>あなたは<span class="chord-inline">A</span>とこしえ<span class="chord-inline">D</span>に <span class="chord-inline">A</span>わたしの<span class="chord-inline">D</span>かみ</p>
+    </div>
+</div>
+
+<div class="hymn-point-box">
+    <span class="point-icon">❣️</span>
+    <p class="point-eng">"You are my God forever and ever."</p>
+    <p class="point-jp">あなたは永遠に、私の神様です。</p>
+</div>
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+             <div class="hymn-unit">
+    <div class="hymn-label">† 御手の中で</div>
+    <div class="hymn-source-small">Miktam Blue 14</div>
+    <div class="hymn-lyrics-center">
+        <p><span class="chord-inline">C</span>御手の中で <span class="chord-inline">F</span>すべては<span class="chord-inline">G7</span>変わる<span class="chord-inline">C</span>賛美に</p>
+        <p><span class="chord-inline">F</span>わが行く<span class="chord-inline">C</span>道を <span class="chord-inline">Dm7</span>導き<span class="chord-inline">G7</span>たまえ</p>
+        <p>あなたの<span class="chord-inline">C</span>御手の<span class="chord-inline">G7</span>中で</p>
+
+        <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+
+        <p><span class="chord-inline">C</span>御手の中で <span class="chord-inline">F</span>すべては<span class="chord-inline">G7</span>変わる<span class="chord-inline">C</span>感謝に</p>
+        <p><span class="chord-inline">F</span>わが行く<span class="chord-inline">C</span>道に <span class="chord-inline">Dm7</span>現し<span class="chord-inline">G7</span>たまえ</p>
+        <p>あなたの<span class="chord-inline">C</span>御手の<span class="chord-inline">G7</span>わざ<span class="chord-inline">C</span>を</p>
+    </div>
+</div>
+              </div>
+            </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="text-align: left; padding: 100px 60px;">
+                <span class="icon-float" style="text-align: center;">✉️</span>
+                 <div class="intro-talk-box">
+    <div class="intro-label">【 みことばの時間（おはなし） 】</div>
+    <div class="intro-body-large">
+        <p>さて、皆さん。歌をささげて心がスッキリした後は、</p>
+        <p>いよいよ今日一番のお楽しみ、</p>
+        <p>神様からのお話の時間です。</p>
+        
+        <div class="intro-divider-small"></div>
+
+        <p>せっかくこうして集まったのですから、</p>
+        <p>神様が用意してくださった</p>
+        <p><span class="heart-present">『心のプレゼント』</span>を、</p>
+        <p>ひとつも残さず受け取って帰ってくださいね。</p>
+
+        <div class="intro-divider-small"></div>
+
+        <p>神様のことばは、あなたの毎日を優しく守ってくれる、</p>
+        <p>世界にひとつだけの<span class="strong-amulet">最強のお守り</span>です。</p>
+
+        <p>今日は、私たちの心にどんな光を届けてくださるのでしょうか。</p>
+        <p>さあ、ワクワクする気持ちを大切に、</p>
+        <p>真っ直ぐな心でお聴きしましょう！</p>
+    </div>
+    <div class="intro-divider-main">✨ 🎁 ✨</div>
+</div>
+    
+   
+               <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+  <div class="chapter-unit">
+    <h2 class="message-chapter-title">第一章<br>あなたは「新しい自分」になりました</h2>
+
+    <div class="greeting-text-large">
+        <p>洗礼を受けるということは、これまでの罪や重荷をすべて水に流し、</p>
+        <p>神様の子どもとして新しく生まれ変わったことを意味します。</p>
+        <p>過去の失敗に縛られる必要はありません。今日から、</p>
+        <p>あなたの人生の<span class="prayer-highlight">「第2章」が新しく始まる</span>のです。</p>
+    </div>
+
+    <div class="bible-verse-box">
+        <p class="verse-text">「だれでもキリストにあるならば、その人は新しく造られた者です。古いものは過ぎ去った、見よ、すべてが新しくなったのである。」</p>
+        <p class="verse-ref">コリントの信徒への手紙二 5:17</p>
+    </div>
+
+    <div class="greeting-text-large" style="margin-top: 20px;">
+        <p>まずは、まっさらになった心で「今日はどんな素敵なことが待っているかな？」と、</p>
+        <p>神様と一緒に新しい一歩を踏み出すことから始めてみましょう。</p>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+   <div class="chapter-unit">
+    <h2 class="message-chapter-title">第二章<br>新しく生まれ変わるということ</h2>
+
+    <div class="greeting-text-large">
+        <p>「新しく生まれ変わる」とは、自分の力だけでやり直すことではありません。</p>
+        <p>イエス様を信じて、聖霊様から新しい命をいただくことなのです。</p>
+        <p>この新しいつながりがあって初めて、私たちは神様の愛に満ちた</p>
+        <p><span class="prayer-highlight">「神の国」を心ゆくまで体験できる</span>ようになります。</p>
+    </div>
+
+    <div class="bible-verse-box">
+        <p class="verse-text">「イエスは答えて言われた。『まことに、まことに、あなたに言います。人は新しく生まれなければ、神の国を見ることはできません。』」</p>
+        <p class="verse-ref">ヨハネによる福音書 3:3</p>
+    </div>
+
+    <div class="greeting-text-large" style="margin-top: 20px;">
+        <p>まずは、難しく考えず「神様、私を新しくしてくれてありがとう」と、</p>
+        <p>今ここにある神様の愛を、素直に感じてみることから始めてみましょう。</p>
+        <p>それだけで、あなたの世界はもっと輝き始めますよ。</p>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+   <div class="chapter-unit">
+    <h2 class="message-chapter-title">第三章<br>イエス様という「幹」から離れない</h2>
+
+    <div class="greeting-text-large">
+        <p>クリスチャンの歩みで一番大切なのは、イエス様という「幹」に</p>
+        <p>ピタッとつながり続ける（Connection）ことです。</p>
+        <p>ぶどうの枝が幹から栄養をもらうように、私たちもイエス様にとどまれば、</p>
+        <p>自然と<span class="prayer-highlight">「平安や喜び」という素敵な実</span>が結ばれていきます。</p>
+    </div>
+
+    <div class="bible-verse-box">
+        <p class="verse-text">「わたしはぶどうの木、あなたがたはその枝である。人がわたしにとどまり、わたしもその人にとどまっているなら、その人は多くの実を結ぶようになる。」</p>
+        <p class="verse-ref">ヨハネによる福音書 15:5</p>
+    </div>
+
+    <div class="greeting-text-large" style="margin-top: 20px;">
+        <p>自分の力だけで頑張らなくて大丈夫。幹であるイエス様に身をゆだねて、</p>
+        <p>注がれる愛の栄養をたっぷり受け取りましょう。</p>
+        <p>あなたがあなたらしく輝くための、一番の秘訣です。</p>
+    </div>
+</div>
+
+    <div class="chapter-unit">
+    <h2 class="message-chapter-title">第四章<br>愛のバリアを広げ、みんなで歩む</h2>
+
+    <div class="greeting-text-large">
+        <p>神様とつながって心に余裕ができると、不思議と隣の人にも優しくなれます。</p>
+        <p>これからは一人の「点」ではなく、大切な仲間という「輪」の中で歩んでいきましょう。</p>
+        <p>何かをしてもらうだけでなく、<span class="prayer-highlight">「自分にできることで誰かを笑顔にする」</span>楽しさを知るとき、</p>
+        <p>あなたの毎日には、もっと深くて温かい平和が満ちあふれていきます。</p>
+    </div>
+
+    <div class="bible-verse-box">
+        <p class="verse-text">「互いに愛し合いなさい。わたしがあなたがたを愛したように、あなたがたも互いに愛し合いなさい。」</p>
+        <p class="verse-ref">ヨハネによる福音書 13:34</p>
+    </div>
+
+    <div class="greeting-text-large" style="margin-top: 20px;">
+        <p>自分にできる小さなことで大丈夫。得意なことや優しい言葉を誰かにプレゼントして、</p>
+        <p>「この場所（教会）があって良かったな」と思える仲間の一員になりましょう。</p>
+        <p>みんなで支え合うその輪が、あなたをずっと守ってくれる大きなバリアになりますよ。</p>
+    </div>
+</div>
+</div>
+    </div>
+
+  <div class="chapter-unit">
+    <h2 class="message-chapter-title">第五章<br>新しい人生を始める「お祈り」</h2>
+
+    <div class="prayer-scroll" style="padding: 60px 30px; margin-top: 40px; border-width: 4px; border-color: var(--gold-grad);">
+        <div class="greeting-text-large" style="color: #1a1a1a;">
+            <p style="font-weight: bold; margin-bottom: 10px;">【新しい命の歩みを始める告白】</p>
+            <p>私は、イエス様によって新しく生まれ変わったことを信じます。</p>
+            <p>自分中心の古い生き方にさよならをし、神様の子どもとして歩みます。</p>
+            <p>どんな時もイエス様という「幹」にしっかりつながり、</p>
+            <p>その愛を周りの人に伝えていく者となることを誓います。</p>
+
+            <div class="intro-divider-small" style="background: rgba(0,0,0,0.1);"></div>
+
+            <p>「天のお父様、私を新しく生まれ変わらせてくださり、</p>
+            <p>神様の愛の世界を見る目を与えてくださったことを感謝します。</p>
+            <p>私があなたという幹から離れることなく、</p>
+            <p>いつも『心のホットライン』でつながっていられるよう導いてください。</p>
+
+            <div class="intro-divider-small" style="background: rgba(0,0,0,0.1);"></div>
+
+            <p>新しい歩みで迷う時も、みことばを心の栄養として一歩ずつ進ませてください。</p>
+            <p>私たちが互いに愛し合い、あなたの平和を世界に広げていけますように。</p>
+            <p>新しく、輝かしい命をくださった、イエス・キリストのお名前でお祈りします。アーメン。」</p>
+        </div>
+    </div>
+
+    <div class="bible-verse-box">
+        <p class="verse-text">「主は人の歩みを確かなものにし、その道を喜んでくださる。たといその人が倒れても、まっさかさまに倒れることはない。主がその手をつかんでおられるからだ。」</p>
+        <p class="verse-ref">詩篇 37:23-24</p>
+    </div>
+</div>
+        
+    </div>
+    <div class="greeting-text-large" style="margin-top: 40px; text-align: center;">
+    <p>お祈りを捧げた皆さんの心は、今、神様の光で満たされています。</p>
+    <p>この喜びを、最高の賛美で神様に届けましょう。</p>
+    <div class="intro-divider-small"></div>
+    <p style="font-weight: bold; color: var(--gold-grad); font-size: 1.2em;">🎶 賛美：主の栄光宮に</p>
+    <p>「主の栄光、宮に。主の栄光、うちに！」</p>
+</div>          
+</div>
+ <div class="prayer-container">
+          <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+    <h3 class="prayer-title" style="text-align: center;">賛美</h3>
+
+             <div class="hymn-unit">
+           
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+               <div class="hymn-label">† 主の栄光 宮に</div> <div class="hymn-source-small">Miktam Red 75
+               <div class="hymn-lyrics-center">
+              <p><span class="chord-inline">F</span>主の栄光 <span class="chord-inline">Bb</span>宮に <span class="chord-inline">F</span>主の平和 うちに</p>
+<p><span class="chord-inline">Dm</span>主の喜び <span class="chord-inline">Gm</span>満ちあふ<span class="chord-inline">C7</span>れる</p>
+<p><span class="chord-inline">F</span>イエスの御名により <span class="chord-inline">Bb</span>罪きよめ<span class="chord-inline">F</span>られ</p>
+<p><span class="chord-inline">Dm</span>今聖霊が <span class="chord-inline">C7</span>心に住まわ<span class="chord-inline">F</span>れる</p>
+
+<div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+
+<p><span class="chord-inline">F</span>だか<span class="chord-inline">F7</span>ら今 <span class="chord-inline">Bb</span>すべての</p>
+<p><span class="chord-inline">G7</span>悩みを <span class="chord-inline">C7</span>委ねよう</p>
+<p><span class="chord-inline">F</span>主は<span class="chord-inline">F7</span>心に <span class="chord-inline">Bb</span>平和を</p>
+<p><span class="chord-inline">F</span>満たして <span class="chord-inline">C7</span>下さ <span class="chord-inline">F</span>る</p>
+
+
+            </div>
+            
+              </div>
+            </div>
+            <div class="announcement-box" style="padding: 40px; border: 2px solid var(--gold-grad); border-radius: 15px; background-color: #fffaf0; margin-top: 50px;">
+    <h2 style="text-align: center; color: #8b4513;">✨ 新しい一歩を踏み出すあなたへ</h2>
+    
+    <div class="greeting-text-large" style="text-align: center;">
+        <p>今日のみことばを聞いて、あるいは賛美を歌う中で、</p>
+        <p>「イエス様と一緒に歩みたい」「洗礼を受けてみたい」</p>
+        <p>と心が動かされた方は、ぜひその気持ちを大切にしてください。</p>
+        
+        <div class="intro-divider-small"></div>
+        
+        <p>洗礼は、神様の大きな家族への正式な「入会式」であり、</p>
+        <p>あなたが神様の愛に永遠に包まれる約束のしるしです。</p>
+        
+        <p>「まだ迷っているけれど、話だけ聞いてみたい」</p>
+        <p>「自分なんかが受けていいのかな？」</p>
+        <p>そんな小さな疑問や不安も、お気軽にご相談くださいね。</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="mailto:your-email@example.com?subject=洗礼についての相談（星里宛）" 
+           style="display: inline-block; padding: 15px 30px; background-color: var(--gold-grad); color: rgb(49, 48, 48); text-decoration: none; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            📧 洗礼について　ほしのさと　に相談してみる
+        </a>
+        <p style="font-size: 0.9em; color: #666; margin-top: 10px;">※お名前はニックネームでも大丈夫ですよ！</p>
+    </div>
+</div>
+            </div>
+
+           <div class="prayer-container">
+    <div class="prayer-scroll" style="border-color: #90ee90; background: linear-gradient(to bottom, #ffffff, #f1fff1); text-align: center;">
+        <span class="icon-float">🕊️</span>
+        <h3 class="prayer-title" style="color: #2e8b57; text-decoration-color: #90ee90; margin-bottom: 50px;">祝福の祈り</h3>
+        
+        <div class="greeting-text-large" style="color: #1a1a1a;">
+            <p>主があなたを祝福し、</p>
+            <p>あなたを守られますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに照らし、</p>
+            <p>あなたを恵まれますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに向け、</p>
+            <p>あなたに平安を与えられますように。</p>
+                 <div class="amen-text-standard">「アロンの祝祷」民数記 6:24-26</div>
+        </div>
+</div>
+
+    
+   <section class="ending-section">
+    <div class="standing-call-large">
+        <p>「それでは、ご起立いただける方はご起立ください。」</p>
+        <p>最後に『父・御子・御霊の』を歌い、</p>
+        <p>祝祷をもって終わります。</p>
+    </div>
+
+    <div class="prayer-scroll doxology" style="padding: 80px 20px;">
+        <div class="doxology-label-large">祝祷の賛美：『父・御子・御霊の（三一頌（さんいちしょう））』</div>
+        <div class="grand-text">
+            <p>父・御子・御霊の</p>
+            <p>おおみかみに</p>
+            <p>ときわに絶えず</p>
+            <p>みさかえあれ</p>
+            <p class="grand-amen" style="color: #b8860b;">アーメン</p>
+        </div>
+        <div class="hymn-note-large">（一同、静かに、しかし力強く歌い上げます）</div>
+    </div>
+
+   
+   <div class="copyright-notice-large">
+        <p class="notice-red">【無断転載禁止】</p>
+        <div class="notice-body">
+            <p>本サイト内のテキスト・画像の</p>
+            <p>無断転載・複製・引用を固く禁じます。</p>
+            <p>万が一無断利用を発見した場合は、</p>
+            <p>当方規定の利用料金を請求いたします。</p>
+        </div>
+        <p class="notice-red">【無断転載禁止】</p>
+    </div>
+
+
+    <section id="week4" class="week-section">
+    <div class="intro-talk-box">
+        <div class="intro-label">【 第4週：神の国 】</div>
+        </div>
+</section>
+        <body>
+
+    <section class="hero-container">
+        <div class="divine-light"></div>
+        <div class="hero-content">
+            <div class="cross-icon">†</div>
+          <div class="week-header">
+    <h1 class="english-text">Kingdom <br>Son / Daughter of God</h1>
+    <p class="main-message">神の国</p>
+    <div class="info-group">
+        <p class="sub-message">～すべてをご存じの父（神様）の前で、子どものように正直になれる場所～</p>
+    </div>
+</div>
+                <p class="event-title">第4週目 土曜日賛美集会</p>
+                <p class="event-time">17:00 〜 18:00</p>
+                <p class="location-name">📍 大阪救霊会館 大礼拝堂</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-wide">
+        <section class="section-padding">
+            <div class="message-card">
+                <span class="icon-float">✨</span>
+                <div class="greeting-text">
+                    <span class="readable-line">こんばんは！時間になりましたので、</span>
+                    <span class="readable-line">土曜日賛美集会をはじめます！</span>
+                </div>
+                <div class="greeting-text">
+                    <span class="readable-line">イエス・キリストが教えられた</span>
+                    <span class="prayer-highlight">「主の祈り」</span>を、
+                    <span class="readable-line">心を合わせて唱和していきましょう。</span>
+                </div>
+                <span class="icon-float" style="animation-delay: 1s;">📖</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll">
+                    <h3 class="prayer-title">主の祈り</h3>
+                    <div class="prayer-text">
+                        <p>天にまします我らの父よ、願わくは御名（みな）をあがめさせたまえ。</p>
+                        <p>御国（みくに）を来たらせたまえ。</p>
+                        <p>みこころの天に成る如く、地にも成らせたまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我らの日用の糧を、今日（きょう）も与えたまえ。</p>
+                        <p>我らに罪を犯す者を、我らが赦す如く、我らの罪をも赦したまえ。</p>
+                        <p>我らを試みにあわせず、悪より救い出したまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>国と力と栄えとは、限りなく汝（なんじ）のものなればなり。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <div class="greeting-text">
+                    <span class="readable-line">次に、私たちの信じる大切な教えをまとめた</span>
+                    <span class="prayer-highlight">「使徒信条」</span>を、
+                    <span class="readable-line">唱和していきましょう。</span>
+                </div>
+                <span class="icon-float">🕊️</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll" style="border-color: var(--soft-pink);">
+                    <h3 class="prayer-title" style="text-decoration-color: var(--soft-blue);">使徒信条</h3>
+                    <div class="prayer-text">
+                        <p>我は天地の造り主、全能の父なる神を信ず。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我はその独り子、我らの主、イエス・キリストを信ず。</p>
+                        <p>主は聖霊によりて宿り、処女（おとめ）マリヤより生まれ、</p>
+                        <p>ポンテオ・ピラトのもとに苦しみを受け、十字架につけられ、死にて葬られ、</p>
+                        <p>陰府（よみ）にくだり、三日目に死人のうちよりよみがえり、</p>
+                        <p>天に昇り、全能の父なる神の右に座したまえり。</p>
+                        <p>かしこより来たりて、生ける者と死ねる者とを裁きたまん。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我は聖霊を信ず。聖なる公同の教会、聖徒の交わり、罪の赦し、</p>
+                        <p>身体（からだ）のよみがえり、永遠（とこしえ）の命を信ず。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="border: 3px solid #fff9c4;">
+                <div class="greeting-text">
+                    <span class="readable-line">ありがとうございます。それでは神様に</span>
+                    <span class="readable-line">心を込めて <span class="prayer-highlight">賛美をささげましょう！</span></span>
+                </div>
+                <div class="music-icons">🎵 🎹 🎸 🎶</div>
+            </div>
+        </section>
+        <div class="prayer-container">
+               <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+             <h3 class="prayer-title">賛美</h3>
+    
+             <div class="hymn-unit">
+             <div class="hymn-label">†>聖歌 707番心にもだえあらば</div>
+             <div class="hymn-lyrics-center">
+              【1番】
+<span class="chord">[G]</span> 心にも <span class="chord">[C]</span> だえ <span class="chord">[G]</span> あらば <span class="chord">[D]</span> イエスに <span class="chord">[G]</span> 話せ <span class="chord">[D]</span> イエスに <span class="chord">[G]</span> 話せ
+<span class="chord">[G]</span> 悲しみ <span class="chord">[C]</span> うれい <span class="chord">[G]</span> あらば <span class="chord">[D]</span> イエスに <span class="chord">[G]</span> 話せ <span class="chord">[D]</span> よ <span class="chord">[G]</span>
+
+【サビ】
+<span class="chord">[G]</span> イエスに <span class="chord">[C]</span> 話せ <span class="chord">[G]</span> イエスに <span class="chord">[D]</span> 話せ
+<span class="chord">[G]</span> イエスに <span class="chord">[C]</span> 話せ <span class="chord">[G]</span> よ
+<span class="chord">[G]</span> 思案せ <span class="chord">[C]</span> ずに <span class="chord">[G]</span> 何事も <span class="chord">[D]</span> イエスに <span class="chord">[G]</span> 話せ <span class="chord">[D]</span> よ <span class="chord">[G]</span>
+    </div>
+    <span style="color: #d9534f; font-weight: bold;">[G]</span>悲しみ <span style="color: #d9534f; font-weight: bold;">[C]</span>つきざる <span style="color: #d9534f; font-weight: bold;">[G]</span>うきよに <span style="color: #d9534f; font-weight: bold;">[D]</span>ありても<br>
+            <span style="color: #d9534f; font-weight: bold;">[G]</span>日々主と <span style="color: #d9534f; font-weight: bold;">[C]</span>歩めば <span style="color: #d9534f; font-weight: bold;">[G]</span>みくにの <span style="color: #d9534f; font-weight: bold;">[D]</span>ここち<span style="color: #d9534f; font-weight: bold;">[G]</span>す
+        </div>
+
+        
+        <div style="background: #f0faff; padding: 15px; border-radius: 10px; border-left: 4px solid #ffd700;">
+            <b style="color: #4682b4;">(Chorus)</b><br>
+            <div class="hymn-unit">
+             <div class="hymn-label">†>聖歌 467番：みくにのここちす</div>
+             <div class="hymn-lyrics-center">
+            <span style="color: #d9534f; font-weight: bold;">[G]</span>ハレルヤ！ <span style="color: #d9534f; font-weight: bold;">[C]</span>罪とが <span style="color: #d9534f; font-weight: bold;">[G]</span>消されし <span style="color: #d9534f; font-weight: bold;">[D]</span>我が身は<br>
+            <span style="color: #d9534f; font-weight: bold;">[G]</span>いずくに <span style="color: #d9534f; font-weight: bold;">[C]</span>ありとも <span style="color: #d9534f; font-weight: bold;">[G]</span>みくにの <span style="color: #d9534f; font-weight: bold;">[D]</span>ここち<span style="color: #d9534f; font-weight: bold;">[G]</span>す
+        </div>
+
+        <div style="margin-top: 20px;">
+            <b style="color: #888;">[3]</b><br>
+            <span style="color: #d9534f; font-weight: bold;">[G]</span>山にも <span style="color: #d9534f; font-weight: bold;">[C]</span>谷にも <span style="color: #d9534f; font-weight: bold;">[G]</span>小屋にも <span style="color: #d9534f; font-weight: bold;">[D]</span>宮にも<br>
+            <span style="color: #d9534f; font-weight: bold;">[G]</span>日々主と <span style="color: #d9534f; font-weight: bold;">[C]</span>すまえば <span style="color: #d9534f; font-weight: bold;">[G]</span>みくにの <span style="color: #d9534f; font-weight: bold;">[D]</span>ここち<span style="color: #d9534f; font-weight: bold;">[G]</span>す
+        </div>
+              </div>
+              <div class="hymn-point-box">
+            <span class="point-icon">❣️</span>
+            <p class="point-eng"></p>
+            <p class="point-jp">天のお父様は、何よりも大切な独り子の命さえ惜しまれませんでした。<br>
+        それは、あなたを永遠の家族として、御国の喜びへと招き入れるため。<br>
+        あなたは、神様がすべてをかけて愛した、最高の宝物です。</p>
+        </div>
+
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+               <div class="hymn-label">† 主イエスの十字架の血で</div> <div class="hymn-source-small">Miktam Red 174</div>
+               <div class="hymn-lyrics-center">
+              <p><span class="chord-inline">F</span>主イエスの<span class="chord-inline">Bb</span>十字架の<span class="chord-inline">F</span>血で</p>
+              <p><span class="chord-inline">Dm</span>私は<span class="chord-inline">Gm</span>赦さ<span class="chord-inline">C7</span>れ</p>
+              <p><span class="chord-inline">F</span>御神と<span class="chord-inline">Bb</span>和解を<span class="chord-inline">F</span>して</p>
+              <p><span class="chord-inline">Dm</span>平安を<span class="chord-inline">C7</span>得まし<span class="chord-inline">F</span>た</p>
+              <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+              <p><span class="chord-inline">F</span>だか<span class="chord-inline">F7</span>ら今<span class="chord-inline">Bb</span>すべての</p>
+              <p><span class="chord-inline">G7</span>悩みを<span class="chord-inline">C7</span>委ねよう</p>
+              <p><span class="chord-inline">F</span>主は<span class="chord-inline">F7</span>心に<span class="chord-inline">Bb</span>平和を</p>
+              <p><span class="chord-inline">F</span>満たして<span class="chord-inline">C7</span>下さ<span class="chord-inline">F</span>る</p>
+            </div>
+            
+              </div>
+            </div>
+            
+                </div>
+            </div>
+
+            <div class="message-card" style="text-align: left; padding: 100px 60px;">
+                <span class="icon-float" style="text-align: center;">✉️</span>
+                 <div class="intro-talk-box">
+    <div class="intro-label">【 みことばの時間（おはなし） 】</div>
+    <div class="intro-body-large">
+        <p>皆さん、こんにちは。前回（第3週）は、私たちが神様の国に入ることができるという、素晴らしい恵みを一緒に学びましたね。</p>
+        
+        <p>「えっ、私が入ってもいいの？」と、少しドキドキした方もいたかもしれません。でも、もう大丈夫ですよ。神様は両手を広げて、あなたを待っています。</p>
+        
+        <p class="highlight-text">今週は、その<strong>『神様の国』がいったいどんな場所なのか</strong>を、皆さんと一緒にのぞいてみたいと思います。</p>
+        
+        <p>そこは、私たちが普段過ごしている世界とは、ちょっと……いえ、ずいぶん違う、愛に満ちた特別な場所なんです。さあ、心の扉を少しだけ開けて、神様が用意してくださった「平和の景色」を一緒に見に行きましょう。</p>
+    </div>
+    <div class="intro-divider-main">✨ 🎁 ✨</div>
+</div>
+    
+   
+               <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第一章<br>空よりも広い「神様の国」の招待状</h2>
+<div class="greeting-text-large">
+   <p>「神様の国って、どんなところ？」と聞かれたら、私はこう答えます。</p>
+        
+        <p class="voice-accent">「そこは、あなたが心の底から『あぁ、ここにいていいんだ』と安心できる場所ですよ」って。</p>
+        
+        <p>聖書には、<strong>「神様の国は、食べたり飲んだりすることではなく、聖霊による喜びと平和（ローマ14:17）」</strong>だと書いてあります。</p>
+        
+        <p>目に見える豪華さではなく、あなたの心が「本当の平安」で満たされること。神様は今、その国へあなたを優しく招いてくださっています。</p>
+    </div>
+
+
+    <div class="chapter-unit">
+    <h2 class="message-chapter-title">第二章<br>あなただけに贈られた「最高の計画」</h2>
+        <div class="greeting-text-large">
+          <p>「これから先、どうなっちゃうんだろう……」と不安になる夜もありますよね。でも、神様はこんなに温かな言葉をかけてくれています。</p>
+        
+        <div class="bible-card promise">
+            <p>「わたしは、あなたのために立てている計画をよく知っている。それは、あなたにわざわいではなく、平和と、輝くような将来と希望を与えるためのものだよ」</p>
+            <span class="bible-ref">（エレミヤ書 29:11より）</span>
+        </div>
+        
+        <p>今、どんなに暗い道に思えても、その先には必ず光が待っています。神様の計画に「ハズレ」はないから、安心して身を委ねてみてくださいね。</p>
+    </div>
+        
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+     <h2 class="message-chapter-title">第三章<br>神様の子どもとして、愛を分かち合う</h2>
+<div class="greeting-text-large">
+   <p>皆さんはもう、神様の国の「大切な住人」です。そして、神様に「私の子だよ」と認められた、かけがえのない存在なんですよ。</p>
+        
+        <p>教会の献金は、住人としての「会費」ではありません。天のお父様からいただいたたくさんのプレゼント（恵み）を、「お父様、ありがとう！これ、他のみんなのためにも使ってね」と笑顔でお返しする、家族の温かいやり取りなんです。</p>
+        
+        <div class="voice-accent">
+            「神様は、喜んで捧げる人を愛してくださる（Ⅱコリント9:7）」
+        </div>
+        
+        <p>神様の子どもであるあなたが出す「ありがとう」の気持ちは、世界を温める魔法の種になります。無理をせず、幸せな気持ちでその愛を分かち合ってみてくださいね。</p>
+    </div>
+
+
+    <div class="chapter-unit">
+       <h2 class="message-chapter-title">第四章<br>神様の子どもとして「光」を放つ生き方</h2>
+<div class="greeting-text-large">
+    <p>神様の国の住人になった私たちは、もう暗闇の中を怯えて歩く必要はありません。なぜなら、あなた自身が「光の子」とされているからです。</p>
+        
+        <p>イエス様は、私たちがどう生きれば幸せになれるか、その背中で教えてくれました。それは、神様を信頼し、家族である隣の人を大切にすること。</p>
+        
+        <p class="highlight-text">「神様の子どもとして、イエス様のように生きてみたい」</p>
+        
+        <p>そう願うだけで、あなたの手からは温かな光が溢れ出します。特別な何かになろうとしなくて大丈夫。神様の子どもである「ありのままのあなた」で、周りの人をそっと照らす光になっていきましょう。</p>
+    </div>
+
+
+
+    <div class="chapter-unit">
+       <h2 class="message-chapter-title">第五章<br>神様の子どもとしての、新しい私の祈り</h2>
+<div class="prayer-scroll" style="padding: 60px 30px; margin-top: 40px; border-width: 4px; border-color: var(--gold-grad);">
+    <div class="greeting-text-large" style="color: #1a1a1a;">
+    <p>「優しい天のお父様。この1ヶ月、私の心にずっと寄り添い、導いてくださったことを心から感謝します。</p>
+        
+        <p>私は今、あなたが用意してくださった『希望の将来』を心から信じ、あなたの愛をいっぱいに受け取ります。私はもう、迷子ではありません。あなたの愛する、大切な子どもです。」</p>
+
+        <div class="bible-card verse-highlight">
+            <p>「そのようなわけで、私たちは、心に血の注ぎを受けて邪悪な良心をきよめられ、からだをきよい水で洗われたのですから、全き信仰をもって、真心から神に近づこうではありませんか。約束された方は真実な方ですから、私たちは動揺しないで、しっかりと希望を告白しようではありませんか」</p>
+            <span class="bible-ref">（へブル人への手紙 10:22、23）</span>
+        </div>
+
+        <p class="hymn-quote">『こころを ささげて 主にのみしたがわん』</p>
+        
+        <p>この言葉のように、これからはイエス様を私の『心のモデル』にして歩んでいきたいです。誰かを許し、誰かを励まし、愛を形にする……そんなイエス様の温かな歩みを、私も追いかけていきます。</p>
+
+        <p>もし道に迷いそうになったら、あのエレミヤ書の『輝くような将来の約束』を思い出させてくださいね。私は一人ではありません。大好きなお父様であるあなたと一緒に、新しい一歩を踏み出します。</p>
+
+        <p class="amen-text">愛する主イエス・キリストのお名前によって、お祈りします。アーメン。」</p>
+    </div>
+</div>
+        </div>
+       
+    </div>
+  
+</div>
+ <div class="prayer-container">
+          <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+    <h3 class="prayer-title" style="text-align: center;">賛美</h3>
+
+             <div class="hymn-unit">
+           
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit"> 
+      
+               <div class="hymn-lyrics-center">
+           <div class="hymn-card-container">
+    <div class="hymn-header">
+        <span class="hymn-number">聖歌 232</span>
+        <h3 class="hymn-main-title">罪とがを赦され</h3>
+    </div>
+
+    <div class="hymn-content">
+        <div class="hymn-section">
+            <div class="verse-num">1</div>
+            <p class="hymn-text">
+                罪とがを赦され　神の子となりたる<br>
+                我がたま　の喜び　比べうるものなし
+            </p>
+        </div>
+
+        <div class="chorus-box">
+            <span class="chorus-label">（くり返し）</span>
+            <p class="hymn-text">
+                ひもすがら証あかしせん　夜もすがら主をほめん<br>
+                御救いはたえなり　御救いはくすしと
+            </p>
+        </div>
+
+        <div class="hymn-section">
+            <div class="verse-num">2</div>
+            <p class="hymn-text">
+                主にまたく従い　安き得し我が身に<br>
+                あまつやの歌声　響き来る心地す
+            </p>
+            <p class="note">※天津（あまつ）…天にある</p>
+        </div>
+
+        <div class="hymn-section">
+            <div class="verse-num">3</div>
+            <p class="hymn-text">
+                主のものとせられし　我が身こそさちなれ<br>
+                感謝なき日はなく　賛美なき夜はなし
+            </p>
+        </div>
+    </div>
+</div>
+            </div>
+            
+              </div>
+          
+
+           <div class="prayer-container">
+    <div class="prayer-scroll" style="border-color: #90ee90; background: linear-gradient(to bottom, #ffffff, #f1fff1); text-align: center;">
+        <span class="icon-float">🕊️</span>
+        <h3 class="prayer-title" style="color: #2e8b57; text-decoration-color: #90ee90; margin-bottom: 50px;">祝福の祈り</h3>
+        
+        <div class="greeting-text-large" style="color: #1a1a1a;">
+            <p>主があなたを祝福し、</p>
+            <p>あなたを守られますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに照らし、</p>
+            <p>あなたを恵まれますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに向け、</p>
+            <p>あなたに平安を与えられますように。</p>
+                 <div class="amen-text-standard">「アロンの祝祷」民数記 6:24-26</div>
+        </div>
+</div>
+
+    
+   <section class="ending-section">
+    <div class="standing-call-large">
+        <p>「それでは、ご起立いただける方はご起立ください。」</p>
+        <p>最後に『父・御子・御霊の』を歌い、</p>
+        <p>祝祷をもって終わります。</p>
+    </div>
+
+    <div class="prayer-scroll doxology" style="padding: 80px 20px;">
+        <div class="doxology-label-large">祝祷の賛美：『父・御子・御霊の（三一頌（さんいちしょう））』</div>
+        <div class="grand-text">
+            <p>父・御子・御霊の</p>
+            <p>おおみかみに</p>
+            <p>ときわに絶えず</p>
+            <p>みさかえあれ</p>
+            <p class="grand-amen" style="color: #b8860b;">アーメン</p>
+        </div>
+        <div class="hymn-note-large">（一同、静かに、しかし力強く歌い上げます）</div>
+    </div>
+
+   
+   <div class="copyright-notice-large">
+        <p class="notice-red">【無断転載禁止】</p>
+        <div class="notice-body">
+            <p>本サイト内のテキスト・画像の</p>
+            <p>無断転載・複製・引用を固く禁じます。</p>
+            <p>万が一無断利用を発見した場合は、</p>
+            <p>当方規定の利用料金を請求いたします。</p>
+        </div>
+        <p class="notice-red">【無断転載禁止】</p>
+    </div>
+
+
+
+    <section id="week5" class="week-section">
+    <div class="intro-talk-box">
+        <div class="intro-label">【 第5週：最強の歩み 】</div>
+        </div>
+</section>
+        <body>
+
+    <section class="hero-container">
+        <div class="divine-light"></div>
+        <div class="hero-content">
+            <div class="cross-icon">†</div>
+          <div class="week-header">
+    <h1 class="english-text">Unstoppable Walk<br>Why You’ll Never Sink</h1>
+    <p class="main-message">最強の歩み</p>
+    <div class="info-group">
+        <p class="sub-message">～嵐の中でも沈まない理由～</p>
+    </div>
+</div>
+                <p class="event-title">第5週目 土曜日賛美集会</p>
+                <p class="event-time">17:00 〜 18:00</p>
+                <p class="location-name">📍 大阪救霊会館 大礼拝堂</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-wide">
+        <section class="section-padding">
+            <div class="message-card">
+                <span class="icon-float">✨</span>
+                <div class="greeting-text">
+                    <span class="readable-line">こんばんは！時間になりましたので、</span>
+                    <span class="readable-line">土曜日賛美集会をはじめます！</span>
+                </div>
+                <div class="greeting-text">
+                    <span class="readable-line">イエス・キリストが教えられた</span>
+                    <span class="prayer-highlight">「主の祈り」</span>を、
+                    <span class="readable-line">心を合わせて唱和していきましょう。</span>
+                </div>
+                <span class="icon-float" style="animation-delay: 1s;">📖</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll">
+                    <h3 class="prayer-title">主の祈り</h3>
+                    <div class="prayer-text">
+                        <p>天にまします我らの父よ、願わくは御名（みな）をあがめさせたまえ。</p>
+                        <p>御国（みくに）を来たらせたまえ。</p>
+                        <p>みこころの天に成る如く、地にも成らせたまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我らの日用の糧を、今日（きょう）も与えたまえ。</p>
+                        <p>我らに罪を犯す者を、我らが赦す如く、我らの罪をも赦したまえ。</p>
+                        <p>我らを試みにあわせず、悪より救い出したまえ。</p>
+                        <div class="prayer-divider"></div>
+                        <p>国と力と栄えとは、限りなく汝（なんじ）のものなればなり。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <div class="greeting-text">
+                    <span class="readable-line">次に、私たちの信じる大切な教えをまとめた</span>
+                    <span class="prayer-highlight">「使徒信条」</span>を、
+                    <span class="readable-line">唱和していきましょう。</span>
+                </div>
+                <span class="icon-float">🕊️</span>
+            </div>
+
+            <div class="prayer-container">
+                <div class="prayer-scroll" style="border-color: var(--soft-pink);">
+                    <h3 class="prayer-title" style="text-decoration-color: var(--soft-blue);">使徒信条</h3>
+                    <div class="prayer-text">
+                        <p>我は天地の造り主、全能の父なる神を信ず。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我はその独り子、我らの主、イエス・キリストを信ず。</p>
+                        <p>主は聖霊によりて宿り、処女（おとめ）マリヤより生まれ、</p>
+                        <p>ポンテオ・ピラトのもとに苦しみを受け、十字架につけられ、死にて葬られ、</p>
+                        <p>陰府（よみ）にくだり、三日目に死人のうちよりよみがえり、</p>
+                        <p>天に昇り、全能の父なる神の右に座したまえり。</p>
+                        <p>かしこより来たりて、生ける者と死ねる者とを裁きたまん。</p>
+                        <div class="prayer-divider"></div>
+                        <p>我は聖霊を信ず。聖なる公同の教会、聖徒の交わり、罪の赦し、</p>
+                        <p>身体（からだ）のよみがえり、永遠（とこしえ）の命を信ず。</p>
+                        <div class="amen-text">アーメン</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="border: 3px solid #fff9c4;">
+                <div class="greeting-text">
+                    <span class="readable-line">ありがとうございます。それでは神様に届くよう、</span>
+                    <span class="readable-line">心を込めて <span class="prayer-highlight">賛美をささげましょう！</span></span>
+                </div>
+                <div class="music-icons">🎵 🎹 🎸 🎶</div>
+            </div>
+        </section>
+        <div class="prayer-container">
+               <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+             <h3 class="prayer-title">賛美</h3>
+    
+             <div class="hymn-unit">
+             <div class="hymn-label">† How Great Thou Art</div>
+             <div class="hymn-lyrics-center">
+                  <p><span class="chord-inline">A</span>輝く日を<span class="chord-inline">D</span>仰ぐとき</p>
+              <p><span class="chord-inline">A</span>わが主の<span class="chord-inline">E7</span>御業の<span class="chord-inline">A</span>大いさを</p>
+               </div>
+              </div>
+              <div class="hymn-point-box">
+            <span class="point-icon">❣️</span>
+            <p class="point-eng">"God, His Son not sparing; Sent Him to die"</p>
+            <p class="point-jp">神は独り子を惜しまず、死ぬために送られた</p>
+        </div>
+
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+               <div class="hymn-label">† 主イエスの十字架の血で</div> <div class="hymn-source-small">Miktam Red 174</div>
+               <div class="hymn-lyrics-center">
+              <p><span class="chord-inline">F</span>主イエスの<span class="chord-inline">Bb</span>十字架の<span class="chord-inline">F</span>血で</p>
+              <p><span class="chord-inline">Dm</span>私は<span class="chord-inline">Gm</span>赦さ<span class="chord-inline">C7</span>れ</p>
+              <p><span class="chord-inline">F</span>御神と<span class="chord-inline">Bb</span>和解を<span class="chord-inline">F</span>して</p>
+              <p><span class="chord-inline">Dm</span>平安を<span class="chord-inline">C7</span>得まし<span class="chord-inline">F</span>た</p>
+              <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+              <p><span class="chord-inline">F</span>だか<span class="chord-inline">F7</span>ら今<span class="chord-inline">Bb</span>すべての</p>
+              <p><span class="chord-inline">G7</span>悩みを<span class="chord-inline">C7</span>委ねよう</p>
+              <p><span class="chord-inline">F</span>主は<span class="chord-inline">F7</span>心に<span class="chord-inline">Bb</span>平和を</p>
+              <p><span class="chord-inline">F</span>満たして<span class="chord-inline">C7</span>下さ<span class="chord-inline">F</span>る</p>
+            </div>
+            
+              </div>
+            </div>
+                </div>
+            </div>
+
+            <div class="message-card" style="text-align: left; padding: 100px 60px;">
+                <span class="icon-float" style="text-align: center;">✉️</span>
+                 <div class="intro-talk-box">
+    <div class="intro-label">【 みことばの時間（おはなし） 】</div>
+    <div class="intro-body-large">
+        <p>さて、皆さん。歌をささげて心がスッキリした後は、</p>
+        <p>いよいよ今日一番のお楽しみ、</p>
+        <p>神様からのお話の時間です。</p>
+        
+        <div class="intro-divider-small"></div>
+
+        <p>せっかくこうして集まったのですから、</p>
+        <p>神様が用意してくださった</p>
+        <p><span class="heart-present">『心のプレゼント』</span>を、</p>
+        <p>ひとつも残さず受け取って帰ってくださいね。</p>
+
+        <div class="intro-divider-small"></div>
+
+        <p>神様のことばは、あなたの毎日を優しく守ってくれる、</p>
+        <p>世界にひとつだけの<span class="strong-amulet">最強のお守り</span>です。</p>
+
+        <p>今日は、私たちの心にどんな光を届けてくださるのでしょうか。</p>
+        <p>さあ、ワクワクする気持ちを大切に、</p>
+        <p>真っ直ぐな心でお聴きしましょう！</p>
+    </div>
+    <div class="intro-divider-main">✨ 🎁 ✨</div>
+</div>
+    
+   
+               <div class="message-card" style="text-align: center; padding: 100px 40px;">
+    
+    <div class="chapter-unit">
+        <h2 class="message-chapter-title">第一章<br>試練の本当の意味</h2>
+<div class="greeting-text-large">
+  <p>人生の節目にやってくる大変なことや、目の前の高い壁。</p>
+<p>それはあなたを困らせるためのものではなく、神様があなたを最高に輝かせるために用意した</p>
+<p>つまり<span class="prayer-highlight">「愛のトレーニング」</span></p>
+<p>なのです。</p>
+<p>神様は真実な方なので、耐えられない試練は与えません。</p>
+<p>壁があるということは、そこには必ず、神様がセットで用意してくださった</p>
+<p><span class="prayer-highlight">「出口」があるという希望の証</span></p>
+<p>なのです。</p>
+</div>
+
+<div class="bible-verse-box">
+    <p class="verse-text">「神は真実な方ですから、あなたがたを耐えられないほどの試練に合わせることはなさいません。むしろ、耐えられるように、試練とともに、脱出の道も備えてくださいます。」</p>
+    <p class="verse-ref">1コリント 10:13</p>
+</div>
+
+
+
+    <div class="chapter-unit">
+    <h2 class="message-chapter-title">第二章<br>共に磨かれ、預けて進む</h2>
+        <div class="greeting-text-large">
+           <div>
+   <p>私たちは一人で強くなる必要はありません。鉄が鉄によって研がれるように、</p>
+<p>人とのぶつかり合いを通して、神様は私たちをピカピカに磨き上げてくださいます。</p>
+<p>大切なのは、重荷を一人で背負わずイエス様を人生という船の<span class="prayer-highlight">キャプテンとしてお迎えすること</span>です。</p>
+<p>自分の感情ではなく、神様の正しい言葉を武器にしましょう。</p>
+<p>最強の味方である聖霊様と共に歩むとき、私たちは</p>
+<p>何にも負けない強い存在へと、一歩ずつ<span class="prayer-highlight">建て上げられていきます</span>。</p>
+<p>この確信を持って、主と共に力強く進みましょう。</p>
+</div>
+         <div class="bible-verse-box">
+            <p class="verse-text">「わたしはあなたがたに平安を残します。わたしの平安を与えます。あなたがたは心を騒がせてはなりません。恐れてはなりません。」</p>
+            <p class="verse-ref">ヨハネの福音書 14章27節</p>
+        </div>
+        <div class="greeting-text-large" style="margin-top: 20px;"></p>
+        </div>
+        </div>
+    </div>
+
+    <div class="chapter-unit">
+     <h2 class="message-chapter-title">第三章<br>嵐の中の平安と勝利</h2>
+<div class="greeting-text-large">
+    <p>かつて弟子たちは嵐に怯えましたが、同じ船に乗っていたイエス様は、</p>
+<p>堂々と眠っておられました。最強のキャプテンが共にいるなら、私たちは嵐の中でも安心していられるのです。</p>
+<p>それは、イエス様があなたを<span class="prayer-highlight">「嵐の中から確かな港へと導く」</span>と約束し、</p>
+<p>全てを預けるあなたに、揺るがない勝利の確信を与えてくださることなのです。</p>
+</div>
+
+<div class="bible-verse-box">
+    <p class="verse-text">「世に勝つ者はだれですか。イエスを神の御子と信じる者ではありませんか。」</p>
+    <p class="verse-ref">1ヨハネ 5:5</p>
+</div>
+
+    <div class="chapter-unit">
+       <h2 class="message-chapter-title">第四章<br>最強の確信をもって捧げるお祈り</h2>
+<div class="prayer-scroll" style="padding: 60px 30px; margin-top: 40px; border-width: 4px; border-color: var(--gold-grad);">
+    <div class="greeting-text-large" style="color: #1a1a1a;">
+        <p>天のお父様、</p>
+        <p>今、私の人生という船の真ん中に、イエス様をキャプテン（船長）としてお迎えします。</p>
+        <p>目の前の嵐や高い壁を見て怯えるのではなく、あなたが用意してくださっている「最高の出口」を信じて、すべてをあなたに預けます。</p>
+        <p>「鉄は鉄によって研がれる」ように、今の葛藤や人との関わりを通して、私をピカピカに磨き上げ、最強の存在へと建て上げてください。</p>
+        <p>最強の味方である聖霊様が共にいてくださることを感謝し、私たちの救い主イエス・キリストのお名前でお祈りします。アーメン。</p>
+    </div>
+</div>
+        </div>
+        <div class="bible-verse-box">
+         <p class="verse-text">「主は人の歩みを確かなものにし、その道を喜んでくださる。たといその人が倒れても、まっさかさまに倒れることはない。主がその手をつかんでおられるからだ。」</p>
+<p class="verse-ref">詩篇 37:23-24</p>
+        </div>
+        
+    </div>
+    <section class="summary-message"></section>
+    <div class="greeting-text-large" style="margin-top: 40px; text-align: center;">
+  
+    <p>人生の嵐はあなたを輝かせるための愛の訓練であり、神様は必ず最高の出口を用意してくださっています。</p>
+    <p>弱さを一人で抱えず、イエス様を人生という船のキャプテンにお迎えして、全てを預けて進みましょう。</p>
+    <p>最強の味方である聖霊様が共におられるから、どんな波がきても沈まず、あなたはもっと強く建て上げられます。</p>
+</section>
+   
+    <div class="intro-divider-small"></div>
+    <p style="font-weight: bold; color: var(--gold-grad); font-size: 1.2em;">🎶 聖歌439「人生の海の嵐に」</p>
+    
+</div>          
+</div>
+ <div class="prayer-container">
+          <div class="prayer-scroll" style="border: 4px solid #f3e5ab; background: radial-gradient(circle at center, #ffffff 0%, #fffdf0 100%);">
+    <h3 class="prayer-title" style="text-align: center;">賛美</h3>
+
+             <div class="hymn-unit">
+           
+               <div class="prayer-divider" style="background: var(--gold-grad); opacity: 0.5;"></div>
+
+                <div class="hymn-unit">
+             <div class="hymn-lyrics-center">
+    <p><span class="chord-inline">F</span>人生の海の <span class="chord-inline">Bb</span>嵐に <span class="chord-inline">F</span>もまれ来しこの身も</p>
+    <p><span class="chord-inline">Dm</span>不思議なる神の <span class="chord-inline">Gm</span>手により <span class="chord-inline">C7</span>命拾いしぬ</p>
+
+    <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+
+    <p><span class="chord-inline">F</span>いと<span class="chord-inline">F7</span>静けき <span class="chord-inline">Bb</span>港に着き</p>
+    <p><span class="chord-inline">G7</span>われは今 <span class="chord-inline">C7</span>安ろう</p>
+    <p><span class="chord-inline">F</span>救い主<span class="chord-inline">F7</span>イエスの <span class="chord-inline">Bb</span>手にある</p>
+    <p><span class="chord-inline">F</span>身はいとも <span class="chord-inline">C7</span>安 <span class="chord-inline">F</span>し</p>
+
+    <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+
+    <p><span class="chord-inline">F</span>悲しみと罪の <span class="chord-inline">Bb</span>中より <span class="chord-inline">F</span>救われしこの身に</p>
+    <p><span class="chord-inline">Dm</span>誘いの声も <span class="chord-inline">Gm</span>魂 <span class="chord-inline">C7</span>揺すぶること得じ</p>
+
+    <div class="prayer-divider" style="width: 60px; margin: 30px auto; opacity: 0.2;"></div>
+
+    <p><span class="chord-inline">F</span>すさまじき罪の <span class="chord-inline">Bb</span>嵐の <span class="chord-inline">F</span>もてあそぶまにまに</p>
+    <p><span class="chord-inline">Dm</span>死を待つは誰ぞ <span class="chord-inline">C7</span>直ちに <span class="chord-inline">F</span>逃げ込め港に</p>
+</div>
+
+            </div>
+            
+              </div>
+            </div>
+      
+            </div>
+
+           <div class="prayer-container">
+    <div class="prayer-scroll" style="border-color: #90ee90; background: linear-gradient(to bottom, #ffffff, #f1fff1); text-align: center;">
+        <span class="icon-float">🕊️</span>
+        <h3 class="prayer-title" style="color: #2e8b57; text-decoration-color: #90ee90; margin-bottom: 50px;">祝福の祈り</h3>
+        
+        <div class="greeting-text-large" style="color: #1a1a1a;">
+            <p>主があなたを祝福し、</p>
+            <p>あなたを守られますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに照らし、</p>
+            <p>あなたを恵まれますように。</p>
+            
+            <div class="intro-divider-small" style="background-color: #90ee90; opacity: 0.4;"></div>
+            
+            <p>主が御顔をあなたに向け、</p>
+            <p>あなたに平安を与えられますように。</p>
+                 <div class="amen-text-standard">「アロンの祝祷」民数記 6:24-26</div>
+        </div>
+</div>
+
+    
+   <section class="ending-section">
+    <div class="standing-call-large">
+        <p>「それでは、ご起立いただける方はご起立ください。」</p>
+        <p>最後に『父・御子・御霊の』を歌い、</p>
+        <p>祝祷をもって終わります。</p>
+    </div>
+
+    <div class="prayer-scroll doxology" style="padding: 80px 20px;">
+        <div class="doxology-label-large">祝祷の賛美：『父・御子・御霊の（三一頌（さんいちしょう））』</div>
+        <div class="grand-text">
+            <p>父・御子・御霊の</p>
+            <p>おおみかみに</p>
+            <p>ときわに絶えず</p>
+            <p>みさかえあれ</p>
+            <p class="grand-amen" style="color: #b8860b;">アーメン</p>
+        </div>
+        <div class="hymn-note-large">（一同、静かに、しかし力強く歌い上げます）</div>
+    </div>
+
+   
+   <div class="copyright-notice-large">
+        <p class="notice-red">【無断転載禁止】</p>
+        <div class="notice-body">
+            <p>本サイト内のテキスト・画像の</p>
+            <p>無断転載・複製・引用を固く禁じます。</p>
+            <p>万が一無断利用を発見した場合は、</p>
+            <p>当方規定の利用料金を請求いたします。</p>
+        </div>
+        <p class="notice-red">【無断転載禁止】</p>
+    </div>
+
+
+
+
+
+    </div>
+    <footer class="site-footer">
+        &copy; 2026 You are precious. Just the way you are.
+    </footer>
+
+    </div>
+</div>
+<script>
+window.addEventListener('scroll', () => { 
+    const weeks = ['week1', 'week2', 'week3', 'week4', 'week5']; 
+    let currentWeek = ""; 
+    weeks.forEach(id => { 
+        const element = document.getElementById(id); 
+        if (element) { 
+            const rect = element.getBoundingClientRect(); 
+            if (rect.top <= window.innerHeight / 2) { 
+                currentWeek = id; 
+            } 
+        } 
+    }); 
+    document.querySelectorAll('#week-nav tr').forEach(tr => { 
+        tr.classList.remove('active'); 
+        if (tr.getAttribute('data-week') === currentWeek) { 
+            tr.classList.add('active'); 
+        } 
+    }); 
+});
+</script>
+</body>
+</html>
