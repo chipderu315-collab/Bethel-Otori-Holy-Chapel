@@ -1,0 +1,2120 @@
+:root {
+    /* 天国のグラデーション */
+    --bg-pink-grad: linear-gradient(135deg, #fffafa 0%, #fff0f5 40%, #ffe4e1 100%);
+    --accent-pink: #d88a96; /* 深みのあるピンク */
+    
+    /* きらきらエフェクト（ゴールド） */
+    --sparkle-gold: rgba(255, 215, 0, 0.6);
+    --sparkle-white: rgba(255, 255, 255, 0.9);
+    
+    /* 視認性の高い文字色 */
+    --text-main: #4a3c3c;
+    --text-link: #304ffe; /* コントラスト比を上げた青 */
+    
+    /* 真珠のような白いカード質感 */
+    --glass-panel: rgba(255, 255, 255, 0.95);
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px; /* お年寄り向けの基本サイズ */
+}
+
+body {
+    margin: 0;
+    font-family: "Hiragino Sans", "UD Shin Go", sans-serif;
+    background: var(--bg-pink-grad);
+    color: var(--text-main);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ---------------------------------------------------------------- */
+/* きらきら背景エフェクト（JSと連動） */
+/* ---------------------------------------------------------------- */
+#sparkle-container {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.sparkle-particle {
+    position: absolute;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    animation: sparkle_fade linear infinite;
+    opacity: 0;
+}
+
+@keyframes sparkle_fade {
+    0% { opacity: 0; transform: translateY(100vh) scale(0.5); }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-10vh) scale(1.5); }
+}
+
+/* ---------------------------------------------------------------- */
+/* 左上固定：天国の操作パネル（修正の核心） */
+/* ---------------------------------------------------------------- */
+.heavenly-panel {
+    position: fixed; top: 20px; left: 20px; z-index: 1000;
+}
+
+.panel-card {
+    background: var(--glass-panel);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 1.5rem;
+    box-shadow: 
+        0 10px 40px rgba(255, 182, 193, 0.3),
+        inset 0 0 10px var(--sparkle-white); /* 真珠のような内側の光 */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    inline-size: 260px; /* 横幅を固定して安定させる */
+}
+
+/* メニューリスト（儀礼）の装飾 */
+.ritual-list {
+    list-style: none; padding: 0; margin: 0;
+    text-align: left;
+}
+
+.ritual-list li {
+    margin: 12px 0;
+}
+
+.ritual-list a {
+    font-size: 1.1rem; color: var(--text-link); /* 視認性の高い青 */
+    text-decoration: none; font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.ritual-list a:hover {
+    color: var(--accent-pink);
+    transform: translateX(5px);
+}
+
+.panel-divider {
+    border: none; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-pink), transparent);
+    margin: 1.5rem 0;
+    box-shadow: 0 0 8px var(--accent-pink);
+}
+
+
+/* ガイダンスカード専用 */
+.guidance-card {
+    margin-top: 120px; /* 操作パネルとの干渉を防ぐ */
+    border-top: 5px solid var(--accent-pink);
+    background: #fff;
+}
+
+.guidance-title {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1em;
+}
+
+.main-message {
+    font-size: 1.3rem;
+    line-height: 2;
+    color: #555;
+    margin-bottom: 2.5rem;
+}
+
+/* 栄養素の説明エリア */
+.program-concept {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.concept-item {
+    flex: 1;
+    background: rgba(255, 182, 193, 0.05);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 182, 193, 0.1);
+}
+
+.concept-item h4 {
+    color: var(--accent-pink);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.concept-item p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.usage-note {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+/* スマホ表示では縦に並べる */
+@media (max-width: 768px) {
+    .program-concept {
+        flex-direction: column;
+    }
+}
+
+
+/* ---------------------------------------------------------------- */
+/* 週選択ボタン（5週分）：圧倒的な「今ここ」の明確化 */
+/* ---------------------------------------------------------------- */
+.week-selector {
+    display: flex; justify-content: space-between; gap: 5px;
+}
+
+.nav-button {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    background: transparent;
+    border: none;
+    font-size: 0.9rem; font-weight: bold;
+    color: var(--text-main);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative; /* 光のライン用 */
+}
+
+/* 選択されたボタン（今ここ）の「大きく」と「足元の光」 */
+.nav-button.active {
+    transform: scale(1.15); /* ふわっと大きく */
+    font-weight: bold;
+}
+
+.nav-button.active::after {
+    content: "";
+    position: absolute; bottom: 0; left: 15%;
+    width: 70%; height: 4px;
+    background: var(--accent-pink);
+    box-shadow: 0 0 10px var(--accent-pink); /* 優しい光のライン */
+}
+
+/* ---------------------------------------------------------------- */
+/* コンテンツカード（真珠の質感） */
+/* ---------------------------------------------------------------- */
+.content-card {
+    background: var(--glass-panel);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 3.5rem;
+    margin: 30px auto;
+    box-shadow: 
+        0 15px 50px rgba(216, 138, 150, 0.25),
+        inset 0 0 20px rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    max-width: 900px;
+}
+
+/* 本をめくる体験（3Dフリップ） */
+.book-container {
+    position: relative; width: 100%; height: 75vh;
+    perspective: 2000px; margin: 2rem 0;
+}
+
+.page {
+    position: absolute; width: 100%; height: 100%;
+    top: 0; left: 0;
+    background: #fff; border-radius: 20px;
+    padding: 3rem; box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: left center;
+    backface-visibility: hidden;
+    z-index: 1;
+}
+
+.page.flipped { transform: rotateY(-180deg); z-index: 0; }
+.page.active { z-index: 2; transform: rotateY(0deg); }
+
+/* 操作用サイドエリア */
+.page-nav {
+    position: absolute; top: 0; height: 100%; width: 15%;
+    background: rgba(255, 182, 193, 0.05);
+    border: none; cursor: pointer; z-index: 10;
+    font-size: 2.5rem; color: #ffb6c1;
+    transition: 0.3s;
+}
+
+/* 羽ボタン（トップへ戻る） */
+.top-back-btn {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 65px; height: 65px; border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff, #fff5f7);
+    display: flex; justify-content: center; align-items: center;
+    font-size: 2rem; z-index: 100;
+    box-shadow: 0 5px 20px rgba(255, 182, 193, 0.6), 0 0 15px #fff;
+    cursor: pointer;
+}
+
+/* 主の祈り専用のカードデザイン */
+.prayer-card {
+    margin: 60px auto;
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    background: linear-gradient(180deg, #ffffff 0%, #fffaf0 100%); /* 聖なる紙の質感 */
+}
+
+.prayer-title {
+    font-size: 2.2rem;
+    color: var(--accent-pink);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* タイトルの下に光のライン */
+.prayer-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-pink), transparent);
+}
+
+.prayer-text {
+    font-size: 1.4rem; /* お年寄りへの配慮：大きめ */
+    line-height: 2.5; /* 読みやすさ：広めの行間 */
+    color: #4a3c3c;
+    letter-spacing: 0.05em;
+}
+
+.prayer-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent-light);
+    margin: 2rem auto;
+    opacity: 0.5;
+}
+
+.amen-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-pink);
+    margin-top: 2rem;
+    animation: amen_glow 3s infinite alternate;
+}
+
+/* アーメンが優しく光るアニメーション */
+@keyframes amen_glow {
+    from { text-shadow: 0 0 5px rgba(216, 138, 150, 0.2); }
+    to { text-shadow: 0 0 20px rgba(216, 138, 150, 0.6); }
+}
+
+/* モバイル対応：文字サイズ調整 */
+@media (max-width: 768px) {
+    .prayer-text { font-size: 1.2rem; line-height: 2.2; }
+    .prayer-card { padding: 2rem 1rem; }
+}
+
+/* 使徒信条専用のカードデザイン */
+.creed-card {
+    margin: 60px auto;
+    /* わずかに青白い光を混ぜて、信条の「宣言」としての強さを表現 */
+    background: linear-gradient(180deg, #ffffff 0%, #f0f8ff 100%); 
+    border-top: 3px solid #b0c4de; /* 落ち着いたブルーのライン */
+}
+
+.creed-title {
+    font-size: 2.2rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    /* UC級：視認性を確保しつつ青のアクセント */
+    text-shadow: 0 0 10px rgba(176, 196, 222, 0.5);
+}
+
+.creed-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; left: 10%;
+    width: 80%; height: 2px;
+    background: linear-gradient(90deg, transparent, #b0c4de, transparent);
+}
+
+.creed-text {
+    font-size: 1.4rem;
+    line-height: 2.3; /* 主の祈りと同じく、音読しやすい余裕を */
+    color: var(--text-main);
+    letter-spacing: 0.03em;
+}
+
+/* 既存の amen-text や prayer-divider は主の祈りと共通で使用されます */
+
+/* 祝祷専用のカードデザイン */
+.benediction-card {
+    margin: 60px auto;
+    /* 若草色から白への清々しいグラデーション */
+    background: linear-gradient(180deg, #f7fff7 0%, #ffffff 100%);
+    border: 2px solid rgba(144, 238, 144, 0.3);
+    position: relative;
+}
+
+/* 鳩のアイコンを浮かせるアニメーション */
+.icon-float-top {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: float_wing 4s ease-in-out infinite;
+}
+
+@keyframes float_wing {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.benediction-title {
+    font-size: 2.2rem;
+    color: #2e8b57; /* 落ち着いたシーグリーン */
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+}
+
+.benediction-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, #90ee90, transparent);
+}
+
+.benediction-text {
+    font-size: 1.5rem; /* 祝祷は特にゆったりと大きく */
+    line-height: 2.8;
+    color: var(--text-main);
+}
+
+/* グリーンの区切り線 */
+.green-line {
+    background: #90ee90 !important;
+    opacity: 0.6;
+    width: 60px;
+}
+
+/* 出典元（民数記）の装飾 */
+.scripture-ref {
+    font-size: 1rem;
+    color: #556b2f;
+    margin-top: 2rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* お問い合わせ専用のカードデザイン */
+.contact-card {
+    margin: 80px auto;
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.contact-title {
+    font-size: 2.2rem;
+    color: #b8860b; /* 上品なゴールド */
+    margin-bottom: 1.5rem;
+}
+
+.contact-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+/* 黄金のボタン：天国への扉のような輝き */
+.heavenly-button {
+    display: inline-block;
+    padding: 25px 50px;
+    font-size: 1.8rem; /* 大きく、ハッキリ */
+    font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+    color: #fff;
+    /* ゴールドの重厚なグラデーション */
+    background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+    text-decoration: none;
+    border-radius: 100px;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(184, 134, 11, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.heavenly-button:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(184, 134, 11, 0.6);
+    filter: brightness(1.1);
+}
+
+/* メールアドレスの表示エリア */
+.email-address-display {
+    margin-top: 40px;
+}
+
+.address-label {
+    font-size: 0.9rem;
+    color: #b8860b;
+    margin-bottom: 5px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.address-text {
+    font-size: 1.5rem;
+    color: #444;
+    font-family: 'Yu Mincho', serif;
+    word-break: break-all; /* 小さな画面でアドレスが切れないように */
+}
+
+/* アイコンに少し動きを */
+.icon-mail {
+    display: inline-block;
+    margin-right: 10px;
+    animation: mail_float 3s infinite ease-in-out;
+}
+
+@keyframes mail_float {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+
+
+
+
+
+/* ---------------------------------------------------------------- */
+/* 教会名：キラキラ・かわいく・大きく */
+/* ---------------------------------------------------------------- */
+.church-logo-area {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.cross-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    animation: cross_float 3s ease-in-out infinite;
+}
+
+.sparkle-church-name {
+    font-size: 3rem; /* 大きく */
+    font-weight: bold;
+    font-family: "Hiragino Sans", "UD Shin Go", sans-serif;
+    line-height: 1.2;
+    margin: 0;
+    
+    /* 1. キラキラ：虹色のグラデーション（天国の光） */
+    background: linear-gradient(
+        110deg,
+        #ffb6c1 0%,    /* ピンク */
+        #ffdab9 20%,   /* ピーチ */
+        #e0ffff 40%,   /* 水色 */
+        #fafad2 60%,   /* 薄黄色 */
+        #ffb6c1 80%,   /* ピンクに戻る */
+        #ffffff 100%   /* 純白の輝き */
+    );
+    background-size: 200% auto;
+    
+    /* グラデーションを文字にクリップ */
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 文字自体は透明にする（背景が見えるように） */
+    color: transparent;
+    
+    /* 2. かわいい：パールのパウダーのような白い影（UC級視認性確保） */
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.9), /* 内側の光 */
+        0 2px 5px rgba(216, 138, 150, 0.4); /* 外側の柔らかいピンクの影 */
+    
+    /* 3. 動くキラキラ：グラデーションを動かすアニメーション */
+    animation: shine_heavenly 6s linear infinite;
+}
+
+/* 一文字ずつディレイをかけて、波打つような輝きに（オプション） */
+.sparkle-church-name .char {
+    display: inline-block;
+}
+/* JSで一文字ずつクラスを振るか、CSSで順番に指定する（今回は省略） */
+
+/* アニメーション定義 */
+@keyframes shine_heavenly {
+    0% { background-position: -100% 0; }
+    100% { background-position: 100% 0; }
+}
+
+@keyframes cross_float {
+    0%, 100% { transform: translateY(0) rotate(0); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .sparkle-church-name {
+        font-size: 2.2rem; /* スマホでは少し小さく */
+    }
+    .sm-br { display: block; } /* スマホでは2行に */
+}
+
+@media (min-width: 769px) {
+    .sm-br { display: none; } /* PCでは1行に */
+}
+
+/* 英語サブタイトル：ソリッドゴールド */
+.gold-subtitle {
+    font-family: 'Playfair Display', 'Yu Mincho', serif; /* 英語はセリフ体（明朝系）がおしゃれ */
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.3em; /* 文字の間隔を広げて「余裕」を出す */
+    text-transform: uppercase; /* 大文字にすることでデザイン性をアップ */
+    margin-top: 10px;
+    
+    /* 金色の表現 */
+    background: linear-gradient(
+        to bottom,
+        #d4af37 0%, 
+        #f8e4a0 50%, 
+        #b8860b 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    
+    /* 視認性を高めるための軽い影 */
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+    
+    /* ふわっと浮き上がるような登場アニメーション（お好みで） */
+    animation: fade_up_gold 2s ease-out;
+}
+
+@keyframes fade_up_gold {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+    .gold-subtitle {
+        font-size: 1.1rem;
+        letter-spacing: 0.2em;
+    }
+}
+
+
+
+/* 霊の栄養素バッジ（強調部分） */
+.word-nutrient {
+    display: inline-block;
+    padding: 2px 10px;
+    margin: 2px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+/* 各項目の色分け：パステルカラーで「おいしそう」に */
+.n-praise { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); } /* 賛美：温かいピンク */
+.n-talk { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }   /* お話：知的なブルー */
+.n-prayer { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); } /* お祈り：癒やしのグリーン */
+
+.word-nutrient:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+/* ワクワクさせるバッジ */
+.yummy-badge {
+    margin-top: 15px;
+    display: inline-block;
+    background: #fff;
+    border: 2px dashed var(--accent-pink);
+    color: var(--accent-pink);
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    animation: bounce_little 2s infinite;
+}
+
+@keyframes bounce_little {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* 親要素の調整 */
+.concept-item p {
+    line-height: 2; /* バッジが入るので行間を広めに */
+}
+
+
+
+
+
+
+
+
+
+/* メッセージカードの全体調整 */
+.message-card {
+    padding: 80px 5% !important;
+}
+
+.main-message-title {
+    font-size: 2.2rem;
+    color: var(--accent-pink);
+    margin-bottom: 4rem;
+}
+
+.main-message-title .sub-title {
+    font-size: 1.2rem;
+    color: #888;
+    display: block;
+    margin-top: 10px;
+}
+
+/* 各章のユニット */
+.chapter-unit {
+    margin-bottom: 100px;
+    animation: fadeIn 1.5s ease;
+}
+
+.message-chapter-title {
+    font-size: 1.6rem;
+    color: #4a3c3c;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--accent-pink);
+    padding-left: 20px;
+    text-align: left;
+}
+
+.message-chapter-title span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--accent-pink);
+    font-weight: normal;
+    letter-spacing: 0.2em;
+}
+
+.message-body-text {
+    font-size: 1.3rem;
+    line-height: 2.2;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+/* 聖句（バイブルバース）の装飾 */
+.bible-verse-box {
+    background: #fdfaf5;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    border-bottom: 3px solid #eee;
+}
+
+.verse-text {
+    font-size: 1.1rem;
+    color: #555;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.verse-ref {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #b8860b; /* ゴールド */
+    font-weight: bold;
+}
+
+/* 告白の祈りボックス */
+.confession-box {
+    background: linear-gradient(135deg, #fff 0%, #fffaf0 100%);
+    border: 3px double #d4af37 !important; /* ゴールドの二重線 */
+    border-radius: 30px;
+    padding: 60px 40px !important;
+}
+
+.confession-text {
+    font-size: 1.4rem;
+    line-height: 2.5;
+    color: #222;
+}
+
+.heart-present {
+    background: linear-gradient(transparent 60%, #ffc0cb 60%);
+    font-weight: bold;
+}
+
+
+
+
+
+/* --- 画像再現用フォント設定 --- */
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Shippori+Mincho:wght@500;700&display=swap');
+
+/* 目次を包む白いカード（画像のような角丸） */
+.week-list-container {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    max-width: 1100px;
+    margin: 40px auto;
+}
+
+.week-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Shippori Mincho', serif;
+}
+
+/* ヘッダー文字（画像のようなゴールド） */
+.week-table th {
+    color: #b8860b;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 1px solid #f0e6d2; /* 薄いゴールドの線 */
+    letter-spacing: 0.1em;
+}
+
+/* 各行のスタイル */
+.week-table td {
+    padding: 22px 20px;
+    border-bottom: 1px solid #f2f2f2; /* 画像のような極薄のグレー線 */
+    color: #333;
+    font-size: 1.05rem;
+    vertical-align: middle;
+}
+
+/* 日本語テーマ */
+.theme-jp {
+    font-weight: 700;
+    color: #222;
+}
+
+/* 英語イメージ（細身の明朝体） */
+.theme-en {
+    font-weight: 500;
+    color: #555;
+    text-align: right; /* 画像のように右側に寄せる */
+}
+
+/* --- 看板の筆記体（Pinyon Script） --- */
+.prais-eng-p1, .prais-eng-p2 {
+    font-family: 'Pinyon Script', cursive !important;
+    color: #d4af37;
+    font-weight: normal;
+}
+
+/* ホバー効果（クリックできる感） */
+.index-row {
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.index-row:hover {
+    background-color: #fff9fa;
+}
+
+
+
+/* １週目Aパターン：虹色マカロン */
+.icon-float {
+    display: inline-block;
+    /* パステルカラーの虹色グラデーション */
+    background: linear-gradient(135deg, #ffb6c1 0%, #ffdab9 40%, #e0ffff 70%, #ffb6c1 100%);
+    color: #3a3939; /* 文字は白でハッキリ */
+    padding: 8px 25px; /* 横長にゆったり */
+    border-radius: 50px; /* 完全なカプセル型 */
+    font-family: 'Shippori Mincho', serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    
+    /* ぷっくり感を出す魔法（内側の光と外側の影） */
+    box-shadow: 
+        inset 0 4px 6px rgba(255, 255, 255, 0.9), /* 内側上部の光 */
+        0 6px 15px rgba(216, 138, 150, 0.3);   /* 外側の柔らかいピンクの影 */
+        
+    /* 少し傾けて可愛さを演出 */
+    transform: rotate(-3deg);
+    
+    /* 視認性確保のための文字の影 */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    
+    /* ふわふわ動くアニメーション */
+    animation: floating_cute 3s ease-in-out infinite;
+}
+
+/* ふわふわアニメーション */
+@keyframes floating_cute {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-5px) rotate(0deg); }
+}
+
+
+
+
+/* メニューの白いボックス */
+.hamburger-menu-content {
+    position: relative; /* absolute（浮いている状態）から relative（場所を占有する状態）に変える */
+    margin-bottom: 20px; /* 下に余白を作る */
+    z-index: 10;
+}
+
+/* ボタンが並んでいるエリア */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* ボタン同士の間隔 */
+}
+
+
+
+/* 各週のお話しに飛べるところと歌詞に飛べるところを設置　マカロンとおんぷ */
+
+/* 左側フローティングメニュー全体の箱　１から５週を飛べるように左に常設メニュー */
+.side-floating-menu {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%); /* 画面の上下中央に配置 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 9999; /* 一番手前に表示 */
+}
+
+
+
+
+
+
+/* 各ボタンの共通デザイン（ぷっくりマカロン風） */
+.menu-item {
+    text-decoration: none;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* まんまる */
+    font-family: 'Shippori Mincho', serif;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #fff;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* ぷっくり感を出す内側の光と外側の影 */
+    box-shadow: 
+        inset 0 4px 6px rgba(255, 255, 255, 0.6), 
+        0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 各週ごとのパステルカラー（虹色を意識） */
+.week1-btn { background: linear-gradient(135deg, #ffb6c1, #ffc0cb); } /* ピンク */
+.week2-btn { background: linear-gradient(135deg, #ffdab9, #ffe4b5); } /* オレンジ */
+.week3-btn { background: linear-gradient(135deg, #e0ffff, #afeeee); } /* 水色 */
+.week4-btn { background: linear-gradient(135deg, #e6e6fa, #d8bfd8); } /* ラベンダー */
+.week5-btn { background: linear-gradient(135deg, #f0fff0, #98fb98); } /* ミントグリーン */
+
+
+
+
+
+
+
+
+
+/* タイマーボタン専用のアンティークデザイン */
+.timer-btn {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0) !important; /* 白うさぎの白 */
+    border: 2px solid #d4af37 !important; /* アンティークゴールドの縁取り */
+    color: #5d4037 !important; /* 落ち着いたブラウンの文字 */
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 懐中時計のアイコンに少しアニメーションを */
+.clock-icon {
+    display: inline-block;
+    filter: sepia(1) saturate(5) hue-rotate(10deg); /* 金色っぽく加工 */
+    animation: watch-sway 3s infinite ease-in-out;
+}
+
+@keyframes watch-sway {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+}
+
+/* うさぎのアイコン部分の装飾 */
+.rabbit-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #eee;
+}
+
+.timer-btn:hover {
+    background: #fff9c4 !important; /* ほんのり黄色（光） */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4) !important;
+}
+
+
+
+
+
+
+/* ホバー（マウスを乗せた時）の動き */
+.menu-item:hover {
+    transform: scale(1.15) translateX(5px); /* 少し大きくして右にひょこっと出す */
+    box-shadow: 
+        inset 0 4px 6px rgba(255, 255, 255, 0.8), 
+        0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 小さなドット（アクセント） */
+.menu-dot {
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    margin-bottom: 2px;
+}
+
+/* --- レスポンシブ：スマホの時は下に横並びで固定 --- */
+@media (max-width: 768px) {
+    .side-floating-menu {
+        left: 0;
+        bottom: 0;
+        top: auto;
+        transform: none;
+        flex-direction: row; /* 横並びに変更 */
+        width: 100%;
+        justify-content: space-around;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.9); /* 背景を少し白くして視認性アップ */
+        backdrop-filter: blur(5px); /* 背景をぼかすおしゃれ効果 */
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .menu-item {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+
+/* おんぷボタンをゆらゆら動かして可愛くするアニメーション */
+.song-btn {
+    animation: fluffy 3s infinite ease-in-out;
+}
+
+@keyframes fluffy {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* メニュー全体の見た目を少し可愛く調整（必要に応じて） */
+.side-floating-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 左側専用のボタンデザイン */
+.menu-item-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.8rem;
+    font-weight: bold;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 音符ボタン（左側に合わせた影の向き） */
+.song-dot-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 2px solid #fff;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.15);
+    animation: note-float-left 3s infinite ease-in-out;
+}
+
+/* 各週のカラー（左側でもパッと目立つように） */
+.s1 { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+.s2 { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); }
+.s3 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+.s4 { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
+.s5 { background: linear-gradient(135deg, #a6c0fe 0%, #f68084 100%); }
+
+/* ぷかぷか浮かぶアニメーション */
+@keyframes note-float-left {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+
+
+
+
+
+
+
+
+
+/* --- パターンB：ハンバーガー形式（高度なデザイナーズ設定） --- */
+@media (max-width: 768px) {
+    /* メニューを通常は隠しておく */
+    .side-floating-menu {
+        position: fixed !important;
+        right: 20px !important;
+        bottom: 20px !important;
+        left: auto !important;
+        top: auto !important;
+        transform: translateY(150%); /* 画面の外に隠す */
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        background: white !important;
+        padding: 20px !important;
+        border-radius: 30px !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    }
+
+    /* チェックボックスなどで開閉させる仕組みが必要ですが、
+       まずは「常に表示しつつ重ならない」パターンAが星里さんのサイトには馴染むかもしれません */
+}
+
+
+
+
+
+
+
+/* --- 1. ヘッダーの「べったり固定」を解除 --- */
+.heavenly-panel {
+    /* PCでは固定してもOKですが、基本はスクロールで流れるようにします */
+    position: relative !important; 
+    width: 100%;
+    z-index: 10;
+}
+
+/* --- 2. スマホの時だけ「下に常設」する設定 --- */
+@media (max-width: 768px) {
+    /* ヘッダーは絶対に固定しない（本文を隠さないため） */
+    .heavenly-panel, .panel-card {
+        position: relative !important;
+        top: 0 !important;
+    }
+
+    /* 本文が下のメニューに隠れないように余白を作る */
+    body {
+        padding-bottom: 100px !important;
+        margin: 0;
+    }
+
+    /* 左側にあったメニューを「下に横並び」で常設 */
+    .side-floating-menu {
+        position: fixed !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        top: auto !important;
+        transform: none !important;
+        flex-direction: row !important; /* 横並びに */
+        width: 100% !important;
+        height: auto !important;
+        justify-content: space-around !important;
+        align-items: flex-end !important;
+        padding: 12px 5px !important;
+        background: rgba(255, 255, 255, 0.95) !important; /* 視認性UP */
+        backdrop-filter: blur(10px);
+        border-radius: 25px 25px 0 0 !important;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.1) !important;
+        z-index: 9999 !important;
+        gap: 0 !important;
+    }
+
+    /* ♪とマカロンボタンをスマホ用に配置調整 */
+    .menu-pair {
+        flex-direction: column !important;
+        gap: 4px !important;
+        transform: scale(0.85); /* 5つ並ぶように少し縮小 */
+    }
+
+    /* 不要なアイコンや余白を消してスッキリさせる */
+    .rabbit-icon, br {
+        display: none !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* 当サイトのコンテンツ（デザイン・画像・テキスト）の無断転載・無断使用はご遠慮ください。 */
+
+.site-footer {
+    text-align: center;
+    padding: 40px;
+    font-family: 'Shippori Mincho', serif;
+    color: #888;
+}
+
+.copyright-notice {
+    font-size: 0.8rem;
+    margin-top: 10px;
+    opacity: 0.7; /* 少し薄くして、雰囲気を邪魔しないように */
+}
+
+
+
+/* 楽曲背景セクション全体の余白 */
+.song-history-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+/* 読み物としてのカード（2週目のカードデザインを継承） */
+.history-content-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px;
+    margin: 30px 0;
+    border: 1px solid #f0e6d2;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+    line-height: 1.8;
+    color: #444;
+}
+
+.history-card-title {
+    color: #b8860b;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 振り返りのメッセージボックス（注目させるデザイン） */
+.reflection-box {
+    background: rgba(212, 175, 55, 0.08); /* 2週目のコンタクトヒントと同じ色使い */
+    border-radius: 25px;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.reflection-text {
+    font-size: 1rem;
+    color: #4a3c3c;
+    line-height: 1.8;
+    margin: 0;
+    text-align: center;
+}
+
+.reflection-text strong {
+    color: #b8860b;
+    font-weight: bold;
+}
+
+/* 共通パーツ：区切り線 */
+.divider-soft {
+    width: 40px;
+    height: 1px;
+    background: #d4af37;
+    opacity: 0.3;
+    margin: 25px auto;
+}
+
+
+
+/* エンディングセクション：明るいグラデーション */
+.closing-farewell {
+    padding: 120px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, #ffffff, #fff9f0, #fff4e6); 
+}
+
+.farewell-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* 感謝バッジ：少しビビッドな元気カラー */
+.thanks-badge {
+    display: inline-block;
+    background: #e67e22; /* 元気なオレンジゴールド */
+    color: #fff;
+    padding: 6px 25px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 35px;
+    letter-spacing: 0.15em;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.2);
+}
+
+/* タイトル：ポジティブな印象に */
+.farewell-title {
+    font-size: 1.8rem;
+    color: #4a3c3c;
+    margin-bottom: 30px;
+    font-weight: 800; /* ゴシック体の力強さ */
+}
+
+/* シャローム：余裕を感じさせるサイズ感 */
+.shalom-text {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 4rem;
+    color: #d4af37;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* 次回予告：期待値を高めるデザイン */
+.next-week-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px); /* 今っぽい透け感 */
+    border: 1px solid #f0e6d2;
+    padding: 40px;
+    border-radius: 40px;
+    margin-top: 60px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+}
+
+.next-tag {
+    color: #d4af37;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.next-hint strong {
+    color: #d35400; /* 深みのあるオレンジで強調 */
+    font-size: 1.2rem;
+}
+
+/* 装飾アイコン */
+.footer-decoration {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+    .farewell-title { font-size: 1.5rem; }
+    .next-week-card { padding: 30px 20px; }
+}
+
+/* テーマソングセクション全体の余白 */
+.theme-song-section {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* 紹介バッジ：ぷっくりパステル */
+.song-intro-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #e0ffff, #fff9fa);
+    color: #b8860b;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-family: 'Shippori Mincho', serif;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: -20px; /* カードと少し重ねる */
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(184, 134, 11, 0.2);
+}
+
+/* YouTubeカード：グラスモーフィズム（透け感） */
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9の比率を維持 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px; /* 角を丸くしてサイトに馴染ませる */
+    background: #000; /* 読み込み中に一瞬白く光るのを防ぐ */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+
+
+/* お問い合わせエリア全体 */
+.contact-action-area {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 1px dashed #e0d5c1;
+}
+
+.contact-lead {
+    font-size: 0.95rem;
+    color: #8b4513;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* ボタンのグリッドレイアウト */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* 共通ボタンボタン（ゴシック体） */
+.contact-btn {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* メールボタン：柔らかいゴールド */
+.email-btn {
+    background-color: #d4af37;
+    color: #fff;
+}
+
+/* 教会検索ボタン：優しいブラウン */
+.church-btn {
+    background-color: #fff;
+    color: #8b4513;
+    border: 2px solid #8b4513;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    opacity: 0.9;
+}
+
+.btn-icon {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* 補足テキスト */
+.contact-footer {
+    font-size: 0.85rem;
+    color: #999;
+    line-height: 1.6;
+}
+
+/* スマホ表示の改行制御 */
+.sp-only { display: none; }
+@media (max-width: 480px) {
+    .sp-only { display: block; }
+    .contact-btn { width: 100%; justify-content: center; }
+}
+
+
+
+
+
+
+
+
+
+
+.song-card-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    padding: 40px 30px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+}
+
+/* 動画のレスポンシブ対応（16:9を維持） */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9比率 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 25px; /* 動画の角も丸く可愛く */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 曲名と説明文 */
+.song-title-eng {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3rem;
+    color: #d4af37;
+    margin: 0 0 10px 0;
+    line-height: 1;
+}
+
+.song-description {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+.sparkle-icon {
+    color: #ffd700;
+    margin: 0 5px;
+}
+
+
+
+/* --- 楽曲解説セクション：シンプル・ゴシック版 --- */
+
+.song-deep-dive {
+    background: linear-gradient(to bottom, #fffaf0, #ffffff);
+    padding: 80px 20px;
+    /* font-family を指定しないことで、デバイス標準のゴシックになります */
+}
+
+.dive-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* メインタイトル */
+.dive-main-title {
+    text-align: center;
+    color: #4a3c3c;
+    font-size: 1.8rem;
+    margin-bottom: 60px;
+    position: relative;
+    font-weight: bold;
+}
+
+.dive-main-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #d4af37;
+    margin: 20px auto 0;
+}
+
+/* サブタイトルの英字部分だけは、アクセントとして看板と同じ筆記体を残しています */
+.dive-sub-title span {
+    font-family: 'Pinyon Script', cursive; 
+    color: #d4af37;
+    font-size: 2rem;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+/* 用語集ボックス */
+.term-definition-box {
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 25px 0;
+    border: 1px dashed #d4af37;
+}
+
+.term-definition-box dt {
+    font-weight: bold;
+    color: #b8860b;
+    margin-top: 10px;
+}
+
+.term-definition-box dd {
+    margin-left: 0;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* 聖書引用 */
+.bible-quote {
+    border-left: 3px solid #d4af37;
+    padding-left: 20px;
+    color: #666;
+    margin: 20px 0;
+    line-height: 1.7;
+    font-style: normal; /* ゴシック体なので斜体はやめてスッキリさせました */
+}
+
+/* 歌詞解説カード */
+.analysis-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.highlight-card {
+    border: 1px solid #ffb6c1;
+    background: #fff9fa;
+}
+
+/* 歌詞の英語部分 */
+.lyrics-row .eng {
+    display: block;
+    color: #b8860b;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+/* 歌詞の日本語訳 */
+.lyrics-row .jp {
+    font-size: 1.2rem;
+    color: #222;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* 解説コメント */
+.analysis-comment {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* 締めメッセージ */
+.closing-message {
+    text-align: center;
+    margin-top: 60px;
+    font-weight: bold;
+    color: #4a3c3c;
+}
+
+
+
+
+
+
+
+
+
+
+/* 歌詞カード全体の箱 */
+.lyrics-card-section {
+    padding: 60px 20px;
+    background-color: #ffffff; /* 白地で清潔感を */
+}
+
+.lyrics-card-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 歌詞を囲む枠（少しだけ影をつけてカードっぽく） */
+.lyrics-scroll-box {
+    background: #fffaf0; /* ほんのりクリーム色 */
+    padding: 40px 20px;
+    border-radius: 30px;
+    box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.05);
+}
+
+.lyrics-group {
+    margin-bottom: 30px;
+}
+
+.lyrics-line {
+    margin-bottom: 20px;
+}
+
+/* 英語の歌詞（太字でしっかり） */
+.lyrics-line .en {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #b8860b;
+    margin-bottom: 4px;
+}
+
+/* 日本語の歌詞（少し優しめに） */
+.lyrics-line .ja {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 0;
+}
+
+/* 歌詞の区切り線 */
+.lyrics-divider {
+    width: 30px;
+    height: 1px;
+    background: #d4af37;
+    margin: 20px auto;
+    opacity: 0.3;
+}
+
+
+
+
+
+
+
+
+        /* 星里さんの「癒やしのグリーン」とアンティークな配色  使用ガイド*/
+        :root {
+            --primary-green: #4CAF50;
+            --soft-green: #E8F5E9;
+            --accent-gold: #D4AF37;
+            --text-dark: #2E7D32;
+            --bg-color: #fdfdfb;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: #333;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--soft-green);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--text-dark);
+            font-weight: 300;
+            border-bottom: 2px solid var(--soft-green);
+            padding-bottom: 20px;
+        }
+
+        .intro-message {
+            background-color: var(--soft-green);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+
+        /* 各ステップのカード形式 */
+        .step-card {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--soft-green);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .step-card:hover {
+            background-color: #fafafa;
+            border-left-color: var(--primary-green);
+        }
+
+        .step-number {
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-right: 10px;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .step-description {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* いのりタイマーのスタイル */
+        #timer-box {
+            text-align: center;
+            padding: 20px;
+            background: var(--soft-green);
+            border-radius: 15px;
+            margin-top: 20px;
+            display: none; /* 初期は隠す */
+        }
+
+        .timer-display {
+            font-size: 3rem;
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        button.start-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .active-step {
+            background-color: #f0fdf4 !important;
+            border-left-color: var(--primary-green) !important;
+            transform: scale(1.02);
+        }
+
+
+
+
+
+
+
+/* タイマーを設置 */
+
+        #fixed-timer-btn {
+        position: fixed;   /* 画面に固定 */
+        left: 20px;        /* 左から20pxの位置 */
+        bottom: 50%;       /* 画面中央の高さ */
+        transform: translateY(50%);
+        width: 60px;
+        height: 60px;
+        background-color: #4CAF50; /* 星里さんの癒やしのグリーン */
+        color: white;
+        border: none;
+        border-radius: 50%; /* 正円にする */
+        font-size: 30px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        z-index: 9999;     /* 他の要素より上に表示 */
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #fixed-timer-btn:hover {
+        background-color: #2E7D32;
+        transform: translateY(50%) scale(1.1); /* 少し大きくして反応を出す */
+    }
+
+
+
+
+
+
+
+
+    /* もくじセクション全体 */
+.site-full-index {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+
+}
+
+.index-main-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #4a6741; /* 上のグリーンに合わせる */
+    margin-bottom: 8px;
+}
+
+.index-sub-text {
+    text-align: center;
+    color: #888;
+    margin-bottom: 40px;
+    font-size: 0.95rem;
+}
+
+/* カードを並べる箱 */
+.index-container {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* 共通のカードスタイル */
+.index-card {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 20px 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.index-card:hover {
+    transform: translateX(10px); /* 右に少し動くおもてなし */
+    background: #fff9f9; /* 下のピンクに近づく */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* アイコン部分 */
+.card-icon {
+    font-size: 2.2rem;
+    margin-right: 25px;
+    width: 60px;
+    text-align: center;
+}
+
+/* テキスト部分 */
+.card-content h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.15rem;
+    color: #333;
+}
+
+.card-content p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* スマホ用の調整 */
+@media (max-width: 600px) {
+    .index-card {
+        padding: 15px 20px;
+    }
+    .card-icon {
+        font-size: 1.8rem;
+        margin-right: 15px;
+        width: 40px;
+    }
+    .card-content h4 {
+        font-size: 1rem;
+    }
+}
+
+
+
+/* メガ目次全体のコンテナ */
+.mega-index-container {
+    /* ここでゴシック体を強制します */
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.mega-index-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* カード本体のデザイン */
+.nav-box {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(74, 103, 65, 0.1);
+    background: linear-gradient(135deg, #ffffff 0%, #f9fdf9 100%);
+}
+
+/* アイコン枠 */
+.box-icon {
+    font-size: 2.2rem;
+    margin-right: 20px;
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f9f7;
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+/* テキスト部分 */
+.box-title {
+    font-weight: bold;
+    font-size: 1.15rem;
+    color: #333;
+    margin-bottom: 8px;
+    display: block; /* 確実に改行 */
+}
+
+.box-text {
+    font-size: 0.9rem;
+    color: #777;
+    line-height: 1.6;
+    display: block;
+}
+
+/* 左側のアクセントライン */
+.nav-box::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+}
+
+/* 星里さんのカラーパレット */
+.box-adult::before { background-color: #a1c4fd; }
+.box-elem::before  { background-color: #ffb6c1; }
+.box-juni::before  { background-color: #ffdab9; }
+.box-high::before  { background-color: #e6e6fa; }
+.box-prai::before  { background-color: #d4af37; }
+.box-expe::before  { background-color: #84fab0; }
+.box-reco::before  { background-color: #e0e0e0; }
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .nav-box { padding: 20px; }
+    .box-icon { width: 50px; height: 50px; font-size: 1.8rem; margin-right: 15px; }
+}
+
+
+
+
+
+
+
+
+/* --- PCでの見え方（今のデザインを維持） --- */
+.side-floating-menu {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    gap: 12px;
+    align-items: flex-end;
+    z-index: 9999;
+}
+
+/* --- スマホでの見え方（重なりを解消して下に固定） --- */
+@media (max-width: 768px) {
+    .side-floating-menu {
+        left: 0 !important;
+        bottom: 0 !important;
+        top: auto !important;
+        transform: none !important;
+        flex-direction: row !important; /* 横並びに強制変更！ */
+        width: 100% !important;
+        justify-content: space-around !important;
+        align-items: center !important;
+        padding: 10px 0 !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(8px);
+        border-top: 1px solid #eee;
+        border-radius: 20px 20px 0 0;
+    }
+
+    /* ♪と週のボタンの並びも調整 */
+    .menu-pair {
+        display: flex !important;
+        flex-direction: column !important; /* ペア内（♪と週）は上下に */
+        gap: 4px !important;
+        align-items: center !important;
+    }
+}
