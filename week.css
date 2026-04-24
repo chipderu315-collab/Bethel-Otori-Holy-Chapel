@@ -2163,3 +2163,48 @@ body {
     background: linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%);
     box-shadow: 0 6px 20px rgba(238, 156, 167, 0.6);
 }
+/* トップに戻るボタンのスタイル */
+.back-to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #fff9e6 0%, #f3e5ab 100%); /* 枠とお揃いのクリーム色 */
+    color: #b8860b;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border: 2px solid white;
+    z-index: 2000;
+    transition: all 0.3s ease;
+    opacity: 0; /* 最初は隠しておく */
+    visibility: hidden;
+}
+
+/* 矢印と文字の調整 */
+.top-arrow {
+    font-size: 18px;
+    line-height: 1;
+}
+.top-text {
+    font-size: 10px;
+}
+
+/* マウスを乗せた時の動き */
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 12px 25px rgba(243, 229, 171, 0.6);
+    background: linear-gradient(135deg, #f3e5ab 0%, #fff9e6 100%);
+}
+
+/* スクロールした時に表示されるクラス（JavaScriptで制御） */
+.back-to-top.is-show {
+    opacity: 1;
+    visibility: visible;
+}
