@@ -4025,3 +4025,9 @@ p {
   letter-spacing: 0.1em;   /* 文字の間隔を少し空けて上品に */
   margin-bottom: 20px;
 }
+.message-summary {
+  font-weight: 600; /* 玄関です！の部分をちょっと強調 */
+  color: #4a4e4d;   /* 色を少し濃くして引き締める */
+  display: block;   /* 独立した行にする */
+  margin-top: 10px;
+}
