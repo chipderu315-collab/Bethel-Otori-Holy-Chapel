@@ -3939,3 +3939,32 @@ p {
     padding-bottom: 10px;
     margin-bottom: 40px;
 }
+
+
+.ritual-section {
+  background-color: #fffaf0; /* 柔らかいクリーム色（ごはん感！） */
+  border-left: 8px solid #ffcc33; /* アクセントの縦棒 */
+  padding: 20px;
+  margin: 30px 0;
+}
+
+.guide-sub-title {
+  color: #d2691e; /* チョコやパンのような美味しそうな茶色 */
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* 顔文字の部分をキラキラさせる */
+.guide-text span.emoji-shine {
+  display: inline-block;
+  animation: fluffy 2s infinite ease-in-out;
+  color: #ff9900;
+}
+
+@keyframes fluffy {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
