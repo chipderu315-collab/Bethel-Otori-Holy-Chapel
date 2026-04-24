@@ -378,3 +378,21 @@ function scrollToTimer(event) {
         element.scrollIntoView({ behavior: 'smooth' });
     }
 }
+const backToTop = document.getElementById('js-back-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) { // 300pxスクロールしたら表示
+        backToTop.classList.add('is-show');
+    } else {
+        backToTop.classList.remove('is-show');
+    }
+});
+
+// スムーズに上に戻る設定
+backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
