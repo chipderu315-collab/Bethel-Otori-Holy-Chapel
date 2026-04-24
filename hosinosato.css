@@ -3968,3 +3968,60 @@ p {
   50% { transform: translateY(-5px); }
   100% { transform: translateY(0); }
 }
+/* 1. 全体の土台：読みやすさの基本 */
+.message-highlight-box {
+  padding: 40px 20px;
+  background-color: #fdfdf9; /* ほんのり温かい白 */
+  text-align: center;      /* 文字を中央に寄せて、詩のような雰囲気に */
+  max-width: 800px;        /* 横に広がりすぎないように制限 */
+  margin: 0 auto;          /* 真ん中に配置 */
+}
+
+/* 2. 上段のメッセージ：空気感を作る */
+.message-quote {
+  font-family: "Hiragino Mincho ProN", "serif"; /* 落ち着いた明朝体がおしゃれ */
+  line-height: 2.2;        /* 行間をたっぷり空けて、心に余裕を */
+  color: #6b705c;          /* 優しいオリーブ系。あかりちゃんの画像に近い色 */
+  font-style: italic;      /* 引用文のような特別な感じに */
+  margin-bottom: 50px;
+  display: inline-block;
+  text-align: left;        /* 塊としては中央だけど、文章は左揃えで読みやすく */
+}
+
+/* 3. 下段のカード：優しく包み込む */
+.message-card {
+  background: white;
+  border-radius: 30px;     /* 角を丸くして優しさを */
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03); /* 浮いているような軽い影 */
+  border: 1px solid #f0f0f0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.message-body p {
+  line-height: 2.0;
+  color: #4a4a4a;
+  margin-bottom: 15px;
+}
+
+/* 4. 「だいすきなイエスさま」を可愛く */
+.love-jesus {
+  color: #e5989b;          /* くすみピンクで大人可愛く */
+  font-weight: bold;
+  border-bottom: 2px dashed #ffb4a2; /* 点線でアンダーライン */
+}
+
+/* 5. 現場のインフォ：信頼感 */
+.info-card {
+  margin-top: 60px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 40px;
+}
+
+.info-card-title {
+  color: #a5a58d;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;   /* 文字の間隔を少し空けて上品に */
+  margin-bottom: 20px;
+}
