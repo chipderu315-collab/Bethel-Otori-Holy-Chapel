@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神様からの贈りもの</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+JP:wght@600;900&family=Shippori+Mincho:wght@700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+ :root {
+   --heavenly-bg: linear-gradient(135deg, #ffffff 0%, #fff0f5 40%, #e0f7fa 100%);
+   --accent-gold: #b8860b;
+   --soft-pink: #ffb6c1;
+   --soft-blue: #add8e6;
+   --text-main: #2c2c2c; /* お年寄りに優しい濃いグレー */
+   --gold-grad: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #8a6d3b 100%);
+   }
+
+   * { box-sizing: border-box; }
+
+   body {
+    margin: 0;
+    background: var(--heavenly-bg);
+    background-attachment: fixed;
+    color: var(--text-main);
+   /* 標準よりかなり大きめのベース文字サイズ */
+    font-size: 22px; 
+    font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+    line-height: 1.8;
+   overflow-x: hidden;
+   }
+
+        /* --- 大画面のヒーローセクション --- */
+.hero-section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 5%;
+        }
+
+        .outer-frame {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            background: var(--gold-grad);
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .inner-canvas {
+            background: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .divine-shine {
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 182, 193, 0.2), rgba(173, 216, 230, 0.2), transparent 40%);
+            animation: rotate 30s linear infinite;
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .eng-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 10vw, 6rem);
+            background: var(--gold-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.1em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .jp-title {
+            font-size: clamp(1.8rem, 7vw, 3.8rem);
+            color: #1a1a1a;
+            letter-spacing: 0.15em;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            font-weight: 900;
+        }
+
+        /* --- 歌のカード（大文字設定） --- */
+        .hymn-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--soft-blue);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .chord { color: #b8860b; font-weight: 900; font-family: 'Montserrat', sans-serif; margin-right: 8px; font-size: 1.2rem; }
+        .lyrics { font-size: 1.5rem; color: #000; font-weight: 700; line-height: 2; margin-bottom: 20px; }
+
+        /* --- メッセージ本体（画面いっぱいの読みやすさ） --- */
+        .message-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 5%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            color: #d4af37;
+            text-align: center;
+            margin: 100px 0 40px;
+            font-weight: 900;
+        }
+        h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gold-grad);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        p { margin-bottom: 40px; font-size: 1.5rem; font-weight: 600; color: #333; }
+
+        strong {
+            color: #b8860b;
+            background: linear-gradient(transparent 75%, #fff9c4 0%);
+            padding: 0 4px;
+            font-weight: 900;
+        }
+
+        blockquote {
+            background: white;
+            border-left: 10px solid var(--soft-pink);
+            border-radius: 0 30px 30px 0;
+            padding: 50px 40px;
+            margin: 60px 0;
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.03);
+            font-size: 1.7rem;
+            font-weight: 700;
+            line-height: 1.7;
+        }
+
+        .source {
+            display: block;
+            text-align: right;
+            color: var(--accent-gold);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+
+        /* はじめに・告白・祝福の装飾 */
+        .prologue { text-align: center; margin-bottom: 80px; }
+        .message-heart { font-size: 3rem; color: var(--soft-pink); animation: heartbeat 1.5s infinite; margin: 30px 0; }
+        @keyframes heartbeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+
+        .confession-box {
+            background: white;
+            border: 4px dashed var(--soft-blue);
+            padding: 50px 30px;
+            text-align: center;
+            margin: 80px 0;
+            border-radius: 30px;
+        }
+
+        .benediction-card {
+            background: white;
+            border: 2px solid #90ee90;
+            border-radius: 30px;
+            padding: 60px 30px;
+            margin: 80px 0;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(144, 238, 144, 0.2);
+        }
+        .blessing-text { color: #2e7d32; font-size: 1.8rem; font-weight: 800; line-height: 2.2; }
+
+        .amen {
+            text-align: center;
+            font-size: 5rem;
+            color: var(--soft-pink);
+            letter-spacing: 0.4em;
+            margin: 100px 0;
+            font-family: 'Great Vibes', cursive;
+            text-shadow: 3px 3px 0px white;
+        }
+
+        footer { text-align: center; padding: 60px 20px; color: var(--text-sub); font-size: 1rem; }
+
+/* スマホ向け：画面幅に合わせて文字を最適化 */
+       
+@media (max-width: 600px) {
+   body { font-size: 20px; }
+ .inner-canvas { padding: 40px 15px; }
+   .hymn-card { padding: 25px 15px; }
+   .lyrics { font-size: 1.2rem; }
+ p { font-size: 1.3rem; }
+   blockquote { font-size: 1.3rem; padding: 30px 20px; }
+    .blessing-text { font-size: 1.4rem; }
+    .amen { font-size: 3.5rem; }
+   }
+    .hero-container {
+    width: 100%;
+    height: 60vh; /* 高さは調整してください */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #fdfcf0 0%, #dcd1b3 40%, #c6e3ff 100%);
+    position: relative;
+    overflow: hidden;
+    /* 金色の枠線 */
+    border: 15px solid #c5a059;
+    box-sizing: border-box;
+}
+
+/* 内側の装飾的な枠線（擬似要素） */
+.hero-container::before {
+    content: '';
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+/* 十字架部分（画像を置く場合はここに<img>） */
+.cross-icon {
+    font-size: 3rem;
+    color: #c5a059;
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.english-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: hsl(14, 26%, 29%); /* 濃いブラウン */
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.japanese-text {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: 15px;
+    letter-spacing: 0.1em;
+}
+    </style>
+    </head>
+<body>
+
+    <div class="outer-frame">
+        <div class="main-canvas">
+            <div class="divine-light"></div>
+            
+            <div class="cross-symbol">†</div>
+            
+     <div class="main-canvas"><img src="image/1week.jpg" alt="第一土曜日画像"></div>
+        </div>
+     </div>
+
+     <div class="footer-info">
+        <div class="event-title">第1週目 土曜日賛美集会</div>
+        <div class="location">大阪救霊会館 大礼拝堂</div>
+     </div>
+
+     </body>
+     </html>
+
+     
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You are precious - Special Message</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+JP:wght@700;900&family=Shippori+Mincho:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --heavenly-bg: linear-gradient(135deg, #ffffff 0%, #fff0f5 40%, #e0f7fa 100%);
+            --gold-grad: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #8a6d3b 100%);
+            --text-color: #333333;
+            --accent-pink: #ffb6c1;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+            background: var(--heavenly-bg);
+            background-attachment: fixed;
+            color: var(--text-color);
+        }
+
+        /* 画面いっぱいのコンテナ */
+        .hero-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ふんわり回る天国の光 */
+        .divine-light {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 182, 193, 0.2), rgba(173, 216, 230, 0.2), transparent 40%);
+            animation: rotate 30s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* メインのコンテンツ箱 */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 60px 40px;
+            border-radius: 40px;
+            border: 2px solid white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            width: 95%;
+        }
+
+        /* 十字架アイコン */
+        .cross-icon {
+            font-size: 3.5rem;
+            background: var(--gold-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        /* 英語タイトル（Because He Livesを意識した優雅な書体） */
+        .english-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+            background: var(--gold-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 日本語の大きなタイトル */
+        .main-message {
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            font-weight: 900;
+            color: #1a1a1a;
+            margin-bottom: 40px;
+            letter-spacing: 0.1em;
+        }
+
+        /* 集会案内情報の装飾 */
+        .info-group {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            padding-top: 30px;
+        }
+
+        .event-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #b8860b;
+            margin: 10px 0;
+        }
+
+        .event-time {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #444;
+            margin: 10px 0;
+        }
+
+        .location-name {
+            font-size: 1.4rem;
+            background: rgba(173, 216, 230, 0.3); /* 淡い水色 */
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 50px;
+            margin-top: 15px;
+            font-weight: 700;
+        }
+
+        /* スマホ対応の調整 */
+        @media (max-width: 600px) {
+            .hero-content { padding: 40px 20px; }
+            .event-time { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-container">
+        <div class="divine-light"></div>
+        
+        <div class="hero-content">
+            <div class="cross-icon">†</div>
+            
+            <h1 class="english-text">You are precious<br>just the way you are</h1>
+            <p class="main-message">あなたはそのままで最高</p>
+            
+            <div class="info-group">
+                <p class="event-title"> 第1週目 土曜日賛美集会</p>
+                <p class="event-time">17:00 〜 18:00</p>
+                <p class="location-name">📍 大阪救霊会館 大礼拝堂</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+               
+              
+    </div>
+</section>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+JP:wght@600;900&display=swap" rel="stylesheet">
+     </section>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet">
+                
+               
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <div class="hero-section">
+    <div class="outer-frame">
+        <div class="inner-canvas">
+            <div class="divine-shine"></div>
+            <div class="eng-title">How Great Thou Art</div>
+            <div class="jp-title">輝く日を仰ぐとき</div>
+            
+            <div class="hymn-card">
+                <div class="hymn-unit">
+                    <div class="hymn-number">【１番】</div>
+                    <div class="lyrics">
+                        <span class="chord">A</span>輝く日を <span class="chord">D</span>仰ぐとき<br>
+                        <span class="chord">A</span>月星ながむる <span class="chord">E7</span>とき<br>
+                        いかづち鳴り <span class="chord">A</span>渡るとき<br>
+                        <span class="chord">D</span>まことの <span class="chord">A</span>神を <span class="chord">E7</span>思う <span class="chord">A</span>
+                    </div>
+                </div>
+
+                <div class="chorus-box">
+                    <div class="hymn-number">（折り返し）</div>
+                    <div class="lyrics">
+                        わがたま <span class="chord">D</span>いざ たたえ <span class="chord">A</span>よ<br>
+                        大いなる <span class="chord">E7</span>御神（みかみ） <span class="chord">A</span>を<br>
+                        わがたま <span class="chord">D</span>いざ たたえ <span class="chord">A</span>よ<br>
+                        大いなる <span class="chord">E7</span>御神（みかみ） <span class="chord">A</span>を
+                    </div>
+                </div>
+
+                <div class="hymn-unit">
+                    <div class="hymn-number">【２番】</div>
+                    <div class="lyrics">
+                        森や野辺を <span class="chord">A</span>歩むとき<br>
+                        小鳥の <span class="chord">E7</span>歌を聴くとき<br>
+                        そびゆる山 <span class="chord">A</span>登るとき<br>
+                        <span class="chord">D</span>まことの <span class="chord">A</span>神を <span class="chord">E7</span>思う <span class="chord">A</span>
+                    </div>
+                </div>
+
+                <div class="hymn-unit">
+                    <div class="hymn-number">【３番】</div>
+                    <div class="lyrics">
+                        御子（みこ）イエスを <span class="chord">A</span>思えば<br>
+                        十字架の <span class="chord">E7</span>死さえ厭（いと）わず<br>
+                        わが罪を <span class="chord">A</span>あがなえり<br>
+                        <span class="chord">D</span>まことの <span class="chord">A</span>神を <span class="chord">E7</span>思う <span class="chord">A</span>
+                    </div>
+                </div>
+
+                <div class="hymn-unit">
+                    <div class="hymn-number">【４番】</div>
+                    <div class="lyrics">
+                        主イエスの <span class="chord">A</span>再び来るとき<br>
+                        喜び <span class="chord">E7</span>溢るるままに<br>
+                        ひれ伏して <span class="chord">A</span>たたえん<br>
+                        <span class="chord">D</span>まことの <span class="chord">A</span>神を <span class="chord">E7</span>思う <span class="chord">A</span>
+                    </div>
+              
+        </div>
+    </div>
+            </div>
+        </div>
+      <div class="hero-section">
+    <div class="outer-frame">
+        <div class="inner-canvas">
+            <div class="divine-shine"></div>
+            <div class="eng-title">Because He Lives</div>
+            <div class="jp-title">主は今生きておられる</div>
+            <div class="hymn-divider"></div>
+
+                    <div class="hymn-unit">
+                        <div class="hymn-number">【赦しの賛美】</div>
+                        <div class="lyrics">
+                            <span class="chord">F</span>主イエスの <span class="chord">Bb</span>十字架の <span class="chord">F</span>血で<br>
+                            <span class="chord">Dm</span>私は <span class="chord">Gm</span>赦さ <span class="chord">C7</span>れ<br>
+                            <span class="chord">F</span>御神と <span class="chord">Bb</span>和解を <span class="chord">F</span>して<br>
+                            <span class="chord">Dm</span>平安を <span class="chord">C7</span>得まし <span class="chord">F</span>た
+                        </div>
+                    </div>
+                </div>
+                
+
+                <a href="https://www.youtube.com/results?search_query=%E8%BC%9D%E3%81%8F%E6%97%A5%E3%82%92%E4%BB%B0%E3%81%90%E3%81%A8%E3%81%8D" target="_blank" class="youtube-btn">YouTubeで賛美を聴く</a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="scroll-down">▼ メッセージを読む</div>
+    </div>
+
+    <div class="message-section">
+        <section class="prologue">
+        <div class="angelic-icon">✨</div>
+        <h2>はじめに：神様とあなたのこと</h2>
+        <p>
+            ねぇ、知っていますか？<br>
+            あなたは、この世界を造られた神様にとって、宝物のように大切な存在なんです。
+        </p>
+        <p>
+            でも、私たちの心には時々、チクッとしたり、モヤモヤしたりする「いじわるな気持ち」や「自分勝手な心」が生まれてしまうことがありますよね。聖書ではそれを<strong>「罪」</strong>と呼んでいます。
+        </p>
+        <p>
+            罪は、まるで見えない壁のように、神様と私たちの間をバラバラにしてしまいます。そのせいで、私たちは一人で不安になったり、本当の幸せを見失ったりしてしまうんです。
+        </p>
+        <p>
+            自分だけの力でその壁を壊すのは、とっても難しいこと。だからこそ、あなたを愛してやまない<strong>神様の助け</strong>が必要なんです。
+        </p>
+        
+        <div class="message-heart">❤</div>
+        
+        <p>
+            これから、どうすれば神様と仲直りして、心がポカポカ温かくなる毎日を過ごせるようになるか、一緒にお話ししていきましょう。
+        </p>
+    </section>
+        <section>
+            <h2>第一章：神様があなたを <br>認めてくださる理由</h2>
+            <p>自分の力や努力でこの罪を完全になくすことは、人間には不可能です。しかし、神様はあなたを愛しているので、あなたが何か立派なことをする前に、 <strong>あなたを正しいものとして受け入れる</strong> と決めてくださいました。</p>
+            <blockquote>
+                人が義とされるのは、律法の行いによるのではなく、信仰による。
+                <span class="source">Romans 3:28</span>
+            </blockquote>
+        </section>
+
+        <section>
+            <h2>第二章：イエス・キリストが <br>してくださったこと</h2>
+            <p>イエス様は、本来なら私たちが受けるべき罪の罰を、すべて身代わりに引き受けてくださいました。 <strong>この事実を本当だと受け入れること</strong> で、私たちの罪はすべて赦されます。</p>
+            <blockquote>
+                わたしは、世の終わりまで、いつもあなたがたとともにいます。
+                <span class="source">Matthew 28:20</span>
+            </blockquote>
+        </section>
+
+        <section>
+            <h2>第三章：信じたあとの変化</h2>
+            <p>神様に愛され、赦されたことを知ると、 <strong>自分を助けてくれた神様に応えたい</strong> という素直な気持ちが生まれます。神様と一緒に歩むことで、あなたは自分も周りも大切にできる人へと成長していきます。</p>
+            <blockquote>
+                だれでもキリストのうちにあるなら、その人は新しく造られた者です。
+                <span class="source">2 Corinthians 5:17</span>
+            </blockquote>
+        </section>
+
+        <section>
+            <h2>第四章：何度でもやり直せる約束</h2>
+            <p>もし間違ったことをしてしまっても、神様はあなたを見捨てません。 <strong>神様の愛には終わりがない</strong> ので、いつでもやり直すことができます。</p>
+            <blockquote>
+                わたしの目に、あなたは高価で、貴い。 <br>わたしはあなたを愛している。
+                <span class="source">Isaiah 43:4</span>
+            </blockquote>
+        </section>
+
+        <section>
+            <h2>第五章：神様への信仰の告白</h2>
+            <div class="confession-box">
+                <p>神様、私の罪を許してください。イエス・キリストが私のために死に、よみがえられたことを信じます。今、イエス様を私の救い主として心に受け入れます。私を導いてください。</p>
+            </div>
+            <blockquote>
+                心で神はイエスを死者の中からよみがえらせたと信じるなら、あなたは救われるからです。
+                <span class="source">Romans 10:9</span>
+            </blockquote>
+        </section>
+
+        <div class="amen">Amen</div>
+
+        <footer>
+            2026 You are precious. Just the way you are.
+        </footer>
+    </div>
+
+</body>
+
+
+
+</html>
+div class="container-wide">
+    <section class="section-padding">
+        <div class="message-card" style="border: 3px solid #f3e5ab;">
+            <span class="icon-float">✨</span>
+            <h1 class="english-text" style="font-size: clamp(2rem, 5vw, 4rem);">Welcome to Hoshinosato</h1>
+            <h2 class="main-message">「ほしのさと」<br>オンライン・ワークシップへようこそ</h2>
+            
+           <div class="intro-body-senior" style="margin-top: 40px;">
+    <p>「教会に行きたいけれど、今は難しい」</p>
+    <p>「礼拝ってどうやって進めたらいいの？」</p>
+    <p>「キリスト教の歌を歌ってみたい、お話を聞いてみたい」</p>
+    <p>そんな願いを持つすべての方のために、<br>土曜賛美集会のエッセンスをぎゅっと詰め込んだ<br>
+    <span class="prayer-highlight-large">「礼拝サポートサイト」</span>を開設しました！</p>
+</div>
+
+<div class="prayer-container">
+    <div class="prayer-scroll" style="border-color: var(--soft-blue); padding: 40px 20px;">
+        <h3 class="prayer-title-senior">このサイトに込めた想い</h3>
+        <div class="body-text-senior">
+            <p>土曜日の賛美集会を担当する中で、「スマホをスクロールするだけで、誰でも迷わず礼拝を捧げられるマニュアルがあればいいな」と考えたのがきっかけです。</p>
+            <p>このプログラムは、<span class="gold-bold">「1ヶ月で必要な霊的栄養をすべてバランスよく摂取する」</span>ことをイメージして作られています。</p>
+            <p>第1週から第5週まで、毎週異なるテーマで、あなたの心に神様の恵みを届けます。</p>
+        </div>
+    </div>
+</div>
+
+<div class="notice-box-senior">
+    <p class="notice-title-senior">⚠️ ご利用にあたってのお願い</p>
+    <p>当サイト内のテキスト、構成、画像等の<br><strong>無断転載・無断転用は固く禁止</strong>しております。</p>
+    <p>本プログラムを「お家礼拝」などで使用される場合は、事前に以下の窓口までご連絡をお願いいたします。</p>
+    

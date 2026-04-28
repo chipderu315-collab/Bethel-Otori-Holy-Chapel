@@ -2118,6 +2118,7 @@ body {
         align-items: center !important;
     }
 }
+
 /* ボタン全体の配置 */
 .back-button-container {
     display: inline-flex;
@@ -2163,6 +2164,7 @@ body {
     background: linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%);
     box-shadow: 0 6px 20px rgba(238, 156, 167, 0.6);
 }
+
 /* トップに戻るボタンのスタイル */
 .back-to-top {
     position: fixed;

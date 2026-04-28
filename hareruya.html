@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ベテル鳳ホーリーチャペル</title>
+    <style>
+        /* 全体のフォントをUDゴシック系に統一 */
+        body, h1, h2, h3, h4, p, div, span, .nav-item, .lyric-char, .intro, .description, .footer-quote, .closing-text, .promise {
+            font-family: "UD Shin Go", "UD新ゴ", "BIZ UDPGothic", "Hiragino Sans", "Hiragino Kaku Gothic ProN", sans-serif !important;
+        }
+
+        body {
+            margin: 0; padding: 0; color: #333;
+            background-color: #fdfaf5; 
+            line-height: 1.6;
+        }
+
+        .main-visual {
+            width: 100%; height: 60vh;
+            background-image: url('image/教会image.png'); 
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center;
+        }
+        @media (min-width: 768px) { .main-visual { height: 80vh; } }
+        .main-visual h1 {
+            color: white; font-size: clamp(24px, 8vw, 60px);
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+            margin: 0; letter-spacing: 0.15em; font-weight: bold;
+        }
+
+        header {
+            border-bottom: 3px solid #005a96;
+            background-color: rgba(255,255,255,0.95);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-container { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; padding: 0; margin: 0; }
+        .nav-item {
+            padding: 15px 20px; cursor: pointer;
+            font-size: clamp(14px, 3.5vw, 17px); font-weight: bold; color: #555;
+            transition: 0.2s; border-bottom: 4px solid transparent;
+        }
+        .nav-item.active { color: #005a96; border-bottom-color: #005a96; background-color: #eef6fc; }
+
+        #main-frame, #song-content { width: 100%; min-height: 100vh; border: none; background-color: white; }
+        #song-content { display: none; padding: 30px 20px; box-sizing: border-box; }
+        .song-card { max-width: 850px; margin: 0 auto; }
+
+        /* 共通のボックススタイル */
+        .lyrics-box {
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            border: 2px solid;
+        }
+
+        /* 曲ごとの個別カラー設定 */
+        .box-green { background: #f4fff9; border-color: #8ccea8; } /* 見えない星の行方 */
+        .box-pink { background: #fff0f5; border-color: #fce9ec; }  /* 主はぶどうの木 */
+        .box-yellow { background: #ffffed; border-color: #f0ecd6; } /* からっぽのお墓 */
+
+        .line-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .word-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 0.1em;
+            min-width: 1.1em;
+        }
+        .chord-name {
+            height: 1.5em;
+            font-size: 14px;
+            color: #d35400;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .lyric-char {
+            font-size: 19px;
+            font-weight: bold;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .section-label { font-weight: bold; color: #27ae60; margin: 20px 0 10px 0; display: block; }
+
+        .message-section {
+            margin: 30px 0; padding: 25px;
+            background: #fdfaf5; border-radius: 15px;
+            text-align: left; border-left: 8px solid #ffcc33;
+        }
+        .message-section h3 { color: #005a96; border-bottom: 2px solid #eee; padding-bottom: 8px; margin: 0 0 15px 0; }
+        .bible-quote {
+            background: white; padding: 15px; border-radius: 8px;
+            border: 1px solid #eee; font-weight: bold; color: #444; margin: 10px 0; font-size: 16px;
+        }
+        .message-step { margin-bottom: 22px; }
+        .message-step h4 { color: #d35400; margin: 0 0 8px 0; font-size: 18px; }
+        .message-step p { margin: 0; font-size: 15px; line-height: 1.7; }
+        
+        audio { width: 100%; margin-bottom: 15px; }
+
+        :root {
+            --text-color: #0b132b;
+            --accent-color: #f1d302; 
+            --sub-text: #0b132b; 
+        }
+        .container { max-width: 700px; margin: 0 auto; padding: 20px 0; }
+        .intro { font-size: 1.1rem; color: var(--sub-text); font-style: italic; text-align: center; }
+        .section { margin-bottom: 40px; }
+        h2.song-title { font-size: 1.4rem; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; }
+        h2.song-title::before { content: '✦'; margin-right: 10px; color: var(--accent-color); font-size: 0.8rem; }
+        footer { margin-top: 60px; text-align: center; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.05); }
+        .footer-quote { font-size: 1.2rem; color: #d35400; margin-bottom: 30px; display: block; line-height: 2; }
+        .promise { font-weight: bold; margin-top: 20px; }
+        
+    </style>
+</head>
+<body>
+
+<div class="main-visual">
+    <h1>ほしのさと☆オンラインチャーチ</h1>
+</div>
+
+<header>
+    <nav class="nav-container">
+        <div class="nav-item active" onclick="changePage(this, 'step 1.html')">目次</div>
+        <div class="nav-item" onclick="showSong(this)">讃美</div>
+        
+        <div class="nav-item" onclick="changePage(this, 'step 3.html')">初級</div>
+        <div class="nav-item" onclick="changePage(this, 'step７.html')">中級</div>
+        <div class="nav-item" onclick="changePage(this, 'step 5.html')">上級</div>
+         
+        <div class="nav-item" onclick="changePage(this, 'step 4.html')">体験談</div>
+        <div class="nav-item" onclick="changePage(this, 'step6.html')">記録</div>
+
+    </nav>
+</header>
+
+<iframe id="main-frame" src="step 1.html"></iframe>
+
+<div id="song-content">
+   <style>
+    /* 讃美セクション全体を中央に寄せて、幅を整える */
+    .praise-container {
+        max-width: 800px; /* 横幅を制限して読みやすく */
+        margin: 40px auto; /* 画面の真ん中に持ってくる */
+        padding: 20px;
+        text-align: center; /* 中身を全部センターに！ */
+    }
+
+    /* 「さんびってなあに？」の説明文 */
+    .praise-description {
+        text-align: left; /* 文章自体は左揃えが読みやすい */
+        display: inline-block; /* でも塊としては中央に置く */
+        background: #fff5fd;
+        padding: 30px;
+        border-radius: 20px;
+        border: 2px dashed #e91e63;
+        margin-bottom: 30px;
+        line-height: 2;
+    }
+
+    /* プレイヤーが入るカード */
+    .song-card {
+        background-color: #f4fff9;
+        border: 2px solid #2ecc71;
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 20px;
+    }
+
+    /* プレイヤーの横幅をカードに合わせる */
+    audio {
+        width: 100%;
+        max-width: 500px;
+        margin: 20px 0;
+    }
+</style>
+
+<div class="praise-container" id="praise">
+    <h3 style="color: #ad1457; font-size: 24px; margin-bottom: 25px;">🎵 さんびってなあに？</h3>
+    
+    <div class="praise-description">
+        <p><strong>さんび（賛美）は、神さまと「心でおしゃべり」することです。</strong></p>
+        <p>うれしいとき、楽しいときは「神さま、ありがとう！」の気持ちをメロディにのせて。<br>
+        ちょっぴり悲しいとき、元気がないときは「神さま、助けてね」の気持ちを歌にこめて。</p>
+        <p>子供からお年寄りまで、みんなが神さまに愛されている大切な家族です。上手じゃなくても大丈夫。あなたの心が動いたとき、それが世界にひとつだけの最高のプレゼントになります。</p>
+    </div>
+
+    <div class="song-card">
+        <h3 style="color: #27ae60;">🎵 オリジナルソング「幸せとは」</h3>
+        <audio controls src="your-audio-file.mp3"></audio>
+        
+        <div style="font-size: 18px; font-weight: bold; color: #333; margin-top: 15px;">
+            「どんなに暗い夜でも、空には必ず星が輝いていると知っていること」
+        </div>
+    </div>
+</div>
+
+<section id="praise">
+    </section>
+    <div class="song-card">
+        
+        <!-- 1. 見えない星の行方（緑のボックス） -->
+        <div class="lyrics-box box-green">
+            <h2 style="color:#005a96; text-align:center;">🎵 オリジナルソング「幸せとは」</h2>
+            <audio controls><source src="image/見えない星の行方.mp3" type="audio/mpeg"></audio>
+            
+            <div class="container">
+                <header style="border:none; background:none; position:static; text-align:center;">
+                    <h1 style="font-size: 1.8rem; color:#333;">「どんなに暗い夜でも、空には必ず星が輝いていると知っていること」</h1>
+                      <h1 style="font-size: 1.8rem; color:#333;"></h1>見よ、わたしは世の終わりまで、いつもあなたがたと共にいる。（マタイによる福音書 28:20）
+                    <p class="intro">「幸せってなんだろう」<br>なんだかひとりぼっち。寂しいな。<br>そんなときに聴きたい歌をつくりました。</p>
+                </header>
+
+                <div class="line-group">
+                  <div class="lyrics-container">
+            <!-- 1行目 -->
+    <div class="chord-line">
+        <div class="block"><span class="c-name">C</span><span class="l-text">弱いままでいいと</span></div>
+        <div class="block"><span class="c-name">G/B</span><span class="l-text">笑ってくれた</span></div>
+    </div>
+
+    <!-- 2行目 -->
+    <div class="chord-line">
+        <div class="block"><span class="c-name">Am</span><span class="l-text">悲しい夜も</span></div>
+        <div class="block"><span class="c-name">Em</span><span class="l-text">守られていた</span></div>
+    </div>
+
+    <!-- 3行目 -->
+    <div class="chord-line">
+        <div class="block"><span class="c-name">F</span><span class="l-text">誰かの幸せを</span></div>
+        <div class="block"><span class="c-name">C/E</span><span class="l-text">祈れることが</span></div>
+    </div>
+
+    <!-- 4行目 -->
+    <div class="chord-line">
+        <div class="block"><span class="c-name">Dm7</span><span class="l-text">僕の1番の</span></div>
+        <div class="block"><span class="c-name">G</span><span class="l-text">幸せだった</span></div>
+    </div>
+
+    <!-- 5行目 -->
+    <div class="chord-line">
+        <div class="block"><span class="c-name">F</span><span class="l-text">見えなくても</span></div>
+        <div class="block"><span class="c-name">G</span><span class="l-text">星はそこに</span></div>
+        <div class="block"><span class="c-name">C</span><span class="l-text">あるから</span></div>
+            </div>
+        </div>
+                </div>
+
+                <main>
+                    <div class="section">
+                        <h2 class="song-title">1. 完璧じゃなくて、いい</h2>
+                        <span class="bible-quote">「心の貧しい人は、幸いである」</span>
+                        <p class="description">
+                            それは、「自分は一人では何もできない」と弱さを認められる人は、神様の大きな愛に包まれるから。完璧を求めなくていい、弱いままで愛されている。そう気づくことが、幸せへの第一歩です。
+                        </p>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="song-title">2. その涙には、意味がある</h2>
+                        <span class="bible-quote">「悲しんでいる人は、幸いである」</span>
+                        <p class="description">
+                            悲しみを知る人は、それだけ優しく一生懸命に生きてきた証拠です。その涙は決して無駄にならず、いつか必ず温かな「慰め」に変わる。そう信じる心に、幸せは宿ります。
+                        </p>
+                    </div>
+
+                    <div class="section">
+                        <h2 class="song-title">3. 「誰かのため」が、自分の光になる</h2>
+                        <p class="description">
+                            人からもらうもので満たすより、誰かのために小さな親切をしたり、誰かの幸せを一緒に喜んだりすること。そうして人を大切に想う時間が、結果として自分自身の心を一番明るく照らしてくれます。
+                        </p>
+                    </div>
+                </main>
+
+                <footer>
+                    <span class="footer-quote">
+                        イエスさまが教えてくれる幸せは、<br>
+                        <strong>「どんなに暗い夜でも、空には必ず星が輝いていると知っていること」</strong><br>
+                        に似ています。
+                    </span>
+                    <p class="closing-text">たとえ雲に隠れて星が見えない夜も、あなたは一人ではありません。</p>
+                    <div class="promise">
+                        」<b「見よ、わたしは世の終わりまで、いつもあなたがたと共にいる。r>
+                        <small></small>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <!-- 2. 主はぶどうの木（薄いピンク色のボックス） -->
+        <div class="lyrics-box box-pink">
+            <h2 style="color:#005a96; text-align:center;">🎵 さんび「主はぶどうの木」</h2>
+            <audio controls><source src="image/budo.mp3" type="audio/mpeg"></audio>
+
+            <span class="section-label">【1番・2番】</span>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">主</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">は</div></div>
+                <div class="word-unit"><div class="chord-name">Fm/Eb</div><div class="lyric-char">ぶ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ど</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">う</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">の</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">木</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">わ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">た</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">し</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">は</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">枝</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">で</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">す</div></div>
+            </div>
+            <p style="font-size: 13px; color: #888; margin: 10px 0 5px;">(1回目)</p>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">い</div></div>
+                <div class="word-unit"><div class="chord-name">Fm7</div><div class="lyric-char">つ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">も</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">は</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">な</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">れ</div></div>
+                <div class="word-unit"><div class="chord-name">Fm7/Bb</div><div class="lyric-char">ず</div></div>
+                <div class="word-unit"><div class="chord-name">Bb</div><div class="lyric-char">に</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
+            </div>
+            <p style="font-size: 13px; color: #888; margin: 10px 0 5px;">(2回目)</p>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Fm7</div><div class="lyric-char">豊</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">か</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">な</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">実</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">を</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">結</div></div>
+                <div class="word-unit"><div class="chord-name">Bb7</div><div class="lyric-char">ぶ</div></div>
+                <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">ー</div></div>
+            </div>
+            <span class="section-label" style="color:#d35400;">【サビ (Chorus)】</span>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">(ー)</div></div>
+                <div class="word-unit"><div class="chord-name">Db/Eb</div><div class="lyric-char">み</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">こ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">と</div></div>
+                <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">ば</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">に</div></div>
+                <div class="word-unit"><div class="chord-name">Abmaj7</div><div class="lyric-char">ー</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Fm7</div><div class="lyric-char">と</div></div>
+                <div class="word-unit"><div class="chord-name">Bb7</div><div class="lyric-char">ど</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ま</div></div>
+                <div class="word-unit"><div class="chord-name">Gm</div><div class="lyric-char">り</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
+                <div class="word-unit"><div class="chord-name">Cm7</div><div class="lyric-char">あ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">い</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Fm7</div><div class="lyric-char">に</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
+                <div class="word-unit"><div class="chord-name">Bb7</div><div class="lyric-char">い</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">き</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">る</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">な</div></div>
+                <div class="word-unit"><div class="chord-name">Ebmaj7</div><div class="lyric-char">ら</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Eb7</div><div class="lyric-char">ー</div></div>
+                <div class="word-unit"><div class="chord-name">Db/Eb</div><div class="lyric-char">こ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">の</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">世</div></div>
+                <div class="word-unit"><div class="chord-name">Eb</div><div class="lyric-char">は</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
+                <div class="word-unit"><div class="chord-name">Abmaj7</div><div class="lyric-char">ー</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Fm7</div><div class="lyric-char">知</div></div>
+                <div class="word-unit"><div class="chord-name">Bb7</div><div class="lyric-char">る</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">で</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">し</div></div>
+                <div class="word-unit"><div class="chord-name">Gm</div><div class="lyric-char">ょ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">う</div></div>
+                <div class="word-unit"><div class="chord-name">Cm7</div><div class="lyric-char">ー</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Eb/F</div><div class="lyric-char">主</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">の</div></div>
+                <div class="word-unit"><div class="chord-name">F7</div><div class="lyric-char">す</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">く</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">い</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">と</div></div>
+                <div class="word-unit"><div class="chord-name">Fm7</div><div class="lyric-char">い</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">や</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">し</div></div>
+                <div class="word-unit"><div class="chord-name">Bb</div><div class="lyric-char">ー</div></div>
+            </div>
+
+            <div class="message-section" style="border-left-color: #2ecc71; background: #fffbff; margin-top: 30px;">
+                <h3 style="color: #27ae60;">💌 ちょこっとメッセージ</h3>
+                <div class="bible-quote">「わたしはぶどうの木、あなたがたはその枝です。人がわたしにとどまり、わたしもその人の中にとどまっているなら、そういう人は多くの実を結びます。」（ヨハネの福音書 15章5節）</div>
+                <div class="message-step">
+                    <h4>1. 「頑張って実を作ろう」としなくていい</h4>
+                    <p>自分の力で「もっと優しくならなきゃ」と必死にならなくて大丈夫。枝の役割は、ただ「木にしっかりとつながっていること」。それだけです。</p>
+                </div>
+                <div class="message-step">
+                    <h4>2. 「自分ひとりで頑張りすぎている？」</h4>
+                    <p>イライラしたり、ゆるせない、愛せないのは、木（イエスキリスト様）から離れて一人で頑張りすぎているサインかもしれません。私たちは「枝」であることを思い出して。本体の木であるイエスキリスト様の教えから離れていたら、枝は栄養不足で枯れてしまいます。</p>
+                </div>
+                <div class="message-step">
+                    <h4>3. 自然と育っていく「心の実」</h4>
+                    <p>木につながっていれば、時が来れば自然と実は結ばれます。「守られているんだ」と感じる積み重ねが、愛や平和を育ててくれます。</p>
+                </div>
+                <div class="message-step">
+                    <h4>4.どんな実？それは９つの実✨</h4>
+                    <p>「御霊の実。それは、愛、喜び、平安、寛容、慈愛、善意、誠実、柔和、自制です。」（ガラテヤ5:22-23）この実を結ぶと、「自分」を通してよい影響が、周りに広がっていきます。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. からっぽのお墓でヤッホー！（パステルイエローのボックス） -->
+        <div class="lyrics-box box-yellow">
+            <h2 style="color:#005a96; text-align:center;">🎵 オリジナルソング「からっぽのお墓でヤッホー！」</h2>
+            <audio controls><source src="image/からっぽのお墓でヤッホー！.mp3" type="audio/mpeg"></audio>
+
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">大</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">き</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">な</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">石</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">が</div></div>
+                <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">ゴ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ロ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ゴ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ロ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Am</div><div class="lyric-char">天</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">使</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">が</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ひ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ょ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">い</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">と</div></div>
+                <div class="word-unit"><div class="chord-name">F</div><div class="lyric-char">ど</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">か</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">し</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">た</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">よ</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">お</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">墓</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">は</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">も</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">う</div></div>
+                <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">か</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ら</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">っ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ぽ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Am</div><div class="lyric-char">イ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">エ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ス</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">さ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ま</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">は</div></div>
+                <div class="word-unit"><div class="chord-name">F</div><div class="lyric-char">生</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">き</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">返</div></div>
+                <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">っ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">た</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
+            </div>
+            <span class="section-label">【サビ】</span>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">ヤ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ッ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ホ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
+                <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">復</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">活</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">の</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ヒ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ロ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ー</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">Am</div><div class="lyric-char">わ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">た</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">し</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">た</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ち</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">と</div></div>
+                <div class="word-unit"><div class="chord-name">F</div><div class="lyric-char">ず</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">っ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">と</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">一</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">緒</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">ハ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">レ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ル</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ヤ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
+                <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">イ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">エ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ス</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">さ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ま</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
+            </div>
+            <div class="line-group">
+                <div class="word-unit"><div class="chord-name">F</div><div class="lyric-char">ハ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">レ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ル</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">ヤ</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">！</div></div>
+                <div class="word-unit"><div class="chord-name">G</div><div class="lyric-char">お</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">め</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">で</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">と</div></div>
+                <div class="word-unit"><div class="chord-name"></div><div class="lyric-char">う</div></div>
+                <div class="word-unit"><div class="chord-name">C</div><div class="lyric-char">！</div></div>
+            </div>
+            <!-- ジャンプ用ボタン -->
+            <button onclick="jumpToEaster()" class="jump-button" style="border:none; cursor:pointer;">
+    🐣 イースターのおはなしを読む
+</button>
+        </div>
+    </div>
+</div>
+
+
+        <hr style="margin: 60px 0; border: 0; border-top: 1px solid #eee;">
+<script>
+    function changePage(element, url) {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+        document.getElementById('main-frame').style.display = 'block';
+        document.getElementById('song-content').style.display = 'none';
+        document.getElementById('main-frame').src = url;
+        window.scrollTo(0,0);
+    }
+
+    function showSong(element) {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+        document.getElementById('main-frame').style.display = 'none';
+        document.getElementById('song-content').style.display = 'block';
+        window.scrollTo(0,0);
+    }
+    function jumpToEaster() {
+    const iframe = document.getElementById('main-frame');
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    // 1. まずナビゲーションの「ちしき（step 3）」をアクティブにする
+    navItems.forEach(item => {
+        if(item.innerText === 'ちしき') {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+
+    // 2. さんび画面を隠して iframe を表示し、step 3 を読み込む
+    document.getElementById('song-content').style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.src = 'step 3.html#easter-top'; // URLにアンカーを付けて読み込む
+
+    // 3. すでに step 3 が開いている場合のために、中身に直接ジャンプ命令を送る
+    iframe.onload = function() {
+        iframe.contentWindow.location.hash = "#easter-top";
+    };
+    
+    window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
