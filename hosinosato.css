@@ -3939,3 +3939,28 @@ p {
     padding-bottom: 10px;
     margin-bottom: 40px;
 }
+
+/* --- 物理ロック：テキスト選択禁止 --- */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* --- 物理ロック：画像ガード用の枠 --- */
+.image-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.image-guard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0); /* 完全透明な板 */
+  z-index: 10;
+}
