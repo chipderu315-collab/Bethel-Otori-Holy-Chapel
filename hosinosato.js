@@ -256,3 +256,14 @@ function startPrayerTimer(minutes) {
         }
     }, 1000);
 }
+// --- 物理ロック：右クリック禁止 ---
+document.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+});
+
+// --- 物理ロック：ドラッグ＆ドロップ禁止（画像保存対策） ---
+document.addEventListener('dragstart', (e) => {
+  if (e.target.tagName === 'IMG') {
+    e.preventDefault();
+  }
+});
