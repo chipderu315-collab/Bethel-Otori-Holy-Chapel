@@ -1,0 +1,1490 @@
+/* 基本設定 */
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background: linear-gradient(180deg, #ffe3f0 0%, #e0f7ff 100%);
+    color: #555;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* 背景の星レイヤー */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ハンバーガーボタン */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #ff99cc;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.hamburger span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: #ff99cc;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+/* 全画面メニュー */
+.full-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 240, 245, 0.98);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.full-menu.active {
+    right: 0;
+}
+.full-menu ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+.full-menu ul li {
+    margin: 20px 0;
+}
+.full-menu ul li a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #ff99cc;
+    font-weight: bold;
+    border-bottom: 2px dashed #88d8ff;
+    padding-bottom: 5px;
+    transition: 0.3s;
+    display: inline-block;
+}
+.full-menu ul li a:hover {
+    color: #88d8ff;
+    transform: scale(1.1);
+}
+
+/* ヘッダー */
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+.logo h1 {
+    font-size: 2.5rem;
+    color: #ff99cc;
+    text-shadow: 2px 2px 0px #fff;
+    margin: 0;
+}
+.logo p {
+    color: #88d8ff;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* 教会ボタン */
+.top-menu {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+.church-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    background: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: 3px solid #ffb6c1;
+    color: #ff99cc;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+}
+.church-button:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: #fff0f5;
+}
+.church-button .icon {
+    font-size: 2.5rem;
+}
+.church-button .text {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+/* メインエリア */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.intro-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 40px;
+    padding: 40px;
+    text-align: center;
+    border: 4px dashed #ffb6c1;
+    margin-bottom: 50px;
+}
+.placeholder-img {
+    font-size: 100px;
+    margin: 20px 0;
+    animation: floating 3.5s ease-in-out infinite;
+}
+@keyframes floating {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.profile-grid {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.profile-card {
+    flex: 1;
+    min-width: 280px;
+    padding: 30px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    background: white;
+}
+.kiki-style { border: 3px solid #88d8ff; background-color: #f0faff; }
+.lala-style { border: 3px solid #ff99cc; background-color: #fff5f9; }
+
+footer {
+    text-align: center;
+    padding: 60px;
+    color: #ff99cc;
+}
+
+/* 星のまたたき */
+@keyframes blink {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.3); }
+}
+
+/* スライダーセクション */
+.gallery {
+    margin: 60px 0;
+    text-align: center;
+}
+
+.section-title {
+    color: #ff99cc;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::before, .section-title::after {
+    content: '☆';
+    margin: 0 10px;
+}
+/* スライダーの外枠 */
+.slider-container {
+    width: 100%;
+    overflow: hidden; /* はみ出た「スライド」は見せないが、中身は見えるように */
+    background: rgba(255, 255, 255, 0.5);
+    padding: 60px 0; /* 上下の余白を少し調整 */
+    border-top: 3px dotted #ffb6c1;
+    border-bottom: 3px dotted #ffb6c1;
+}
+
+/* 動くトラック */
+.slider-track {
+    display: flex;
+    /* 全画像が見えるように幅を自動計算。
+       250px（スライド1枚分） × 15枚（全アイテム数分）以上に設定 */
+    width: max-content; 
+    animation: scroll 30s linear infinite; /* 少しゆっくりにして見やすく */
+}
+
+.slide {
+    width: 250px; /* ここが各スライドの固定幅 */
+    flex-shrink: 0; /* 画像が潰れないように固定 */
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.img-box {
+    /* 画像がすべて見えるように、アスペクト比を保てる設定に */
+    width: 220px;
+    height: 150px;
+    background: #fff;
+    border: 5px solid #fff;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: #ffb6c1;
+    font-weight: bold;
+    /* もし中に実際の<img>を入れるなら、以下を追記 */
+    overflow: hidden; 
+}
+
+/* <img>タグを使う場合の設定（追記） */
+.img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 画像を切り取らず、全体を表示する設定 */
+}
+
+/* アニメーションの調整 */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { 
+        /* 全アイテムの半分（コピー分を除いた数）が通り過ぎるまで動かす */
+        transform: translateX(calc(-250px * 15)); 
+    }
+}
+
+/* 自動スクロールのアニメーション */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 4)); } /* 画像4枚分動いたらリセット */
+}
+
+/* ホバー時に一時停止 */
+.slider-track:hover {
+    animation-play-state: paused;
+}
+
+/* 学習レベルセクション */
+.level-selection {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.level-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.level-btn {
+    text-decoration: none;
+    width: 200px;
+    padding: 20px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 0 rgba(0,0,0,0.1); /* ぷっくりさせる影 */
+}
+
+.level-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+
+.level-label {
+    font-size: 0.8rem;
+    background: #fff;
+    padding: 2px 15px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.level-text {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* 各レベルのカラー */
+.beginner { background-color: #fff0f5; color: #ff99cc; border: 3px solid #ffb6c1; }
+.intermediate { background-color: #f0faff; color: #88d8ff; border: 3px solid #add8e6; }
+.advanced { background-color: #fff9e6; color: #ffcc00; border: 3px solid #ffd700; }
+
+/* さんび＆お祈りタイム */
+.time-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.time-card {
+    flex: 1;
+    background: white;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: center;
+    border: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.sanbi { border-color: #88d8ff; background: #f0faff; }
+.prayer { border-color: #ff99cc; background: #fff5f9; }
+
+.time-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.time-card h3 {
+    margin: 10px 0;
+    color: #555;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .time-section { flex-direction: column; }
+    .level-btn { width: 100%; }
+}
+
+/* イベントボード全体 */
+.event-board {
+    margin: 50px 0;
+}
+
+/* おたよりカード */
+.message-card {
+    background: #fff;
+    border: 3px solid #ffb6c1;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.message-header h3 {
+    color: #ff99cc;
+    margin: 5px 0;
+}
+
+.mascot {
+    font-size: 2.5rem;
+    margin-top: 10px;
+}
+
+/* スケジュール */
+.schedule-container {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
+    padding: 30px 20px;
+    border: 2px solid #88d8ff;
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.event-day {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.sat { background-color: #88d8ff; } /* 土曜は水色 */
+.sun { background-color: #ff99cc; } /* 日曜はピンク */
+
+.event-content {
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.event-content h4 {
+    margin: 0 0 10px 0;
+    color: #555;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 5px;
+}
+
+.event-content p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.note {
+    color: #ff77aa;
+    font-size: 0.85rem !important;
+    font-weight: bold;
+}
+
+/* スマホ対応 */
+@media (max-width: 480px) {
+    .event-item { flex-direction: column; }
+    .event-day { width: 100%; padding: 10px; }
+}
+/* ショップ・オーダーセクション */
+.order-shop {
+    margin: 60px 0;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 40px;
+    border: 3px dashed #ffb6c1;
+    text-align: center;
+}
+
+.catchphrase {
+    color: #ff77aa;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* プランカードの構成案 */
+.order-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.order-card-main {
+    background: #fff;
+    border-radius: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(255, 182, 193, 0.2);
+    border: 2px solid #ffe0e9;
+}
+
+.order-image-box {
+    flex: 1;
+    min-width: 300px;
+    background: #fdf0f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.sample-preview {
+    width: 200px;
+    height: 120px;
+    background: white;
+    border: 4px solid #ffb6c1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffb6c1;
+    font-weight: bold;
+    box-shadow: 5px 5px 0 #ffecf2;
+}
+
+.order-details {
+    flex: 1.2;
+    padding: 30px;
+    text-align: left;
+}
+
+.plan-badge {
+    background: #ff99cc;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    color: #ff77aa;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.order-features {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.designer-note {
+    font-size: 0.85rem;
+    color: #888;
+    border-left: 3px solid #add8e6;
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+/* ヒアリング・ナビ */
+.hearing-nav {
+    margin-bottom: 40px;
+}
+
+.image-select-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.img-btn {
+    background: white;
+    border: 2px solid #88d8ff;
+    color: #88d8ff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.img-btn:hover {
+    background: #88d8ff;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* アクションボタン */
+.shop-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.action-box p {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.btn-consult, .btn-order {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-consult {
+    background: #88d8ff;
+    color: white;
+}
+
+.btn-order {
+    background: #ff99cc;
+    color: white;
+}
+
+.btn-consult:hover, .btn-order:hover {
+    opacity: 0.8;
+    transform: translateY(-3px);
+}
+/* トップに戻るボタン */
+.back-to-top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border: 3px solid #ffb6c1; /* ララ色 */
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    opacity: 0; /* 最初は隠しておく */
+    visibility: hidden;
+    box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.1);
+    background-color: #f0faff; /* キキ色 */
+    border-color: #88d8ff;
+}
+
+.star-icon {
+    font-size: 1.2rem;
+    color: #ffcc00; /* お星さまの黄色 */
+    line-height: 1;
+}
+
+.top-text {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #ff99cc;
+}
+
+.back-to-top:hover .top-text {
+    color: #88d8ff;
+}
+/* 円形メニューセクション */
+.circle-menu-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    padding: 50px 0;
+    position: relative;
+}
+
+.circle-menu-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 中央のアイテム（オリジナルソング） */
+.menu-center {
+    position: absolute;
+    z-index: 10;
+}
+
+.center-item {
+    width: 110px;
+    height: 110px;
+    background: linear-gradient(135deg, #fff0f5, #ffb6c1);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 4px solid #fff;
+    box-shadow: 0 0 20px rgba(255, 182, 193, 0.5);
+    transition: 0.3s ease-in-out;
+}
+
+.center-item .icon { font-size: 2.5rem; margin-bottom: 5px; }
+.center-item .label { font-size: 0.7rem; font-weight: bold; color: #ff77aa; text-align: center; }
+
+.center-item:hover { transform: scale(1.1); }
+
+/* 周囲のアイテム */
+.circle-items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    animation: rotateCircle 60s linear infinite; /* ゆっくり回転させる演出 */
+}
+
+.circle-items .item {
+    position: absolute;
+    /* 円形配置の計算 */
+    left: 50%;
+    top: 50%;
+    transform-origin: 0 0;
+    /* 360度 / 6アイテム = 60度ずつずらす */
+    transform: rotate(calc(60deg * var(--i))) translate(140px) rotate(calc(-60deg * var(--i)));
+}
+
+.circle-items .item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.3s;
+    animation: keepUpright 60s linear infinite; /* 親の回転を打ち消して文字を正位置に保つ */
+}
+
+.circle-items .item .icon {
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border: 3px solid #88d8ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.circle-items .item .text {
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: #555;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* 6番目のねこ日記だけ特別にピンク枠にするなどの調整も可能 */
+.item:nth-child(even) .icon { border-color: #ffb6c1; }
+
+/* ホバー演出 */
+.item a:hover { transform: scale(1.2) translateY(-5px); }
+
+/* アニメーション：全体のゆっくり回転 */
+@keyframes rotateCircle {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes keepUpright {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+/* スマホ対応：円を少し小さく */
+@media (max-width: 480px) {
+    .circle-menu-container { width: 220px; height: 220px; }
+    .circle-items .item { transform: rotate(calc(60deg * var(--i))) translate(100px) rotate(calc(-60deg * var(--i))); }
+    .center-item { width: 90px; height: 90px; }
+}
+/* 雲の本棚全体 */
+.cloud-shelf-section {
+    padding: 60px 20px;
+    background: linear-gradient(to bottom, #f0faff, #ffffff);
+    overflow: hidden;
+}
+
+.cloud-shelf {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    /* 雲のモコモコした形を作る */
+    background: #ffffff;
+    border-radius: 50px 150px 80px 180px;
+    box-shadow: 0 20px 40px rgba(136, 216, 255, 0.1);
+}
+
+/* 季節のラベル */
+.season-label {
+    text-align: center;
+    color: #ff99cc;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    display: block;
+}
+
+/* 本が並ぶエリア */
+.floating-books {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+}
+
+/* 本のカバーを雲の形に */
+.book-cover {
+    width: 120px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%; /* 歪んだ丸で雲っぽさを出す */
+    border: 4px solid #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+}
+
+.pink-cloud { background: #fff0f5; }
+.blue-cloud { background: #eef9ff; }
+.gold-cloud { background: #fff9e6; }
+
+.book-name {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #7d5a5a;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* ふわふわアニメーション（個別にタイミングをずらす） */
+.float-1 { animation: floatAnim 4s ease-in-out infinite; }
+.float-2 { animation: floatAnim 4.5s ease-in-out infinite -1s; }
+.float-3 { animation: floatAnim 3.8s ease-in-out infinite -0.5s; }
+
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* 本の影も連動して伸縮させるとリアル */
+.book-item::after {
+    content: '';
+    width: 60px;
+    height: 10px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 50%;
+    margin-top: 10px;
+    filter: blur(4px);
+}
+/* 追加の雲の色 */
+.white-cloud { background: #ffffff; border-color: #ffcad4 !important; }
+.sat-cloud { background: #e0f7ff; border-color: #88d8ff !important; } /* 土曜日：水色 */
+.sun-cloud { background: #fff0f5; border-color: #ff99cc !important; } /* 日曜日：ピンク */
+
+/* 本のタイトルが重ならないように調整 */
+.shelf-inner {
+    margin-bottom: 60px;
+}
+
+/* スマホで横に並びきらない場合はスクロールできるように */
+@media (max-width: 600px) {
+    .floating-books {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 20px 10px;
+        flex-wrap: nowrap;
+    }
+    .book-item {
+        min-width: 140px;
+    }
+}
+.digital-section {
+  background-color: #fff9ff; /* ほんのりピンク */
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.section-title {
+  font-family: "Morisawa UD", sans-serif;
+  color: #ff8ec7;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 0px #ffffff, 4px 4px 0px rgba(255, 142, 199, 0.2);
+}
+
+.intro-text {
+  color: #8ec7ff;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.worship-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.worship-card {
+  width: 100px;
+  height: 120px;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border: 2px solid #e0f2ff;
+}
+
+.worship-card:hover {
+  transform: translateY(-10px) scale(1.1);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.week-label {
+  font-size: 0.8rem;
+  color: #ff75b5;
+  font-weight: bold;
+}
+
+/* 各カードのアクセントカラー（週ごとに変える） */
+.week-1 { border-color: #ffb7d5; }
+.week-2 { border-color: #b7e4ff; }
+.week-3 { border-color: #ffe4b7; }
+.week-4 { border-color: #d5b7ff; }
+.week-5 { border-color: #b7ffcc; }
+
+/* ナビゲーションを横並びにするコンテナ */
+        .top-navigation-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5); /* ほんのり透ける白 */
+
+        }
+
+        .church-button {
+            display: flex;
+            flex-direction: column; /* アイコンと文字を縦に並べる */
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            width: 110px;
+            padding: 10px;
+            border-radius: 20px; /* 丸みを強く */
+            background: #ffffff;
+            border: 2px solid #ffb7ce;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 0 #ffdae9; /* ぷっくりした影 */
+            position: relative;
+        }
+
+        /* ホバーした時の動き */
+        .church-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 0 #ffdae9;
+            background-color: #fff9fb;
+        }
+
+        /* アイコンの設定 */
+        .church-button .icon {
+            font-size: 24px;
+            margin-bottom: 5px;
+            /* キキララっぽさを出すための絵文字加工 */
+            filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 2px #ffd700);
+        }
+
+        /* テキストの設定 */
+        .church-button .text {
+            font-size: 13px;
+            font-weight: bold;
+            color: #7abaff; /* パステルブルーの文字 */
+        }
+
+        /* 各ボタンにアクセントカラー（ピンク・ブルー・イエロー） */
+        .church-button:nth-child(1) { border-color: #ffb7ce; }
+        .church-button:nth-child(2) { border-color: #a7d8ff; }
+        .church-button:nth-child(3) { border-color: #fff2a7; }
+
+        .church-button:nth-child(1) .text { color: #ff85af; }
+        .church-button:nth-child(2) .text { color: #7abaff; }
+        .church-button:nth-child(3) .text { color: #e6b800; }
+
+        /* 装飾用の星（疑似要素） */
+        .church-button::after {
+            content: '★';
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            color: #fff2a7;
+            font-size: 12px;
+            text-shadow: 1px 1px 0 #ffdae9;
+        }
+        /* スクロールコンテナの設定 */
+.floating-books {
+    display: flex;
+    overflow-x: auto; /* 横スクロールを許可 */
+    scroll-snap-type: x mandatory; /* スワイプでピタッと止まる設定 */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch; /* iOSでの滑らかなスクロール */
+    padding: 20px 0;
+    gap: 20px; /* 本と本の間の余白 */
+}
+
+/* スクロールバーを非表示にする（デザイン重視の場合） */
+.floating-books::-webkit-scrollbar {
+    display: none;
+}
+.floating-books {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* 各本のアイテム設定 */
+.book-item {
+    flex: 0 0 80%; /* 1画面に表示する本の幅。1冊を強調するなら80%〜90%がおすすめ */
+    scroll-snap-align: center; /* 常に中央で止まるようにする */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+/* 真ん中に来た本を少し大きく見せる演出（任意） */
+.book-item:active {
+    transform: scale(0.95);
+}
+
+/* 本のカバーサイズ調整 */
+.book-cover {
+    width: 150px; /* サイズは適宜調整してください */
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap');
+
+:root {
+    --soft-blue: #e0f2ff;
+    --kiki-blue: #87ceeb;
+    --lala-pink: #ffc0cb;
+    --star-yellow: #fff4bd;
+    --text-color: #5a5a5a;
+    --white: #ffffff;
+}
+
+.church-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 40px;
+    border: 4px solid var(--white);
+    font-family: 'Kiwi Maru', sans-serif;
+    color: var(--text-color);
+}
+
+.church-header h1 {
+    color: var(--kiki-blue);
+    font-size: 1.6rem;
+    text-align: center;
+    text-shadow: 2px 2px 0px var(--white);
+}
+
+/* 5週間ナビ：お星様のステップ */
+.cycle-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin: 30px 0;
+}
+
+.cycle-item {
+    flex: 1;
+    background: var(--white);
+    border-radius: 20px;
+    padding: 12px 5px;
+    text-align: center;
+    border: 2px solid var(--kiki-blue);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cycle-item.active {
+    background: var(--kiki-blue);
+    color: white;
+    transform: translateY(-5px);
+}
+
+/* 雲のボタン */
+.cloud-button {
+    display: block;
+    background: var(--white);
+    border: 4px solid var(--kiki-blue);
+    padding: 20px;
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--kiki-blue);
+    font-weight: bold;
+    font-size: 1.3rem;
+    box-shadow: 0 6px 0px var(--kiki-blue);
+    margin-bottom: 30px;
+}
+
+.cloud-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0px var(--kiki-blue);
+}
+
+/* メッセージカード */
+.info-card {
+    background: var(--white);
+    border-radius: 25px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-left: 8px solid var(--lala-pink);
+}
+
+.info-card.secondary {
+    border-left-color: var(--kiki-blue);
+}
+
+.badge {
+    background: var(--lala-pink);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+.love-message {
+    background: #fff0f5;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--lala-pink);
+}
+/* ナビゲーション全体の装飾 */
+.cycle-nav {
+    background: linear-gradient(180deg, #ffffff 0%, #f0f8ff 100%);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 2px solid #e0efff;
+    max-width: 600px;
+    margin: 20px auto;
+    font-family: "Kiwi Maru", serif; /* 柔らかいフォント推奨 */
+}
+
+.cycle-nav h3 {
+    color: #5a9bd5;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 星の週替わりボタン */
+.nav-stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.cycle-item {
+    cursor: pointer;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 10px 5px;
+    width: 70px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 0 #eee;
+}
+
+.cycle-item span {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.cycle-item strong {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* アクティブ（選択中）のスタイル */
+.cycle-item.active {
+    background: #fff9c4; /* 輝く黄色 */
+    border-color: #ffca28;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 202, 40, 0.4);
+}
+
+.cycle-item.active strong {
+    color: #f57c00;
+}
+
+/* 特徴リストの装飾 */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+    text-align: left;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.feature-list li::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+
+.feature-list strong {
+    color: #2e5a88;
+    background: linear-gradient(transparent 70%, #fff9c4 70%);
+}
+
+/* 雲のメインボタン */
+.cloud-button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 18px 40px;
+    background: #fff;
+    border: 3px solid #5a9bd5;
+    border-radius: 50px;
+    color: #5a9bd5;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: relative;
+    transition: all 0.4s ease;
+    box-shadow: 0 6px 0 #5a9bd5;
+    overflow: hidden;
+    text-align: center;
+}
+
+.cloud-button:hover {
+    transform: translateY(2px);
+    box-shadow: 0 3px 0 #5a9bd5;
+    background: #f0f8ff;
+}
+
+.cloud-button span {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+/* アニメーション：ふわふわ揺れる */
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.cloud-button {
+    animation: floating 3s ease-in-out infinite;
+}
+/* 1. 基本となる文字の大きさと滑らかさの設定 */
+html {
+    /* 画面サイズに合わせて文字サイズを自動調整 (レスポンシブ・タイポグラフィ) */
+    font-size: 16px; 
+    /* iOSやAndroidでの文字サイズ自動調整を防止し、デザインを維持 */
+    -webkit-text-size-adjust: 100%;
+    /* 文字を滑らかに表示 */
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+body {
+    /* 行間を広めに取り、読みやすさを確保 */
+    line-height: 1.6;
+    color: #334155;
+    /* 指で操作しやすいように、余計な余白をリセット */
+    margin: 0;
+    padding: 0;
+    /* 日本語が美しく見えるフォント設定 */
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+}
+
+/* 2. スマホでもPCでも「崩れない」コンテナ設定 */
+.container, .church-container, .schedule-container {
+    width: 100%;
+    max-width: 900px; /* PCで見ても広がりすぎない */
+    margin: 0 auto;
+    padding: 0 5%; /* スマホで端がくっつかないよう左右に余白 */
+    box-sizing: border-box;
+}
+
+/* 3. 「押しやすさ」の徹底管理 (アクセシビリティ) */
+a, button, .church-button, .mini-btn {
+    /* 指で押すための最小サイズ (44px以上が推奨) */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* タップした時の反応を良くする */
+    touch-action: manipulation;
+    transition: transform 0.1s ease;
+}
+
+/* クリックした瞬間に少し沈む演出（操作感の向上） */
+a:active, button:active {
+    transform: scale(0.97);
+}
+
+/* 4. 画像やメディアのレスポンシブ化 */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 5. PCとスマホでのレイアウト切り替え */
+@media (max-width: 768px) {
+    /* スマホでは文字を少しだけ大きくして視認性を上げる */
+    body {
+        font-size: 15px;
+    }
+    
+    /* ボタンを横並びから縦並びに（押しやすさ重視） */
+    .top-navigation-container {
+        grid-template-columns: 1fr 1fr; /* 2列に並べる */
+        gap: 8px;
+    }
+    
+    /* 見出しがスマホで大きすぎないように調整 */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+}
+.quiz-section {
+    padding: 40px 20px;
+    background: #fdf6ff; /* 薄いラベンダー色 */
+}
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+.quiz-title {
+    text-align: center;
+    color: #ff69b4;
+    font-size: 1.5rem;
+}
+.quiz-item {
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 15px;
+}
+.question {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 12px;
+}
+.options label {
+    display: block;
+    background: #f8fafc;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.options label:hover { background: #e0f2fe; }
+.judge-btn {
+    width: 100%;
+    padding: 15px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d14d8d;
+}
+.judge-btn:active { transform: translateY(3px); box-shadow: none; }
+
+/* 結果表示 */
+.result-area {
+    margin-top: 20px;
+    padding: 20px;
+    border: 3px solid #ffdeeb;
+    border-radius: 20px;
+    text-align: center;
+}
+.stamp {
+    font-size: 2rem;
+    color: #ff4757;
+    font-weight: bold;
+    margin: 15px 0;
+    transform: rotate(-10deg);
+}
+function checkMiddleQuiz() {
+    const form = document.getElementById('bible-quiz-middle');
+    const resultArea = document.getElementById('middle-result');
+    const message = document.getElementById('middle-message');
+    const detail = document.getElementById('middle-detail');
+    const stamp = document.getElementById('middle-stamp');
+    
+    let score = 0;
+    const total = 5;
+    const formData = new FormData(form);
+
+    for (let value of formData.values()) {
+        if (value === 'correct') score++;
+    }
+
+    resultArea.style.display = 'block';
+    
+    if (score === total) {
+        message.innerText = "✨ 素晴らしい！中級マスターです ✨";
+        detail.innerText = "聖書全体の大きな物語と、黙示録の希望を理解しましたね。あなたはもう、聖書を一つの「約束の書」として読むことができます。";
+        stamp.style.display = 'block';
+        form.style.display = 'none';
+    } else {
+        message.innerText = "あと少し！";
+        detail.innerText = total + "問中 " + score + "問正解です。テキストを読み返して、神さまの約束を再確認してみましょう。";
+        stamp.style.display = 'none';
+    }
+}
+
+function resetMiddleQuiz() {
+    document.getElementById('bible-quiz-middle').reset();
+    document.getElementById('bible-quiz-middle').style.display = 'block';
+    document.getElementById('middle-result').style.display = 'none';
+}
